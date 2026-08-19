@@ -5,10 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ژئونیک | کاتالوگ سامانه جامع مدیریت داده مکانی — محیا پرداز</title>
 <meta name="description" content="کاتالوگ دیجیتال سامانه ژئونیک؛ بستری ماژولار و دانش‌بنیان برای مدیریت، پردازش و تحلیل داده‌های مکانی سازمان‌ها و ادارات مادر، بر پایه ابزارهای متن‌باز." />
+<link rel="canonical" href="https://mahyapardaz.com/catalogs/sdi.html" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
 <meta property="og:title" content="ژئونیک | کاتالوگ سامانه جامع مدیریت داده مکانی" />
 <meta property="og:description" content="بستری واحد و به‌روز برای داده‌های مکانی سازمان‌ها؛ از مدیریت لایه و ممیزی ملک تا تحلیل فضایی و نمایش سه‌بعدی." />
+<meta property="og:url" content="https://mahyapardaz.com/catalogs/sdi.html" />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="https://mahyapardaz.com/catalogs/images/sdi.png" />
 <meta property="og:locale" content="fa_IR" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ژئونیک - سامانه جامع مدیریت داده مکانی",
+  "description": "بستری ماژولار و دانش‌بنیان برای مدیریت، پردازش و تحلیل داده‌های مکانی سازمان‌ها و ادارات مادر، بر پایه ابزارهای متن‌باز.",
+  "url": "https://mahyapardaz.com/catalogs/sdi.html",
+  "applicationCategory": "GISApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IRR"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "محیا پرداز",
+    "url": "https://mahyapardaz.com/"
+  }
+}
+</script>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
@@ -209,9 +236,7 @@ tailwind.config = {
 </head>
 <body class="antialiased">
 
-<!-- =========================================================
-     NAVIGATION / PROGRESS
-     ========================================================= -->
+
 <nav class="nav-fixed fixed top-0 right-0 left-0 z-50 backdrop-blur-md bg-sand-50/85 border-b border-ink-900/10">
   <div class="max-w-7xl mx-auto px-5 lg:px-10 py-3 flex items-center justify-between gap-4">
     <a href="#cover" class="flex items-center gap-3 group">
@@ -247,13 +272,10 @@ tailwind.config = {
   </div>
 </nav>
 
-<!-- =========================================================
-     COVER
-     ========================================================= -->
+
 <section id="cover" class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-teal-900 text-sand-100">
   <div class="cover-grid absolute inset-0 opacity-40"></div>
 
-  <!-- Decorative SVG -->
   <svg class="absolute -left-32 -bottom-32 w-[600px] h-[600px] opacity-[0.07]" viewBox="0 0 400 400" aria-hidden="true">
     <circle cx="200" cy="200" r="180" fill="none" stroke="#F2ECE0" stroke-width="0.5"/>
     <circle cx="200" cy="200" r="140" fill="none" stroke="#F2ECE0" stroke-width="0.5"/>
@@ -264,7 +286,6 @@ tailwind.config = {
   </svg>
 
   <div class="relative max-w-7xl mx-auto px-5 lg:px-10 w-full grid lg:grid-cols-12 gap-10 items-center">
-    <!-- Right column: Title -->
     <div class="lg:col-span-7 reveal reveal-slow">
       <div class="flex items-center gap-3 text-accent-light text-xs tracking-[0.25em] uppercase mb-8">
         <span class="inline-block w-8 h-px bg-accent-light"></span>
@@ -298,7 +319,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Left column: Hero SVG -->
     <div class="lg:col-span-5 reveal reveal-slow reveal-delay-2">
       <div class="relative aspect-square max-w-lg mx-auto">
         <svg viewBox="0 0 500 500" class="w-full h-full" aria-label="نمایش انتزاعی لایه‌های داده مکانی در ژئونیک">
@@ -313,12 +333,10 @@ tailwind.config = {
             </linearGradient>
           </defs>
 
-          <!-- Coordinate rings -->
           <circle cx="250" cy="250" r="220" fill="none" stroke="#F2ECE0" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="2 6"/>
           <circle cx="250" cy="250" r="170" fill="none" stroke="#F2ECE0" stroke-opacity="0.15" stroke-width="1"/>
           <circle cx="250" cy="250" r="120" fill="none" stroke="#F2ECE0" stroke-opacity="0.1" stroke-width="1"/>
 
-          <!-- Polygon layers (representing map layers) -->
           <g transform="translate(0,0)">
             <polygon points="180,200 320,180 380,280 300,360 180,340"
                      fill="url(#coverGrad1)" opacity="0.35"/>
@@ -333,7 +351,6 @@ tailwind.config = {
                      fill="none" stroke="#6DAFBF" stroke-width="1.5"/>
           </g>
 
-          <!-- Point features -->
           <g fill="#F2ECE0">
             <circle cx="210" cy="270" r="3"/>
             <circle cx="290" cy="240" r="3"/>
@@ -343,7 +360,6 @@ tailwind.config = {
             <circle cx="310" cy="290" r="3"/>
           </g>
 
-          <!-- Connection lines (API / data flow) -->
           <g stroke="#C78A4E" stroke-width="1" opacity="0.6">
             <line x1="210" y1="270" x2="290" y2="240"/>
             <line x1="290" y1="240" x2="340" y2="320"/>
@@ -352,14 +368,12 @@ tailwind.config = {
             <line x1="200" y1="330" x2="210" y2="270"/>
           </g>
 
-          <!-- Center crosshair -->
           <g stroke="#F2ECE0" stroke-width="0.8" opacity="0.5">
             <line x1="245" y1="250" x2="255" y2="250"/>
             <line x1="250" y1="245" x2="250" y2="255"/>
           </g>
           <circle cx="250" cy="250" r="6" fill="none" stroke="#C78A4E" stroke-width="1.5"/>
 
-          <!-- Compass rose -->
           <g transform="translate(430, 70)" stroke="#F2ECE0" stroke-width="0.8" fill="none" opacity="0.5">
             <circle r="25"/>
             <line x1="0" y1="-30" x2="0" y2="30"/>
@@ -371,7 +385,6 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- Scroll hint -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-sand-200/80 text-xs tracking-widest">
     <span>برای ورق‌زدن کاتالوگ، اسکرول کنید</span>
     <svg class="scroll-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -380,9 +393,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     TABLE OF CONTENTS
-     ========================================================= -->
+
 <section id="toc" class="relative py-24 lg:py-32 bg-sand-50 paper">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10">
@@ -396,7 +407,6 @@ tailwind.config = {
 
       <div class="lg:col-span-8">
         <ol class="grid md:grid-cols-2 gap-x-10 gap-y-5">
-          <!-- 1 -->
           <li class="reveal reveal-delay-1">
             <a href="#ch1" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۱</span>
@@ -406,7 +416,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 2 -->
           <li class="reveal reveal-delay-1">
             <a href="#ch2" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۲</span>
@@ -416,7 +425,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 3 -->
           <li class="reveal reveal-delay-2">
             <a href="#ch3" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۳</span>
@@ -426,7 +434,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 4 -->
           <li class="reveal reveal-delay-2">
             <a href="#ch4" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۴</span>
@@ -436,7 +443,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 5 -->
           <li class="reveal reveal-delay-3">
             <a href="#ch5" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۵</span>
@@ -446,7 +452,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 6 -->
           <li class="reveal reveal-delay-3">
             <a href="#ch6" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۶</span>
@@ -456,7 +461,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 7 -->
           <li class="reveal reveal-delay-1">
             <a href="#ch7" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۷</span>
@@ -466,7 +470,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 8 -->
           <li class="reveal reveal-delay-1">
             <a href="#ch8" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۸</span>
@@ -476,7 +479,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 9 -->
           <li class="reveal reveal-delay-2">
             <a href="#ch9" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۰۹</span>
@@ -486,7 +488,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 10 -->
           <li class="reveal reveal-delay-2">
             <a href="#ch10" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۱۰</span>
@@ -496,7 +497,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 11 -->
           <li class="reveal reveal-delay-3">
             <a href="#ch11" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۱۱</span>
@@ -506,7 +506,6 @@ tailwind.config = {
               </span>
             </a>
           </li>
-          <!-- 12 -->
           <li class="reveal reveal-delay-3">
             <a href="#ch12" class="toc-item flex items-baseline gap-5 group py-2">
               <span class="chapter-num text-accent font-bold text-lg">۱۲</span>
@@ -522,9 +521,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 1 — WHAT IS GEONIC
-     ========================================================= -->
+
 <section id="ch1" data-chapter="1" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
@@ -554,7 +551,6 @@ tailwind.config = {
           ژئونیک به‌طور ذاتی ماژولار طراحی شده است؛ ماژول‌های مختلف از طریق API با هسته سامانه ارتباط برقرار می‌کنند. این رویکرد به سازمان‌ها این امکان را می‌دهد که تنها ماژول‌هایی را که متناسب با نیاز عملیاتی‌شان است تهیه کنند و در صورت تغییر نیاز، بخش‌های دیگر را در زمان‌های بعد به سامانه اضافه نمایند.
         </p>
 
-        <!-- Info grid -->
         <div class="grid md:grid-cols-3 gap-4 pt-8">
           <div class="bg-white border border-ink-900/10 p-6 reveal reveal-delay-1">
             <div class="text-[10px] tracking-widest text-accent uppercase mb-3">زبان‌های اصلی</div>
@@ -577,9 +573,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 2 — WHY A UNIFIED SDI
-     ========================================================= -->
+
 <section id="ch2" data-chapter="2" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-ink-900 text-sand-100">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="reveal mb-16">
@@ -615,9 +609,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 3 — LAYER MODULE
-     ========================================================= -->
+
 <section id="ch3" data-chapter="3" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -640,7 +632,6 @@ tailwind.config = {
           ماژول لایه در ژئونیک شامل چرخه کامل حیات لایه است: افزودن، ویرایش، حذف، گروه‌بندی، تعریف کاتالوگ و استایل، تبدیل هندسی، استخراج خروجی و اعمال ابزارهای توپولوژیکی. تمام این عملیات از طریق رابط کاربری یکپارچه و بدون نیاز به نرم‌افزار جانبی انجام می‌شود.
         </p>
 
-        <!-- Product shot placeholder -->
         <figure class="product-shot bg-white border border-ink-900/10 overflow-hidden" data-slot="layer-module-main">
           <div class="aspect-[16/9] bg-gradient-to-br from-ink-900/5 to-teal-700/10 flex items-center justify-center p-8">
             <div class="text-center">
@@ -659,7 +650,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Subsection: Input methods -->
     <div class="reveal">
       <div class="flex items-baseline gap-4 mb-8">
         <span class="chapter-num text-accent font-bold">۳.۱</span>
@@ -716,7 +706,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Subsection: Layer styling (SVG) -->
     <div class="reveal mt-24">
       <div class="flex items-baseline gap-4 mb-8">
         <span class="chapter-num text-accent font-bold">۳.۲</span>
@@ -727,7 +716,6 @@ tailwind.config = {
         هنگام افزودن هر لایه، ظاهر بصری آن در سه مرحله جداگانه تنظیم می‌شود: مشخصات لایه، تنظیمات ظاهری (پایه و لیبل) و اقلام توصیفی. این تفکیک، امکان بازاستفاده قالب‌ها و دقت در کنترل استایل را فراهم می‌کند.
       </p>
 
-      <!-- Layer Stacking SVG -->
       <div class="relative bg-white border border-ink-900/10 p-8 md:p-12">
         <div class="grid lg:grid-cols-2 gap-10 items-center">
           <div class="space-y-6">
@@ -761,7 +749,6 @@ tailwind.config = {
             </div>
           </div>
 
-          <!-- SVG: Layer Stack -->
           <div class="layer-stack">
             <svg viewBox="0 0 400 400" class="w-full h-auto" aria-label="نمایش چهار لایه پشته‌ای تنظیم ظاهر">
               <defs>
@@ -800,7 +787,6 @@ tailwind.config = {
                 <text x="120" y="142" font-size="12" fill="#FAF7F1" font-weight="600">مشخصات لایه</text>
               </g>
 
-              <!-- Connecting line -->
               <line x1="80" y1="120" x2="80" y2="330" stroke="#0F2A44" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
               <circle cx="80" cy="120" r="3" fill="#C78A4E"/>
               <circle cx="80" cy="330" r="3" fill="#C78A4E"/>
@@ -810,7 +796,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Subsection: Catalog and Styling -->
     <div class="reveal mt-24 grid lg:grid-cols-2 gap-10">
       <div>
         <div class="flex items-baseline gap-4 mb-6">
@@ -853,9 +838,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 4 — FEATURE MODULE
-     ========================================================= -->
+
 <section id="ch4" data-chapter="4" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -896,7 +879,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Feature tools -->
     <div class="reveal">
       <h3 class="font-display text-2xl mb-8">شش ابزار اصلی ویرایش عارضه</h3>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -935,9 +917,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 5 — SEARCH MODULE
-     ========================================================= -->
+
 <section id="ch5" data-chapter="5" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-teal-900 text-sand-100">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -964,7 +944,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Interactive SVG: Search polygon -->
     <div class="reveal mt-16">
       <div class="bg-ink-800/50 border border-sand-100/10 p-6 md:p-10">
         <div class="flex items-baseline gap-4 mb-6">
@@ -977,7 +956,6 @@ tailwind.config = {
 
         <div class="bg-ink-900 border border-sand-100/10 rounded-sm p-4">
           <svg id="searchSvg" viewBox="0 0 600 360" class="w-full h-auto" aria-label="نقشه تعاملی با عارضه‌های قابل انتخاب">
-            <!-- Base grid -->
             <defs>
               <pattern id="searchGrid" width="30" height="30" patternUnits="userSpaceOnUse">
                 <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2E7A8C" stroke-opacity="0.1" stroke-width="0.5"/>
@@ -985,12 +963,10 @@ tailwind.config = {
             </defs>
             <rect width="600" height="360" fill="url(#searchGrid)"/>
 
-            <!-- Search polygon (query boundary) -->
             <polygon points="120,80 420,60 500,200 380,300 140,260"
                      fill="#C78A4E" fill-opacity="0.15"
                      stroke="#C78A4E" stroke-width="1.5" stroke-dasharray="4 4"/>
 
-            <!-- Feature polygons -->
             <g id="searchFeatures">
               <polygon class="search-feat" data-id="f1"
                        points="180,120 250,110 270,170 200,180"
@@ -1004,13 +980,11 @@ tailwind.config = {
               <polygon class="search-feat" data-id="f4"
                        points="350,220 430,210 450,270 370,280"
                        fill="#6DAFBF" fill-opacity="0.5" stroke="#6DAFBF" stroke-width="1" cursor="pointer"/>
-              <!-- Feature outside polygon -->
               <polygon class="search-feat" data-id="f5"
                        points="50,40 100,35 110,80 60,85"
                        fill="#6DAFBF" fill-opacity="0.2" stroke="#6DAFBF" stroke-width="0.7" cursor="pointer" stroke-dasharray="2 2"/>
             </g>
 
-            <!-- Legend -->
             <g transform="translate(10, 310)">
               <rect x="0" y="0" width="10" height="10" fill="#C78A4E" fill-opacity="0.3" stroke="#C78A4E"/>
               <text x="16" y="9" font-size="10" fill="#F2ECE0">محدوده جستجو</text>
@@ -1025,7 +999,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Search subsections -->
     <div class="grid md:grid-cols-2 gap-8 mt-20 reveal">
       <div>
         <h4 class="font-display text-xl mb-4 text-sand-50">جستجوی توصیفی</h4>
@@ -1050,9 +1023,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 6 — ANALYSIS MODULE
-     ========================================================= -->
+
 <section id="ch6" data-chapter="6" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -1081,7 +1052,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Analysis Flow SVG -->
     <div class="reveal mt-16">
       <div class="bg-white border border-ink-900/10 p-6 md:p-10">
         <div class="flex items-baseline gap-4 mb-8">
@@ -1090,27 +1060,22 @@ tailwind.config = {
         </div>
 
         <svg viewBox="0 0 800 280" class="w-full h-auto" aria-label="گردش کار مدل آنالیز از ورودی تا خروجی">
-          <!-- Nodes -->
           <g>
-            <!-- Input 1 -->
             <rect x="30" y="100" width="130" height="80" rx="4" fill="#FAF7F1" stroke="#0F2A44" stroke-width="1"/>
             <text x="95" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1E2D">ورودی</text>
             <text x="95" y="155" text-anchor="middle" font-size="10" fill="#0F2A44">لایه / API</text>
             <text x="95" y="170" text-anchor="middle" font-size="10" fill="#0F2A44">/ مدل دیگر</text>
 
-            <!-- Filter -->
             <rect x="210" y="100" width="130" height="80" rx="4" fill="#E6DFCE" stroke="#0F2A44" stroke-width="1"/>
             <text x="275" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1E2D">فیلتر</text>
             <text x="275" y="155" text-anchor="middle" font-size="10" fill="#0F2A44">توصیفی / هندسی</text>
             <text x="275" y="170" text-anchor="middle" font-size="10" fill="#0F2A44">/ انتخاب روی نقشه</text>
 
-            <!-- Process -->
             <rect x="390" y="100" width="130" height="80" rx="4" fill="#C78A4E" stroke="#8F5F2F" stroke-width="1"/>
             <text x="455" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="#FAF7F1">پردازش</text>
             <text x="455" y="155" text-anchor="middle" font-size="10" fill="#FAF7F1">~ ۶۰ عملیات</text>
             <text x="455" y="170" text-anchor="middle" font-size="10" fill="#FAF7F1">مکانی</text>
 
-            <!-- Output -->
             <rect x="570" y="100" width="200" height="80" rx="4" fill="#1A4D5C" stroke="#0E3A3F" stroke-width="1"/>
             <text x="670" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="#F2ECE0">خروجی</text>
             <text x="670" y="150" text-anchor="middle" font-size="10" fill="#F2ECE0">نمایش در نقشه · جدول</text>
@@ -1118,7 +1083,6 @@ tailwind.config = {
             <text x="670" y="180" text-anchor="middle" font-size="10" fill="#F2ECE0">/ ورودی مدل بعدی</text>
           </g>
 
-          <!-- Arrows -->
           <g stroke="#0F2A44" stroke-width="1.5" fill="none">
             <path d="M 160 140 L 210 140" marker-end="url(#arrowA)"/>
             <path d="M 340 140 L 390 140" marker-end="url(#arrowA)"/>
@@ -1130,7 +1094,6 @@ tailwind.config = {
             </marker>
           </defs>
 
-          <!-- Caption -->
           <text x="400" y="250" text-anchor="middle" font-size="11" fill="#0F2A44" opacity="0.7">
             مدل‌ها قابل ذخیره، گروه‌بندی و انتشار به صورت وب‌سرویس برای استفاده در سامانه‌های خارجی هستند
           </text>
@@ -1146,9 +1109,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 7 — ASSESSMENT MODULE
-     ========================================================= -->
+
 <section id="ch7" data-chapter="7" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -1173,7 +1134,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Assessment Flow SVG -->
     <div class="reveal mt-16">
       <div class="bg-white border border-ink-900/10 p-6 md:p-10">
         <div class="flex items-baseline gap-4 mb-8">
@@ -1182,9 +1142,7 @@ tailwind.config = {
         </div>
 
         <svg viewBox="0 0 800 340" class="w-full h-auto" aria-label="گردش کار ممیزی ملک از عرصه تا واحد">
-          <!-- Steps -->
           <g>
-            <!-- Step 1: Aresah -->
             <g transform="translate(40, 40)">
               <rect width="120" height="140" fill="#FAF7F1" stroke="#0F2A44"/>
               <text x="60" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0B1E2D">عرصه</text>
@@ -1195,7 +1153,6 @@ tailwind.config = {
               <text x="60" y="125" text-anchor="middle" font-size="10" fill="#C78A4E" font-weight="700">شروع</text>
             </g>
 
-            <!-- Step 2: Building -->
             <g transform="translate(190, 40)">
               <rect width="120" height="140" fill="#FAF7F1" stroke="#0F2A44"/>
               <text x="60" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0B1E2D">ساختمان</text>
@@ -1205,7 +1162,6 @@ tailwind.config = {
               <text x="60" y="105" text-anchor="middle" font-size="9" fill="#0F2A44">· آرشیو تصاویر</text>
             </g>
 
-            <!-- Step 3: Floors -->
             <g transform="translate(340, 40)">
               <rect width="120" height="140" fill="#FAF7F1" stroke="#0F2A44"/>
               <text x="60" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0B1E2D">طبقات</text>
@@ -1215,7 +1171,6 @@ tailwind.config = {
               <text x="60" y="105" text-anchor="middle" font-size="9" fill="#0F2A44">· موثر در تعداد واحد</text>
             </g>
 
-            <!-- Step 4: Units -->
             <g transform="translate(490, 40)">
               <rect width="120" height="140" fill="#1A4D5C" stroke="#0E3A3F"/>
               <text x="60" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#F2ECE0">واحد مستقل</text>
@@ -1225,7 +1180,6 @@ tailwind.config = {
               <text x="60" y="105" text-anchor="middle" font-size="9" fill="#F2ECE0">· سهم‌العرصه</text>
             </g>
 
-            <!-- Step 5: Commercial -->
             <g transform="translate(640, 40)">
               <rect width="120" height="140" fill="#C78A4E" stroke="#8F5F2F"/>
               <text x="60" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#FAF7F1">واحد شغلی</text>
@@ -1236,7 +1190,6 @@ tailwind.config = {
             </g>
           </g>
 
-          <!-- Arrows -->
           <g stroke="#0F2A44" stroke-width="1.5" fill="none">
             <path d="M 160 110 L 190 110" marker-end="url(#arrowB)"/>
             <path d="M 310 110 L 340 110" marker-end="url(#arrowB)"/>
@@ -1249,7 +1202,6 @@ tailwind.config = {
             </marker>
           </defs>
 
-          <!-- Kartabel -->
           <g transform="translate(40, 240)">
             <rect width="720" height="60" fill="#0F2A44"/>
             <text x="360" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#F2ECE0">کارتابل ممیزی</text>
@@ -1276,9 +1228,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 8 — 3D & PANORAMA
-     ========================================================= -->
+
 <section id="ch8" data-chapter="8" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-ink-800 text-sand-100">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -1347,9 +1297,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 9 — PRINT TEMPLATE MODULE
-     ========================================================= -->
+
 <section id="ch9" data-chapter="9" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -1410,9 +1358,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 10 — USERS, ROLES & SECURITY
-     ========================================================= -->
+
 <section id="ch10" data-chapter="10" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -1437,7 +1383,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Permissions diagram -->
     <div class="reveal mt-10">
       <div class="bg-white border border-ink-900/10 p-6 md:p-10">
         <div class="flex items-baseline gap-4 mb-8">
@@ -1480,7 +1425,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Security -->
     <div class="mt-16 reveal">
       <div class="flex items-baseline gap-4 mb-8">
         <span class="chapter-num text-accent font-bold">۱۰.۲</span>
@@ -1517,9 +1461,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 11 — ARCHITECTURE & INTEGRATION
-     ========================================================= -->
+
 <section id="ch11" data-chapter="11" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-ink-900 text-sand-100">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -1545,7 +1487,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Architecture SVG (Interactive Hub-and-Spoke) -->
     <div class="reveal mt-16">
       <div class="bg-ink-800/50 border border-sand-100/10 p-6 md:p-10">
         <div class="flex items-baseline gap-4 mb-8">
@@ -1558,7 +1499,6 @@ tailwind.config = {
 
         <div class="grid lg:grid-cols-2 gap-8 items-center">
           <svg id="archSvg" viewBox="0 0 500 400" class="w-full h-auto" aria-label="معماری اتصال ژئونیک به منابع خارجی">
-            <!-- Connections -->
             <g stroke="#C78A4E" stroke-opacity="0.35" stroke-width="1">
               <line x1="250" y1="200" x2="80" y2="80"/>
               <line x1="250" y1="200" x2="420" y2="80"/>
@@ -1569,55 +1509,47 @@ tailwind.config = {
               <line x1="250" y1="200" x2="250" y2="360"/>
             </g>
 
-            <!-- Core -->
             <g class="interactive-node" data-info="core">
               <circle class="node-core" cx="250" cy="200" r="50" fill="#C78A4E"/>
               <text x="250" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#FAF7F1">ژئونیک</text>
               <text x="250" y="213" text-anchor="middle" font-size="10" fill="#FAF7F1" opacity="0.85">SDI Core</text>
             </g>
 
-            <!-- PostgreSQL -->
             <g class="interactive-node" data-info="pg">
               <circle class="node-core" cx="80" cy="80" r="32" fill="#1A4D5C" stroke="#6DAFBF"/>
               <text x="80" y="77" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">PostgreSQL</text>
               <text x="80" y="90" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">SQLServer · MySQL</text>
             </g>
 
-            <!-- GeoServer -->
             <g class="interactive-node" data-info="gs">
               <circle class="node-core" cx="420" cy="80" r="32" fill="#1A4D5C" stroke="#6DAFBF"/>
               <text x="420" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#F2ECE0">GeoServer</text>
             </g>
 
-            <!-- External APIs -->
             <g class="interactive-node" data-info="api">
               <circle class="node-core" cx="80" cy="200" r="32" fill="#0F2A44" stroke="#C78A4E"/>
               <text x="80" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">API</text>
               <text x="80" y="210" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">سامانه‌های خارجی</text>
             </g>
 
-            <!-- API Keys -->
             <g class="interactive-node" data-info="keys">
               <circle class="node-core" cx="420" cy="200" r="32" fill="#0F2A44" stroke="#C78A4E"/>
               <text x="420" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">API Keys</text>
               <text x="420" y="210" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">خروجی مدل‌ها</text>
             </g>
 
-            <!-- Files -->
             <g class="interactive-node" data-info="files">
               <circle class="node-core" cx="80" cy="320" r="32" fill="#0E3A3F" stroke="#E3B480"/>
               <text x="80" y="317" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">فایل‌ها</text>
               <text x="80" y="330" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">SHP · KML · DXF ...</text>
             </g>
 
-            <!-- Croquis -->
             <g class="interactive-node" data-info="croquis">
               <circle class="node-core" cx="420" cy="320" r="32" fill="#0E3A3F" stroke="#E3B480"/>
               <text x="420" y="317" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">کروکی‌ساز</text>
               <text x="420" y="330" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">سرویس خروجی</text>
             </g>
 
-            <!-- Tasks -->
             <g class="interactive-node" data-info="tasks">
               <circle class="node-core" cx="250" cy="360" r="28" fill="#163A5F" stroke="#6DAFBF"/>
               <text x="250" y="358" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">تسک‌ها</text>
@@ -1636,7 +1568,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Integration details -->
     <div class="grid md:grid-cols-2 gap-8 mt-20 reveal">
       <div>
         <h4 class="font-display text-xl mb-4 text-sand-50">پایگاه داده‌ها</h4>
@@ -1666,9 +1597,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     CHAPTER 12 — ORGANIZATIONAL VALUE
-     ========================================================= -->
+
 <section id="ch12" data-chapter="12" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
@@ -1693,7 +1622,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- Role summary -->
     <div class="reveal mt-12">
       <h3 class="font-display text-2xl mb-8">نقش‌های اصلی و استفاده آن‌ها</h3>
       <div class="grid md:grid-cols-2 gap-5">
@@ -1736,7 +1664,6 @@ tailwind.config = {
       </div>
     </div>
 
-    <!-- What it manages -->
     <div class="reveal mt-20">
       <h3 class="font-display text-2xl mb-8">خلاصه آنچه ژئونیک مدیریت می‌کند</h3>
       <div class="bg-ink-900 text-sand-100 p-8 md:p-12">
@@ -1771,9 +1698,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- =========================================================
-     BRAND SECTION / FOOTER
-     ========================================================= -->
+
 <footer class="bg-ink-900 text-sand-100 py-20 border-t border-ink-900/10">
   <div class="max-w-6xl mx-auto px-5 lg:px-10">
     <div class="grid lg:grid-cols-12 gap-10 items-start mb-16">
@@ -1811,9 +1736,7 @@ tailwind.config = {
   </div>
 </footer>
 
-<!-- =========================================================
-     JAVASCRIPT
-     ========================================================= -->
+
 <script>
 (function() {
   'use strict';

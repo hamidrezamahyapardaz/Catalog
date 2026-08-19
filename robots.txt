@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /tmp/
+Disallow: /logs/
+Disallow: /private/
+
+Sitemap: https://mahyapardaz.com/catalogs/sitemap.xml
+
+Crawl-delay: 1
