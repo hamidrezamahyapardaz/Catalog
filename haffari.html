@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کاتالوگ سامانه جامع حفاری | محیا پرداز</title>
+<meta name="description" content="کاتالوگ دیجیتال سامانه جامع حفاری محیا پرداز؛ سامانه و فرآیندهای مدیریت حفاری‌های شهری برای معاونت فنی و عمرانی شهرداری‌ها.">
+<meta property="og:title" content="کاتالوگ سامانه جامع حفاری | محیا پرداز">
+<meta property="og:description" content="کاتالوگ دیجیتال سامانه و فرآیندهای مدیریت حفاری‌های شهری؛ از صدور مجوز تا نظارت، تحویل و گزارش مدیریتی.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      paper:'#F6F4EE', card:'#FFFDF7', ink:'#1A1D22', soot:'#121419',
+      mist:'#5B6470', linex:'#E2DDD0',
+      amber:{ DEFAULT:'#DA8A0F', dark:'#A96A0B', soft:'#F4E6C6' },
+      tealx:'#2F6D62', bluex:'#33628F'
+    },
+    fontFamily: {
+      sans:['Vazirmatn','system-ui','sans-serif'],
+      display:['"Noto Kufi Arabic"','Vazirmatn','sans-serif']
+    }
+  }}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&family=Noto+Kufi+Arabic:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  html{scroll-padding-top:6rem;}
+  @media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth;} }
+  body{background:#F6F4EE;color:#1A1D22;}
+  svg text{font-family:'Vazirmatn',sans-serif;}
+  :focus-visible{outline:2px solid #DA8A0F;outline-offset:3px;border-radius:2px;}
+  ::selection{background:#F4E6C6;}
+
+  /* ---------- reveal ---------- */
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;transition-delay:var(--d,0s);}
+  [data-reveal].in-view{opacity:1;transform:none;}
+  /* ---------- stroke draw ---------- */
+  .pdraw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s ease .2s;}
+  .in-view .pdraw, svg.in-view .pdraw{stroke-dashoffset:0;}
+  /* ---------- pipe flow ---------- */
+  @keyframes flow{to{stroke-dashoffset:-48;}}
+  .flow{animation:flow 3s linear infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  .bob{animation:bob 2s ease-in-out infinite;}
+  /* ---------- layers / charts ---------- */
+  .layer-g{transition:opacity .5s ease;}
+  .layer-hidden{opacity:0;pointer-events:none;}
+  .chart-g{opacity:0;transition:opacity .45s ease;}
+  .chart-g.on{opacity:1;}
+  /* ---------- lifecycle ---------- */
+  .lc-node{cursor:pointer;}
+  .lc-node circle{transition:fill .3s,stroke .3s;}
+  .lc-node text{transition:fill .3s;}
+  /* ---------- progress ---------- */
+  #progressBar{transform-origin:right;transform:scaleX(0);}
+  /* ---------- rail ---------- */
+  #rail a{transition:color .3s,transform .3s;}
+  #rail a.active{color:#DA8A0F;transform:scale(1.25);}
+  /* ---------- placeholder ---------- */
+  .ph{border:2px dashed #C9C2B2;background:
+    repeating-linear-gradient(45deg,rgba(0,0,0,.025) 0 12px,transparent 12px 24px),#FBF9F3;}
+  /* ---------- ghost number ---------- */
+  .ghost{font-family:'Noto Kufi Arabic';line-height:1;user-select:none;}
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1!important;transform:none!important;transition:none!important;}
+    .pdraw{stroke-dashoffset:0!important;transition:none!important;}
+    .flow,.bob{animation:none!important;}
+    *{scroll-behavior:auto!important;}
+  }
+  /* ---------- print ---------- */
+  @media print{
+    header,#rail,.scroll-hint,.no-print{display:none!important;}
+    body{background:#fff;}
+    section{break-inside:auto;padding:2rem 0!important;}
+    [data-reveal]{opacity:1!important;transform:none!important;}
+    .ph{border:1px solid #999;}
+  }
+</style>
+<noscript><style>[data-reveal]{opacity:1;transform:none;}</style></noscript>
+</head>
+<body class="font-sans antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-[60] focus:bg-amber focus:text-soot focus:px-4 focus:py-2">پرش به محتوای اصلی</a>
+
+<!-- ================= HEADER ================= -->
+<header class="fixed top-0 inset-x-0 z-50 bg-paper/90 backdrop-blur border-b border-linex">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between gap-4">
+    <a href="#cover" class="flex items-center gap-3 shrink-0" aria-label="بازگشت به جلد کاتالوگ">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-9 md:h-11 w-auto" loading="eager">
+      <span class="hidden sm:block leading-tight">
+        <span class="block font-display font-bold text-sm md:text-base">محیا پرداز</span>
+        <span class="block text-[11px] text-mist">کاتالوگ سامانه جامع حفاری</span>
+      </span>
+    </a>
+    <div class="flex items-center gap-3 md:gap-5">
+      <p class="text-[11px] md:text-xs text-mist" aria-live="polite">
+        <span id="chipNum" class="font-display font-bold text-amber-dark">جلد</span>
+        <span class="hidden md:inline"> / </span><span id="chipTitle" class="hidden md:inline">کاتالوگ معرفی سامانه</span>
+      </p>
+      <a href="#toc" class="no-print text-xs md:text-sm border border-ink/20 hover:border-amber hover:text-amber-dark px-3 py-1.5 rounded-full transition-colors">فهرست فصل‌ها</a>
+    </div>
+  </div>
+  <div id="progressBar" class="absolute bottom-0 right-0 left-0 h-[3px] bg-amber" role="presentation"></div>
+</header>
+
+<!-- ================= RAIL ================= -->
+<nav id="rail" class="no-print hidden lg:flex fixed left-4 top-1/2 -translate-y-1/2 z-40 flex-col gap-2.5" aria-label="پیمایش فصل‌های کاتالوگ">
+  <a href="#ch-01" data-target="ch-01" title="۰۱ آشنایی با سامانه" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۱</a>
+  <a href="#ch-02" data-target="ch-02" title="۰۲ ضرورت نظم و نظارت" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۲</a>
+  <a href="#ch-03" data-target="ch-03" title="۰۳ آنچه سامانه تغییر می‌دهد" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۳</a>
+  <a href="#ch-04" data-target="ch-04" title="۰۴ پرونده و آرشیو" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۴</a>
+  <a href="#ch-05" data-target="ch-05" title="۰۵ فرآیندها" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۵</a>
+  <a href="#ch-06" data-target="ch-06" title="۰۶ نقشه" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۶</a>
+  <a href="#ch-07" data-target="ch-07" title="۰۷ نظارت" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۷</a>
+  <a href="#ch-08" data-target="ch-08" title="۰۸ دریچه‌ها" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۸</a>
+  <a href="#ch-09" data-target="ch-09" title="۰۹ بستر تنظیم‌پذیر" class="text-[11px] font-display text-mist hover:text-amber-dark">۰۹</a>
+  <a href="#ch-10" data-target="ch-10" title="۱۰ کاربران و کارتابل‌ها" class="text-[11px] font-display text-mist hover:text-amber-dark">۱۰</a>
+  <a href="#ch-11" data-target="ch-11" title="۱۱ گزارش و داشبورد" class="text-[11px] font-display text-mist hover:text-amber-dark">۱۱</a>
+  <a href="#ch-12" data-target="ch-12" title="۱۲ جمع‌بندی" class="text-[11px] font-display text-mist hover:text-amber-dark">۱۲</a>
+</nav>
+
+<main id="main">
+
+<!-- ================= جلد (تم روشن) ================= -->
+<section id="cover" data-chapter="جلد" data-title="کاتالوگ معرفی سامانه" class="relative bg-card text-ink min-h-screen flex flex-col overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 w-full pt-28 md:pt-36 pb-10 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center flex-1">
+    <div>
+      <p data-reveal class="text-xs md:text-sm tracking-wide text-amber-dark mb-6">کاتالوگ معرفی سامانه · مرداد ۱۴۰۵</p>
+      <h1 data-reveal style="--d:.1s" class="font-display font-extrabold text-4xl md:text-6xl leading-[1.25] mb-5 text-ink">سامانه جامع حفاری</h1>
+      <p data-reveal style="--d:.2s" class="text-lg md:text-2xl text-mist font-display mb-6">سامانه و فرآیندهای مدیریت حفاری‌های شهری</p>
+      <p data-reveal style="--d:.3s" class="text-sm md:text-base leading-8 text-ink/75 max-w-md border-r-2 border-amber pr-4">
+        یکپارچگی در صدور مجوز، نظارت بر اجرای پروژه‌های حفاری و مستندسازی سوابق آن‌ها؛ برای معاونت فنی و عمرانی شهرداری‌ها.
+      </p>
+    </div>
+
+    <!-- SVG جلد با تم روشن -->
+    <figure data-reveal style="--d:.25s" aria-label="تصویرسازی برش عرضی خیابان و تأسیسات زیرزمینی">
+      <svg viewBox="0 0 640 430" class="w-full h-auto" role="img" aria-label="برش عرضی خیابان با لوله‌ها و کابل‌های آب، گاز، برق و مخابرات در بستر خاک و یک محل حفاری">
+        <!-- آسمان -->
+        <rect x="0" y="0" width="640" height="250" fill="#DCE6EF"/>
+        <!-- خورشید -->
+        <circle cx="540" cy="70" r="36" fill="#F4E6C6"/>
+        <!-- سیلوئت شهر -->
+        <g fill="#2F3E4C">
+          <rect x="30" y="120" width="70" height="130"/><rect x="120" y="80" width="55" height="170"/>
+          <rect x="200" y="140" width="80" height="110"/><rect x="470" y="100" width="60" height="150"/>
+          <rect x="550" y="150" width="70" height="100"/>
+        </g>
+        <g fill="#F4E6C6" opacity=".9">
+          <rect x="132" y="96" width="8" height="8"/><rect x="150" y="120" width="8" height="8"/>
+          <rect x="482" y="118" width="8" height="8"/><rect x="500" y="146" width="8" height="8"/>
+          <rect x="216" y="156" width="8" height="8"/>
+        </g>
+        <!-- سطح خیابان -->
+        <rect x="0" y="250" width="640" height="14" fill="#4A4A4A"/>
+        <line x1="0" y1="257" x2="640" y2="257" stroke="#DA8A0F" stroke-width="2" stroke-dasharray="18 14"/>
+        <!-- خاک -->
+        <rect x="0" y="264" width="640" height="166" fill="#C9A876"/>
+        <g stroke="#B3945F" stroke-width="1">
+          <line x1="0" y1="300" x2="640" y2="300"/><line x1="0" y1="345" x2="640" y2="345"/><line x1="0" y1="390" x2="640" y2="390"/>
+        </g>
+        <!-- ترانشه حفاری -->
+        <g>
+          <rect x="330" y="250" width="110" height="120" fill="#8B6F47" stroke="#DA8A0F" stroke-width="1.5" stroke-dasharray="6 5"/>
+          <g stroke="#DA8A0F" stroke-width="1" opacity=".7">
+            <line x1="336" y1="262" x2="348" y2="252"/><line x1="336" y1="286" x2="360" y2="262"/><line x1="336" y1="312" x2="386" y2="262"/>
+          </g>
+          <!-- مانع ایمنی -->
+          <g>
+            <rect x="316" y="228" width="138" height="8" fill="#DA8A0F"/>
+            <g fill="#12141A"><rect x="326" y="228" width="10" height="8"/><rect x="352" y="228" width="10" height="8"/><rect x="378" y="228" width="10" height="8"/><rect x="404" y="228" width="10" height="8"/><rect x="430" y="228" width="10" height="8"/></g>
+            <line x1="322" y1="236" x2="322" y2="250" stroke="#DA8A0F" stroke-width="3"/>
+            <line x1="448" y1="236" x2="448" y2="250" stroke="#DA8A0F" stroke-width="3"/>
+          </g>
+        </g>
+        <!-- لوله‌ها و کابل‌ها -->
+        <line class="flow" x1="0" y1="300" x2="330" y2="300" stroke="#C96A3B" stroke-width="5" stroke-dasharray="10 8"/>
+        <line class="flow" x1="440" y1="300" x2="640" y2="300" stroke="#C96A3B" stroke-width="5" stroke-dasharray="10 8"/>
+        <line class="flow" x1="0" y1="340" x2="330" y2="340" stroke="#33628F" stroke-width="7" stroke-dasharray="16 10"/>
+        <line class="flow" x1="440" y1="340" x2="640" y2="340" stroke="#33628F" stroke-width="7" stroke-dasharray="16 10"/>
+        <line x1="0" y1="378" x2="640" y2="378" stroke="#2F6D62" stroke-width="4" stroke-dasharray="4 6"/>
+        <line x1="0" y1="408" x2="640" y2="408" stroke="#B8524C" stroke-width="3" stroke-dasharray="2 6"/>
+        <!-- دریچه -->
+        <rect x="150" y="246" width="34" height="6" fill="#3A3F49"/>
+        <!-- برچسب‌ها -->
+        <g font-size="12" fill="#2F3E4C" font-weight="600">
+          <line x1="560" y1="300" x2="600" y2="286" stroke="#5B6470" stroke-width="1"/><text x="604" y="290">گاز</text>
+          <line x1="560" y1="340" x2="600" y2="330" stroke="#5B6470" stroke-width="1"/><text x="604" y="334">آب</text>
+          <line x1="560" y1="378" x2="600" y2="372" stroke="#5B6470" stroke-width="1"/><text x="604" y="376">مخابرات</text>
+          <line x1="560" y1="408" x2="600" y2="408" stroke="#5B6470" stroke-width="1"/><text x="604" y="412">برق</text>
+          <text x="336" y="420" fill="#DA8A0F" font-weight="700">محل حفاری</text>
+        </g>
+      </svg>
+    </figure>
+  </div>
+
+  <div class="scroll-hint pb-8 text-center" aria-hidden="true">
+    <p class="text-[11px] text-mist mb-2">برای ورق‌زدن کاتالوگ، اسکرول کنید</p>
+    <svg class="bob mx-auto" width="18" height="22" viewBox="0 0 18 22" fill="none"><path d="M2 3l7 7 7-7M2 12l7 7 7-7" stroke="#DA8A0F" stroke-width="2" stroke-linecap="round"/></svg>
+  </div>
+</section>
+
+<!-- ================= فهرست ================= -->
+<section id="toc" data-chapter="فهرست" data-title="فهرست فصل‌ها" class="py-24 md:py-32">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <p data-reveal class="text-xs text-amber-dark font-display mb-3">فهرست مطالب</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl mb-12 md:mb-16">آنچه در این کاتالوگ می‌خوانید</h2>
+    <ol class="grid md:grid-cols-2 gap-x-14 gap-y-1">
+      <li data-reveal><a href="#ch-01" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۱</span><span class="font-medium group-hover:text-amber-dark transition-colors">آشنایی با سامانه جامع حفاری</span></a></li>
+      <li data-reveal><a href="#ch-02" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۲</span><span class="font-medium group-hover:text-amber-dark transition-colors">حفاری شهری؛ ضرورت نظم و نظارت</span></a></li>
+      <li data-reveal><a href="#ch-03" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۳</span><span class="font-medium group-hover:text-amber-dark transition-colors">آنچه سامانه تغییر می‌دهد</span></a></li>
+      <li data-reveal><a href="#ch-04" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۴</span><span class="font-medium group-hover:text-amber-dark transition-colors">پرونده حفاری و آرشیو الکترونیکی</span></a></li>
+      <li data-reveal><a href="#ch-05" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۵</span><span class="font-medium group-hover:text-amber-dark transition-colors">فرآیندها؛ از درخواست تا تحویل</span></a></li>
+      <li data-reveal><a href="#ch-06" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۶</span><span class="font-medium group-hover:text-amber-dark transition-colors">نقشه؛ بُعد مکانی داده‌ها</span></a></li>
+      <li data-reveal><a href="#ch-07" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۷</span><span class="font-medium group-hover:text-amber-dark transition-colors">نظارت؛ از بازدید میدانی تا امتیاز عملکرد</span></a></li>
+      <li data-reveal><a href="#ch-08" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۸</span><span class="font-medium group-hover:text-amber-dark transition-colors">دریچه‌ها؛ نشانه‌گذاری و مدیریت</span></a></li>
+      <li data-reveal><a href="#ch-09" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۹</span><span class="font-medium group-hover:text-amber-dark transition-colors">بستر تنظیم‌پذیر؛ فرآیندساز و فرم‌ساز</span></a></li>
+      <li data-reveal><a href="#ch-10" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۱۰</span><span class="font-medium group-hover:text-amber-dark transition-colors">کاربران، وظایف و کارتابل‌ها</span></a></li>
+      <li data-reveal><a href="#ch-11" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۱۱</span><span class="font-medium group-hover:text-amber-dark transition-colors">گزارش‌ساز و داشبورد مدیریتی</span></a></li>
+      <li data-reveal><a href="#ch-12" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۱۲</span><span class="font-medium group-hover:text-amber-dark transition-colors">جمع‌بندی</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۱ ================= -->
+<section id="ch-01" data-chapter="۰۱" data-title="آشنایی با سامانه" class="relative py-24 md:py-32 overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۱</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۱</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">آشنایی با سامانه جامع حفاری</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-12 max-w-2xl">نظارت بر عملیات حفاری، یکی از وظایف مهم معاونت‌های فنی و عمرانی شهرداری‌هاست.</p>
+
+    <div class="grid lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-3 space-y-6 text-justify leading-8 md:leading-9">
+        <p data-reveal>یکی از وظایف مهم معاونت‌های فنی و عمرانی شهرداری‌ها، نظارت بر عملیات حفاری جهت توسعه امکانات زیرساختی آب، برق، گاز، مخابرات و سایر خدمات شهری است. در این راستا، کنترل بر عملکرد و برنامه زمان‌بندی اجرای پروژه‌ها توسط شرکت‌های اجرایی و نظارت بر عملکرد آن‌ها، از اهمیت ویژه‌ای برخوردار بوده و از جمله وظایف مهم این حوزه از شهرداری به شمار می‌رود.</p>
+        <p data-reveal>سامانه جامع حفاری با هدف ایجاد یکپارچگی و سهولت در امر مدیریت و نظارت بر اجرای پروژه‌های حفاری، نگهداری و مستندسازی سوابق پروژه‌های حفاری و ارائه گزارشات مدیریتی از روند اجرای پروژه‌ها، تولید و پیاده‌سازی شده است؛ با هدف نهایی ارتقاء سطح خدمات‌رسانی واحد فنی و عمرانی شهرداری در حوزه خدمات حفاری.</p>
+        <p data-reveal>در این سامانه، هر پروژه حفاری یک پرونده است؛ با مشخصات، زمان‌بندی، عوامل اجرایی، دستگاه نظارت، اسناد و سوابق خود. فرآیندها از ثبت درخواست و صدور مجوز تا تمدید، تحویل و مستندسازی به‌صورت مکانیزه طی می‌شوند و اطلاعات توصیفی و مکانی هر حفاری در یک بانک به‌روز گردآوری می‌شود.</p>
+      </div>
+      <aside data-reveal style="--d:.15s" class="lg:col-span-2 bg-card border border-linex p-6 md:p-8 self-start">
+        <h3 class="font-display font-bold text-lg mb-6 border-b border-linex pb-4">شناسنامه محصول</h3>
+        <dl class="space-y-5 text-sm leading-7">
+          <div><dt class="text-mist mb-1">نام سامانه</dt><dd class="font-medium">سامانه جامع حفاری — سامانه و فرآیندهای مدیریت حفاری‌ها</dd></div>
+          <div><dt class="text-mist mb-1">حوزه استقرار</dt><dd class="font-medium">معاونت فنی و عمرانی شهرداری‌ها</dd></div>
+          <div><dt class="text-mist mb-1">خروجی‌های کلیدی</dt><dd class="font-medium">بانک به‌روز اطلاعات توصیفی و مکانی حفاری‌ها، داشبورد تصمیم‌گیری مدیریتی، گزارش‌های جامع اجرایی</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۲ ================= -->
+<section id="ch-02" data-chapter="۰۲" data-title="ضرورت نظم و نظارت" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۲</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۲</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">حفاری شهری؛ ضرورت نظم و نظارت</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-12 max-w-2xl">توسعه زیرساخت‌های شهر، بدون حفاری در بستر معابر ممکن نیست؛ و حفاری، بدون نظم و نظارت، به مسئله شهر تبدیل می‌شود.</p>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="space-y-6 text-justify leading-8 md:leading-9">
+        <p data-reveal>توسعه و اصلاح شبکه‌های آب، برق، گاز، مخابرات و فاضلاب، بخشی از روند دائمی نگهداری و رشد شهر است؛ روندی که اجرای آن به حفاری در بستر معابر نیاز دارد. این حفاری‌ها در قالب‌های گوناگون انجام می‌شوند: طرح‌های توسعه، اصلاح شبکه، سونداژ و دکل، انشعابات شخصی، طرح‌های مطالعاتی و موارد اضطراری مانند نشتی گاز یا ترکیدگی لوله.</p>
+        <p data-reveal>در این میان، کنترل بر عملکرد و برنامه زمان‌بندی اجرای پروژه‌ها و نظارت بر عملکرد آن‌ها از اهمیت ویژه‌ای برخوردار است؛ تا جایی که از وظایف مهم این حوزه از شهرداری شمرده می‌شود. هر پرونده حفاری، چرخه‌ای طولانی را طی می‌کند و عبور این چرخه از بسترهای پراکنده، یکپارچگی اطلاعات، کنترل زمان‌بندی، پیگیری خسارات و پاسخگویی را دشوار می‌کند.</p>
+        <p data-reveal>چرخه هر پرونده از ثبت درخواست و ارسال استعلام‌ها آغاز می‌شود و با محاسبات درآمدی طبق لایحه مصوب، صدور مجوز، اجرای پروژه، نظارت، تحویل، رفع نقص و مستندسازی پایان می‌یابد؛ همان خلأیی که سامانه جامع حفاری برای پوشش آن طراحی شده است.</p>
+      </div>
+
+      <!-- SVG چرخه چالش‌ها -->
+      <figure data-reveal style="--d:.15s">
+        <svg viewBox="0 0 560 420" class="w-full h-auto" role="img" aria-label="دیاگرام چالش‌های چرخه حفاری پیرامون سامانه جامع حفاری">
+          <rect x="190" y="160" width="180" height="90" rx="6" fill="#12141A"/>
+          <text x="280" y="200" text-anchor="middle" fill="#DA8A0F" font-size="15" font-weight="700">سامانه جامع حفاری</text>
+          <text x="280" y="224" text-anchor="middle" fill="#8A867C" font-size="11">یکپارچگی در چرخه حفاری</text>
+          <g font-size="13" fill="#1A1D22">
+            <rect x="205" y="20" width="150" height="46" rx="6" fill="none" stroke="#1A1D22" stroke-width="1.2"/>
+            <text x="280" y="48" text-anchor="middle">پراکندگی اسناد</text>
+            <rect x="20" y="170" width="130" height="46" rx="6" fill="none" stroke="#1A1D22" stroke-width="1.2"/>
+            <text x="85" y="198" text-anchor="middle">عدم شفافیت زمان‌بندی</text>
+            <rect x="410" y="170" width="130" height="46" rx="6" fill="none" stroke="#1A1D22" stroke-width="1.2"/>
+            <text x="475" y="198" text-anchor="middle">دشواری پیگیری خسارت</text>
+            <rect x="205" y="340" width="150" height="46" rx="6" fill="none" stroke="#1A1D22" stroke-width="1.2"/>
+            <text x="280" y="368" text-anchor="middle">گزارش‌های جزیره‌ای</text>
+          </g>
+          <g stroke="#DA8A0F" stroke-width="1.4" fill="none">
+            <line class="pdraw" pathLength="1" x1="280" y1="66" x2="280" y2="160"/>
+            <line class="pdraw" pathLength="1" x1="150" y1="193" x2="190" y2="198"/>
+            <line class="pdraw" pathLength="1" x1="410" y1="193" x2="370" y2="198"/>
+            <line class="pdraw" pathLength="1" x1="280" y1="340" x2="280" y2="250"/>
+          </g>
+          <g font-size="10.5" fill="#5B6470">
+            <text x="100" y="160">بانک متمرکز</text>
+            <text x="425" y="160">کنترل سیستمی</text>
+            <text x="100" y="245">مستندسازی</text>
+            <text x="425" y="245">داشبورد</text>
+          </g>
+        </svg>
+        <figcaption class="text-xs text-mist mt-3">سامانه جامع حفاری به چهار چالش اصلی چرخه حفاری پاسخ می‌دهد.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۳ ================= -->
+<section id="ch-03" data-chapter="۰۳" data-title="آنچه سامانه تغییر می‌دهد" class="relative py-24 md:py-32 overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۳</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۳</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">آنچه سامانه تغییر می‌دهد</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-2xl">مزیت‌های استفاده از سامانه جامع حفاری، در هفت اثر مشخص قابل بیان است؛ اثرهایی که در فصل‌های بعد، یک‌به‌یک باز می‌شوند.</p>
+
+    <ol class="space-y-0 border-t border-linex">
+      <li data-reveal class="grid md:grid-cols-12 gap-4 py-7 border-b border-linex">
+        <span class="md:col-span-1 font-display font-extrabold text-2xl text-amber-dark">۱</span>
+        <h3 class="md:col-span-4 font-display font-bold text-lg">بانک به‌روز اطلاعات توصیفی و مکانی</h3>
+        <p class="md:col-span-7 text-justify leading-8 text-ink/80">هر موقعیت حفاری با مشخصات توصیفی و موقعیت مکانی خود ثبت می‌شود و این بانک اطلاعاتی با پیشرفت فرآیندها به‌روز می‌ماند؛ مبنایی که تصمیم‌گیری‌های بعدی بر آن سوار می‌شود.</p>
+      </li>
+      <li data-reveal class="grid md:grid-cols-12 gap-4 py-7 border-b border-linex">
+        <span class="md:col-span-1 font-display font-extrabold text-2xl text-amber-dark">۲</span>
+        <h3 class="md:col-span-4 font-display font-bold text-lg">توسعه فرآیندهای حفاری و سایر بخش‌ها</h3>
+        <p class="md:col-span-7 text-justify leading-8 text-ink/80">بستر فرآیندساز سامانه، امکان ترسیم و توسعه فرآیندهای جدید ترکیبی را از مؤلفه‌های موجود فراهم می‌کند؛ بنابراین سامانه می‌تواند همگام با نیازهای سازمان رشد کند.</p>
+      </li>
+      <li data-reveal class="grid md:grid-cols-12 gap-4 py-7 border-b border-linex">
+        <span class="md:col-span-1 font-display font-extrabold text-2xl text-amber-dark">۳</span>
+        <h3 class="md:col-span-4 font-display font-bold text-lg">مکانیزه‌شدن اجرای فرآیندها</h3>
+        <p class="md:col-span-7 text-justify leading-8 text-ink/80">روند اجرای فرآیندهای حوزه حفاری، از ثبت درخواست تا صدور مجوز و تحویل، در جریان‌های کاری تعریف‌شده و با فرم‌های الکترونیکی طی می‌شود.</p>
+      </li>
+      <li data-reveal class="grid md:grid-cols-12 gap-4 py-7 border-b border-linex">
+        <span class="md:col-span-1 font-display font-extrabold text-2xl text-amber-dark">۴</span>
+        <h3 class="md:col-span-4 font-display font-bold text-lg">مکانیزه‌شدن نظارت و کنترل</h3>
+        <p class="md:col-span-7 text-justify leading-8 text-ink/80">نظارت بر پروژه‌های حفاری به‌صورت سیستمی ثبت و امتیازبندی می‌شود و لیست کنترلی، ثبت درخواست را در بازه‌های زمانی و محدوده‌های مکانی مشخص، محدود می‌کند.</p>
+      </li>
+      <li data-reveal class="grid md:grid-cols-12 gap-4 py-7 border-b border-linex">
+        <span class="md:col-span-1 font-display font-extrabold text-2xl text-amber-dark">۵</span>
+        <h3 class="md:col-span-4 font-display font-bold text-lg">مدیریت برنامه‌های زمانی و کارکردی</h3>
+        <p class="md:col-span-7 text-justify leading-8 text-ink/80">برای هر درخواست، زمان‌بندی و عوامل اجرایی اختصاص می‌یابد و عملکرد در قالب نظارت‌های امتیازبندی‌شده، قابل پایش است.</p>
+      </li>
+      <li data-reveal class="grid md:grid-cols-12 gap-4 py-7 border-b border-linex">
+        <span class="md:col-span-1 font-display font-extrabold text-2xl text-amber-dark">۶</span>
+        <h3 class="md:col-span-4 font-display font-bold text-lg">داشبورد تصمیم‌گیری مدیریتی</h3>
+        <p class="md:col-span-7 text-justify leading-8 text-ink/80">مدیران به‌جای گردآوری پراکنده اطلاعات، نمایی متمرکز از روند اجرای پروژه‌های حفاری پیش رو دارند.</p>
+      </li>
+      <li data-reveal class="grid md:grid-cols-12 gap-4 py-7 border-b border-linex">
+        <span class="md:col-span-1 font-display font-extrabold text-2xl text-amber-dark">۷</span>
+        <h3 class="md:col-span-4 font-display font-bold text-lg">گزارشات جامع و کاربردی</h3>
+        <p class="md:col-span-7 text-justify leading-8 text-ink/80">گزارش‌ساز سامانه با فیلترهای منطقه‌ای و داده‌ای، خروجی اکسل و نموداری تولید می‌کند و نتایج را به جانمایی مربوطه در نقشه پیوند می‌دهد.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۴ ================= -->
+<section id="ch-04" data-chapter="۰۴" data-title="پرونده و آرشیو" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۴</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۴</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">پرونده حفاری و آرشیو الکترونیکی</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-2xl">هر پروژه حفاری در سامانه یک پرونده است؛ با مشخصات، زمان‌بندی، اسناد و اشخاصِ خود.</p>
+
+    <div class="grid lg:grid-cols-2 gap-10">
+      <div class="space-y-10">
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-4 flex items-center gap-3"><span class="w-8 h-[2px] bg-amber inline-block"></span>اطلاعات پرونده</h3>
+          <p class="text-justify leading-8 text-ink/80 mb-4">پرونده هر پروژه، مشخصات کلی پروژه، اطلاعات فازها و زمان‌بندی اجرای پروژه حفاری، مشخصات شرکت‌های اجرایی و مشخصات دستگاه نظارت پروژه را در بر می‌گیرد. این اطلاعات، مبنای واکشی خودکار در فرم‌ها، محاسبات و گزارش‌هاست.</p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-4 flex items-center gap-3"><span class="w-8 h-[2px] bg-amber inline-block"></span>مدیریت اسناد؛ آرشیو الکترونیکی</h3>
+          <p class="text-justify leading-8 text-ink/80 mb-4">کلیه مدارک مرتبط با پروژه حفاری در آرشیو الکترونیکی قابل مشاهده، بازنگری و ویرایش است. اسناد بر اساس دسته‌بندی یا نوع مدرک فیلتر می‌شوند و دسته‌بندی‌ها خود قابل ویرایش‌اند؛ مدارک با Drag &amp; Drop به دسته موردنظر منتقل می‌شوند.</p>
+          <ul class="space-y-2.5 text-sm leading-7">
+            <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>ثبت و دسته‌بندی خودکار فایل‌های تولیدشده مرتبط با پرونده در حین فرآیند</li>
+            <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>انتخاب یا فیلتر اسناد بر اساس دسته‌بندی یا نوع مدرک</li>
+            <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>دسته‌بندی اسناد با امکان ویرایش و جابه‌جایی مدارک</li>
+          </ul>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-4 flex items-center gap-3"><span class="w-8 h-[2px] bg-amber inline-block"></span>اشخاص و امضای دیجیتال</h3>
+          <p class="text-justify leading-8 text-ink/80">کلیه اشخاص حقیقی و حقوقی در سامانه ثبت، ویرایش و نمایش داده می‌شوند. تصویر و امضای هر شخص قابل بارگذاری است تا در اسناد و خروجی‌ها، امضای دیجیتالِ او درج شود؛ امضایی که با تعریف «امضاکنندگان اصلی و از طرف» در بخش تعاریف، به جایگاه سازمانی هر شخص گره می‌خورد.</p>
+        </div>
+      </div>
+
+      <figure class="product-shot self-start" data-slot="archive-view" data-reveal style="--d:.15s">
+        <div class="ph p-8 md:p-10 text-center">
+          <svg class="mx-auto mb-5" width="54" height="54" viewBox="0 0 54 54" fill="none" aria-hidden="true"><rect x="8" y="14" width="38" height="12" rx="2" stroke="#A96A0B" stroke-width="2"/><rect x="12" y="26" width="30" height="18" rx="2" stroke="#A96A0B" stroke-width="2"/><line x1="23" y1="32" x2="31" y2="32" stroke="#A96A0B" stroke-width="2"/></svg>
+          <p class="font-display font-bold mb-2">تصویر موردنیاز: نمای پرونده و آرشیو الکترونیکی</p>
+          <p class="text-xs text-mist leading-6">اسکرین‌شات از صفحه پرونده با نمایش مشخصات پروژه، زمان‌بندی، عوامل اجرایی و درخت دسته‌بندی اسناد در آرشیو الکترونیکی — فصل ۰۴</p>
+        </div>
+      </figure>
+    </div>
+
+    <p data-reveal class="mt-12 border-r-2 border-amber pr-4 text-sm leading-7 text-mist max-w-3xl">جمع‌بندی فصل: پرونده حفاری، نقطه تمرکز تمام اطلاعات پروژه است؛ اسناد به‌جای بایگانی پراکنده، به‌صورت خودکار در حین فرآیند، دسته‌بندی و ضبط می‌شوند.</p>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۵ (تیره) ================= -->
+<section id="ch-05" data-chapter="۰۵" data-title="فرآیندها" class="relative py-24 md:py-32 bg-soot text-[#ECE9E2] overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-white/[0.04]" aria-hidden="true">۰۵</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber text-sm mb-3">فصل ۰۵</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">فرآیندها؛ از درخواست تا تحویل</h2>
+    <p data-reveal class="text-[#A8A49A] text-base md:text-lg mb-14 max-w-3xl">چرخه عمر یک حفاری در شش گام اصلی روایت می‌شود؛ روایتی که در سامانه، کاملاً مکانیزه طی می‌شود. روی هر گام بایستید تا جزئیات آن باز شود.</p>
+
+    <!-- تایم‌لاین تعاملی -->
+    <div data-reveal class="mb-6">
+      <svg id="lcSvg" viewBox="0 0 980 150" class="w-full h-auto" role="group" aria-label="تایم‌لاین تعاملی چرخه عمر حفاری">
+        <line x1="70" y1="62" x2="910" y2="62" stroke="#3A3F49" stroke-width="2"/>
+        <g class="lc-node" data-i="0" tabindex="0" role="button" aria-label="گام ۱: ثبت درخواست">
+          <circle cx="70" cy="62" r="26" fill="#12141A" stroke="#DA8A0F" stroke-width="2"/><text x="70" y="68" text-anchor="middle" fill="#DA8A0F" font-size="16" font-weight="700">۱</text>
+          <text x="70" y="118" text-anchor="middle" fill="#A8A49A" font-size="12">ثبت درخواست</text>
+        </g>
+        <g class="lc-node" data-i="1" tabindex="0" role="button" aria-label="گام ۲: استعلام و لایه‌ها">
+          <circle cx="238" cy="62" r="26" fill="#12141A" stroke="#DA8A0F" stroke-width="2"/><text x="238" y="68" text-anchor="middle" fill="#DA8A0F" font-size="16" font-weight="700">۲</text>
+          <text x="238" y="112" text-anchor="middle" fill="#A8A49A" font-size="12">استعلام</text><text x="238" y="128" text-anchor="middle" fill="#A8A49A" font-size="12">و لایه‌ها</text>
+        </g>
+        <g class="lc-node" data-i="2" tabindex="0" role="button" aria-label="گام ۳: مجوز و فیش">
+          <circle cx="406" cy="62" r="26" fill="#12141A" stroke="#DA8A0F" stroke-width="2"/><text x="406" y="68" text-anchor="middle" fill="#DA8A0F" font-size="16" font-weight="700">۳</text>
+          <text x="406" y="118" text-anchor="middle" fill="#A8A49A" font-size="12">مجوز و فیش</text>
+        </g>
+        <g class="lc-node" data-i="3" tabindex="0" role="button" aria-label="گام ۴: اجرا و نظارت">
+          <circle cx="574" cy="62" r="26" fill="#12141A" stroke="#DA8A0F" stroke-width="2"/><text x="574" y="68" text-anchor="middle" fill="#DA8A0F" font-size="16" font-weight="700">۴</text>
+          <text x="574" y="118" text-anchor="middle" fill="#A8A49A" font-size="12">اجرا و نظارت</text>
+        </g>
+        <g class="lc-node" data-i="4" tabindex="0" role="button" aria-label="گام ۵: تمدید در صورت نیاز">
+          <circle cx="742" cy="62" r="26" fill="#12141A" stroke="#DA8A0F" stroke-width="2"/><text x="742" y="68" text-anchor="middle" fill="#DA8A0F" font-size="16" font-weight="700">۵</text>
+          <text x="742" y="112" text-anchor="middle" fill="#A8A49A" font-size="12">تمدید</text><text x="742" y="128" text-anchor="middle" fill="#A8A49A" font-size="12">(در صورت نیاز)</text>
+        </g>
+        <g class="lc-node" data-i="5" tabindex="0" role="button" aria-label="گام ۶: تحویل و مستندسازی">
+          <circle cx="910" cy="62" r="26" fill="#12141A" stroke="#DA8A0F" stroke-width="2"/><text x="910" y="68" text-anchor="middle" fill="#DA8A0F" font-size="16" font-weight="700">۶</text>
+          <text x="910" y="112" text-anchor="middle" fill="#A8A49A" font-size="12">تحویل و</text><text x="910" y="128" text-anchor="middle" fill="#A8A49A" font-size="12">مستندسازی</text>
+        </g>
+      </svg>
+    </div>
+    <div data-reveal id="lcPanel" class="border border-[#3A3F49] bg-[#171A20] p-6 md:p-8 mb-16 min-h-[9rem]" aria-live="polite">
+      <h3 id="lcTitle" class="font-display font-bold text-lg text-amber mb-3"></h3>
+      <p id="lcBody" class="leading-8 text-[#C9C4B8] text-justify"></p>
+    </div>
+
+    <h3 data-reveal class="font-display font-bold text-2xl mb-8">چهار قالب درخواست حفاری</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <article data-reveal class="border border-[#3A3F49] p-6 md:p-7">
+        <h4 class="font-display font-bold text-lg text-amber mb-3">طرح توسعه</h4>
+        <p class="text-sm leading-7 text-justify text-[#C9C4B8]">صدور مجوز حفاری برای انواع پروژه‌های شهری توسعه، اصلاح شبکه، سونداژ، دکل و موارد مشابه. لایه‌های مختلف اطلاعاتی مانند کیفیت اسفالت و جنس روسازی بارگذاری و اطلاعات هر حفاری به‌صورت خودکار واکشی می‌شود؛ استعلام‌ها به‌صورت بافر و کاملاً سیستمی ارسال می‌شوند و محاسبات درآمدی و صدور فیش طبق لایحه مصوب هر سال انجام می‌گیرد. انواع پرداخت‌ها — نقدی، حساب فی‌مابین، توافقنامه، سازمان شهرداری — قابل تعریف است و اتصال به وب‌سرویس‌های Epay، رایورز و شهرسازی پشتیبانی می‌شود.</p>
+      </article>
+      <article data-reveal class="border border-[#3A3F49] p-6 md:p-7">
+        <h4 class="font-display font-bold text-lg text-amber mb-3">انشعاب شخصی</h4>
+        <p class="text-sm leading-7 text-justify text-[#C9C4B8]">صدور مجوز برای انشعابات شخصی گاز، آب، برق و فاضلاب. کروکی حفاری مختص هر ملک با توجه به کدینگ ترسیم می‌شود؛ اطلاعات مالک، نشانی، پایان‌کار و پروانه از وب‌سرویس شهرسازی واکشی می‌گردد و گواهی‌های ملک توسط کارشناسان شهرسازی به‌روزرسانی می‌شود؛ همراه با اعلام تعداد واحدهای مجاز و غیرمجاز.</p>
+      </article>
+      <article data-reveal class="border border-[#3A3F49] p-6 md:p-7">
+        <h4 class="font-display font-bold text-lg text-amber mb-3">طرح مطالعاتی</h4>
+        <p class="text-sm leading-7 text-justify text-[#C9C4B8]">مشابه فرآیند طرح توسعه، با امکان تکمیل فرآیند بعد از دریافت پاسخ استعلامات؛ و در صورت دریافت پاسخ استعلام‌ها و نداشتن معارض، قابلیت تبدیل به طرح توسعه.</p>
+      </article>
+      <article data-reveal class="border border-[#3A3F49] p-6 md:p-7">
+        <h4 class="font-display font-bold text-lg text-amber mb-3">اتفاقات و موارد اضطراری</h4>
+        <p class="text-sm leading-7 text-justify text-[#C9C4B8]">صدور مجوز برای موارد اضطراری مانند نشتی گاز یا ترکیدگی لوله، با قابلیت اعمال کنترل‌های خاص زمانی و ترسیمی؛ و فرآیند مستقل تحویل پروژه اتفاقات و موارد اضطراری.</p>
+      </article>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-6">
+      <article data-reveal class="border-r-2 border-amber bg-[#171A20] p-6 md:p-7">
+        <h4 class="font-display font-bold text-lg mb-3">تمدید مجوز</h4>
+        <p class="text-sm leading-7 text-justify text-[#C9C4B8]">تمدید و دریافت مجوز در بازه زمانی جدید و صدور فیش با توجه به تعداد روزهای افزایش‌یافته؛ در طرح توسعه، همراه با کنترل اعتبار استعلام‌های مجوز اصلی و امکان ارسال مجدد استعلام‌های منقضی‌شده.</p>
+      </article>
+      <article data-reveal class="border-r-2 border-amber bg-[#171A20] p-6 md:p-7">
+        <h4 class="font-display font-bold text-lg mb-3">تحویل پروژه</h4>
+        <p class="text-sm leading-7 text-justify text-[#C9C4B8]">ثبت درخواست تحویل و تعیین تاریخ تحویل توسط کاربر؛ تعیین خسارات وارده، تأخیرات و جرایم توسط کاربر بازدیدکننده؛ صدور صورتمجلس نواقص و رفع نقص سیستمی، صدور صورتمجلس تحویل و ارسال سیستمی استعلام‌های خسارت.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۶ ================= -->
+<section id="ch-06" data-chapter="۰۶" data-title="نقشه و اطلاعات مکانی" class="relative py-24 md:py-32 overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۶</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۶</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">نقشه؛ بُعد مکانی داده‌ها</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-12 max-w-3xl">ایجاد بانک به‌روز اطلاعات توصیفی و مکانی موقعیت‌های حفاری، یکی از مزیت‌های بنیادین سامانه است؛ داده‌ای که روی نقشه معنا پیدا می‌کند.</p>
+
+    <div class="grid lg:grid-cols-5 gap-10 mb-12">
+      <div class="lg:col-span-2 space-y-5 text-justify leading-8 text-ink/80">
+        <p data-reveal>در سامانه، پرونده‌ها به نقشه پیوند دارند: در کارتابل کاربران، هر پرونده روی نقشه قابل مشاهده است و در گزارش‌ساز، نتایج هر گزارش به جانمایی مربوطه در نقشه لینک می‌شود.</p>
+        <p data-reveal>لایه‌های اطلاعاتی مانند کیفیت اسفالت و جنس روسازی روی نقشه بارگذاری می‌شوند و برای هر حفاری، اطلاعات به‌صورت خودکار واکشی می‌گردد؛ همان لایه‌هایی که در لیست کنترلی، محدود کردن ثبت درخواست در یک محدوده نقشه را نیز ممکن می‌سازند.</p>
+        <p data-reveal>برای انشعابات شخصی نیز کروکی حفاری مختص هر ملک با توجه به کدینگ ترسیم می‌شود تا بُعد ترسیمی هر مجوز، مستند و مشخص باشد.</p>
+      </div>
+      <div class="lg:col-span-3" data-reveal style="--d:.15s">
+        <div class="flex flex-wrap gap-2 mb-4" role="group" aria-label="کلیدهای لایه‌های نقشه">
+          <button class="layer-btn text-xs border border-ink/25 px-3 py-1.5 rounded-full aria-pressed:bg-amber aria-pressed:text-soot aria-pressed:border-amber transition-colors" data-layer-toggle="layerPoints" aria-pressed="true">موقعیت‌های حفاری</button>
+          <button class="layer-btn text-xs border border-ink/25 px-3 py-1.5 rounded-full aria-pressed:bg-tealx aria-pressed:text-white aria-pressed:border-tealx transition-colors" data-layer-toggle="layerManholes" aria-pressed="true">دریچه‌ها</button>
+          <button class="layer-btn text-xs border border-ink/25 px-3 py-1.5 rounded-full aria-pressed:bg-bluex aria-pressed:text-white aria-pressed:border-bluex transition-colors" data-layer-toggle="layerAsphalt" aria-pressed="true">کیفیت اسفالت</button>
+          <button class="layer-btn text-xs border border-ink/25 px-3 py-1.5 rounded-full aria-pressed:bg-ink aria-pressed:text-white aria-pressed:border-ink transition-colors" data-layer-toggle="layerPavement" aria-pressed="true">جنس روسازی</button>
+        </div>
+        <svg viewBox="0 0 860 470" class="w-full h-auto border border-linex bg-[#EDEBE1]" role="img" aria-label="نقشه تعاملی شماتیک شهری با لایه‌های حفاری، دریچه‌ها، کیفیت اسفالت و جنس روسازی">
+          <!-- بلوک‌ها -->
+          <g fill="#F6F4EE" stroke="#DDD8C9">
+            <rect x="20" y="20" width="230" height="130"/><rect x="320" y="20" width="230" height="130"/><rect x="620" y="20" width="220" height="130"/>
+            <rect x="20" y="210" width="230" height="110"/><rect x="320" y="210" width="230" height="110"/><rect x="620" y="210" width="220" height="110"/>
+            <rect x="20" y="370" width="230" height="80"/><rect x="320" y="370" width="230" height="80"/><rect x="620" y="370" width="220" height="80"/>
+          </g>
+          <!-- معابر -->
+          <g stroke="#DFDACE" stroke-width="26" fill="none">
+            <line x1="0" y1="180" x2="860" y2="180"/><line x1="0" y1="345" x2="860" y2="345"/>
+            <line x1="285" y1="0" x2="285" y2="470"/><line x1="585" y1="0" x2="585" y2="470"/>
+          </g>
+          <!-- لایه کیفیت اسفالت -->
+          <g id="layerAsphalt" class="layer-g" stroke-width="10" fill="none" stroke-linecap="round" opacity=".85">
+            <line x1="20" y1="180" x2="280" y2="180" stroke="#7BA05B"/>
+            <line x1="300" y1="180" x2="560" y2="180" stroke="#D9A03C"/>
+            <line x1="600" y1="180" x2="850" y2="180" stroke="#B8524C"/>
+            <line x1="285" y1="360" x2="285" y2="460" stroke="#7BA05B"/>
+          </g>
+          <!-- لایه جنس روسازی -->
+          <g id="layerPavement" class="layer-g" stroke-width="4" fill="none" stroke-dasharray="2 8" stroke-linecap="round">
+            <line x1="585" y1="10" x2="585" y2="330" stroke="#33628F"/>
+            <line x1="30" y1="345" x2="560" y2="345" stroke="#33628F"/>
+          </g>
+          <!-- لایه دریچه‌ها -->
+          <g id="layerManholes" class="layer-g">
+            <g fill="#2F6D62">
+              <rect x="120" y="172" width="14" height="14" transform="rotate(45 127 179)"/>
+              <rect x="420" y="172" width="14" height="14" transform="rotate(45 427 179)"/>
+              <rect x="700" y="337" width="14" height="14" transform="rotate(45 707 344)"/>
+              <rect x="278" y="250" width="14" height="14" transform="rotate(45 285 257)"/>
+            </g>
+          </g>
+          <!-- لایه نقاط حفاری -->
+          <g id="layerPoints" class="layer-g">
+            <g>
+              <circle cx="200" cy="180" r="10" fill="#DA8A0F" stroke="#FFFDF7" stroke-width="2.5"/>
+              <circle cx="470" cy="180" r="10" fill="#DA8A0F" stroke="#FFFDF7" stroke-width="2.5"/>
+              <circle cx="585" cy="120" r="10" fill="#DA8A0F" stroke="#FFFDF7" stroke-width="2.5"/>
+              <circle cx="380" cy="345" r="10" fill="#DA8A0F" stroke="#FFFDF7" stroke-width="2.5"/>
+              <rect x="440" y="150" width="60" height="60" fill="none" stroke="#DA8A0F" stroke-dasharray="5 4" stroke-width="1.5"/>
+              <g>
+                <rect x="480" y="70" width="150" height="44" fill="#12141A"/>
+                <line x1="480" y1="114" x2="472" y2="170" stroke="#12141A" stroke-width="1.5"/>
+                <text x="555" y="88" text-anchor="middle" fill="#DA8A0F" font-size="11.5">حفاری طرح توسعه</text>
+                <text x="555" y="104" text-anchor="middle" fill="#A8A49A" font-size="10">واکشی خودکار لایه‌ها</text>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <p class="text-xs text-mist mt-3">تصویرسازی شماتیک؛ لایه‌ها با کلیدهای بالا روشن و خاموش می‌شوند.</p>
+      </div>
+    </div>
+
+    <figure class="product-shot" data-slot="map-view" data-reveal>
+      <div class="ph p-8 text-center">
+        <p class="font-display font-bold mb-2">تصویر موردنیاز: نمای نقشه سامانه</p>
+        <p class="text-xs text-mist leading-6">اسکرین‌شات از نقشه سامانه با نمایش موقعیت‌های حفاری، لایه‌های کیفیت اسفالت و جنس روسازی و پیوند پرونده به نقشه — فصل ۰۶</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۷ ================= -->
+<section id="ch-07" data-chapter="۰۷" data-title="نظارت و کنترل" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۷</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۷</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">نظارت؛ از بازدید میدانی تا امتیاز عملکرد</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">نظارت در این سامانه، یادداشت‌های پراکنده میدانی نیست؛ گزارش‌های ساختاریافته و امتیازبندی‌شده‌ای است که عملکرد را قابل پایش می‌کند.</p>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="space-y-8">
+        <p data-reveal class="text-justify leading-8 text-ink/80">هر دستگاه نظارت، بر تمام پرونده‌های تحت نظارت خود نظارت دارد و گزارش‌ها را به‌صورت سیستمی تکمیل می‌کند. امتیازبندی نظارت عملکرد، چهار محور اصلی را پوشش می‌دهد: ایمنی، مشخصات حفاری، مرمت و استقرار.</p>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-4">لیست کنترلی</h3>
+          <p class="text-justify leading-8 text-ink/80">ابزاری برای اعمال محدودیت ثبت درخواست در بازه‌های زمانی و برای موقعیت‌های مکانی مدنظر؛ بر اساس منطقه شهرداری، محدوده نقشه و سایر معیارها. به این ترتیب، سیاست‌گذاری اجرایی شهر مستقیم در فرآیند ثبت درخواست اعمال می‌شود.</p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-4">عوامل اجرایی</h3>
+          <p class="text-justify leading-8 text-ink/80">معرفی عوامل اجرایی (پیمانکار / نظارت) از طریق فرآیند ثبت درخواست انجام می‌شود و فعال‌سازی یا غیرفعال‌سازی عوامل موجود در سامانه نیز قابل درخواست است. در جریان فرآیند نیز امکان تغییر عوامل اجرایی پروژه وجود دارد.</p>
+        </div>
+      </div>
+
+      <figure data-reveal style="--d:.15s">
+        <svg viewBox="0 0 560 400" class="w-full h-auto" role="img" aria-label="دیاگرام چهار محور نظارت: ایمنی، مشخصات حفاری، مرمت و استقرار پیرامون امتیازبندی عملکرد">
+          <circle cx="280" cy="200" r="62" fill="#12141A"/>
+          <text x="280" y="192" text-anchor="middle" fill="#DA8A0F" font-size="13" font-weight="700">امتیاربندی نظارت</text>
+          <text x="280" y="214" text-anchor="middle" fill="#DA8A0F" font-size="13" font-weight="700">عملکرد پروژه</text>
+          <g fill="none" stroke="#1A1D22" stroke-width="1.2">
+            <rect x="190" y="20" width="180" height="48" rx="6"/><rect x="190" y="332" width="180" height="48" rx="6"/>
+            <rect x="20" y="176" width="140" height="48" rx="6"/><rect x="400" y="176" width="140" height="48" rx="6"/>
+          </g>
+          <g font-size="14" fill="#1A1D22" text-anchor="middle">
+            <text x="280" y="50">نظارت در ایمنی</text>
+            <text x="280" y="362">نظارت در استقرار</text>
+            <text x="90" y="206">نظارت در مرمت</text>
+            <text x="470" y="206">مشخصات حفاری</text>
+          </g>
+          <g stroke="#DA8A0F" stroke-width="1.4">
+            <line class="pdraw" pathLength="1" x1="280" y1="68" x2="280" y2="138"/>
+            <line class="pdraw" pathLength="1" x1="280" y1="332" x2="280" y2="262"/>
+            <line class="pdraw" pathLength="1" x1="160" y1="200" x2="218" y2="200"/>
+            <line class="pdraw" pathLength="1" x1="400" y1="200" x2="342" y2="200"/>
+          </g>
+        </svg>
+        <figcaption class="text-xs text-mist mt-3">چهار محور نظارت سیستمی بر پروژه‌های حفاری</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۸ ================= -->
+<section id="ch-08" data-chapter="۰۸" data-title="دریچه‌ها" class="relative py-24 md:py-32 overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۸</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۸</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">دریچه‌ها؛ نشانه‌گذاری و مدیریت</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">دریچه‌های متعلق به شهرداری و مجموعه‌های خدماتی در سطح شهر، در فاز دوم سامانه، فرآیندهای مستقل خود را دارند.</p>
+
+    <div class="grid lg:grid-cols-3 gap-10 items-start">
+      <ul class="lg:col-span-2 space-y-6">
+        <li data-reveal class="border-r-2 border-amber pr-5">
+          <h3 class="font-display font-bold text-lg mb-2">نشانه‌گذاری</h3>
+          <p class="leading-8 text-justify text-ink/80">مجموعه خدماتی یا شهرداری می‌تواند فقط دریچه‌های مربوط به خود را، مرتبط با همان مجموعه یا شهرداری، نشانه‌گذاری کند.</p>
+        </li>
+        <li data-reveal class="border-r-2 border-amber pr-5">
+          <h3 class="font-display font-bold text-lg mb-2">نشانه‌گذاری توسط شهرداری</h3>
+          <p class="leading-8 text-justify text-ink/80">شهرداری می‌تواند فرآیند نشانه‌گذاری دریچه را برای یک مجموعه خدماتی دیگر انجام دهد.</p>
+        </li>
+        <li data-reveal class="border-r-2 border-amber pr-5">
+          <h3 class="font-display font-bold text-lg mb-2">اعلام مشکلات دریچه</h3>
+          <p class="leading-8 text-justify text-ink/80">شهرداری می‌تواند برای مجموعه‌های خدماتی، درخواست اعلام مشکلات دریچه ثبت کند.</p>
+        </li>
+        <li data-reveal class="border-r-2 border-amber pr-5">
+          <h3 class="font-display font-bold text-lg mb-2">حذف دریچه</h3>
+          <p class="leading-8 text-justify text-ink/80">مجموعه خدماتی یا شهرداری، برای خودش درخواست حذف دریچه دارد؛ و شهرداری می‌تواند برای یک مجموعه خدماتی نیز درخواست حذف دریچه ثبت کند.</p>
+        </li>
+      </ul>
+      <figure data-reveal style="--d:.15s">
+        <svg viewBox="0 0 300 300" class="w-full h-auto" role="img" aria-label="تصویرسازی شماتیک دریچه‌های متعلق به شهرداری و مجموعه خدماتی روی معبر">
+          <rect x="0" y="0" width="300" height="300" fill="#EDEBE1"/>
+          <g stroke="#DFDACE" stroke-width="30"><line x1="0" y1="90" x2="300" y2="90"/><line x1="0" y1="210" x2="300" y2="210"/></g>
+          <g><rect x="70" y="80" width="18" height="18" transform="rotate(45 79 89)" fill="#2F6D62"/>
+             <rect x="190" y="200" width="18" height="18" transform="rotate(45 199 209)" fill="#DA8A0F"/>
+             <rect x="220" y="80" width="18" height="18" transform="rotate(45 229 89)" fill="#DA8A0F"/></g>
+          <g font-size="11" fill="#5B6470">
+            <text x="60" y="130">دریچه شهرداری</text>
+            <text x="150" y="250">دریچه مجموعه خدماتی</text>
+          </g>
+        </svg>
+        <figcaption class="text-xs text-mist mt-3">نشانه‌گذاری دریچه‌ها بر اساس مالکیت</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فصل ۰۹ ================= -->
+<section id="ch-09" data-chapter="۰۹" data-title="بستر تنظیم‌پذیر" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۹</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۹</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">بستر تنظیم‌پذیر؛ فرآیندساز و فرم‌ساز</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">سامانه بر بستری قابل تنظیم بنا شده است تا فرآیندها، فرم‌ها، تعاریف و خروجی‌های چاپی بر اساس نیاز هر شهرداری شکل بگیرند.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-14">
+      <article data-reveal class="border border-linex bg-paper p-6 md:p-8">
+        <h3 class="font-display font-bold text-xl mb-5">فرآیندساز</h3>
+        <ul class="space-y-3 text-sm leading-7">
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>ترسیم فلوچارت و روند فرآیند، با امکان Export و Import فرآیند</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>گروه‌بندی فرآیندها و توسعه فرآیندهای جدید ترکیبی از مؤلفه‌های موجود</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>استفاده از زیرفرآیند و پشتیبانی از انواع متغیرهای سیستمی</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>برقراری ارتباط و استفاده از بانک اطلاعاتی حفاری</li>
+        </ul>
+      </article>
+      <article data-reveal class="border border-linex bg-paper p-6 md:p-8">
+        <h3 class="font-display font-bold text-xl mb-5">موتور فرم‌ساز</h3>
+        <ul class="space-y-3 text-sm leading-7">
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>تهیه فرم‌های الکترونیکی موردنیاز در جریان فرآیند و واکشی اطلاعات فرم از اطلاعات پروژه حفاری</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>تعریف انواع دسترسی مشاهده یا ویرایش روی فرم و استفاده هم‌زمان از چند فرم تعریف‌شده</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>استفاده از وب‌سرویس‌ها، کتابخانه‌های خارجی مانند JavaScript و JQuery و استایل‌های سفارشی CSS</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>درج یا ویرایش اطلاعات پروژه روی فرم و اجرای انواع تریگرها قبل و بعد از واکشی اطلاعات</li>
+        </ul>
+      </article>
+      <article data-reveal class="border border-linex bg-paper p-6 md:p-8">
+        <h3 class="font-display font-bold text-xl mb-5">تعاریف و کدینگ</h3>
+        <ul class="space-y-3 text-sm leading-7">
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>کدینگ‌ها و مدارک موردنیاز درخواست‌ها</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>امضاکنندگان (اصلی و از طرف)، سمت‌ها و نمودار سازمانی</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>پیام‌های پیش‌فرض و دسته‌بندی مدارک آرشیو</li>
+          <li class="flex gap-2"><span class="text-amber-dark mt-0.5">◆</span>آیتم‌ها و فرمول‌های درآمدی</li>
+        </ul>
+      </article>
+      <article data-reveal class="border border-linex bg-paper p-6 md:p-8">
+        <h3 class="font-display font-bold text-xl mb-5">قالب‌های چاپی</h3>
+        <p class="text-sm leading-7 text-justify text-ink/80">امکان طراحی و سفارشی‌سازی تمام فرمت‌های چاپی مورد استفاده در سامانه؛ از جمله فرمت نامه‌های استعلام، گواهی‌های صادره، فرم‌های خلاصه اطلاعات پرونده و سایر خروجی‌ها.</p>
+        <figure class="product-shot mt-5" data-slot="print-templates">
+          <div class="ph p-5 text-center">
+            <p class="font-display font-bold text-sm mb-1">تصویر موردنیاز: نمونه قالب‌های چاپی</p>
+            <p class="text-[11px] text-mist leading-5">نمونه نامه استعلام، گواهی صادرشده و فرم خلاصه پرونده — فصل ۰۹</p>
+          </div>
+        </figure>
+      </article>
+    </div>
+
+    <!-- دیاگرام معماری -->
+    <figure data-reveal>
+      <svg viewBox="0 0 900 470" class="w-full h-auto" role="img" aria-label="دیاگرام معماری سامانه: هسته فرآیندی در مرکز، ماژول‌های پرونده، نقشه، کارتابل، گزارش و تعاریف پیرامون آن و وب‌سرویس‌های بیرونی در پایین">
+        <rect x="330" y="170" width="240" height="90" rx="8" fill="#12141A"/>
+        <text x="450" y="208" text-anchor="middle" fill="#DA8A0F" font-size="15" font-weight="700">هسته فرآیندی سامانه</text>
+        <text x="450" y="232" text-anchor="middle" fill="#8A867C" font-size="11.5">فرآیندساز · فرم‌ساز · موتور گردش کار</text>
+        <g fill="#FFFDF7" stroke="#1A1D22" stroke-width="1.2">
+          <rect x="40" y="30" width="200" height="56" rx="6"/><rect x="350" y="30" width="200" height="56" rx="6"/><rect x="660" y="30" width="200" height="56" rx="6"/>
+          <rect x="40" y="280" width="200" height="56" rx="6"/><rect x="660" y="280" width="200" height="56" rx="6"/>
+        </g>
+        <g font-size="13" fill="#1A1D22" text-anchor="middle">
+          <text x="140" y="55">پرونده و آرشیو</text><text x="140" y="73" font-size="10.5" fill="#5B6470">الکترونیکی</text>
+          <text x="450" y="55">کاربران، وظایف</text><text x="450" y="73" font-size="10.5" fill="#5B6470">و کارتابل‌ها</text>
+          <text x="760" y="55">تعاریف و کدینگ</text><text x="760" y="73" font-size="10.5" fill="#5B6470">و قالب‌های چاپی</text>
+          <text x="140" y="305">اطلاعات توصیفی</text><text x="140" y="323" font-size="10.5" fill="#5B6470">و مکانی (نقشه)</text>
+          <text x="760" y="305">گزارش‌ساز و داشبورد</text><text x="760" y="323" font-size="10.5" fill="#5B6470">مدیریتی</text>
+        </g>
+        <g stroke="#DA8A0F" stroke-width="1.4" fill="none">
+          <line class="pdraw" pathLength="1" x1="140" y1="86" x2="360" y2="180"/>
+          <line class="pdraw" pathLength="1" x1="450" y1="86" x2="450" y2="170"/>
+          <line class="pdraw" pathLength="1" x1="760" y1="86" x2="540" y2="180"/>
+          <line class="pdraw" pathLength="1" x1="140" y1="280" x2="360" y2="250"/>
+          <line class="pdraw" pathLength="1" x1="760" y1="280" x2="540" y2="250"/>
+        </g>
+        <rect x="250" y="395" width="400" height="52" rx="6" fill="none" stroke="#5B6470" stroke-dasharray="5 4"/>
+        <text x="450" y="418" text-anchor="middle" font-size="12.5" fill="#5B6470">وب‌سرویس‌های بیرونی: پرداخت (Epay / رایورز) · شهرسازی</text>
+        <line class="pdraw" pathLength="1" x1="450" y1="395" x2="450" y2="260" stroke="#5B6470" stroke-dasharray="5 4"/>
+      </svg>
+      <figcaption class="text-xs text-mist mt-3">ماژول‌های سامانه پیرامون هسته فرآیندی؛ همراه با اتصال به وب‌سرویس‌های پرداخت و شهرسازی</figcaption>
+    </figure>
+
+    <figure class="product-shot mt-10" data-slot="process-designer" data-reveal>
+      <div class="ph p-8 text-center">
+        <p class="font-display font-bold mb-2">تصویر موردنیاز: محیط فرآیندساز</p>
+        <p class="text-xs text-mist leading-6">اسکرین‌شات از محیط ترسیم فلوچارت فرآیند با نمایش گره‌ها، مسیرها و فرم‌های متصل — فصل ۰۹</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= فصل ۱۰ ================= -->
+<section id="ch-10" data-chapter="۱۰" data-title="کاربران و کارتابل‌ها" class="relative py-24 md:py-32 overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۱۰</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۱۰</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">کاربران، وظایف و کارتابل‌ها</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">هر نقش در سامانه — کارشناس، ناظر، پیمانکار یا مدیر — کارتابل، دسترسی و وظایف خود را دارد.</p>
+
+    <div class="grid lg:grid-cols-2 gap-10">
+      <div class="space-y-8">
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-3">مدیریت کاربران و قواعد اختصاص کار</h3>
+          <p class="text-justify leading-8 text-ink/80">کاربران بر اساس نقش، گروه‌های کاری و شرکت‌های اجرایی تعریف می‌شوند و هر کاربر به وظایف تخصیص می‌یابد. قواعد اختصاص کار به کاربران به صورت‌های مختلف قابل تعریف است: اختصاص با متغیر، چرخشی، کارتابل مشترک و سایر الگوها.</p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-3">مدیریت وظایف و تسک‌ها</h3>
+          <p class="text-justify leading-8 text-ink/80">انواع تسک تعریف و فرم‌های تعریف‌شده به تسک‌ها تخصیص می‌یابند؛ وظیفه‌های موازی قابل تعریف‌اند، کاربران به وظیفه‌ها تخصیص می‌یابند و انواع تریگرها و مسیریابی‌ها قبل و بعد از وظیفه اجرا می‌شوند.</p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-3">کارتابل وظایف</h3>
+          <p class="text-justify leading-8 text-ink/80 mb-3">چهار نمای اصلی برای هر کاربر:</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="border border-ink/25 px-3 py-1.5 rounded-full">در دست اقدام</span>
+            <span class="border border-ink/25 px-3 py-1.5 rounded-full">بلاتکلیف</span>
+            <span class="border border-ink/25 px-3 py-1.5 rounded-full">لغو شده</span>
+            <span class="border border-ink/25 px-3 py-1.5 rounded-full">اقدام شده</span>
+          </div>
+          <p class="text-justify leading-8 text-ink/80 mt-3">کارتابل مشترک با تخصیص دسترسی به کاربران موردنظر تعریف می‌شود؛ اطلاعات کارتابل بر اساس هر ستون مرتب‌سازی می‌شود، سوئیچ بین کارتابل‌ها ممکن است و مهلت انجام کار در دید کاربر قرار دارد.</p>
+        </div>
+      </div>
+      <div class="space-y-8">
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-3">کارتابل کاربران</h3>
+          <p class="text-justify leading-8 text-ink/80">جستجوی کارهای در جریان بر حسب نام کاربر، شماره پرونده، شماره درخواست و سایر موارد؛ لینک پرونده روی نقشه، مشاهده نمودار وضعیت فرآیند و نمودار فرآیندها و دسترسی مستقیم به صفحه پیگیری درخواست.</p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-3">پیگیری درخواست</h3>
+          <p class="text-justify leading-8 text-ink/80">رصد مراحل طی‌شده فرآیند برای هر درخواست؛ تکمیل یا فعال‌کردن کار خاص، تغییر کاربرِ کار در حال انجام، نمایش شماره تلفن کاربران جهت پیگیری، مشاهده فرم‌های کارهای جاری، لغو یا توقف درخواست و فعال‌کردن درخواست لغو یا متوقف‌شده؛ همراه با نمودار وضعیت درخواست بر حسب زمان انتظار کار در هر کارتابل.</p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display font-bold text-xl mb-3">یادداشت‌ها</h3>
+          <p class="text-justify leading-8 text-ink/80">یادداشت بر روی پرونده جاری برای اطلاع‌رسانی موارد خاص درج می‌شود و در طول مراحل فرآیند برای تمام کاربران مربوطه قابل مشاهده است.</p>
+        </div>
+        <figure class="product-shot" data-slot="cartable-view" data-reveal>
+          <div class="ph p-6 text-center">
+            <p class="font-display font-bold text-sm mb-1">تصویر موردنیاز: نمای کارتابل وظایف</p>
+            <p class="text-[11px] text-mist leading-5">اسکرین‌شات کارتابل با لیست پرونده‌ها، وضعیت‌ها، مهلت انجام کار و نمودار وضعیت فرآیند — فصل ۱۰</p>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فصل ۱۱ ================= -->
+<section id="ch-11" data-chapter="۱۱" data-title="گزارش و داشبورد" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۱۱</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۱۱</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">گزارش‌ساز و داشبورد مدیریتی</h2>
+    <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">داده‌های ثبت‌شده در طول فرآیندها، در گزارش‌ساز و داشبورد مدیریتی به اطلاعات تصمیم‌سازی تبدیل می‌شوند.</p>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-start mb-12">
+      <div class="space-y-6 text-justify leading-8 text-ink/80">
+        <p data-reveal>گزارش‌ساز سامانه با فیلتر منطقه‌ای بر روی نقشه و فیلتر داده‌ای، گزارش می‌سازد؛ نتایج هر گزارش قابل فیلتر مجدد و مرتب‌سازی است و سوابق گزارشات در سامانه نگهداری می‌شود.</p>
+        <p data-reveal>نتایج خروجی به صورت اکسل و به صورت نموداری — میله‌ای، دایره‌ای و خطی — ارائه می‌شود و هر نتیجه به جانمایی مربوطه در نقشه لینک می‌گردد.</p>
+        <p data-reveal>در سطح مدیریتی نیز سامانه داشبورد تصمیم‌گیری مدیریتی ارائه می‌کند؛ نمایی متمرکز از برنامه‌های اجرایی پروژه‌های حفاری برای معاونت فنی و عمرانی.</p>
+        <div data-reveal class="flex flex-wrap gap-2 text-xs pt-2" aria-label="انواع نمودار گزارش‌ساز">
+          <span class="bg-amber-soft text-amber-dark px-3 py-1.5 rounded-full font-medium">نمودار میله‌ای</span>
+          <span class="bg-amber-soft text-amber-dark px-3 py-1.5 rounded-full font-medium">نمودار دایره‌ای</span>
+          <span class="bg-amber-soft text-amber-dark px-3 py-1.5 rounded-full font-medium">نمودار خطی</span>
+          <span class="bg-amber-soft text-amber-dark px-3 py-1.5 rounded-full font-medium">خروجی اکسل</span>
+        </div>
+      </div>
+
+      <!-- سوئیچ نمودار تعاملی -->
+      <div data-reveal style="--d:.15s">
+        <div class="flex gap-2 mb-4" role="group" aria-label="انتخاب نوع نمودار نمایشی">
+          <button class="chart-btn text-xs border border-ink/25 px-4 py-1.5 rounded-full aria-pressed:bg-ink aria-pressed:text-white transition-colors" data-chart="bar" aria-pressed="true">میله‌ای</button>
+          <button class="chart-btn text-xs border border-ink/25 px-4 py-1.5 rounded-full aria-pressed:bg-ink aria-pressed:text-white transition-colors" data-chart="pie" aria-pressed="false">دایره‌ای</button>
+          <button class="chart-btn text-xs border border-ink/25 px-4 py-1.5 rounded-full aria-pressed:bg-ink aria-pressed:text-white transition-colors" data-chart="line" aria-pressed="false">خطی</button>
+        </div>
+        <svg viewBox="0 0 640 340" class="w-full h-auto border border-linex bg-paper" role="img" aria-label="نمایش شماتیک خروجی نموداری گزارش‌ساز در سه حالت میله‌ای، دایره‌ای و خطی">
+          <g id="gBar" class="chart-g on">
+            <line x1="60" y1="290" x2="580" y2="290" stroke="#1A1D22" stroke-width="1.5"/>
+            <g fill="#DA8A0F"><rect x="100" y="150" width="60" height="140"/><rect x="200" y="90" width="60" height="200"/><rect x="300" y="190" width="60" height="100"/><rect x="400" y="120" width="60" height="170"/><rect x="500" y="220" width="60" height="70"/></g>
+            <g fill="#5B6470" font-size="11" text-anchor="middle"><text x="130" y="312">منطقه ۱</text><text x="230" y="312">منطقه ۲</text><text x="330" y="312">منطقه ۳</text><text x="430" y="312">منطقه ۴</text><text x="530" y="312">منطقه ۵</text></g>
+          </g>
+          <g id="gPie" class="chart-g">
+            <circle cx="320" cy="170" r="110" fill="none" stroke="#E2DDD0" stroke-width="2"/>
+            <path d="M320 170 L320 60 A110 110 0 0 1 425 205 Z" fill="#DA8A0F"/>
+            <path d="M320 170 L425 205 A110 110 0 0 1 240 262 Z" fill="#2F6D62"/>
+            <path d="M320 170 L240 262 A110 110 0 1 1 320 60 Z" fill="#33628F"/>
+            <g font-size="11" fill="#5B6470"><text x="470" y="120">طرح توسعه</text><text x="470" y="230">انشعاب شخصی</text><text x="90" y="120">اضطراری / مطالعاتی</text></g>
+          </g>
+          <g id="gLine" class="chart-g">
+            <line x1="60" y1="290" x2="580" y2="290" stroke="#1A1D22" stroke-width="1.5"/>
+            <polyline points="90,230 190,170 290,200 390,110 490,140 570,80" fill="none" stroke="#DA8A0F" stroke-width="3"/>
+            <g fill="#12141A"><circle cx="90" cy="230" r="5"/><circle cx="190" cy="170" r="5"/><circle cx="290" cy="200" r="5"/><circle cx="390" cy="110" r="5"/><circle cx="490" cy="140" r="5"/><circle cx="570" cy="80" r="5"/></g>
+          </g>
+        </svg>
+        <p class="text-xs text-mist mt-3">نمایش شماتیک انواع نمودار خروجی گزارش‌ساز (بدون داده واقعی).</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <figure class="product-shot" data-slot="report-view" data-reveal>
+        <div class="ph p-6 text-center">
+          <p class="font-display font-bold text-sm mb-1">تصویر موردنیاز: خروجی گزارش‌ساز</p>
+          <p class="text-[11px] text-mist leading-5">اسکرین‌شات نتایج گزارش با فیلترها، نمودار و لینک به نقشه — فصل ۱۱</p>
+        </div>
+      </figure>
+      <figure class="product-shot" data-slot="dashboard-main" data-reveal style="--d:.1s">
+        <div class="ph p-6 text-center">
+          <p class="font-display font-bold text-sm mb-1">تصویر موردنیاز: داشبورد تصمیم‌گیری مدیریتی</p>
+          <p class="text-[11px] text-mist leading-5">نمای اصلی داشبورد مدیریتی با شاخص‌های روند اجرای پروژه‌های حفاری — فصل ۱۱</p>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فصل ۱۲ (جمع‌بندی) ================= -->
+<section id="ch-12" data-chapter="۱۲" data-title="جمع‌بندی" class="relative py-24 md:py-32 bg-soot text-[#ECE9E2] overflow-hidden">
+  <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-white/[0.04]" aria-hidden="true">۱۲</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p data-reveal class="font-display text-amber text-sm mb-3">فصل ۱۲</p>
+    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-12">جمع‌بندی</h2>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 mb-16">
+      <div data-reveal>
+        <h3 class="font-display font-bold text-lg text-amber mb-3">چه چیزی را مدیریت می‌کند؟</h3>
+        <p class="leading-8 text-justify text-[#C9C4B8]">پرونده‌های حفاری شهری را از ثبت درخواست تا صدور مجوز، تمدید، تحویل و مستندسازی؛ همراه با بانک به‌روز اطلاعات توصیفی و مکانی موقعیت‌های حفاری.</p>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display font-bold text-lg text-amber mb-3">چه فرآیندهایی را پوشش می‌دهد؟</h3>
+        <p class="leading-8 text-justify text-[#C9C4B8]">طرح توسعه، انشعاب شخصی، طرح مطالعاتی و اتفاقات اضطراری؛ به‌همراه دریچه‌ها، لیست کنترلی، معرفی و تغییر عوامل اجرایی و نظارت امتیازبندی‌شده.</p>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display font-bold text-lg text-amber mb-3">چه اطلاعاتی تولید می‌کند؟</h3>
+        <p class="leading-8 text-justify text-[#C9C4B8]">سوابق مستند هر پروژه، گزارش‌های فیلترپذیر منطقه‌ای و داده‌ای با خروجی اکسل و نموداری، و داشبورد تصمیم‌گیری مدیریتی.</p>
+      </div>
+      <div data-reveal>
+        <h3 class="font-display font-bold text-lg text-amber mb-3">چه دستاوردی به سازمان می‌بخشد؟</h3>
+        <p class="leading-8 text-justify text-[#C9C4B8]">یکپارچگی فرآیندها، شفافیت زمان‌بندی و عملکرد، مستندسازی نظام‌مند خسارات و تحویل پروژه‌ها، و تصمیم‌گیری مدیریتی مبتنی بر داده‌های مکان‌محور.</p>
+      </div>
+    </div>
+
+    <div data-reveal class="border-t border-[#3A3F49] pt-10 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex items-center gap-4">
+        <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-12 w-auto bg-white/95 p-1.5 rounded" loading="lazy">
+        <div>
+          <p class="font-display font-bold text-lg">محیا پرداز</p>
+          <p class="text-xs text-[#8A867C]">سامانه جامع حفاری · مرداد ۱۴۰۵</p>
+        </div>
+      </div>
+      <a href="https://mahyapardaz.com/" class="text-sm text-amber hover:text-white transition-colors" dir="ltr">mahyapardaz.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= فوتر ================= -->
+<footer class="bg-soot text-[#8A867C] border-t border-[#3A3F49] py-8">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs leading-6">
+    <p>© کاتالوگ دیجیتال محصول — <span class="text-[#C9C4B8] font-medium">محیا پرداز</span></p>
+    <p>سامانه جامع حفاری · وب‌سایت: <span dir="ltr" class="text-[#C9C4B8]">mahyapardaz.com</span> · مرداد ۱۴۰۵</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s,c){return (c||document).querySelector(s);};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+
+  /* ---------- reveal ---------- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target);} });
+  },{threshold:.15, rootMargin:'0px 0px -6% 0px'});
+  $$('[data-reveal]').forEach(function(el){ io.observe(el); });
+
+  /* ---------- chapter tracking ---------- */
+  var chipNum=$('#chipNum'), chipTitle=$('#chipTitle'), railLinks=$$('#rail a');
+  var io2 = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target, num=el.getAttribute('data-chapter'), title=el.getAttribute('data-title');
+      chipNum.textContent = (num==='جلد'||num==='فهرست') ? num : 'فصل '+num;
+      chipTitle.textContent = title||'';
+      railLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-target')===el.id); });
+    });
+  },{rootMargin:'-42% 0px -52% 0px', threshold:0});
+  $$('section[data-chapter]').forEach(function(s){ io2.observe(s); });
+
+  /* ---------- progress ---------- */
+  var bar=$('#progressBar');
+  var onScroll=function(){
+    var h=document.documentElement;
+    var p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);
+    bar.style.transform='scaleX('+p+')';
+  };
+  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- lifecycle interactive ---------- */
+  var LC=[
+    {t:'گام ۱ — ثبت درخواست', b:'ثبت درخواست حفاری در قالب‌های طرح توسعه، انشعاب شخصی، طرح مطالعاتی یا اتفاقات و موارد اضطراری؛ به همراه اختصاص زمان‌بندی و عوامل اجرایی مختص هر درخواست.'},
+    {t:'گام ۲ — استعلام و لایه‌ها', b:'ارسال استعلام‌ها به‌صورت بافر و کاملاً سیستمی؛ بارگذاری لایه‌های اطلاعاتی مانند کیفیت اسفالت و جنس روسازی و واکشی خودکار اطلاعات برای هر حفاری.'},
+    {t:'گام ۳ — مجوز و فیش', b:'محاسبات درآمدی و صدور فیش طبق لایحه مصوب هر سال؛ تعریف انواع پرداخت‌ها از جمله نقدی، حساب فی‌مابین، توافقنامه و سازمان شهرداری؛ و صدور مجوز حفاری.'},
+    {t:'گام ۴ — اجرا و نظارت', b:'اجرای پروژه توسط عوامل اجرایی و نظارت سیستمی بر ایمنی، مشخصات حفاری، مرمت و استقرار، به همراه امتیازبندی عملکرد.'},
+    {t:'گام ۵ — تمدید (در صورت نیاز)', b:'تمدید مجوز در بازه زمانی جدید و صدور فیش با توجه به تعداد روزهای افزایش‌یافته؛ کنترل اعتبار استعلام‌های مجوز اصلی و ارسال مجدد استعلام‌های منقضی‌شده.'},
+    {t:'گام ۶ — تحویل و مستندسازی', b:'ثبت درخواست تحویل و تعیین تاریخ؛ ثبت خسارات، تأخیرات و جرایم توسط کاربر بازدیدکننده؛ صدور صورتمجلس نواقص و رفع نقص، صدور صورتمجلس تحویل و ارسال سیستمی استعلام‌های خسارت.'}
+  ];
+  var lcTitle=$('#lcTitle'), lcBody=$('#lcBody'), nodes=$$('#lcSvg .lc-node');
+  function setStage(i){
+    nodes.forEach(function(n,j){
+      var on=j===i, c=n.querySelector('circle'), t=n.querySelector('text');
+      c.setAttribute('fill', on?'#DA8A0F':'#12141A');
+      t.setAttribute('fill', on?'#12141A':'#DA8A0F');
+      n.setAttribute('aria-pressed', on?'true':'false');
+    });
+    lcTitle.textContent=LC[i].t; lcBody.textContent=LC[i].b;
+  }
+  nodes.forEach(function(n,i){
+    n.addEventListener('click', function(){ setStage(i); });
+    n.addEventListener('keydown', function(ev){
+      if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); setStage(i); }
+    });
+  });
+  setStage(0);
+
+  /* ---------- map layers ---------- */
+  $$('.layer-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var g=document.getElementById(btn.getAttribute('data-layer-toggle'));
+      var on=btn.getAttribute('aria-pressed')==='true';
+      btn.setAttribute('aria-pressed', String(!on));
+      if(g) g.classList.toggle('layer-hidden', on);
+    });
+  });
+
+  /* ---------- chart switcher ---------- */
+  var charts={bar:$('#gBar'), pie:$('#gPie'), line:$('#gLine')};
+  $$('.chart-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      $$('.chart-btn').forEach(function(b){ b.setAttribute('aria-pressed', String(b===btn)); });
+      Object.keys(charts).forEach(function(k){ charts[k].classList.toggle('on', k===btn.getAttribute('data-chart')); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

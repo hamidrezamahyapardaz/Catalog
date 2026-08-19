@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ژئونیک | کاتالوگ سامانه جامع مدیریت داده مکانی — محیا پرداز</title>
+<meta name="description" content="کاتالوگ دیجیتال سامانه ژئونیک؛ بستری ماژولار و دانش‌بنیان برای مدیریت، پردازش و تحلیل داده‌های مکانی سازمان‌ها و ادارات مادر، بر پایه ابزارهای متن‌باز." />
+<meta property="og:title" content="ژئونیک | کاتالوگ سامانه جامع مدیریت داده مکانی" />
+<meta property="og:description" content="بستری واحد و به‌روز برای داده‌های مکانی سازمان‌ها؛ از مدیریت لایه و ممیزی ملک تا تحلیل فضایی و نمایش سه‌بعدی." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fa_IR" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Vazirmatn', 'sans-serif'],
+        display: ['Vazirmatn', 'sans-serif'],
+      },
+      colors: {
+        ink: {
+          900: '#0B1E2D',
+          800: '#0F2A44',
+          700: '#163A5F',
+          600: '#1F4F7A',
+          500: '#2C6A9B',
+        },
+        teal: {
+          900: '#0E3A3F',
+          700: '#1A4D5C',
+          500: '#2E7A8C',
+          300: '#6DAFBF',
+        },
+        sand: {
+          50:  '#FAF7F1',
+          100: '#F2ECE0',
+          200: '#E6DFCE',
+          300: '#D4C9AE',
+        },
+        accent: {
+          DEFAULT: '#C78A4E',
+          light: '#E3B480',
+          dark:  '#8F5F2F',
+        },
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '30': '7.5rem',
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: #FAF7F1;
+    color: #0B1E2D;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-display { font-family: 'Vazirmatn', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+  .chapter-num {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Progress ring */
+  .progress-ring__circle {
+    transition: stroke-dashoffset 0.4s ease-out;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+
+  /* Cover grid */
+  .cover-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Subtle paper texture */
+  .paper {
+    background-image: radial-gradient(rgba(15, 42, 68, 0.03) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-slow { transition-duration: 1.2s; }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.30s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+  .reveal-delay-4 { transition-delay: 0.60s; }
+
+  /* SVG path draw animation */
+  .draw-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2.5s ease-out;
+  }
+  .draw-path.visible { stroke-dashoffset: 0; }
+
+  /* Chapter divider pattern */
+  .chapter-divider {
+    background-image: repeating-linear-gradient(
+      90deg,
+      currentColor 0,
+      currentColor 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    height: 1px;
+    opacity: 0.25;
+  }
+
+  /* Interactive SVG */
+  .interactive-node { cursor: pointer; transition: all 0.3s ease; }
+  .interactive-node:hover .node-core { transform: scale(1.08); }
+  .node-core { transition: transform 0.3s ease; transform-origin: center; transform-box: fill-box; }
+
+  /* Scroll indicator pulse */
+  @keyframes scroll-pulse {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50%      { transform: translateY(10px); opacity: 1; }
+  }
+  .scroll-arrow { animation: scroll-pulse 2.2s ease-in-out infinite; }
+
+  /* Print styles */
+  @media print {
+    body { background: white; }
+    .no-print, .nav-fixed, .progress-ring { display: none !important; }
+    section { page-break-inside: avoid; break-inside: avoid; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .scroll-arrow { animation: none; }
+  }
+
+  /* Focus ring */
+  *:focus-visible {
+    outline: 2px solid #C78A4E;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* TOC hover underline */
+  .toc-item { position: relative; }
+  .toc-item::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; right: 0;
+    width: 0; height: 1px;
+    background: currentColor;
+    transition: width 0.4s ease;
+  }
+  .toc-item:hover::after { width: 100%; }
+
+  /* Stat card grid */
+  .stat-grid {
+    background-image:
+      linear-gradient(rgba(15, 42, 68, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 42, 68, 0.08) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* Module cards */
+  .module-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .module-card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Layer stacking diagram */
+  .layer-stack > * {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+  }
+  .layer-stack.visible .l-1 { transform: translateY(0); opacity: 1; transition-delay: 0.1s; }
+  .layer-stack.visible .l-2 { transform: translateY(0); opacity: 1; transition-delay: 0.3s; }
+  .layer-stack.visible .l-3 { transform: translateY(0); opacity: 1; transition-delay: 0.5s; }
+  .layer-stack.visible .l-4 { transform: translateY(0); opacity: 1; transition-delay: 0.7s; }
+  .layer-stack .l-1, .layer-stack .l-2, .layer-stack .l-3, .layer-stack .l-4 {
+    transform: translateY(-30px); opacity: 0;
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- =========================================================
+     NAVIGATION / PROGRESS
+     ========================================================= -->
+<nav class="nav-fixed fixed top-0 right-0 left-0 z-50 backdrop-blur-md bg-sand-50/85 border-b border-ink-900/10">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10 py-3 flex items-center justify-between gap-4">
+    <a href="#cover" class="flex items-center gap-3 group">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png"
+           alt="لوگوی محیا پرداز"
+           class="h-8 w-auto object-contain"
+           loading="eager" />
+      <div class="hidden sm:block leading-tight">
+        <div class="text-[11px] tracking-widest text-ink-600/70 uppercase">کاتالوگ محصول</div>
+        <div class="text-sm font-bold text-ink-900">ژئونیک · SDI</div>
+      </div>
+    </a>
+
+    <div class="hidden md:flex items-center gap-6 text-xs text-ink-700">
+      <span id="navChapterLabel" class="chapter-num font-bold text-ink-900">—</span>
+      <div class="h-3 w-px bg-ink-900/20"></div>
+      <span class="opacity-60">از <span id="navChapterTotal">۱۲</span> فصل</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="#toc" class="text-xs font-bold text-ink-800 hover:text-accent transition-colors">فهرست</a>
+      <div class="relative w-9 h-9" aria-label="پیشرفت مطالعه کاتالوگ">
+        <svg class="progress-ring w-full h-full" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="15.915" fill="none" stroke="#0F2A44" stroke-opacity="0.12" stroke-width="2"/>
+          <circle id="progressCircle" class="progress-ring__circle"
+                  cx="18" cy="18" r="15.915" fill="none"
+                  stroke="#C78A4E" stroke-width="2" stroke-linecap="round"
+                  stroke-dasharray="100, 100" stroke-dashoffset="100"/>
+          <text x="18" y="20" text-anchor="middle" font-size="8" font-weight="700" fill="#0B1E2D" class="chapter-num" id="progressText">0</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- =========================================================
+     COVER
+     ========================================================= -->
+<section id="cover" class="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-teal-900 text-sand-100">
+  <div class="cover-grid absolute inset-0 opacity-40"></div>
+
+  <!-- Decorative SVG -->
+  <svg class="absolute -left-32 -bottom-32 w-[600px] h-[600px] opacity-[0.07]" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="180" fill="none" stroke="#F2ECE0" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="140" fill="none" stroke="#F2ECE0" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="100" fill="none" stroke="#F2ECE0" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="60" fill="none" stroke="#F2ECE0" stroke-width="0.5"/>
+    <line x1="20" y1="200" x2="380" y2="200" stroke="#F2ECE0" stroke-width="0.3"/>
+    <line x1="200" y1="20" x2="200" y2="380" stroke="#F2ECE0" stroke-width="0.3"/>
+  </svg>
+
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-10 w-full grid lg:grid-cols-12 gap-10 items-center">
+    <!-- Right column: Title -->
+    <div class="lg:col-span-7 reveal reveal-slow">
+      <div class="flex items-center gap-3 text-accent-light text-xs tracking-[0.25em] uppercase mb-8">
+        <span class="inline-block w-8 h-px bg-accent-light"></span>
+        کاتالوگ معرفی سامانه
+      </div>
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-6">
+        ژئونیک
+        <span class="block text-2xl md:text-3xl lg:text-4xl font-normal text-sand-200 mt-4">
+          سامانه جامع مدیریت داده مکانی
+        </span>
+      </h1>
+      <p class="text-lg md:text-xl text-sand-200 leading-loose max-w-2xl mb-8">
+        بستری ماژولار، دانش‌بنیان و مبتنی بر ابزارهای متن‌باز برای تجمیع، پردازش و تحلیل داده‌های مکانی سازمان‌ها و ادارات مادر.
+      </p>
+
+      <div class="flex flex-wrap gap-6 items-center pt-8 border-t border-sand-100/15">
+        <div>
+          <div class="text-[10px] tracking-widest text-sand-300/70 uppercase">تولیدکننده</div>
+          <div class="font-bold text-sand-50">محیا پرداز</div>
+        </div>
+        <div class="w-px h-10 bg-sand-100/20"></div>
+        <div>
+          <div class="text-[10px] tracking-widest text-sand-300/70 uppercase">محصول</div>
+          <div class="font-bold text-sand-50">Geonic · SDI Platform</div>
+        </div>
+        <div class="w-px h-10 bg-sand-100/20"></div>
+        <div>
+          <div class="text-[10px] tracking-widest text-sand-300/70 uppercase">ویراست کاتالوگ</div>
+          <div class="font-bold text-sand-50">۱۴۰۵ · نسخه ۱.۰</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left column: Hero SVG -->
+    <div class="lg:col-span-5 reveal reveal-slow reveal-delay-2">
+      <div class="relative aspect-square max-w-lg mx-auto">
+        <svg viewBox="0 0 500 500" class="w-full h-full" aria-label="نمایش انتزاعی لایه‌های داده مکانی در ژئونیک">
+          <defs>
+            <linearGradient id="coverGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C78A4E" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#E3B480" stop-opacity="0.4"/>
+            </linearGradient>
+            <linearGradient id="coverGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6DAFBF" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#2E7A8C" stop-opacity="0.4"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Coordinate rings -->
+          <circle cx="250" cy="250" r="220" fill="none" stroke="#F2ECE0" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="2 6"/>
+          <circle cx="250" cy="250" r="170" fill="none" stroke="#F2ECE0" stroke-opacity="0.15" stroke-width="1"/>
+          <circle cx="250" cy="250" r="120" fill="none" stroke="#F2ECE0" stroke-opacity="0.1" stroke-width="1"/>
+
+          <!-- Polygon layers (representing map layers) -->
+          <g transform="translate(0,0)">
+            <polygon points="180,200 320,180 380,280 300,360 180,340"
+                     fill="url(#coverGrad1)" opacity="0.35"/>
+            <polygon points="180,200 320,180 380,280 300,360 180,340"
+                     fill="none" stroke="#E3B480" stroke-width="1.5"/>
+          </g>
+
+          <g transform="translate(-20,20)">
+            <polygon points="140,260 260,220 340,300 280,400 140,380"
+                     fill="url(#coverGrad2)" opacity="0.3"/>
+            <polygon points="140,260 260,220 340,300 280,400 140,380"
+                     fill="none" stroke="#6DAFBF" stroke-width="1.5"/>
+          </g>
+
+          <!-- Point features -->
+          <g fill="#F2ECE0">
+            <circle cx="210" cy="270" r="3"/>
+            <circle cx="290" cy="240" r="3"/>
+            <circle cx="340" cy="320" r="3"/>
+            <circle cx="260" cy="360" r="3"/>
+            <circle cx="200" cy="330" r="3"/>
+            <circle cx="310" cy="290" r="3"/>
+          </g>
+
+          <!-- Connection lines (API / data flow) -->
+          <g stroke="#C78A4E" stroke-width="1" opacity="0.6">
+            <line x1="210" y1="270" x2="290" y2="240"/>
+            <line x1="290" y1="240" x2="340" y2="320"/>
+            <line x1="340" y1="320" x2="260" y2="360"/>
+            <line x1="260" y1="360" x2="200" y2="330"/>
+            <line x1="200" y1="330" x2="210" y2="270"/>
+          </g>
+
+          <!-- Center crosshair -->
+          <g stroke="#F2ECE0" stroke-width="0.8" opacity="0.5">
+            <line x1="245" y1="250" x2="255" y2="250"/>
+            <line x1="250" y1="245" x2="250" y2="255"/>
+          </g>
+          <circle cx="250" cy="250" r="6" fill="none" stroke="#C78A4E" stroke-width="1.5"/>
+
+          <!-- Compass rose -->
+          <g transform="translate(430, 70)" stroke="#F2ECE0" stroke-width="0.8" fill="none" opacity="0.5">
+            <circle r="25"/>
+            <line x1="0" y1="-30" x2="0" y2="30"/>
+            <line x1="-30" y1="0" x2="30" y2="0"/>
+            <text x="0" y="-35" text-anchor="middle" font-size="10" fill="#F2ECE0" font-weight="700">N</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-sand-200/80 text-xs tracking-widest">
+    <span>برای ورق‌زدن کاتالوگ، اسکرول کنید</span>
+    <svg class="scroll-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- =========================================================
+     TABLE OF CONTENTS
+     ========================================================= -->
+<section id="toc" class="relative py-24 lg:py-32 bg-sand-50 paper">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4 reveal">
+        <div class="text-[11px] tracking-[0.3em] text-accent uppercase mb-4">مقدمه کاتالوگ</div>
+        <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">آنچه در این کاتالوگ می‌خوانید</h2>
+        <p class="text-ink-700 leading-loose">
+          این کاتالوگ، ژئونیک را به‌عنوان یک بستر جامع داده مکانی روایت می‌کند؛ از فلسفه طراحی و معماری تا ماژول‌های عملیاتی، و در نهایت ارزشی که برای سازمان‌ها و ادارات مادر ایجاد می‌کند.
+        </p>
+      </div>
+
+      <div class="lg:col-span-8">
+        <ol class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+          <!-- 1 -->
+          <li class="reveal reveal-delay-1">
+            <a href="#ch1" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۱</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">ژئونیک چیست؟</span>
+                <span class="block text-xs text-ink-600 mt-1">تعریف، حوزه و رویکرد محصول</span>
+              </span>
+            </a>
+          </li>
+          <!-- 2 -->
+          <li class="reveal reveal-delay-1">
+            <a href="#ch2" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۲</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">چرا بستر واحد داده مکانی؟</span>
+                <span class="block text-xs text-ink-600 mt-1">مسئله‌ای که سازمان‌ها با آن روبه‌رویند</span>
+              </span>
+            </a>
+          </li>
+          <!-- 3 -->
+          <li class="reveal reveal-delay-2">
+            <a href="#ch3" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۳</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">ماژول لایه</span>
+                <span class="block text-xs text-ink-600 mt-1">ساختار، ورودی‌ها، ظاهر، اقلام و ابزارها</span>
+              </span>
+            </a>
+          </li>
+          <!-- 4 -->
+          <li class="reveal reveal-delay-2">
+            <a href="#ch4" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۴</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">ماژول عارضه</span>
+                <span class="block text-xs text-ink-600 mt-1">ثبت، ترسیم، ویرایش و ابزارهای هندسی</span>
+              </span>
+            </a>
+          </li>
+          <!-- 5 -->
+          <li class="reveal reveal-delay-3">
+            <a href="#ch5" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۵</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">جستجوی مکانی و توصیفی</span>
+                <span class="block text-xs text-ink-600 mt-1">از مختصات تا جستجوی صوتی</span>
+              </span>
+            </a>
+          </li>
+          <!-- 6 -->
+          <li class="reveal reveal-delay-3">
+            <a href="#ch6" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۶</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">ماژول آنالیز</span>
+                <span class="block text-xs text-ink-600 mt-1">مدل‌سازی پردازش‌های مکانی</span>
+              </span>
+            </a>
+          </li>
+          <!-- 7 -->
+          <li class="reveal reveal-delay-1">
+            <a href="#ch7" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۷</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">ماژول ممیزی</span>
+                <span class="block text-xs text-ink-600 mt-1">از عرصه و ساختمان تا واحد مستقل و شغلی</span>
+              </span>
+            </a>
+          </li>
+          <!-- 8 -->
+          <li class="reveal reveal-delay-1">
+            <a href="#ch8" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۸</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">سه‌بعدی و پانوراما</span>
+                <span class="block text-xs text-ink-600 mt-1">محیط تعاملی و تصویربرداری ۳۶۰</span>
+              </span>
+            </a>
+          </li>
+          <!-- 9 -->
+          <li class="reveal reveal-delay-2">
+            <a href="#ch9" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۰۹</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">قالب چاپی و گزارش</span>
+                <span class="block text-xs text-ink-600 mt-1">طراحی فرم، سربرگ و خروجی چاپی</span>
+              </span>
+            </a>
+          </li>
+          <!-- 10 -->
+          <li class="reveal reveal-delay-2">
+            <a href="#ch10" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۱۰</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">کاربران، نقش‌ها و امنیت</span>
+                <span class="block text-xs text-ink-600 mt-1">دسترسی‌ها، لاگ و احراز هویت</span>
+              </span>
+            </a>
+          </li>
+          <!-- 11 -->
+          <li class="reveal reveal-delay-3">
+            <a href="#ch11" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۱۱</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">معماری و یکپارچگی</span>
+                <span class="block text-xs text-ink-600 mt-1">اتصال به پایگاه داده، سرویس‌ها و API</span>
+              </span>
+            </a>
+          </li>
+          <!-- 12 -->
+          <li class="reveal reveal-delay-3">
+            <a href="#ch12" class="toc-item flex items-baseline gap-5 group py-2">
+              <span class="chapter-num text-accent font-bold text-lg">۱۲</span>
+              <span class="flex-1 border-b border-dashed border-ink-900/20 pb-2">
+                <span class="block font-bold text-ink-900 text-lg group-hover:text-accent transition-colors">جمع‌بندی ارزش سازمانی</span>
+                <span class="block text-xs text-ink-600 mt-1">ژئونیک در عمل برای چه کسانی ساخته شده است؟</span>
+              </span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 1 — WHAT IS GEONIC
+     ========================================================= -->
+<section id="ch1" data-chapter="1" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۰۱</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">
+            ژئونیک؛<br/>یک بستر داده مکانی
+          </h2>
+          <div class="chapter-divider w-24 my-8"></div>
+          <p class="text-ink-600 text-sm leading-loose">
+            شناخت هویت محصول، پیش از ورود به ماژول‌ها و قابلیت‌ها.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-8 reveal">
+        <p class="text-xl md:text-2xl leading-loose text-ink-800 font-light">
+          ژئونیک یک سامانه جامع مدیریت داده مکانی یا <span class="font-bold">SDI</span> است؛ محصولی دانش‌بنیان که با تکیه بر ابزارهای متن‌باز و بر پایه زبان‌های <span class="font-bold">Python</span> و <span class="font-bold">TypeScript</span> توسعه یافته است.
+        </p>
+
+        <p class="text-base leading-loose text-ink-700">
+          هدف اصلی این سامانه، ایجاد یک بستر واحد و به‌روز برای داده‌های مکانیِ سازمان‌ها و ادارات مادر است؛ جایی که نقشه‌ها، لایه‌ها، عارضه‌ها، اطلاعات توصیفی و تحلیل‌های مکانی در یک محیط یکپارچه گرد هم می‌آیند و به‌جای پراکندگی در فایل‌های جداگانه، به دارایی قابل‌مدیریت سازمان تبدیل می‌شوند.
+        </p>
+
+        <p class="text-base leading-loose text-ink-700">
+          ژئونیک به‌طور ذاتی ماژولار طراحی شده است؛ ماژول‌های مختلف از طریق API با هسته سامانه ارتباط برقرار می‌کنند. این رویکرد به سازمان‌ها این امکان را می‌دهد که تنها ماژول‌هایی را که متناسب با نیاز عملیاتی‌شان است تهیه کنند و در صورت تغییر نیاز، بخش‌های دیگر را در زمان‌های بعد به سامانه اضافه نمایند.
+        </p>
+
+        <!-- Info grid -->
+        <div class="grid md:grid-cols-3 gap-4 pt-8">
+          <div class="bg-white border border-ink-900/10 p-6 reveal reveal-delay-1">
+            <div class="text-[10px] tracking-widest text-accent uppercase mb-3">زبان‌های اصلی</div>
+            <div class="font-bold text-ink-900 text-lg">Python · TypeScript</div>
+            <div class="text-xs text-ink-600 mt-2">هسته و لایه وب</div>
+          </div>
+          <div class="bg-white border border-ink-900/10 p-6 reveal reveal-delay-2">
+            <div class="text-[10px] tracking-widest text-accent uppercase mb-3">رویکرد</div>
+            <div class="font-bold text-ink-900 text-lg">متن‌باز · ماژولار</div>
+            <div class="text-xs text-ink-600 mt-2">Open Source + API</div>
+          </div>
+          <div class="bg-white border border-ink-900/10 p-6 reveal reveal-delay-3">
+            <div class="text-[10px] tracking-widest text-accent uppercase mb-3">وضعیت محصول</div>
+            <div class="font-bold text-ink-900 text-lg">دانش‌بنیان</div>
+            <div class="text-xs text-ink-600 mt-2">Geonic · SDI Platform</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 2 — WHY A UNIFIED SDI
+     ========================================================= -->
+<section id="ch2" data-chapter="2" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-ink-900 text-sand-100">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="reveal mb-16">
+      <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۰۲</div>
+      <h2 class="font-display text-4xl md:text-6xl leading-tight">
+        چرا سازمان‌ها به یک بستر واحد داده مکانی نیاز دارند؟
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="reveal reveal-delay-1 space-y-6">
+        <p class="text-lg leading-loose text-sand-200">
+          در بسیاری از سازمان‌ها و ادارات مادر، داده‌های مکانی در قالب فایل‌های Shapefile، نقشه‌های کاغذی، خروجی‌های GPS و فایل‌های Excel نگهداری می‌شوند. هر واحد، نسخه‌ای جدا از واقعیت را در اختیار دارد. نتیجه این پراکندگی، تکرار کار، تناقض در اطلاعات و تصمیم‌گیری بر اساس داده‌های ناهمگون است.
+        </p>
+        <p class="leading-loose text-sand-200/90">
+          مسئله اصلی، نبودن یک «منبع واحد حقیقت» برای داده‌های مکانی است. وقتی شهرداری‌ها، ادارات ثبت، واحدهای شهرسازی، مالیات و خدمات شهری هریک با نقشه‌های خودشان کار می‌کنند، هیچ‌کدام تصویر کاملی از وضعیت شهر در اختیار ندارند.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-2 space-y-6">
+        <p class="leading-loose text-sand-200/90">
+          ژئونیک این مسئله را با یک رویکرد دوگانه حل می‌کند: <span class="font-bold text-accent-light">تجمیع داده‌های مکانی در یک بستر واحد</span> و <span class="font-bold text-accent-light">ارائه ابزارهای تحلیلی برای استخراج معنا از این داده‌ها</span>. در این سامانه، هر عارضه جغرافیایی — چه یک قطعه زمین، چه یک ساختمان، چه یک تیر برق — دارای یک هویت واحد، تاریخچه تغییرات و مجموعه‌ای از اقلام توصیفی است که می‌توان بر اساس آن‌ها تحلیل، گزارش‌گیری و تصمیم‌گیری کرد.
+        </p>
+
+        <div class="bg-ink-800/50 border border-sand-100/10 p-6 mt-6">
+          <div class="text-[10px] tracking-widest text-accent-light uppercase mb-4">ارزش محوری سامانه</div>
+          <p class="text-sand-100 leading-loose">
+            تبدیل «داده پراکنده» به «دارایی اطلاعاتی قابل‌استفاده» برای واحدهای عملیاتی و مدیران تصمیم‌گیر.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 3 — LAYER MODULE
+     ========================================================= -->
+<section id="ch3" data-chapter="3" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۰۳</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">ماژول لایه</h2>
+          <p class="text-ink-600 leading-loose text-sm">
+            لایه، واحد اصلی سازمان‌دهی اطلاعات در هر سامانه داده مکانی است. ژئونیک این واحد را با انعطاف بالا مدیریت می‌کند.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-10 reveal">
+        <p class="text-2xl leading-loose text-ink-800 font-light">
+          هر آنچه روی نقشه دیده می‌شود، در قالب لایه تعریف و مدیریت می‌شود؛ از مرزهای شهری گرفته تا شبکه معابر، لوله‌های آب و قطعات ملکی.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          ماژول لایه در ژئونیک شامل چرخه کامل حیات لایه است: افزودن، ویرایش، حذف، گروه‌بندی، تعریف کاتالوگ و استایل، تبدیل هندسی، استخراج خروجی و اعمال ابزارهای توپولوژیکی. تمام این عملیات از طریق رابط کاربری یکپارچه و بدون نیاز به نرم‌افزار جانبی انجام می‌شود.
+        </p>
+
+        <!-- Product shot placeholder -->
+        <figure class="product-shot bg-white border border-ink-900/10 overflow-hidden" data-slot="layer-module-main">
+          <div class="aspect-[16/9] bg-gradient-to-br from-ink-900/5 to-teal-700/10 flex items-center justify-center p-8">
+            <div class="text-center">
+              <svg class="w-16 h-16 mx-auto text-ink-800/30 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
+              </svg>
+              <div class="text-xs text-ink-600/60 tracking-widest uppercase">تصویر موردنیاز</div>
+              <div class="text-sm text-ink-700 mt-2 max-w-md mx-auto">نمای ماژول لایه با نمایش پنل درختی لایه‌ها، ابزارهای ترسیم و پنجره افزودن لایه از طریق فایل</div>
+            </div>
+          </div>
+          <figcaption class="px-6 py-4 text-xs text-ink-600 border-t border-ink-900/10">
+            تصویر موردنیاز: نمای ماژول لایه، با تمرکز بر پنل درختی و ابزارهای مدیریت لایه
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Subsection: Input methods -->
+    <div class="reveal">
+      <div class="flex items-baseline gap-4 mb-8">
+        <span class="chapter-num text-accent font-bold">۳.۱</span>
+        <h3 class="font-display text-2xl md:text-3xl">روش‌های ورود لایه به سامانه</h3>
+      </div>
+
+      <p class="text-ink-700 leading-loose mb-8 max-w-4xl">
+        ژئونیک پنج روش متفاوت برای افزودن لایه ارائه می‌دهد تا متناسب با منابع داده موجود در سازمان، مناسب‌ترین روش انتخاب شود.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="module-card bg-white border border-ink-900/10 p-6">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center mb-4 chapter-num font-bold">۱</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">آپلود از فایل</h4>
+          <p class="text-sm text-ink-600 leading-loose">
+            بارگذاری لایه در فرمت‌های SHP، KML، KMZ، JSON و DXF با تعیین گروه لایه مقصد.
+          </p>
+        </div>
+        <div class="module-card bg-white border border-ink-900/10 p-6">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center mb-4 chapter-num font-bold">۲</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">لایه خام</h4>
+          <p class="text-sm text-ink-600 leading-loose">
+            ایجاد لایه تهی با تعریف نوع هندسی (Point، LineString، Polygon، MultiPolygon و ...) برای ورود دستی عارضه.
+          </p>
+        </div>
+        <div class="module-card bg-white border border-ink-900/10 p-6">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center mb-4 chapter-num font-bold">۳</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">پرس‌وجو از لایه</h4>
+          <p class="text-sm text-ink-600 leading-loose">
+            ساخت لایه جدید با اعمال شرط‌های فیلتر روی لایه‌های موجود و مشاهده جدول نتیجه پیش از نهایی‌سازی.
+          </p>
+        </div>
+        <div class="module-card bg-white border border-ink-900/10 p-6">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center mb-4 chapter-num font-bold">۴</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">پایگاه داده متصل</h4>
+          <p class="text-sm text-ink-600 leading-loose">
+            ایجاد لایه با اجرای پرس‌وجو مستقیم روی پایگاه‌داده‌های PostgreSQL، SQL Server و MySQL.
+          </p>
+        </div>
+        <div class="module-card bg-white border border-ink-900/10 p-6">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center mb-4 chapter-num font-bold">۵</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">وب‌سرویس</h4>
+          <p class="text-sm text-ink-600 leading-loose">
+            افزودن لایه از طریق سرویس‌های GeoServer که قبلاً در بخش تنظیمات معرفی شده‌اند.
+          </p>
+        </div>
+        <div class="module-card bg-ink-900 text-sand-100 p-6 flex flex-col justify-center">
+          <div class="text-[10px] tracking-widest text-accent-light uppercase mb-2">فرمت‌های پشتیبانی</div>
+          <div class="font-mono text-xs text-sand-200 space-y-1">
+            <div>.SHP · .KML · .KMZ</div>
+            <div>.JSON · .DXF · ...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsection: Layer styling (SVG) -->
+    <div class="reveal mt-24">
+      <div class="flex items-baseline gap-4 mb-8">
+        <span class="chapter-num text-accent font-bold">۳.۲</span>
+        <h3 class="font-display text-2xl md:text-3xl">چهار لایه‌ی تنظیم ظاهر</h3>
+      </div>
+
+      <p class="text-ink-700 leading-loose mb-10 max-w-4xl">
+        هنگام افزودن هر لایه، ظاهر بصری آن در سه مرحله جداگانه تنظیم می‌شود: مشخصات لایه، تنظیمات ظاهری (پایه و لیبل) و اقلام توصیفی. این تفکیک، امکان بازاستفاده قالب‌ها و دقت در کنترل استایل را فراهم می‌کند.
+      </p>
+
+      <!-- Layer Stacking SVG -->
+      <div class="relative bg-white border border-ink-900/10 p-8 md:p-12">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-6">
+            <div class="flex items-start gap-4 reveal reveal-delay-1">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink-900 text-sand-100 flex items-center justify-center chapter-num text-sm font-bold">۱</div>
+              <div>
+                <h4 class="font-bold text-ink-900 mb-1">مشخصات لایه</h4>
+                <p class="text-sm text-ink-600 leading-loose">تعریف نوع لایه، گروه هدف و منبع داده.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 reveal reveal-delay-2">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink-900 text-sand-100 flex items-center justify-center chapter-num text-sm font-bold">۲</div>
+              <div>
+                <h4 class="font-bold text-ink-900 mb-1">تنظیمات پایه</h4>
+                <p class="text-sm text-ink-600 leading-loose">مقیاس نمایش، رنگ هاشور، رنگ پس‌زمینه، الگوی لبه، ضخامت و رنگ خطوط.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 reveal reveal-delay-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink-900 text-sand-100 flex items-center justify-center chapter-num text-sm font-bold">۳</div>
+              <div>
+                <h4 class="font-bold text-ink-900 mb-1">تنظیمات لیبل</h4>
+                <p class="text-sm text-ink-600 leading-loose">فونت، قالب، رنگ، ضخامت، مقیاس نمایش، اندازه و هاله اطراف برچسب.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 reveal reveal-delay-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-ink-900 text-sand-100 flex items-center justify-center chapter-num text-sm font-bold">۴</div>
+              <div>
+                <h4 class="font-bold text-ink-900 mb-1">اقلام توصیفی و استایل شرطی</h4>
+                <p class="text-sm text-ink-600 leading-loose">مشاهده و ویرایش فیلدها، تنظیم لیبل مستقل برای هر فیلد و ظاهر شرطی بر اساس مقدار فیلدها.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SVG: Layer Stack -->
+          <div class="layer-stack">
+            <svg viewBox="0 0 400 400" class="w-full h-auto" aria-label="نمایش چهار لایه پشته‌ای تنظیم ظاهر">
+              <defs>
+                <linearGradient id="ls1" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#C78A4E" stop-opacity="0.85"/>
+                  <stop offset="100%" stop-color="#8F5F2F" stop-opacity="0.85"/>
+                </linearGradient>
+                <linearGradient id="ls2" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#2E7A8C" stop-opacity="0.85"/>
+                  <stop offset="100%" stop-color="#1A4D5C" stop-opacity="0.85"/>
+                </linearGradient>
+                <linearGradient id="ls3" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#0F2A44" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#163A5F" stop-opacity="0.9"/>
+                </linearGradient>
+                <linearGradient id="ls4" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#E6DFCE"/>
+                  <stop offset="100%" stop-color="#D4C9AE"/>
+                </linearGradient>
+              </defs>
+
+              <g class="l-4">
+                <polygon points="100,300 300,300 340,330 140,330" fill="url(#ls4)" stroke="#0F2A44" stroke-opacity="0.3"/>
+                <text x="120" y="322" font-size="12" fill="#0B1E2D" font-weight="600">اقلام توصیفی</text>
+              </g>
+              <g class="l-3">
+                <polygon points="100,240 300,240 340,270 140,270" fill="url(#ls3)" stroke="#0B1E2D" stroke-opacity="0.4"/>
+                <text x="120" y="262" font-size="12" fill="#FAF7F1" font-weight="600">تنظیمات لیبل</text>
+              </g>
+              <g class="l-2">
+                <polygon points="100,180 300,180 340,210 140,210" fill="url(#ls2)" stroke="#0B1E2D" stroke-opacity="0.4"/>
+                <text x="120" y="202" font-size="12" fill="#FAF7F1" font-weight="600">تنظیمات پایه</text>
+              </g>
+              <g class="l-1">
+                <polygon points="100,120 300,120 340,150 140,150" fill="url(#ls1)" stroke="#0B1E2D" stroke-opacity="0.4"/>
+                <text x="120" y="142" font-size="12" fill="#FAF7F1" font-weight="600">مشخصات لایه</text>
+              </g>
+
+              <!-- Connecting line -->
+              <line x1="80" y1="120" x2="80" y2="330" stroke="#0F2A44" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
+              <circle cx="80" cy="120" r="3" fill="#C78A4E"/>
+              <circle cx="80" cy="330" r="3" fill="#C78A4E"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsection: Catalog and Styling -->
+    <div class="reveal mt-24 grid lg:grid-cols-2 gap-10">
+      <div>
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="chapter-num text-accent font-bold">۳.۳</span>
+          <h3 class="font-display text-2xl">کاتالوگ و استایل لایه</h3>
+        </div>
+        <p class="text-ink-700 leading-loose mb-4">
+          کاتالوگ لایه‌ها مجموعه‌ای از قالب‌های آماده برای ظاهر و لیبل است که یک‌بار تعریف می‌شود و در لایه‌های مختلف قابل بازاستفاده است. این رویکرد، یکپارچگی بصری نقشه‌ها را در سازمان تضمین می‌کند و زمان راه‌اندازی لایه‌های جدید را کاهش می‌دهد.
+        </p>
+        <p class="text-ink-700 leading-loose">
+          علاوه بر قالب‌های گرافیکی، امکان بارگذاری مستقیم فایل <span class="font-bold">SLD</span> یا نوشتن کد SLD در ویرایشگر داخلی نیز وجود دارد — گزینه‌ای که برای کارشناسان GIS حرفه‌ای مناسب است.
+        </p>
+      </div>
+
+      <div>
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="chapter-num text-accent font-bold">۳.۴</span>
+          <h3 class="font-display text-2xl">ابزارهای پیشرفته لایه</h3>
+        </div>
+        <ul class="space-y-3 text-ink-700">
+          <li class="flex gap-3 leading-loose">
+            <span class="text-accent flex-shrink-0">▸</span>
+            <span><span class="font-bold text-ink-900">تبدیل هندسی:</span> تبدیل Polygon به Point / LineString / MultiPolygon، و تبدیلات مشابه برای انواع دیگر.</span>
+          </li>
+          <li class="flex gap-3 leading-loose">
+            <span class="text-accent flex-shrink-0">▸</span>
+            <span><span class="font-bold text-ink-900">ابزار توپولوژی:</span> بررسی برخورد عارضه‌ها، Overlap و کد نوسازی و نمایش خطاهای کشف‌شده روی نقشه.</span>
+          </li>
+          <li class="flex gap-3 leading-loose">
+            <span class="text-accent flex-shrink-0">▸</span>
+            <span><span class="font-bold text-ink-900">ترکیب لایه‌ها:</span> ادغام دو یا چند لایه و تولید لایه جدید.</span>
+          </li>
+          <li class="flex gap-3 leading-loose">
+            <span class="text-accent flex-shrink-0">▸</span>
+            <span><span class="font-bold text-ink-900">خروجی لایه:</span> دانلود لایه در فرمت‌های SHP، KML، KMZ و JSON.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 4 — FEATURE MODULE
+     ========================================================= -->
+<section id="ch4" data-chapter="4" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۰۴</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">ماژول عارضه</h2>
+          <p class="text-ink-600 leading-loose text-sm">
+            عارضه، واحد بنیادین داده مکانی است. در ژئونیک، ابزارهای ترسیم و ویرایش عارضه در یک پنل شناور یکپارچه شده‌اند.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-8 reveal">
+        <p class="text-2xl leading-loose text-ink-800 font-light">
+          عارضه‌ها — نقاط، خطوط و چندضلعی‌ها — اجزای سازنده هر نقشه هستند. ابزار عارضه در ژئونیک، تمام عملیات هندسی رایج را در یک پنل قابل حرکت ارائه می‌دهد.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          این پنل در صفحه قابل جابه‌جایی است تا تداخلی با نقشه نداشته باشد. ابزارهای ترسیم، ویرایش، جابه‌جایی، ایجاد چاله (Hole) درون چندضلعی‌ها، چرخش و تغییر مقیاس، و همچنین ترسیم از طریق ورود مختصات دستی، همگی در دسترس کاربرند.
+        </p>
+
+        <figure class="product-shot bg-white border border-ink-900/10 overflow-hidden" data-slot="feature-panel">
+          <div class="aspect-[16/9] bg-gradient-to-br from-teal-700/10 to-ink-900/5 flex items-center justify-center p-8">
+            <div class="text-center">
+              <svg class="w-16 h-16 mx-auto text-ink-800/30 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <polygon points="12,2 22,8 22,16 12,22 2,16 2,8"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <div class="text-xs text-ink-600/60 tracking-widest uppercase">تصویر موردنیاز</div>
+              <div class="text-sm text-ink-700 mt-2 max-w-md mx-auto">نمای پنل ابزار عارضه با دکمه‌های ترسیم، ویرایش، جابه‌جایی، چاله و چرخش</div>
+            </div>
+          </div>
+          <figcaption class="px-6 py-4 text-xs text-ink-600 border-t border-ink-900/10">
+            تصویر موردنیاز: نمای پنل شناور ابزار عارضه روی نقشه
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Feature tools -->
+    <div class="reveal">
+      <h3 class="font-display text-2xl mb-8">شش ابزار اصلی ویرایش عارضه</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="text-accent text-xs tracking-widest uppercase mb-3">ابزار</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">ترسیم</h4>
+          <p class="text-sm text-ink-600 leading-loose">ترسیم عارضه روی نقشه. در لایه‌های از نوع Multi، ترسیم چند عارضه مجاز است؛ در غیر این صورت، ترسیم بیشتر از یک عارضه با خطا مواجه می‌شود.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="text-accent text-xs tracking-widest uppercase mb-3">ابزار</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">ویرایش نقاط</h4>
+          <p class="text-sm text-ink-600 leading-loose">افزودن، حذف یا جابه‌جایی رئوس عارضه و تنظیم طول اضلاع به مقدار دلخواه.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="text-accent text-xs tracking-widest uppercase mb-3">ابزار</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">جابه‌جایی</h4>
+          <p class="text-sm text-ink-600 leading-loose">انتقال کل عارضه بدون تغییر در هندسه داخلی آن.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="text-accent text-xs tracking-widest uppercase mb-3">ابزار</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">ترسیم چاله</h4>
+          <p class="text-sm text-ink-600 leading-loose">ایجاد حفره (Hole) درون عارضه‌های چندضلعی برای نمایش فضاهای داخلی خالی.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="text-accent text-xs tracking-widest uppercase mb-3">ابزار</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">چرخش و بزرگ‌نمایی</h4>
+          <p class="text-sm text-ink-600 leading-loose">چرخش عارضه حول محور و تغییر مقیاس (Scale) آن.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="text-accent text-xs tracking-widest uppercase mb-3">ابزار</div>
+          <h4 class="font-bold text-ink-900 text-lg mb-2">ترسیم با مختصات</h4>
+          <p class="text-sm text-ink-600 leading-loose">ورود دستی رئوس به صورت UTM یا DD و مشاهده، افزودن، ویرایش یا حذف نقاط پس از ترسیم.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 5 — SEARCH MODULE
+     ========================================================= -->
+<section id="ch5" data-chapter="5" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-teal-900 text-sand-100">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent-light text-sm tracking-widest uppercase mb-4">فصل ۰۵</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">
+            جستجوی مکانی؛ از مختصات تا صدا
+          </h2>
+          <p class="text-sand-200/80 leading-loose text-sm">
+            یافتن سریع یک عارضه در میان هزاران رکورد، یکی از پرتکرارترین عملیات‌ها در یک سامانه GIS است.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-xl leading-loose text-sand-100 font-light">
+          ماژول جستجو در ژئونیک، دو روش اصلی را در اختیار کاربر قرار می‌دهد: <span class="text-accent-light font-bold">جستجوی ترسیمی</span> و <span class="text-accent-light font-bold">جستجوی توصیفی</span>. هر دو روش به نتایجی منجر می‌شوند که می‌توانند کپی، جابه‌جا یا حذف شوند.
+        </p>
+
+        <p class="leading-loose text-sand-200/90">
+          در جستجوی ترسیمی، کاربر می‌تواند محدوده موردنظر خود را با ابزارهای مختلف ترسیم کند — نقطه، خط، دایره، باکس یا چندضلعی — و در صورت ترسیم خط یا نقطه، می‌تواند بافر (Buffer) نیز تعریف کند تا عارضه‌های اطراف آن محدوده نیز یافت شوند. جستجو بر اساس مختصات UTM یا DD نیز در همین بخش امکان‌پذیر است.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive SVG: Search polygon -->
+    <div class="reveal mt-16">
+      <div class="bg-ink-800/50 border border-sand-100/10 p-6 md:p-10">
+        <div class="flex items-baseline gap-4 mb-6">
+          <span class="chapter-num text-accent-light font-bold">۵.۱</span>
+          <h3 class="font-display text-2xl">نمایش تعاملی: جستجو با چندضلعی</h3>
+        </div>
+        <p class="text-sand-200/80 text-sm mb-6 leading-loose">
+          در این نمونه تعاملی، روی هر عارضه کلیک کنید تا وضعیت انتخاب آن تغییر کند. این رفتار مشابه عملیاتی است که کاربر در محیط ژئونیک هنگام انتخاب عارضه‌های یافت‌شده تجربه می‌کند.
+        </p>
+
+        <div class="bg-ink-900 border border-sand-100/10 rounded-sm p-4">
+          <svg id="searchSvg" viewBox="0 0 600 360" class="w-full h-auto" aria-label="نقشه تعاملی با عارضه‌های قابل انتخاب">
+            <!-- Base grid -->
+            <defs>
+              <pattern id="searchGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2E7A8C" stroke-opacity="0.1" stroke-width="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="600" height="360" fill="url(#searchGrid)"/>
+
+            <!-- Search polygon (query boundary) -->
+            <polygon points="120,80 420,60 500,200 380,300 140,260"
+                     fill="#C78A4E" fill-opacity="0.15"
+                     stroke="#C78A4E" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+            <!-- Feature polygons -->
+            <g id="searchFeatures">
+              <polygon class="search-feat" data-id="f1"
+                       points="180,120 250,110 270,170 200,180"
+                       fill="#6DAFBF" fill-opacity="0.5" stroke="#6DAFBF" stroke-width="1" cursor="pointer"/>
+              <polygon class="search-feat" data-id="f2"
+                       points="300,140 380,130 400,190 320,200"
+                       fill="#6DAFBF" fill-opacity="0.5" stroke="#6DAFBF" stroke-width="1" cursor="pointer"/>
+              <polygon class="search-feat" data-id="f3"
+                       points="200,220 280,210 300,270 220,280"
+                       fill="#6DAFBF" fill-opacity="0.5" stroke="#6DAFBF" stroke-width="1" cursor="pointer"/>
+              <polygon class="search-feat" data-id="f4"
+                       points="350,220 430,210 450,270 370,280"
+                       fill="#6DAFBF" fill-opacity="0.5" stroke="#6DAFBF" stroke-width="1" cursor="pointer"/>
+              <!-- Feature outside polygon -->
+              <polygon class="search-feat" data-id="f5"
+                       points="50,40 100,35 110,80 60,85"
+                       fill="#6DAFBF" fill-opacity="0.2" stroke="#6DAFBF" stroke-width="0.7" cursor="pointer" stroke-dasharray="2 2"/>
+            </g>
+
+            <!-- Legend -->
+            <g transform="translate(10, 310)">
+              <rect x="0" y="0" width="10" height="10" fill="#C78A4E" fill-opacity="0.3" stroke="#C78A4E"/>
+              <text x="16" y="9" font-size="10" fill="#F2ECE0">محدوده جستجو</text>
+              <rect x="110" y="0" width="10" height="10" fill="#6DAFBF" fill-opacity="0.5" stroke="#6DAFBF"/>
+              <text x="126" y="9" font-size="10" fill="#F2ECE0">عارضه انتخاب‌شده (کلیک کنید)</text>
+            </g>
+          </svg>
+          <div id="searchCounter" class="mt-4 text-xs text-sand-200/70 chapter-num">
+            عارضه‌های انتخاب‌شده: <span id="searchCount" class="text-accent-light font-bold">0</span> از <span class="text-sand-100">4</span> (عارضه پنجم خارج از محدوده جستجوست)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search subsections -->
+    <div class="grid md:grid-cols-2 gap-8 mt-20 reveal">
+      <div>
+        <h4 class="font-display text-xl mb-4 text-sand-50">جستجوی توصیفی</h4>
+        <p class="text-sand-200/90 leading-loose text-sm">
+          در این روش، کاربر شرط‌های ساده یا تودرتو بر اساس اقلام توصیفی عارضه‌ها تعریف می‌کند. برای مثال می‌تواند تمام عارضه‌هایی را بیابد که فیلد «کاربری» آن‌ها «مسکونی» و فیلد «مساحت» آن‌ها بیشتر از ۲۰۰ متر مربع است.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-display text-xl mb-4 text-sand-50">جستجوی صوتی</h4>
+        <p class="text-sand-200/90 leading-loose text-sm">
+          ژئونیک امکان جستجوی عارضه از طریق ضبط صدا را نیز فراهم کرده است. کاربر با گفتن کد عارضه، می‌تواند به‌صورت صوتی آن را روی نقشه پیدا کند — گزینه‌ای مفید در محیط‌های عملیاتی که دست کاربر آزاد نیست.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal">
+      <h4 class="font-display text-xl mb-4 text-sand-50">کلاسترینگ</h4>
+      <p class="text-sand-200/90 leading-loose">
+        هنگامی که نتیجه جستجو شامل تعداد زیادی عارضه است، ژئونیک امکان نمایش آن‌ها به صورت خوشه‌بندی‌شده (Cluster) را نیز ارائه می‌دهد تا نقشه خوانا بماند و تراکم عارضه‌ها در هر منطقه به‌صورت بصری درک شود.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 6 — ANALYSIS MODULE
+     ========================================================= -->
+<section id="ch6" data-chapter="6" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۰۶</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">ماژول آنالیز</h2>
+          <p class="text-ink-600 leading-loose text-sm">
+            تحلیل فضایی، نقطه‌ای است که داده مکانی به اطلاعات قابل‌تصمیم‌گیری تبدیل می‌شود.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-2xl leading-loose text-ink-800 font-light">
+          ماژول آنالیز در ژئونیک به کاربر اجازه می‌دهد <span class="font-bold text-ink-900">مدل‌های پردازشی</span> تعریف کند؛ مدل‌هایی که ترکیبی از عملیات‌های مکانی و فیلترها را در یک گردش کار تکرارپذیر قرار می‌دهند.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          مجموعه‌ای شامل حدود <span class="font-bold">۶۰ عملیات پردازشی</span> در اختیار کاربر است: از محاسبه مساحت، محدوده عارضه، مرکز هندسی، بافر و تراکم گرفته تا عملیات‌های پیچیده‌تر مانند «تداخل عارضه‌ها»، «اختلاف عوارض» و بررسی روابط مکانی بین لایه‌ها.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          ورودی هر مدل می‌تواند یکی از سه حالت باشد: عارضه‌های یک لایه خاص (با امکان اعمال فیلترهای توصیفی، هندسی یا انتخاب دستی)، خروجی یک مدل دیگر، یا داده‌های دریافتی از طریق API در زمان اجرای مدل.
+        </p>
+      </div>
+    </div>
+
+    <!-- Analysis Flow SVG -->
+    <div class="reveal mt-16">
+      <div class="bg-white border border-ink-900/10 p-6 md:p-10">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="chapter-num text-accent font-bold">۶.۱</span>
+          <h3 class="font-display text-2xl">گردش کار یک مدل آنالیز</h3>
+        </div>
+
+        <svg viewBox="0 0 800 280" class="w-full h-auto" aria-label="گردش کار مدل آنالیز از ورودی تا خروجی">
+          <!-- Nodes -->
+          <g>
+            <!-- Input 1 -->
+            <rect x="30" y="100" width="130" height="80" rx="4" fill="#FAF7F1" stroke="#0F2A44" stroke-width="1"/>
+            <text x="95" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1E2D">ورودی</text>
+            <text x="95" y="155" text-anchor="middle" font-size="10" fill="#0F2A44">لایه / API</text>
+            <text x="95" y="170" text-anchor="middle" font-size="10" fill="#0F2A44">/ مدل دیگر</text>
+
+            <!-- Filter -->
+            <rect x="210" y="100" width="130" height="80" rx="4" fill="#E6DFCE" stroke="#0F2A44" stroke-width="1"/>
+            <text x="275" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1E2D">فیلتر</text>
+            <text x="275" y="155" text-anchor="middle" font-size="10" fill="#0F2A44">توصیفی / هندسی</text>
+            <text x="275" y="170" text-anchor="middle" font-size="10" fill="#0F2A44">/ انتخاب روی نقشه</text>
+
+            <!-- Process -->
+            <rect x="390" y="100" width="130" height="80" rx="4" fill="#C78A4E" stroke="#8F5F2F" stroke-width="1"/>
+            <text x="455" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="#FAF7F1">پردازش</text>
+            <text x="455" y="155" text-anchor="middle" font-size="10" fill="#FAF7F1">~ ۶۰ عملیات</text>
+            <text x="455" y="170" text-anchor="middle" font-size="10" fill="#FAF7F1">مکانی</text>
+
+            <!-- Output -->
+            <rect x="570" y="100" width="200" height="80" rx="4" fill="#1A4D5C" stroke="#0E3A3F" stroke-width="1"/>
+            <text x="670" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="#F2ECE0">خروجی</text>
+            <text x="670" y="150" text-anchor="middle" font-size="10" fill="#F2ECE0">نمایش در نقشه · جدول</text>
+            <text x="670" y="165" text-anchor="middle" font-size="10" fill="#F2ECE0">فایل · وب‌سرویس</text>
+            <text x="670" y="180" text-anchor="middle" font-size="10" fill="#F2ECE0">/ ورودی مدل بعدی</text>
+          </g>
+
+          <!-- Arrows -->
+          <g stroke="#0F2A44" stroke-width="1.5" fill="none">
+            <path d="M 160 140 L 210 140" marker-end="url(#arrowA)"/>
+            <path d="M 340 140 L 390 140" marker-end="url(#arrowA)"/>
+            <path d="M 520 140 L 570 140" marker-end="url(#arrowA)"/>
+          </g>
+          <defs>
+            <marker id="arrowA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#0F2A44"/>
+            </marker>
+          </defs>
+
+          <!-- Caption -->
+          <text x="400" y="250" text-anchor="middle" font-size="11" fill="#0F2A44" opacity="0.7">
+            مدل‌ها قابل ذخیره، گروه‌بندی و انتشار به صورت وب‌سرویس برای استفاده در سامانه‌های خارجی هستند
+          </text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal">
+      <p class="text-ink-700 leading-loose">
+        مدل‌های ساخته‌شده در ماژول آنالیز قابل گروه‌بندی‌اند و می‌توان آن‌ها را به‌صورت وب‌سرویس منتشر کرد تا سایر سامانه‌های سازمان نیز بتوانند بدون نیاز به باز کردن ژئونیک، از آن تحلیل‌ها استفاده کنند. این ویژگی، ژئونیک را از یک ابزار تحلیل، به یک پلتفرم ارائه خدمت مکانی تبدیل می‌کند.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 7 — ASSESSMENT MODULE
+     ========================================================= -->
+<section id="ch7" data-chapter="7" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۰۷</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">ماژول ممیزی</h2>
+          <p class="text-ink-600 leading-loose text-sm">
+            ممیزی املاک، یکی از پیچیده‌ترین فرآیندهای اطلاعاتی در شهرداری‌ها و ادارات ثبت است.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-2xl leading-loose text-ink-800 font-light">
+          ماژول ممیزی در ژئونیک، فرآیند ثبت و تکمیل اطلاعات ملک را به یک گردش کار سلسله‌مراتبی تبدیل می‌کند: از <span class="font-bold">عرصه</span> به <span class="font-bold">ساختمان</span>، از ساختمان به <span class="font-bold">طبقات</span> و از طبقات به <span class="font-bold">واحدهای مستقل و شغلی</span>.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          هر مرحله از این فرآیند دارای فرم‌های اختصاصی، ابزارهای ترسیم، محاسبه خودکار مقادیر (مساحت، زیربنا، پیشامدگی، سهم‌العرصه) و آرشیو تصاویر مربوطه است. صفحه ممیزی به گونه‌ای طراحی شده که همزمان نقشه و فرم را نمایش دهد و امکان بزرگ‌نمایی هر کدام به‌صورت مستقل وجود داشته باشد.
+        </p>
+      </div>
+    </div>
+
+    <!-- Assessment Flow SVG -->
+    <div class="reveal mt-16">
+      <div class="bg-white border border-ink-900/10 p-6 md:p-10">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="chapter-num text-accent font-bold">۷.۱</span>
+          <h3 class="font-display text-2xl">سلسله‌مراتب ممیزی ملک</h3>
+        </div>
+
+        <svg viewBox="0 0 800 340" class="w-full h-auto" aria-label="گردش کار ممیزی ملک از عرصه تا واحد">
+          <!-- Steps -->
+          <g>
+            <!-- Step 1: Aresah -->
+            <g transform="translate(40, 40)">
+              <rect width="120" height="140" fill="#FAF7F1" stroke="#0F2A44"/>
+              <text x="60" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0B1E2D">عرصه</text>
+              <text x="60" y="60" text-anchor="middle" font-size="9" fill="#0F2A44">· ترسیم</text>
+              <text x="60" y="75" text-anchor="middle" font-size="9" fill="#0F2A44">· اضلاع و معابر</text>
+              <text x="60" y="90" text-anchor="middle" font-size="9" fill="#0F2A44">· درب‌ها و حصار</text>
+              <text x="60" y="105" text-anchor="middle" font-size="9" fill="#0F2A44">· آدرس و مالک</text>
+              <text x="60" y="125" text-anchor="middle" font-size="10" fill="#C78A4E" font-weight="700">شروع</text>
+            </g>
+
+            <!-- Step 2: Building -->
+            <g transform="translate(190, 40)">
+              <rect width="120" height="140" fill="#FAF7F1" stroke="#0F2A44"/>
+              <text x="60" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0B1E2D">ساختمان</text>
+              <text x="60" y="60" text-anchor="middle" font-size="9" fill="#0F2A44">· سقف و زیربنا</text>
+              <text x="60" y="75" text-anchor="middle" font-size="9" fill="#0F2A44">· پیشامدگی</text>
+              <text x="60" y="90" text-anchor="middle" font-size="9" fill="#0F2A44">· راه‌پله و آسانسور</text>
+              <text x="60" y="105" text-anchor="middle" font-size="9" fill="#0F2A44">· آرشیو تصاویر</text>
+            </g>
+
+            <!-- Step 3: Floors -->
+            <g transform="translate(340, 40)">
+              <rect width="120" height="140" fill="#FAF7F1" stroke="#0F2A44"/>
+              <text x="60" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0B1E2D">طبقات</text>
+              <text x="60" y="60" text-anchor="middle" font-size="9" fill="#0F2A44">· مساحت طبقه</text>
+              <text x="60" y="75" text-anchor="middle" font-size="9" fill="#0F2A44">· راهرو/پارکینگ/انباری</text>
+              <text x="60" y="90" text-anchor="middle" font-size="9" fill="#0F2A44">· کاربری‌های اشتراکی</text>
+              <text x="60" y="105" text-anchor="middle" font-size="9" fill="#0F2A44">· موثر در تعداد واحد</text>
+            </g>
+
+            <!-- Step 4: Units -->
+            <g transform="translate(490, 40)">
+              <rect width="120" height="140" fill="#1A4D5C" stroke="#0E3A3F"/>
+              <text x="60" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#F2ECE0">واحد مستقل</text>
+              <text x="60" y="60" text-anchor="middle" font-size="9" fill="#F2ECE0">· اطلاعات پایه</text>
+              <text x="60" y="75" text-anchor="middle" font-size="9" fill="#F2ECE0">· مشخصات ثبتی</text>
+              <text x="60" y="90" text-anchor="middle" font-size="9" fill="#F2ECE0">· تاسیسات و اشتراکات</text>
+              <text x="60" y="105" text-anchor="middle" font-size="9" fill="#F2ECE0">· سهم‌العرصه</text>
+            </g>
+
+            <!-- Step 5: Commercial -->
+            <g transform="translate(640, 40)">
+              <rect width="120" height="140" fill="#C78A4E" stroke="#8F5F2F"/>
+              <text x="60" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#FAF7F1">واحد شغلی</text>
+              <text x="60" y="60" text-anchor="middle" font-size="9" fill="#FAF7F1">· اطلاعات مکان شغل</text>
+              <text x="60" y="75" text-anchor="middle" font-size="9" fill="#FAF7F1">· رده و نام شغل</text>
+              <text x="60" y="90" text-anchor="middle" font-size="9" fill="#FAF7F1">· تابلو و اشخاص</text>
+              <text x="60" y="105" text-anchor="middle" font-size="9" fill="#FAF7F1">· پروانه و مرجع</text>
+            </g>
+          </g>
+
+          <!-- Arrows -->
+          <g stroke="#0F2A44" stroke-width="1.5" fill="none">
+            <path d="M 160 110 L 190 110" marker-end="url(#arrowB)"/>
+            <path d="M 310 110 L 340 110" marker-end="url(#arrowB)"/>
+            <path d="M 460 110 L 490 110" marker-end="url(#arrowB)"/>
+            <path d="M 610 110 L 640 110" marker-end="url(#arrowB)"/>
+          </g>
+          <defs>
+            <marker id="arrowB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#0F2A44"/>
+            </marker>
+          </defs>
+
+          <!-- Kartabel -->
+          <g transform="translate(40, 240)">
+            <rect width="720" height="60" fill="#0F2A44"/>
+            <text x="360" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#F2ECE0">کارتابل ممیزی</text>
+            <text x="360" y="45" text-anchor="middle" font-size="10" fill="#E3B480">مدیریت · کنترلر · ممیزکار — هر نقش، کارتابل اختصاصی خود را دارد</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mt-20 reveal">
+      <div>
+        <h4 class="font-display text-xl mb-4 text-ink-900">محاسبات خودکار</h4>
+        <p class="text-ink-700 leading-loose text-sm">
+          در طول فرآیند ممیزی، بسیاری از مقادیر به‌صورت خودکار محاسبه می‌شوند: مساحت عرصه پس از ترسیم، طول اضلاع و شناسایی معبر مجاور، مساحت سقف و زیربنای ساختمان، جهت پیشامدگی، مساحت پیشامدگی، سهم‌العرصه واحدها و غیره. این محاسبات، خطای انسانی در ثبت را کاهش و سرعت ممیزی را افزایش می‌دهند.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-display text-xl mb-4 text-ink-900">نمای سه‌بعدی و پانوراما</h4>
+        <p class="text-ink-700 leading-loose text-sm">
+          در صفحه ممیزی، امکان مشاهده نمای سه‌بعدی و تصاویر پانورامای ۳۶۰ درجه محل ملک نیز فراهم شده است تا ممیزکار بتواند بدون حضور فیزیکی، درک بهتری از موقعیت ملک پیدا کند.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 8 — 3D & PANORAMA
+     ========================================================= -->
+<section id="ch8" data-chapter="8" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-ink-800 text-sand-100">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent-light text-sm tracking-widest uppercase mb-4">فصل ۰۸</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">سه‌بعدی و پانوراما</h2>
+          <p class="text-sand-200/80 leading-loose text-sm">
+            نمایش داده‌های مکانی در بُعد سوم و تصویربرداری ۳۶۰ درجه، درک فضایی از شهر را ممکن می‌سازد.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-2xl leading-loose text-sand-100 font-light">
+          ماژول سه‌بعدی ژئونیک، لایه‌های دوبعدی موجود را به محیطی کاملاً سه‌بعدی تبدیل می‌کند که تحت وب و بدون نیاز به سخت‌افزار اختصاصی، روی مرورگرهای موبایل و دسکتاپ قابل مشاهده است.
+        </p>
+
+        <p class="leading-loose text-sand-200/90">
+          برای این کار، مدل‌های سه‌بعدی شهر به تایل‌های (Tile) سه‌بعدی تبدیل می‌شوند تا سرعت بارگذاری بالا باشد. علاوه بر مدل‌های از پیش ساخته‌شده، ژئونیک امکان تولید لایه سه‌بعدی از لایه‌های دوبعدی را نیز فراهم کرده است.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-10 reveal">
+      <div class="bg-ink-900/50 border border-sand-100/10 p-6">
+        <h4 class="font-bold text-sand-50 mb-3">لایه سه‌بعدی ملک</h4>
+        <p class="text-sand-200/85 text-sm leading-loose">
+          با افزودن یک فیلد ارتفاع به اقلام توصیفی لایه دوبعدی املاک، می‌توان لایه‌ای کاملاً سه‌بعدی ایجاد کرد. رنگ هر ملک نیز می‌تواند بر اساس شرط‌های کاربر روی مقدار فیلدها تعیین شود.
+        </p>
+      </div>
+      <div class="bg-ink-900/50 border border-sand-100/10 p-6">
+        <h4 class="font-bold text-sand-50 mb-3">آبجکت‌های نقطه‌ای سه‌بعدی</h4>
+        <p class="text-sand-200/85 text-sm leading-loose">
+          برای لایه‌های نقطه‌ای مانند درخت‌ها، تیرهای برق یا نیمکت‌ها، می‌توان یک آبجکت سه‌بعدی از پیش تعریف‌شده را به‌عنوان نماد انتخاب کرد تا در محیط سه‌بعدی نمایش داده شود.
+        </p>
+      </div>
+      <div class="bg-ink-900/50 border border-sand-100/10 p-6">
+        <h4 class="font-bold text-sand-50 mb-3">اندازه‌گیری</h4>
+        <p class="text-sand-200/85 text-sm leading-loose">
+          ابزارهای اندازه‌گیری مساحت سطوح سه‌بعدی (مانند سقف یا پیشامدگی) و طول سطوح در اختیار کاربر قرار دارد.
+        </p>
+      </div>
+      <div class="bg-ink-900/50 border border-sand-100/10 p-6">
+        <h4 class="font-bold text-sand-50 mb-3">موقعیت‌یاب تعاملی</h4>
+        <p class="text-sand-200/85 text-sm leading-loose">
+          با حرکت موس روی نقشه سه‌بعدی، مختصات و ارتفاع نقطه زیر نشانگر به‌صورت آنی نمایش داده می‌شود. کلیک روی آبجکت‌های سه‌بعدی نیز جدول اقلام توصیفی آن‌ها را نشان می‌دهد.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal">
+      <div class="flex items-baseline gap-4 mb-6">
+        <span class="chapter-num text-accent-light font-bold">۸.۱</span>
+        <h3 class="font-display text-2xl">ماژول پانوراما (۳۶۰°)</h3>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <p class="text-sand-200/90 leading-loose">
+          تصاویر ۳۶۰ درجه با ثبت موقعیت مکانی‌شان روی نقشه، به منبع قابل‌کاوشی برای مرور میدانی تبدیل می‌شوند. کاربر می‌تواند عکس پانوراما را بارگذاری کند، روی نقشه مکان دقیق ثبت را مشخص کند و سپس آن را با ابزارهای جهت‌نما و نقشه داخل ماژول پیمایش کند.
+        </p>
+        <p class="text-sand-200/90 leading-loose">
+          امکان پیمایش بین عکس‌های مجاور در جهت‌های مختلف نیز در ماژول پانوراما فراهم است؛ گزینه‌ای که برای بررسی مسیرهای میدانی و کنترل وضعیت معابر کاربرد مستقیم دارد.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 9 — PRINT TEMPLATE MODULE
+     ========================================================= -->
+<section id="ch9" data-chapter="9" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۰۹</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">قالب چاپی و گزارش</h2>
+          <p class="text-ink-600 leading-loose text-sm">
+            گزارش‌های ساختاریافته، پل میان داده مکانی و اسناد رسمی سازمان هستند.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-2xl leading-loose text-ink-800 font-light">
+          ماژول قالب چاپی ژئونیک، به کاربر امکان می‌دهد فرم‌ها و گزارش‌های موردنیاز خود را با ترکیب <span class="font-bold">متن، عکس، متغیرها و تصویر نقشه</span> طراحی کند.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          دو مدل اصلی برای قالب وجود دارد: <span class="font-bold">مدل ممیزی</span> که متغیرهای اطلاعات ممیزی را در فرم جایگذاری می‌کند، و <span class="font-bold">مدل نقشه</span> که از بخشی از نقشه همراه با لایه‌های فعال، تصویر تهیه و در فرم قرار می‌دهد.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 reveal">
+      <div class="bg-white border border-ink-900/10 p-6">
+        <div class="text-accent text-[10px] tracking-widest uppercase mb-2">اندازه صفحه</div>
+        <h4 class="font-bold text-ink-900 mb-2">چهار قالب کاغذ</h4>
+        <p class="text-sm text-ink-600 leading-loose">A4 عمودی · A4 افقی · A5 عمودی · A5 افقی</p>
+      </div>
+      <div class="bg-white border border-ink-900/10 p-6">
+        <div class="text-accent text-[10px] tracking-widest uppercase mb-2">متغیرها</div>
+        <h4 class="font-bold text-ink-900 mb-2">جایگذاری خودکار</h4>
+        <p class="text-sm text-ink-600 leading-loose">متغیرهای اطلاعات ممیزی با داده‌های واقعی جایگزین می‌شوند.</p>
+      </div>
+      <div class="bg-white border border-ink-900/10 p-6">
+        <div class="text-accent text-[10px] tracking-widest uppercase mb-2">آرشیو عکس</div>
+        <h4 class="font-bold text-ink-900 mb-2">تصاویر اختصاصی</h4>
+        <p class="text-sm text-ink-600 leading-loose">بارگذاری تصاویر سازمانی برای استفاده در قالب.</p>
+      </div>
+      <div class="bg-white border border-ink-900/10 p-6">
+        <div class="text-accent text-[10px] tracking-widest uppercase mb-2">سربرگ و پاورقی</div>
+        <h4 class="font-bold text-ink-900 mb-2">قالب‌های ترکیبی</h4>
+        <p class="text-sm text-ink-600 leading-loose">قالب‌های کوچک، سربرگ و پاورقی قابل استفاده مجدد در قالب‌های اصلی.</p>
+      </div>
+      <div class="bg-white border border-ink-900/10 p-6">
+        <div class="text-accent text-[10px] tracking-widest uppercase mb-2">کتابخانه قالب</div>
+        <h4 class="font-bold text-ink-900 mb-2">گروه‌بندی</h4>
+        <p class="text-sm text-ink-600 leading-loose">ایجاد گروه، جستجو، پیش‌نمایش با داده تستی.</p>
+      </div>
+      <div class="bg-ink-900 text-sand-100 p-6 flex flex-col justify-center">
+        <div class="text-accent-light text-[10px] tracking-widest uppercase mb-2">خروجی</div>
+        <p class="text-sand-100 leading-loose text-sm">
+          قالب نهایی به‌صورت فرم چاپی با تصاویر نقشه و ملک برای بایگانی یا ارائه رسمی قابل تولید است.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 10 — USERS, ROLES & SECURITY
+     ========================================================= -->
+<section id="ch10" data-chapter="10" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۱۰</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">کاربران، نقش‌ها و امنیت</h2>
+          <p class="text-ink-600 leading-loose text-sm">
+            مدیریت دسترسی در یک سامانه سازمانی، ترکیبی از نقش، مجوز، لاگ و محدودیت‌های شبکه است.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-2xl leading-loose text-ink-800 font-light">
+          در ژئونیک، هر کاربر یک «نقش» دارد و هر نقش مجموعه‌ای از «مجوزها». مجوزها در دو سطح اعمال می‌شوند: دسترسی به <span class="font-bold">لایه‌ها</span> و دسترسی به <span class="font-bold">بخش‌های برنامه</span>.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          نقش‌ها می‌توانند به‌صورت سلسله‌مراتبی تعریف شوند؛ یعنی یک نقش زیرمجموعه نقش دیگر باشد. همچنین می‌توان نقش‌های درون‌برنامه‌ای و نقش‌های خارج‌برنامه‌ای را جداگانه مدیریت کرد.
+        </p>
+      </div>
+    </div>
+
+    <!-- Permissions diagram -->
+    <div class="reveal mt-10">
+      <div class="bg-white border border-ink-900/10 p-6 md:p-10">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="chapter-num text-accent font-bold">۱۰.۱</span>
+          <h3 class="font-display text-2xl">سطوح مجوز</h3>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <div class="bg-sand-100 p-5 border border-ink-900/10 mb-4">
+              <h4 class="font-bold text-ink-900 mb-2">دسترسی به لایه</h4>
+              <p class="text-sm text-ink-700 leading-loose mb-3">
+                برای هر نقش می‌توان چهار نوع دسترسی روی هر لایه تعیین کرد:
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-white border border-ink-900/10 text-xs text-ink-700">مشاهده</span>
+                <span class="px-3 py-1 bg-white border border-ink-900/10 text-xs text-ink-700">ویرایش</span>
+                <span class="px-3 py-1 bg-white border border-ink-900/10 text-xs text-ink-700">حذف</span>
+                <span class="px-3 py-1 bg-white border border-ink-900/10 text-xs text-ink-700">لایه فعال پیش‌فرض</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-sand-100 p-5 border border-ink-900/10 mb-4">
+              <h4 class="font-bold text-ink-900 mb-2">دسترسی به بخش‌های برنامه</h4>
+              <p class="text-sm text-ink-700 leading-loose">
+                می‌توان دسترسی هر نقش به صفحات و ماژول‌های مختلف سامانه را به‌صورت جداگانه تعیین کرد تا هر کاربر تنها بخشی را ببیند که برای نقش او لازم است.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-5 bg-ink-900 text-sand-100">
+          <h4 class="font-bold text-sand-50 mb-2">کانفیگ نقشه پایه به ازای نقش</h4>
+          <p class="text-sm text-sand-200 leading-loose">
+            برای هر نقش می‌توان تنظیمات اختصاصی نقشه مانند مرکز پیش‌فرض، محدوده نمایش، حداقل و حداکثر زوم و دیگر ویژگی‌ها را تعیین کرد. این تنظیمات از سایر نقش‌ها نیز قابل کپی هستند.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security -->
+    <div class="mt-16 reveal">
+      <div class="flex items-baseline gap-4 mb-8">
+        <span class="chapter-num text-accent font-bold">۱۰.۲</span>
+        <h3 class="font-display text-2xl md:text-3xl">لایه‌های امنیتی</h3>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white border border-ink-900/10 p-6">
+          <h4 class="font-bold text-ink-900 mb-2">لاگ فعالیت‌ها</h4>
+          <p class="text-sm text-ink-600 leading-loose">ثبت تمام درخواست‌ها، فایل‌های ارسالی و دریافتی، آی‌پی، تاریخ و مشخصات کاربر.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <h4 class="font-bold text-ink-900 mb-2">مدیریت IP مسدود</h4>
+          <p class="text-sm text-ink-600 leading-loose">تعریف آی‌پی‌های مسدود با امکان تعیین بازه زمانی و آی‌پی خاص مجاز برای هر کاربر.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <h4 class="font-bold text-ink-900 mb-2">کاربران آنلاین</h4>
+          <p class="text-sm text-ink-600 leading-loose">مشاهده کاربران لاگین‌شده، زمان ورود و خروج، و امکان اخراج دستی کاربر.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <h4 class="font-bold text-ink-900 mb-2">محدودیت دستگاه</h4>
+          <p class="text-sm text-ink-600 leading-loose">تعیین تعداد دستگاه‌های مجاز برای هر حساب کاربری.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <h4 class="font-bold text-ink-900 mb-2">پیامک ورود و توافق‌نامه</h4>
+          <p class="text-sm text-ink-600 leading-loose">امکان فعال‌سازی پیامک احراز هویت و نمایش توافق‌نامه در هنگام ورود.</p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <h4 class="font-bold text-ink-900 mb-2">API Keys</h4>
+          <p class="text-sm text-ink-600 leading-loose">صدور کلیدهای API با مدت اعتبار، محدودیت متد و تعداد درخواست، برای کاربران پیشرفته.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 11 — ARCHITECTURE & INTEGRATION
+     ========================================================= -->
+<section id="ch11" data-chapter="11" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-ink-900 text-sand-100">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent-light text-sm tracking-widest uppercase mb-4">فصل ۱۱</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">
+            معماری و یکپارچگی
+          </h2>
+          <p class="text-sand-200/80 leading-loose text-sm">
+            ژئونیک یک جزیره اطلاعاتی نیست؛ یک هاب ارتباطی است.
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-2xl leading-loose text-sand-100 font-light">
+          طراحی ماژولار ژئونیک بر پایه ارتباط از طریق <span class="font-bold text-accent-light">API</span>، به این سامانه این امکان را می‌دهد که با پایگاه‌داده‌های سازمانی، سرویس‌های GeoServer و سامانه‌های خارجی یکپارچه شود.
+        </p>
+        <p class="leading-loose text-sand-200/90">
+          این یکپارچگی، ژئونیک را به هسته‌ای از یک اکوسیستم بزرگ‌تر تبدیل می‌کند که در آن، داده مکانی هم در داخل سامانه مصرف می‌شود و هم به سایر سامانه‌های سازمان ارائه خدمت می‌کند.
+        </p>
+      </div>
+    </div>
+
+    <!-- Architecture SVG (Interactive Hub-and-Spoke) -->
+    <div class="reveal mt-16">
+      <div class="bg-ink-800/50 border border-sand-100/10 p-6 md:p-10">
+        <div class="flex items-baseline gap-4 mb-8">
+          <span class="chapter-num text-accent-light font-bold">۱۱.۱</span>
+          <h3 class="font-display text-2xl">اکوسیستم ژئونیک (تعاملی)</h3>
+        </div>
+        <p class="text-sand-200/80 text-sm mb-6 leading-loose">
+          روی هر گره کلیک کنید تا توضیح اتصال آن نمایش داده شود. این نمودار، منابع ورودی و خروجی سامانه را نشان می‌دهد.
+        </p>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          <svg id="archSvg" viewBox="0 0 500 400" class="w-full h-auto" aria-label="معماری اتصال ژئونیک به منابع خارجی">
+            <!-- Connections -->
+            <g stroke="#C78A4E" stroke-opacity="0.35" stroke-width="1">
+              <line x1="250" y1="200" x2="80" y2="80"/>
+              <line x1="250" y1="200" x2="420" y2="80"/>
+              <line x1="250" y1="200" x2="80" y2="200"/>
+              <line x1="250" y1="200" x2="420" y2="200"/>
+              <line x1="250" y1="200" x2="80" y2="320"/>
+              <line x1="250" y1="200" x2="420" y2="320"/>
+              <line x1="250" y1="200" x2="250" y2="360"/>
+            </g>
+
+            <!-- Core -->
+            <g class="interactive-node" data-info="core">
+              <circle class="node-core" cx="250" cy="200" r="50" fill="#C78A4E"/>
+              <text x="250" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#FAF7F1">ژئونیک</text>
+              <text x="250" y="213" text-anchor="middle" font-size="10" fill="#FAF7F1" opacity="0.85">SDI Core</text>
+            </g>
+
+            <!-- PostgreSQL -->
+            <g class="interactive-node" data-info="pg">
+              <circle class="node-core" cx="80" cy="80" r="32" fill="#1A4D5C" stroke="#6DAFBF"/>
+              <text x="80" y="77" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">PostgreSQL</text>
+              <text x="80" y="90" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">SQLServer · MySQL</text>
+            </g>
+
+            <!-- GeoServer -->
+            <g class="interactive-node" data-info="gs">
+              <circle class="node-core" cx="420" cy="80" r="32" fill="#1A4D5C" stroke="#6DAFBF"/>
+              <text x="420" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#F2ECE0">GeoServer</text>
+            </g>
+
+            <!-- External APIs -->
+            <g class="interactive-node" data-info="api">
+              <circle class="node-core" cx="80" cy="200" r="32" fill="#0F2A44" stroke="#C78A4E"/>
+              <text x="80" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">API</text>
+              <text x="80" y="210" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">سامانه‌های خارجی</text>
+            </g>
+
+            <!-- API Keys -->
+            <g class="interactive-node" data-info="keys">
+              <circle class="node-core" cx="420" cy="200" r="32" fill="#0F2A44" stroke="#C78A4E"/>
+              <text x="420" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">API Keys</text>
+              <text x="420" y="210" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">خروجی مدل‌ها</text>
+            </g>
+
+            <!-- Files -->
+            <g class="interactive-node" data-info="files">
+              <circle class="node-core" cx="80" cy="320" r="32" fill="#0E3A3F" stroke="#E3B480"/>
+              <text x="80" y="317" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">فایل‌ها</text>
+              <text x="80" y="330" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">SHP · KML · DXF ...</text>
+            </g>
+
+            <!-- Croquis -->
+            <g class="interactive-node" data-info="croquis">
+              <circle class="node-core" cx="420" cy="320" r="32" fill="#0E3A3F" stroke="#E3B480"/>
+              <text x="420" y="317" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">کروکی‌ساز</text>
+              <text x="420" y="330" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">سرویس خروجی</text>
+            </g>
+
+            <!-- Tasks -->
+            <g class="interactive-node" data-info="tasks">
+              <circle class="node-core" cx="250" cy="360" r="28" fill="#163A5F" stroke="#6DAFBF"/>
+              <text x="250" y="358" text-anchor="middle" font-size="9" font-weight="700" fill="#F2ECE0">تسک‌ها</text>
+              <text x="250" y="370" text-anchor="middle" font-size="8" fill="#F2ECE0" opacity="0.8">پس‌زمینه</text>
+            </g>
+          </svg>
+
+          <div id="archInfo" class="bg-ink-900 border border-sand-100/10 p-6 min-h-[220px]">
+            <div class="text-[10px] tracking-widest text-accent-light uppercase mb-2">اتصال فعال</div>
+            <h4 id="archTitle" class="font-display text-xl text-sand-50 mb-3">ژئونیک — هسته مرکزی</h4>
+            <p id="archText" class="text-sand-200/90 leading-loose text-sm">
+              هسته سامانه که ماژول‌ها از طریق API با آن ارتباط دارند. این طراحی ماژولار، امکان افزودن یا حذف ماژول‌ها بدون تغییر در ساختار هسته را فراهم می‌کند.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Integration details -->
+    <div class="grid md:grid-cols-2 gap-8 mt-20 reveal">
+      <div>
+        <h4 class="font-display text-xl mb-4 text-sand-50">پایگاه داده‌ها</h4>
+        <p class="text-sand-200/90 leading-loose text-sm">
+          ژئونیک می‌تواند به سه نوع پایگاه داده رابطه‌ای — PostgreSQL، SQL Server و MySQL — متصل شود. از فیلدهای این پایگاه‌داده‌ها می‌توان برای تعریف فیلدهای جدید هنگام ایجاد عارضه یا ایجاد لایه بر اساس پرس‌وجو استفاده کرد.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-display text-xl mb-4 text-sand-50">سرویس‌ها و APIها</h4>
+        <p class="text-sand-200/90 leading-loose text-sm">
+          سرویس‌های GeoServer به‌عنوان منابع لایه و سرویس‌های API سامانه‌های دیگر به‌عنوان ورودی‌های خارجی قابل تعریف‌اند. این اتصال‌ها در یک فهرست متمرکز مدیریت می‌شوند.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-display text-xl mb-4 text-sand-50">تسک‌های پس‌زمینه</h4>
+        <p class="text-sand-200/90 leading-loose text-sm">
+          امور دوره‌ای مانند پشتیبان‌گیری خودکار را می‌توان به‌صورت تک یا دوره‌ای زمان‌بندی کرد تا در ساعت مشخص اجرا شوند.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-display text-xl mb-4 text-sand-50">کروکی‌ساز</h4>
+        <p class="text-sand-200/90 leading-loose text-sm">
+          با تعریف یک مدل، سامانه‌های خارجی می‌توانند اطلاعات یک یا چند عارضه را ارسال و تصویر کروکی آن را با گزینه‌های مختلف نمایش دریافت کنند.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CHAPTER 12 — ORGANIZATIONAL VALUE
+     ========================================================= -->
+<section id="ch12" data-chapter="12" class="chapter-section py-24 lg:py-32 border-t border-ink-900/10 bg-sand-50 paper">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+      <aside class="lg:col-span-4 reveal">
+        <div class="sticky top-28">
+          <div class="text-accent text-sm tracking-widest uppercase mb-4">فصل ۱۲</div>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">جمع‌بندی ارزش سازمانی</h2>
+          <p class="text-ink-600 leading-loose text-sm">
+            ژئونیک را در عمل، چه کسانی و چگونه استفاده می‌کنند؟
+          </p>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-8 space-y-6 reveal">
+        <p class="text-2xl leading-loose text-ink-800 font-light">
+          ژئونیک برای سازمان‌هایی ساخته شده است که داده مکانی را نه یک فایل جانبی، بلکه یک دارایی استراتژیک می‌بینند: <span class="font-bold">شهرداری‌ها، ادارات ثبت، واحدهای شهرسازی، سازمان‌های نقشه‌برداری و ادارات مادر</span>.
+        </p>
+
+        <p class="leading-loose text-ink-700">
+          این سامانه یکپارچگی را در سطوح مختلف سازمان ممکن می‌کند. کارشناس GIS می‌تواند لایه‌ها را مدیریت و تحلیل کند، ممیزکار می‌تواند فرآیند ممیزی را تکمیل کند، مدیر سیستم می‌تواند نقش‌ها، مجوزها و اتصالات را کنترل کند، و مدیر ارشد می‌تواند از طریق گزارش‌ها و قالب‌های چاپی به نتایج دسترسی یابد.
+        </p>
+      </div>
+    </div>
+
+    <!-- Role summary -->
+    <div class="reveal mt-12">
+      <h3 class="font-display text-2xl mb-8">نقش‌های اصلی و استفاده آن‌ها</h3>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-2 h-2 bg-accent"></div>
+            <h4 class="font-bold text-ink-900">کارشناس GIS</h4>
+          </div>
+          <p class="text-sm text-ink-600 leading-loose">
+            مدیریت لایه‌ها، تعریف مدل‌های آنالیز، استفاده از ابزارهای توپولوژی و تبدیل هندسی، و تهیه نقشه‌های موضوعی.
+          </p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-2 h-2 bg-teal-500"></div>
+            <h4 class="font-bold text-ink-900">ممیزکار</h4>
+          </div>
+          <p class="text-sm text-ink-600 leading-loose">
+            تکمیل فرآیند ممیزی ملک، از عرصه تا واحدها، با استفاده از نقشه، تصاویر پانوراما و نمای سه‌بعدی.
+          </p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-2 h-2 bg-ink-900"></div>
+            <h4 class="font-bold text-ink-900">کنترلر</h4>
+          </div>
+          <p class="text-sm text-ink-600 leading-loose">
+            بررسی کارهای انجام‌شده توسط ممیزکاران زیرمجموعه از طریق کارتابل اختصاصی.
+          </p>
+        </div>
+        <div class="bg-white border border-ink-900/10 p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-2 h-2 bg-accent-dark"></div>
+            <h4 class="font-bold text-ink-900">مدیر سیستم</h4>
+          </div>
+          <p class="text-sm text-ink-600 leading-loose">
+            مدیریت کاربران، نقش‌ها، مجوزها، لاگ‌ها، اتصالات و تسک‌های پس‌زمینه.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- What it manages -->
+    <div class="reveal mt-20">
+      <h3 class="font-display text-2xl mb-8">خلاصه آنچه ژئونیک مدیریت می‌کند</h3>
+      <div class="bg-ink-900 text-sand-100 p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+          <div>
+            <div class="text-accent-light text-[10px] tracking-widest uppercase mb-2">داده‌ها</div>
+            <p class="text-sand-100 leading-loose text-sm">
+              لایه‌ها، عارضه‌ها، اقلام توصیفی، تصاویر پانوراما، مدل‌های سه‌بعدی، قالب‌های چاپی و اسناد ممیزی ملک.
+            </p>
+          </div>
+          <div>
+            <div class="text-accent-light text-[10px] tracking-widest uppercase mb-2">فرآیندها</div>
+            <p class="text-sand-100 leading-loose text-sm">
+              ترسیم و ویرایش عارضه، جستجوی مکانی و توصیفی، تحلیل فضایی با مدل‌های قابل‌ذخیره، ممیزی سلسله‌مراتبی املاک.
+            </p>
+          </div>
+          <div>
+            <div class="text-accent-light text-[10px] tracking-widest uppercase mb-2">خروجی‌ها</div>
+            <p class="text-sand-100 leading-loose text-sm">
+              لایه‌ها در فرمت‌های SHP، KML، KMZ و JSON، گزارش‌های چاپی، وب‌سرویس‌های منتشرشده و تصاویر کروکی برای سامانه‌های خارجی.
+            </p>
+          </div>
+          <div>
+            <div class="text-accent-light text-[10px] tracking-widest uppercase mb-2">اتصالات</div>
+            <p class="text-sand-100 leading-loose text-sm">
+              پایگاه‌های PostgreSQL، SQL Server و MySQL، سرویس‌های GeoServer، APIهای سامانه‌های خارجی و تسک‌های دوره‌ای.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     BRAND SECTION / FOOTER
+     ========================================================= -->
+<footer class="bg-ink-900 text-sand-100 py-20 border-t border-ink-900/10">
+  <div class="max-w-6xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 items-start mb-16">
+      <div class="lg:col-span-5">
+        <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png"
+             alt="لوگوی محیا پرداز"
+             class="h-14 w-auto object-contain mb-6"
+             loading="lazy" />
+        <div class="text-[10px] tracking-[0.3em] text-accent-light uppercase mb-3">تولیدکننده</div>
+        <h3 class="font-display text-3xl mb-4">محیا پرداز</h3>
+        <p class="text-sand-200/80 leading-loose text-sm max-w-sm">
+          طراح و توسعه‌دهنده سامانه‌های نرم‌افزاری سازمانی و راهکارهای داده‌محور برای مدیریت شهری و سازمانی.
+        </p>
+      </div>
+
+      <div class="lg:col-span-4 lg:col-start-7">
+        <div class="text-[10px] tracking-[0.3em] text-accent-light uppercase mb-3">محصول معرفی‌شده در این کاتالوگ</div>
+        <h4 class="font-display text-2xl mb-3">ژئونیک · Samaneh SDI</h4>
+        <p class="text-sand-200/80 leading-loose text-sm mb-6">
+          سامانه جامع مدیریت داده مکانی بر پایه ابزارهای متن‌باز، برای سازمان‌ها و ادارات مادر.
+        </p>
+        <div class="text-[10px] tracking-[0.3em] text-sand-300/60 uppercase mb-2">وب‌سایت شرکت</div>
+        <a href="https://mahyapardaz.com" class="text-sand-100 hover:text-accent-light transition-colors">mahyapardaz.com</a>
+      </div>
+    </div>
+
+    <div class="pt-10 border-t border-sand-100/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="text-xs text-sand-200/50">
+        کاتالوگ دیجیتال محصول · ویراست ۱۴۰۵ · محیا پرداز
+      </div>
+      <div class="text-xs text-sand-200/50">
+        طراحی و تولید محتوا بر اساس مستندات رسمی سامانه ژئونیک
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+<script>
+(function() {
+  'use strict';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --------------------------------------------------------
+     Reveal on scroll
+     -------------------------------------------------------- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal, .layer-stack, .draw-path').forEach(el => {
+    if (reduceMotion) {
+      el.classList.add('visible');
+    } else {
+      revealObserver.observe(el);
+    }
+  });
+
+  /* --------------------------------------------------------
+     Progress ring + Chapter tracking
+     -------------------------------------------------------- */
+  const progressCircle = document.getElementById('progressCircle');
+  const progressText = document.getElementById('progressText');
+  const navChapterLabel = document.getElementById('navChapterLabel');
+  const chapterSections = document.querySelectorAll('.chapter-section');
+  const totalChapters = chapterSections.length;
+
+  document.getElementById('navChapterTotal').textContent = toPersianDigits(totalChapters);
+
+  function toPersianDigits(n) {
+    const map = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+    return String(n).split('').map(c => (/\d/.test(c) ? map[c] : c)).join('');
+  }
+
+  const chapterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const num = parseInt(entry.target.dataset.chapter, 10);
+        navChapterLabel.textContent = `فصل ${toPersianDigits(num)}`;
+      }
+    });
+  }, { threshold: 0.35 });
+
+  chapterSections.forEach(sec => chapterObserver.observe(sec));
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, scrollTop / docHeight));
+
+    if (progressCircle) {
+      progressCircle.style.strokeDashoffset = 100 - (progress * 100);
+    }
+    if (progressText) {
+      const pct = Math.round(progress * 100);
+      progressText.textContent = toPersianDigits(pct);
+    }
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  /* --------------------------------------------------------
+     Smooth scroll for TOC
+     -------------------------------------------------------- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const offset = 70;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+    });
+  });
+
+  /* --------------------------------------------------------
+     Interactive Search SVG
+     -------------------------------------------------------- */
+  const searchFeats = document.querySelectorAll('.search-feat');
+  const searchCountEl = document.getElementById('searchCount');
+  let selectedCount = 0;
+
+  searchFeats.forEach(f => {
+    f.addEventListener('click', () => {
+      const isSelected = f.getAttribute('fill-opacity') === '0.95';
+      if (isSelected) {
+        f.setAttribute('fill-opacity', f.dataset.id === 'f5' ? '0.2' : '0.5');
+        f.setAttribute('stroke-width', f.dataset.id === 'f5' ? '0.7' : '1');
+        selectedCount--;
+      } else {
+        f.setAttribute('fill-opacity', '0.95');
+        f.setAttribute('stroke-width', '2');
+        selectedCount++;
+      }
+      if (searchCountEl) {
+        searchCountEl.textContent = toPersianDigits(Math.max(0, selectedCount));
+      }
+    });
+  });
+
+  /* --------------------------------------------------------
+     Interactive Architecture SVG
+     -------------------------------------------------------- */
+  const archInfoMap = {
+    core: {
+      title: 'ژئونیک — هسته مرکزی',
+      text: 'هسته سامانه که ماژول‌ها از طریق API با آن ارتباط دارند. این طراحی ماژولار، امکان افزودن یا حذف ماژول‌ها بدون تغییر در ساختار هسته را فراهم می‌کند.'
+    },
+    pg: {
+      title: 'اتصال به پایگاه داده',
+      text: 'ژئونیک با پایگاه‌داده‌های رابطه‌ای PostgreSQL، SQL Server و MySQL ارتباط برقرار می‌کند. این اتصال برای ایجاد لایه از روی پرس‌وجو و استفاده از فیلدهای خارجی هنگام ثبت عارضه به کار می‌رود.'
+    },
+    gs: {
+      title: 'سرویس‌های GeoServer',
+      text: 'سرویس‌های ارائه‌شده توسط GeoServer به‌عنوان منابع لایه معرفی می‌شوند و می‌توان از آن‌ها در فرآیند افزودن لایه از طریق وب‌سرویس استفاده کرد.'
+    },
+    api: {
+      title: 'API سامانه‌های خارجی',
+      text: 'APIهای سایر سامانه‌ها در بخش «مدیریت اتصال» ثبت می‌شوند و در بخش‌های مختلف ژئونیک قابل استفاده هستند.'
+    },
+    keys: {
+      title: 'کلیدهای API',
+      text: 'برای هر کاربر پیشرفته می‌توان کلید API اختصاصی با مدت اعتبار، نوع متد و محدودیت تعداد درخواست صادر کرد تا بدون لاگین، از API سامانه استفاده کند.'
+    },
+    files: {
+      title: 'فایل‌های لایه',
+      text: 'فایل‌های لایه در فرمت‌های SHP، KML، KMZ، JSON و DXF بارگذاری شده و به لایه‌های قابل‌مدیریت در سامانه تبدیل می‌شوند. لایه‌ها را می‌توان در همین فرمت‌ها دانلود کرد.'
+    },
+    croquis: {
+      title: 'ماژول کروکی‌ساز',
+      text: 'با ارسال اطلاعات یک یا چند عارضه از طرف سامانه‌های خارجی، ژئونیک تصویر کروکی همراه با تنظیمات مختلف تولید و ارسال می‌کند.'
+    },
+    tasks: {
+      title: 'تسک‌های پس‌زمینه',
+      text: 'امور دوره‌ای مانند پشتیبان‌گیری خودکار را می‌توان به‌صورت زمانی یا دوره‌ای تعریف کرد تا بدون دخالت کاربر اجرا شوند.'
+    }
+  };
+
+  const archNodes = document.querySelectorAll('#archSvg .interactive-node');
+  const archTitle = document.getElementById('archTitle');
+  const archText = document.getElementById('archText');
+
+  archNodes.forEach(node => {
+    node.addEventListener('click', () => {
+      const info = archInfoMap[node.dataset.info];
+      if (info && archTitle && archText) {
+        archTitle.textContent = info.title;
+        archText.textContent = info.text;
+      }
+      archNodes.forEach(n => {
+        const core = n.querySelector('.node-core');
+        if (core) {
+          core.style.strokeWidth = '0';
+        }
+      });
+      const core = node.querySelector('.node-core');
+      if (core) {
+        core.style.stroke = '#E3B480';
+        core.style.strokeWidth = '3';
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

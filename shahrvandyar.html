@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کاتالوگ سامانه شهروندیار · محیا پرداز</title>
+<meta name="description" content="کاتالوگ دیجیتال سامانه شهروندیار؛ درگاه خدمات شهروندسپاری متصل به سامانه شهرنگار برای مدیریت هوشمند خدمات شهرسازی، مهندسین ناظر، استعلامات سازمانی و ارتباط با شهروندان.">
+<meta property="og:title" content="سامانه شهروندیار · محیا پرداز">
+<meta property="og:description" content="کاتالوگ دیجیتال سامانه شهروندیار؛ بستری برای شهروندسپاری خدمات شهرسازی.">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B3A4B;
+    --paper:#F7F6F3;
+    --accent:#0F4C5C;
+    --accent-2:#136F63;
+    --accent-3:#B85C38;
+    --muted:#6B7C85;
+    --line:#D9D4C7;
+  }
+  *{font-family:'Vazirmatn',system-ui,sans-serif}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .chapter-num{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+  .chapter-title{font-weight:800;line-height:1.15;letter-spacing:-.01em}
+  .chapter-kicker{font-variant-numeric:tabular-nums;color:var(--accent-3);font-weight:500;letter-spacing:.08em}
+  .divider{height:1px;background:var(--line)}
+  .paper-texture{
+    background-image:radial-gradient(rgba(27,58,75,.025) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+  .ink-block{background:linear-gradient(135deg,#0F4C5C 0%,#136F63 100%);color:#F7F6F3}
+  .ink-block-2{background:linear-gradient(135deg,#1B3A4B 0%,#0F4C5C 100%);color:#F7F6F3}
+
+  /* ===== Reveal base ===== */
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal-stagger.visible > *{opacity:1;transform:translateY(0)}
+  .reveal-stagger.visible > *:nth-child(1){transition-delay:.05s}
+  .reveal-stagger.visible > *:nth-child(2){transition-delay:.15s}
+  .reveal-stagger.visible > *:nth-child(3){transition-delay:.25s}
+  .reveal-stagger.visible > *:nth-child(4){transition-delay:.35s}
+  .reveal-stagger.visible > *:nth-child(5){transition-delay:.45s}
+  .reveal-stagger.visible > *:nth-child(6){transition-delay:.55s}
+  .reveal-stagger.visible > *:nth-child(7){transition-delay:.65s}
+  .reveal-stagger.visible > *:nth-child(8){transition-delay:.75s}
+  .reveal-stagger.visible > *:nth-child(9){transition-delay:.85s}
+  .reveal-stagger.visible > *:nth-child(10){transition-delay:.95s}
+  .reveal-stagger.visible > *:nth-child(11){transition-delay:1.05s}
+  .reveal-stagger.visible > *:nth-child(12){transition-delay:1.15s}
+
+  /* ===== SVG Animations ===== */
+  .draw-line{
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    transition: stroke-dashoffset 1.8s cubic-bezier(.65,0,.35,1);
+  }
+  .visible .draw-line{stroke-dashoffset:0}
+
+  .draw-line-slow{
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    transition: stroke-dashoffset 2.4s cubic-bezier(.65,0,.35,1);
+  }
+  .visible .draw-line-slow{stroke-dashoffset:0}
+
+  .draw-circle{
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    transition: stroke-dashoffset 1.2s ease-out;
+  }
+  .visible .draw-circle{stroke-dashoffset:0}
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: .3; transform: scale(1); }
+    50% { opacity: .8; transform: scale(1.15); }
+  }
+  .pulse-soft{animation:pulse-soft 2.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+
+  @keyframes pulse-ring {
+    0% { r: 18; opacity: .7; }
+    100% { r: 40; opacity: 0; }
+  }
+  .pulse-ring{animation:pulse-ring 2s ease-out infinite}
+
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .float-y{animation:float-y 4s ease-in-out infinite}
+
+  @keyframes float-y-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  .float-y-slow{animation:float-y-slow 5s ease-in-out infinite}
+
+  @keyframes bounce-in {
+    0% { transform: scale(0) translateY(-40px); opacity:0 }
+    60% { transform: scale(1.1) translateY(0); opacity:1 }
+    100% { transform: scale(1) translateY(0); opacity:1 }
+  }
+  .bounce-in{opacity:0;transform:scale(0)}
+  .visible .bounce-in{animation:bounce-in .8s cubic-bezier(.5,1.6,.4,1) forwards}
+  .visible .bounce-in.d1{animation-delay:.2s}
+  .visible .bounce-in.d2{animation-delay:.4s}
+  .visible .bounce-in.d3{animation-delay:.6s}
+
+  @keyframes dash-flow {
+    to { stroke-dashoffset: -30; }
+  }
+  .dash-flow{stroke-dasharray: 8 8; animation: dash-flow 1.2s linear infinite}
+
+  @keyframes dash-flow-slow {
+    to { stroke-dashoffset: -40; }
+  }
+  .dash-flow-slow{stroke-dasharray: 10 12; animation: dash-flow-slow 2s linear infinite}
+
+  @keyframes marching-ants {
+    to { stroke-dashoffset: -16; }
+  }
+  .marching-ants{stroke-dasharray: 5 3; animation: marching-ants .6s linear infinite}
+
+  /* Data flow dots along path */
+  .flow-dot{animation: flow-move 3.5s linear infinite}
+  .flow-dot.d1{animation-delay: 0s}
+  .flow-dot.d2{animation-delay: 1.2s}
+  .flow-dot.d3{animation-delay: 2.4s}
+  @keyframes flow-move {
+    0% { opacity:0 }
+    10% { opacity:1 }
+    90% { opacity:1 }
+    100% { opacity:0 }
+  }
+
+  /* Pin drop */
+  @keyframes pin-drop {
+    0% { transform: translateY(-60px) scale(1); opacity:0 }
+    60% { transform: translateY(5px) scale(1); opacity:1 }
+    75% { transform: translateY(-3px) scale(1); opacity:1 }
+    100% { transform: translateY(0) scale(1); opacity:1 }
+  }
+  .pin-drop{opacity:0}
+  .visible .pin-drop{animation: pin-drop 1s cubic-bezier(.5,1.5,.5,1) forwards}
+  .visible .pin-drop.d1{animation-delay:.3s}
+  .visible .pin-drop.d2{animation-delay:.55s}
+  .visible .pin-drop.d3{animation-delay:.8s}
+
+  /* Slide-in for side panels */
+  @keyframes slide-in-right {
+    from { transform: translateX(40px); opacity: 0 }
+    to { transform: translateX(0); opacity: 1 }
+  }
+  .slide-in-right{opacity:0}
+  .visible .slide-in-right{animation:slide-in-right .8s ease-out forwards}
+  .visible .slide-in-right.d1{animation-delay:.4s}
+  .visible .slide-in-right.d2{animation-delay:.7s}
+
+  /* Grow from center */
+  @keyframes grow-in {
+    from { transform: scale(.3); opacity: 0 }
+    to { transform: scale(1); opacity: 1 }
+  }
+  .grow-in{opacity:0}
+  .visible .grow-in{animation:grow-in .7s cubic-bezier(.34,1.56,.64,1) forwards}
+  .visible .grow-in.d1{animation-delay:.1s}
+  .visible .grow-in.d2{animation-delay:.25s}
+  .visible .grow-in.d3{animation-delay:.4s}
+  .visible .grow-in.d4{animation-delay:.55s}
+
+  /* Fade scale */
+  @keyframes fade-scale {
+    from { opacity: 0; transform: scale(.92) }
+    to { opacity: 1; transform: scale(1) }
+  }
+  .fade-scale{opacity:0}
+  .visible .fade-scale{animation:fade-scale .7s ease-out forwards}
+
+  /* Subtle shine on ink blocks */
+  @keyframes shine-sweep {
+    0% { transform: translateX(-100%) skewX(-15deg) }
+    100% { transform: translateX(200%) skewX(-15deg) }
+  }
+  .ink-block, .ink-block-2{position:relative;overflow:hidden}
+  .ink-block::after, .ink-block-2::after{
+    content:"";
+    position:absolute;top:0;bottom:0;left:0;width:50%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+    animation: shine-sweep 8s ease-in-out infinite;
+    pointer-events:none;
+  }
+
+  /* ===== Cards & UI ===== */
+  .portal-card{
+    border:1px solid var(--line);
+    background:#fff;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .5s ease;
+  }
+  .portal-card:hover{transform:translateY(-6px);box-shadow:0 25px 50px -20px rgba(15,76,92,.25);border-color:var(--accent-2)}
+
+  .flow-step{position:relative;padding-right:3rem}
+  .flow-step::before{
+    content:counter(flow);counter-increment:flow;
+    position:absolute;right:0;top:0;
+    width:2rem;height:2rem;
+    background:var(--accent);color:#fff;
+    border-radius:999px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:.85rem;font-variant-numeric:tabular-nums;
+    transition:transform .4s ease, background .4s ease;
+  }
+  .flow-step:hover::before{transform:scale(1.15) rotate(-8deg);background:var(--accent-3)}
+  .flow-list{counter-reset:flow}
+
+  .toc-item{
+    display:flex;align-items:baseline;gap:1rem;
+    padding:.9rem 0;border-bottom:1px dashed var(--line);
+    transition:padding .3s ease, color .3s ease;
+  }
+  .toc-item:hover{padding-right:.75rem;color:var(--accent)}
+  .toc-num{font-variant-numeric:tabular-nums;color:var(--accent-3);font-weight:600;min-width:2.5rem}
+  .toc-dots{flex:1;border-bottom:1px dotted var(--line);margin:0 .5rem;transform:translateY(-4px)}
+
+  .progress-rail{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(27,58,75,.08);z-index:50}
+  .progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .1s linear;box-shadow:0 0 8px rgba(19,111,99,.6)}
+
+  .side-nav{position:fixed;right:1.25rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.6rem;z-index:40}
+  .side-nav a{
+    width:10px;height:10px;border-radius:999px;background:rgba(27,58,75,.2);
+    transition:all .3s ease;position:relative;
+  }
+  .side-nav a.active{background:var(--accent);transform:scale(1.5);box-shadow:0 0 0 4px rgba(15,76,92,.15)}
+  .side-nav a:hover::after{
+    content:attr(data-label);
+    position:absolute;right:22px;top:50%;transform:translateY(-50%);
+    background:#1B3A4B;color:#fff;padding:.25rem .6rem;border-radius:4px;
+    font-size:.75rem;white-space:nowrap;
+  }
+
+  .stat-num{font-variant-numeric:tabular-nums;font-weight:800}
+  .portal-tag{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .75rem;border-radius:999px;font-size:.8rem;font-weight:500}
+  .role-badge{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .4s ease}
+  .portal-card:hover .role-badge{transform:rotate(-8deg) scale(1.1)}
+  .role-supervisor{background:#E0F2F1;color:#0F4C5C}
+  .role-designer{background:#FFF3E0;color:#B85C38}
+  .role-exec{background:#E8F5E9;color:#2E7D32}
+  .role-notary{background:#F3E5F5;color:#6A1B9A}
+  .role-utility{background:#E3F2FD;color:#1565C0}
+  .role-bank{background:#FFF8E1;color:#F57F17}
+  .role-inspector{background:#FBE9E7;color:#BF360C}
+  .role-police{background:#37474F;color:#fff}
+  .role-citizen{background:#E0F7FA;color:#006064}
+
+  .feature-list li{position:relative;padding-right:1.25rem;padding-bottom:.5rem;line-height:1.75}
+  .feature-list li::before{
+    content:"";position:absolute;right:0;top:.65rem;
+    width:6px;height:6px;border-radius:999px;background:var(--accent-2);
+    transition:transform .3s ease;
+  }
+  .feature-list li:hover::before{transform:scale(1.6);background:var(--accent-3)}
+
+  .quote-mark{font-family:serif;font-size:5rem;line-height:.5;color:var(--accent);opacity:.25;position:absolute;top:1rem;right:-.5rem}
+
+  /* Typewriter-ish fade for title */
+  @keyframes title-reveal {
+    0% { clip-path: inset(0 100% 0 0); opacity: 0 }
+    100% { clip-path: inset(0 0 0 0); opacity: 1 }
+  }
+  .title-reveal{animation: title-reveal 1.4s cubic-bezier(.65,0,.35,1) forwards}
+
+  /* Scroll indicator mouse wheel */
+  @keyframes mouse-scroll {
+    0%, 100% { transform: translateY(0); opacity: 1 }
+    50% { transform: translateY(6px); opacity: .3 }
+  }
+  .mouse-dot{animation: mouse-scroll 1.6s ease-in-out infinite}
+
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Hover icon rotate */
+  .icon-hover{transition: transform .5s cubic-bezier(.34,1.56,.64,1)}
+  .portal-card:hover .icon-hover{transform: rotate(360deg)}
+
+  /* Card number reveal */
+  @keyframes num-in {
+    from { transform: translateY(-10px) scale(.8); opacity:0 }
+    to { transform: translateY(0) scale(1); opacity: 1 }
+  }
+
+  @media print{
+    .progress-rail,.side-nav,.no-print{display:none!important}
+    .chapter{page-break-before:always;min-height:auto!important;padding:2rem 0!important}
+    body{background:#fff}
+    .reveal{opacity:1!important;transform:none!important}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *, *::before, *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+  @media (max-width:768px){
+    .side-nav{display:none}
+    .chapter-title{font-size:1.75rem!important}
+  }
+</style>
+</head>
+<body class="paper-texture">
+
+<div class="progress-rail no-print" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+<nav class="side-nav no-print" aria-label="ناوبری فصل‌ها" id="sideNav"></nav>
+
+<!-- ================== COVER ================== -->
+<header class="min-h-screen flex flex-col relative overflow-hidden">
+  <div class="flex items-center justify-between px-6 md:px-12 py-6 border-b border-[color:var(--line)]">
+    <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-10 md:h-12 w-auto">
+    <div class="text-xs md:text-sm text-[color:var(--muted)]">کاتالوگ محصول · ۱۴۰۵</div>
+  </div>
+
+  <div class="flex-1 grid md:grid-cols-12 gap-8 items-center px-6 md:px-12 py-12">
+    <div class="md:col-span-5 reveal">
+      <div class="chapter-kicker text-xs uppercase mb-4">درگاه خدمات شهروندسپاری</div>
+      <h1 class="chapter-title text-4xl md:text-6xl mb-6 title-reveal">سامانه<br><span class="gradient-text">شهروندیار</span></h1>
+      <p class="text-lg md:text-xl text-[color:var(--muted)] mb-4 leading-relaxed">
+        بستری میان‌لایه میان شهروند، مهندسین، سازمان‌های استعلام‌گیر و سامانه اصلی شهرنگار؛
+        برای مدیریت یکپارچه فرآیندهای شهرسازی، نظارت، استعلام و خدمات درآمدی شهرداری.
+      </p>
+      <div class="flex flex-wrap gap-2 mt-8 reveal-stagger">
+        <span class="portal-tag bg-white border border-[color:var(--line)]">متصل به شهرنگار</span>
+        <span class="portal-tag bg-white border border-[color:var(--line)]">۸ درگاه تخصصی</span>
+        <span class="portal-tag bg-white border border-[color:var(--line)]">خدمات شهروندی</span>
+        <span class="portal-tag bg-white border border-[color:var(--line)]">مکان‌محور</span>
+      </div>
+    </div>
+
+<!-- ===== ستون تصویر: عرض ۶ → ۷ + نسبت عریض ۱۶:۱۰ ===== -->
+<div class="md:col-span-7 reveal">
+  <figure class="relative w-full aspect-[16/10]" style="aspect-ratio:16/10" data-slot="cover-system" aria-label="نمایی از محیط سامانه شهروندیار">
+
+    <!-- هاله نرم پشت قاب -->
+    <div class="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-[#136F63]/15 to-[#B85C38]/10 blur-2xl" aria-hidden="true"></div>
+
+    <!-- قاب مرورگر -->
+    <div class="absolute inset-0 flex flex-col overflow-hidden rounded-2xl border border-[color:var(--line)] bg-white shadow-2xl float-y-slow">
+
+      <!-- نوار بالای مرورگر -->
+      <div class="flex items-center gap-2 bg-[#1B3A4B] px-4 py-2.5" aria-hidden="true">
+        <span class="h-3 w-3 rounded-full bg-[#B85C38]"></span>
+        <span class="h-3 w-3 rounded-full bg-[#E9A13B]"></span>
+        <span class="h-3 w-3 rounded-full bg-[#136F63]"></span>
+        <span dir="ltr" class="mr-3 flex h-6 flex-1 items-center rounded-full bg-white/10 px-3 text-[10px] text-white/60">shahrvandyar.ir</span>
+      </div>
+
+      <!-- تصویر سیستم | اگر برش نمی‌خواهید: object-contain به‌جای object-cover -->
+      <img
+        src="./sharvanyar.png"
+        alt="سامانه شهروندیار"
+        loading="lazy"
+        class="w-full flex-1 object-cover object-top"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+
+      <!-- Placeholder تا زمانی که تصویر لود نشود -->
+      <div class="hidden flex-1 flex-col items-center justify-center gap-3 bg-gradient-to-br from-[#E8F4F2] to-[#D4E8E4] p-6 text-center">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#0F4C5C" stroke-width="1.5" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M6 8h6M6 11h4" stroke-linecap="round"/><circle cx="16.5" cy="9.5" r="2"/>
+        </svg>
+        <div class="text-sm font-bold text-[color:var(--accent)]">تصویر موردنیاز: نمای اصلی سامانه شهروندیار</div>
+        <p class="max-w-xs text-xs leading-relaxed text-[color:var(--muted)]">
+          اسکرین‌شات با نسبت ۱۶:۱۰ (مثلاً ۱۶۰۰×۱۰۰۰ پیکسل) در مسیر
+          <code dir="ltr" class="text-[color:var(--accent)]">./sharvanyar.png</code>
+          ذخیره شود یا آدرس URL تصویر در ویژگی src قرار گیرد.
+        </p>
+      </div>
+    </div>
+  </figure>
+</div>
+  </div>
+
+  <div class="flex flex-col items-center justify-center pb-10 text-center">
+    <div class="text-xs text-[color:var(--muted)] mb-3">برای ورق‌زدن کاتالوگ، اسکرول کنید</div>
+    <svg width="24" height="40" viewBox="0 0 24 40" fill="none" class="animate-bounce">
+      <rect x="6" y="1" width="12" height="22" rx="6" stroke="#1B3A4B" stroke-width="1.5"/>
+      <circle cx="12" cy="8" r="2" fill="#B85C38" class="mouse-dot"/>
+      <path d="M12 28 L12 36 M8 32 L12 36 L16 32" stroke="#1B3A4B" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ================== TOC ================== -->
+<section class="px-6 md:px-12 py-20 border-t border-[color:var(--line)] bg-white" id="toc">
+  <div class="max-w-5xl mx-auto reveal">
+    <div class="chapter-kicker text-xs uppercase mb-3">فهرست</div>
+    <h2 class="chapter-title text-3xl md:text-5xl mb-2">آنچه در این کاتالوگ می‌خوانید</h2>
+    <p class="text-[color:var(--muted)] mb-12">دوازده فصل برای درک کامل سامانه؛ از ضرورت طراحی تا معماری درگاه‌های تخصصی.</p>
+
+    <div class="grid md:grid-cols-2 gap-x-12">
+      <a href="#ch1" class="toc-item"><span class="toc-num">۰۱</span><span>معرفی سامانه شهروندیار</span><span class="toc-dots"></span></a>
+      <a href="#ch2" class="toc-item"><span class="toc-num">۰۲</span><span>مسئله مراجعات شهری و ضرورت تحول</span><span class="toc-dots"></span></a>
+      <a href="#ch3" class="toc-item"><span class="toc-num">۰۳</span><span>معماری درگاه‌های تخصصی</span><span class="toc-dots"></span></a>
+      <a href="#ch4" class="toc-item"><span class="toc-num">۰۴</span><span>درگاه مهندسین ناظر ساختمان</span><span class="toc-dots"></span></a>
+      <a href="#ch5" class="toc-item"><span class="toc-num">۰۵</span><span>درگاه مهندسین طراح و مجری</span><span class="toc-dots"></span></a>
+      <a href="#ch6" class="toc-item"><span class="toc-num">۰۶</span><span>استعلامات سازمانی</span><span class="toc-dots"></span></a>
+      <a href="#ch7" class="toc-item"><span class="toc-num">۰۷</span><span>عملیات میدانی؛ مأمورین بازدید و پلیس ساختمان</span><span class="toc-dots"></span></a>
+      <a href="#ch8" class="toc-item"><span class="toc-num">۰۸</span><span>خدمات شهروندان</span><span class="toc-dots"></span></a>
+      <a href="#ch9" class="toc-item"><span class="toc-num">۰۹</span><span>نقشه و اطلاعات مکانی</span><span class="toc-dots"></span></a>
+      <a href="#ch10" class="toc-item"><span class="toc-num">۱۰</span><span>جریان کار شهرسازی</span><span class="toc-dots"></span></a>
+      <a href="#ch11" class="toc-item"><span class="toc-num">۱۱</span><span>امنیت، احراز هویت و سطوح دسترسی</span><span class="toc-dots"></span></a>
+      <a href="#ch12" class="toc-item"><span class="toc-num">۱۲</span><span>جمع‌بندی و ارزش سازمانی</span><span class="toc-dots"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 01 ================== -->
+<section class="chapter px-6 md:px-12 py-24" id="ch1">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۰۱</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-6">معرفی سامانه شهروندیار</h2>
+      <div class="divider mb-10"></div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 reveal">
+      <div class="md:col-span-7">
+        <p class="text-lg leading-loose mb-6">
+          سامانه شهروندیار یک <strong>درگاه خدمات شهروندسپاری</strong> است که به‌صورت سرویس‌محور طراحی شده و میان شهروندان، مهندسین ناظر، طراح، مجری، دفاتر اسناد رسمی، ادارات آب، برق، گاز، بانک‌ها، مأموران بازدید و پلیس ساختمان از یک سو و سامانه اصلی شهرسازی شهرداری (شهرنگار) از سوی دیگر قرار می‌گیرد.
+        </p>
+        <p class="text-lg leading-loose mb-6">
+          هدف این سامانه آن است که تبادل داده میان آحاد کاربران و هسته مرکزی شهرسازی، در محیطی کاربرپسند، ساده و دارای لایه‌های امنیتی انجام شود؛ بدون آن‌که کاربران نیازی به مراجعه حضوری به ادارات شهرداری داشته باشند.
+        </p>
+        <p class="text-[color:var(--muted)] leading-loose">
+          این سامانه طیف گسترده‌ای از خدمات شهرسازی، درآمد، استعلام و نظارت را پوشش می‌دهد و نقش واسط هوشمند را بین فرآیندهای تخصصی شهرداری و نیاز روزمره شهروندان ایفا می‌کند.
+        </p>
+      </div>
+      <div class="md:col-span-5">
+        <div class="ink-block rounded-2xl p-8">
+          <div class="text-xs uppercase tracking-widest mb-6 opacity-70">جایگاه سامانه</div>
+          <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" class="w-full">
+            <g font-family="Vazirmatn" font-size="12" fill="#F7F6F3" text-anchor="middle">
+              <rect x="30" y="20" width="100" height="50" rx="8" fill="#B85C38" class="fade-scale"/>
+              <text x="80" y="50">شهروندان</text>
+              <rect x="170" y="20" width="100" height="50" rx="8" fill="#B85C38" class="fade-scale" style="animation-delay:.15s"/>
+              <text x="220" y="50">مهندسین</text>
+              <rect x="30" y="90" width="100" height="50" rx="8" fill="#B85C38" class="fade-scale" style="animation-delay:.3s"/>
+              <text x="80" y="120">سازمان‌ها</text>
+              <rect x="170" y="90" width="100" height="50" rx="8" fill="#B85C38" class="fade-scale" style="animation-delay:.45s"/>
+              <text x="220" y="120">مأمورین</text>
+
+              <!-- Connection lines drawn on reveal -->
+              <path d="M80 70 L100 170" stroke="#F7F6F3" stroke-width="1.5" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200"/>
+              <path d="M220 70 L200 170" stroke="#F7F6F3" stroke-width="1.5" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200;transition-delay:.2s"/>
+              <path d="M80 140 L100 170" stroke="#F7F6F3" stroke-width="1.5" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200;transition-delay:.35s"/>
+              <path d="M220 140 L200 170" stroke="#F7F6F3" stroke-width="1.5" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200;transition-delay:.5s"/>
+              <path d="M150 215 L150 240" stroke="#F7F6F3" stroke-width="1.5" fill="none" class="draw-line" style="stroke-dasharray:100;stroke-dashoffset:100;transition-delay:.65s"/>
+
+              <rect x="60" y="170" width="180" height="45" rx="10" fill="#F7F6F3" class="fade-scale" style="animation-delay:.6s"/>
+              <text x="150" y="198" fill="#0F4C5C" font-weight="700" class="fade-scale" style="animation-delay:.8s">سامانه شهروندیار</text>
+              <rect x="60" y="240" width="180" height="30" rx="6" fill="none" stroke="#F7F6F3" stroke-dasharray="3,3" class="fade-scale" style="animation-delay:.95s"/>
+              <text x="150" y="260" opacity=".7" class="fade-scale" style="animation-delay:1.1s">سامانه شهرنگار</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 02 ================== -->
+<section class="chapter ink-block-2" id="ch2">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3" style="color:#F4A261">فصل ۰۲</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-6 text-white">مسئله مراجعات شهری و ضرورت تحول</h2>
+      <div class="divider mb-10" style="background:rgba(247,246,243,.2)"></div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 reveal">
+      <div class="md:col-span-7 text-[color:var(--paper)]">
+        <p class="text-lg leading-loose mb-6">
+          رفت‌وآمد شهروندان به ادارات و دستگاه‌های خدمات شهری جهت انجام امور اداری، یکی از معضلات دیرینه جامعه شهری است که هزینه‌های مالی و روانی متعددی را بر مردم تحمیل می‌کند. صف‌های طولانی، کاغذبازی، تکرار ارائه مدارک، و وابستگی به حضور فیزیکی کارشناس خاص، از جمله مشکلات روزمره مراجعین به شهرداری‌هاست.
+        </p>
+        <p class="text-lg leading-loose mb-6">
+          بررسی‌ها نشان می‌دهد در شهرداری‌ها <strong>بیش از ۸۰ درصد مراجعات مربوط به امور شهرسازی و درآمد</strong> است. این حجم از مراجعه، نه‌تنها زمان و انرژی شهروندان را می‌گیرد، بلکه بار عملیاتی سنگینی بر بدنه اجرایی شهرداری‌ها وارد می‌کند.
+        </p>
+        <p class="text-[color:var(--paper)] opacity-80 leading-loose">
+          سامانه شهروندیار دقیقاً برای پاسخ به این مسئله طراحی شده است: جلوگیری از مراجعات غیرضروری، سهولت در ثبت درخواست‌های شهرسازی، پیگیری انواع درخواست‌ها، ارسال و رفع نقص مدارک، و پرداخت آنلاین عوارض — همه در یک بستر دیجیتال امن.
+        </p>
+      </div>
+
+      <div class="md:col-span-5 space-y-4 reveal-stagger">
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
+          <div class="stat-num text-5xl" style="color:#F4A261" data-count="80">۰</div>
+          <div class="text-sm text-white/70 mt-2">درصد مراجعات شهرداری مربوط به امور شهرسازی و درآمد</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
+          <div class="stat-num text-5xl" style="color:#F4A261" data-count="8">۰</div>
+          <div class="text-sm text-white/70 mt-2">درگاه تخصصی برای نقش‌های مختلف</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
+          <div class="text-white text-lg font-semibold">۲ سطح دسترسی شهروندی</div>
+          <div class="text-sm text-white/70 mt-2">عمومی (بدون ورود) و خصوصی (با احراز هویت)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 03 ================== -->
+<section class="chapter px-6 md:px-12 py-24" id="ch3">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۰۳</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">معماری درگاه‌های تخصصی</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">سامانه شهروندیار بر اساس نقش‌های واقعی موجود در اکوسیستم شهرسازی، به هشت درگاه تخصصی تفکیک شده است. هر درگاه رابط کاربری، سطح دسترسی و مجموعه امکاناتی متناسب با وظایف همان نقش ارائه می‌دهد.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger">
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-supervisor mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">مهندس ناظر</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">نظارت بر پروژه‌های ساختمانی، ثبت گزارش، بررسی تخلفات و ارسال گزارش به اداره کار.</p>
+      </div>
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-designer mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">مهندس طراح</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">مشاهده پرونده‌های ارجاعی، آپلود نقشه و پاسخ به درخواست‌های مهندس ناظر.</p>
+      </div>
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-exec mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">مهندس مجری</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">اجرا و پیگیری پروژه‌های ساختمانی، ثبت تخلف و ارائه مستندات اجرایی.</p>
+      </div>
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-notary mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">دفاتر اسناد رسمی</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">استعلام ملکی، تطبیق اطلاعات مالک و خریدار، صدور و چاپ گواهی.</p>
+      </div>
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-utility mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">ادارات آب، برق و گاز</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">ثبت و پیگیری استعلامات شبکه‌های شهری با امکان پرداخت و چاپ پاسخ.</p>
+      </div>
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-bank mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">بانک‌ها</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">استعلام برخط املاک و اتصال مستقیم به فرآیند مربوطه با پاسخ آنی.</p>
+      </div>
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-inspector mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">مأمورین بازدید</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">بازدید میدانی، ثبت گزارش گرافیکی، تقویم بازدید و بررسی الزام حضور ناظر.</p>
+      </div>
+      <div class="portal-card p-6 rounded-xl">
+        <div class="role-badge role-police mb-4 icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="font-bold text-lg mb-2">پلیس ساختمان</h3>
+        <p class="text-sm text-[color:var(--muted)] leading-relaxed">ثبت تخلف بر روی ملک و اشخاص، ثبت گزارش، مستندسازی با دوربین.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-2 gap-10 items-center reveal">
+      <div>
+        <h3 class="chapter-title text-2xl mb-4">درگاه شهروندان</h3>
+        <p class="leading-loose text-[color:var(--muted)] mb-4">
+          در کنار درگاه‌های تخصصی، سامانه دو سطح دسترسی برای شهروندان تعریف می‌کند:
+        </p>
+        <ul class="feature-list space-y-1">
+          <li><strong>کاربران عمومی:</strong> بدون نیاز به ورود به سامانه می‌توانند به نقشه‌ها، محاسبه ضوابط شهرسازی، ارسال گزارشات مردمی ۱۳۷، تصدیق گواهی شهرسازی و پرداخت عوارض نوسازی دسترسی داشته باشند.</li>
+          <li><strong>کاربران خصوصی:</strong> پس از ثبت‌نام و احراز هویت، به بخش «املاک من»، پیگیری پرونده‌ها، پرداخت فیش‌های درآمدی، ثبت درخواست‌های شهرسازی و محیط پیامکی با کارشناس دسترسی دارند.</li>
+        </ul>
+      </div>
+      <div class="ink-block rounded-2xl p-8">
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <div class="text-xs uppercase tracking-widest opacity-70 mb-2">کاربران عمومی</div>
+            <div class="text-4xl font-bold" style="color:#F4A261" data-count="7">۰</div>
+            <div class="text-sm opacity-80 mt-1">بخش قابل‌دسترسی بدون ورود</div>
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-widest opacity-70 mb-2">کاربران خصوصی</div>
+            <div class="text-4xl font-bold" style="color:#F4A261" data-count="13">۰</div>
+            <div class="text-sm opacity-80 mt-1">امکان تخصصی پس از احراز هویت</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 04 ================== -->
+<section class="chapter px-6 md:px-12 py-24 bg-white" id="ch4">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۰۴</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">درگاه مهندسین ناظر ساختمان</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">مهندس ناظر، چشم نظارتی شهر بر پروژه‌های ساختمانی است. درگاه اختصاصی وی، تمام ابزارهای لازم برای ثبت گزارش، مستندسازی، بررسی پرونده‌ها و ارتباط با مهندس طراح و مالک را در اختیارش قرار می‌دهد.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 reveal">
+      <div class="md:col-span-7">
+        <h3 class="font-bold text-xl mb-4">چرخه کاری مهندس ناظر در سامانه</h3>
+        <div class="flow-list space-y-6 reveal-stagger">
+          <div class="flow-step">
+            <div class="font-bold mb-1">ورود اختصاصی و مشاهده کارتابل</div>
+            <p class="text-[color:var(--muted)] text-sm">هر مهندس با لاگین اختصاصی وارد شده و پرونده‌های ارجاعی، گزارش‌های ارسالی قبلی و املاک دارای گزارش پیشین را در کارتابل خود می‌بیند.</p>
+          </div>
+          <div class="flow-step">
+            <div class="font-bold mb-1">انتخاب ملک و بررسی پرونده</div>
+            <p class="text-[color:var(--muted)] text-sm">امکان انتخاب ملک از لیست یا از روی نقشه، مشاهده اطلاعات پرونده، پروانه ساختمانی، نقشه‌های املاک و لایه‌های مورد نیاز.</p>
+          </div>
+          <div class="flow-step">
+            <div class="font-bold mb-1">ثبت گزارش با چک‌لیست پویا</div>
+            <p class="text-[color:var(--muted)] text-sm">گام‌بندی و تعریف فرم گزارش و چک‌لیست‌های مربوطه به‌صورت پویا، با امکان ثبت شرح جداگانه برای هر چک‌لیست و تعیین میزان اهمیت تخلف.</p>
+          </div>
+          <div class="flow-step">
+            <div class="font-bold mb-1">مستندسازی میدانی</div>
+            <p class="text-[color:var(--muted)] text-sm">تصویربرداری و آپلود وضعیت فعلی ملک، تایپ صوتی گزارش، افزودن فایل به آرشیو گالری گزارش و بررسی الزام حضور مهندس در محدوده پروژه توسط ناظر.</p>
+          </div>
+          <div class="flow-step">
+            <div class="font-bold mb-1">تکمیل، امضا و ارسال</div>
+            <p class="text-[color:var(--muted)] text-sm">امکان تکمیل و امضای گزارش، مشاهده قالب چاپی، ارسال یک نسخه به اداره کار در صورت وجود تخلف، و پیگیری وضعیت تایید شهرداری و نظام مهندسی.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 space-y-6 reveal-stagger">
+        <div class="bg-[color:var(--paper)] border border-[color:var(--line)] rounded-xl p-6">
+          <div class="text-xs uppercase tracking-widest text-[color:var(--accent-3)] mb-4">ابزارهای کلیدی</div>
+          <ul class="feature-list space-y-1 text-sm">
+            <li>ثبت مهر و امضا به‌صورت دیجیتال</li>
+            <li>مسیریابی به محل پروژه</li>
+            <li>مشاهده موقعیت ملک بر روی نقشه</li>
+            <li>پرینت پروانه ساختمانی</li>
+            <li>مشاهده همکاران پروژه با امکان تماس مستقیم</li>
+            <li>مشاهده عکس همکاران</li>
+            <li>مشاهده گزارش‌های دیگر مهندسین</li>
+            <li>نظرخواهی از مهندس طراح با پیوست فایل</li>
+            <li>ویرایش گزارش ثبت‌شده</li>
+            <li>ارسال پیامک جهت ارائه مدارک ناقص توسط مالک</li>
+            <li>دریافت مدارک ناقص به‌صورت سیستمی</li>
+          </ul>
+        </div>
+
+        <div class="ink-block rounded-xl p-6">
+          <div class="text-xs uppercase tracking-widest opacity-70 mb-4">گزارشات متفرقه</div>
+          <p class="text-sm opacity-90 leading-relaxed">
+            کارتابل اختصاصی گزارشات متفرقه با امکان ثبت گزارش جدید بر اساس شماره پروانه، تاریخ صدور، منطقه شهرداری و موقعیت نقشه، ویرایش گزارش‌های سابق، حذف گزارش و مشاهده قالب چاپی آن.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal">
+      <h3 class="chapter-title text-2xl mb-8">تفکیک اطلاعات در کارتابل ناظر</h3>
+      <div class="grid md:grid-cols-3 gap-6 reveal-stagger">
+        <div class="border border-[color:var(--line)] rounded-xl p-6">
+          <div class="text-xs text-[color:var(--accent-3)] font-semibold mb-3">کارتابل پرونده ارجاعی</div>
+          <ul class="feature-list text-sm space-y-1">
+            <li>دسته‌بندی بر اساس منطقه</li>
+            <li>نوع پروانه</li>
+            <li>تاریخ صدور پروانه</li>
+            <li>تاریخ اعتبار پروانه</li>
+            <li>فعال‌سازی مجدد پروژه نظارت‌شده در میزکار</li>
+          </ul>
+        </div>
+        <div class="border border-[color:var(--line)] rounded-xl p-6">
+          <div class="text-xs text-[color:var(--accent-3)] font-semibold mb-3">آرشیو گزارش</div>
+          <ul class="feature-list text-sm space-y-1">
+            <li>گالری آرشیو گزارش</li>
+            <li>افزودن فایل به آرشیو</li>
+            <li>مشاهده جزئیات گزارش ثبت‌شده</li>
+            <li>قالب چاپی گزارش</li>
+            <li>قالب چاپی اداره کار</li>
+          </ul>
+        </div>
+        <div class="border border-[color:var(--line)] rounded-xl p-6">
+          <div class="text-xs text-[color:var(--accent-3)] font-semibold mb-3">وضعیت و پیگیری</div>
+          <ul class="feature-list text-sm space-y-1">
+            <li>شرح تایید یا عدم تایید شهرداری</li>
+            <li>وضعیت و شرح تایید نظام مهندسی</li>
+            <li>رهگیری گزارش ثبت‌شده</li>
+            <li>تهیه گزارشات آماری و نموداری</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 05 ================== -->
+<section class="chapter px-6 md:px-12 py-24" id="ch5">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۰۵</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">درگاه مهندسین طراح و مجری</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">طراحی و اجرا، دو بال اصلی هر پروژه ساختمانی هستند. درگاه‌های اختصاصی این دو گروه، فرآیند تبادل نظر، آپلود نقشه و مستندات اجرایی را با درگاه مهندس ناظر هماهنگ می‌کند.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 reveal-stagger">
+      <div class="border-2 border-[color:var(--accent-3)] rounded-2xl p-8 bg-white">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="role-badge role-designer icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div>
+          <h3 class="font-bold text-2xl">مهندس طراح</h3>
+        </div>
+        <p class="text-[color:var(--muted)] leading-relaxed mb-6">پروفایل اختصاصی با امکان ثبت مهر و امضا برای هر مهندس، مشاهده پرونده‌های بررسی‌شده، جستجوی پرونده و دسترسی به کارتابل ارجاعات مهندس طراح.</p>
+        <ul class="feature-list space-y-1 text-sm mb-6">
+          <li>مشاهده آدرس پرونده بر روی نقشه و برنامه نقشه و مسیریاب نشان</li>
+          <li>مشاهده اطلاعات پرونده (کدنوسازی، کد پرونده، نام مالک، نوع پروانه، تاریخ صدور و اعتبار، شماره پرونده، شماره تماس مالک، ارجاع‌دهنده)</li>
+          <li>مشاهده درخواست مهندس ناظر و پاسخدهی با پیوست فایل</li>
+          <li>مرتب‌سازی ارجاعات کارتابل بر اساس منطقه، نوع پروانه، تاریخ صدور و اعتبار</li>
+          <li>آپلود نقشه و افزودن فایل نقشه جدید</li>
+          <li>مشاهده نقشه‌های مصوب</li>
+          <li>مشاهده کارهای کارتابل بر روی نقشه اختصاصی</li>
+          <li>مشاهده پرونده‌های تکمیل‌شده</li>
+        </ul>
+      </div>
+
+      <div class="border-2 border-[#2E7D32] rounded-2xl p-8 bg-white">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="role-badge role-exec icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+          <h3 class="font-bold text-2xl">مهندس مجری</h3>
+        </div>
+        <p class="text-[color:var(--muted)] leading-relaxed mb-6">درگاه مجری، امکان ثبت و پیگیری پروژه‌های در حال اجرا، ارسال گزارش‌های اجرایی و مستندسازی مراحل ساخت را فراهم می‌کند و با درگاه مهندس ناظر در ارتباط است.</p>
+        <ul class="feature-list space-y-1 text-sm mb-6">
+          <li>مشاهده پرونده‌های ارجاعی و گزارش‌های ارسالی قبلی</li>
+          <li>انتخاب ملک از لیست یا نقشه و مشاهده نقشه املاک و لایه‌های مورد نیاز</li>
+          <li>درج گزارش با توضیحات لازم و تصویربرداری از وضعیت ملک</li>
+          <li>بررسی الزام حضور مهندس در محدوده پروژه توسط طراح</li>
+          <li>نظرخواهی از مهندس ناظر در گزارش با پیوست فایل</li>
+          <li>مشاهده مدارک طراح و افزودن مدارک در دسته‌بندی‌های موجود</li>
+          <li>فعال‌سازی مجدد پروژه در میزکار</li>
+          <li>دسترسی اختصاصی به کارتابل گزارشات متفرقه</li>
+          <li>مشاهده امکانات بر روی موبایل به‌صورت رسپانسیو</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal">
+      <div class="ink-block rounded-2xl p-10">
+        <h3 class="chapter-title text-2xl mb-6 text-white">حلقه تعامل میان سه نقش</h3>
+        <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class="w-full">
+          <defs>
+            <path id="path-d2n" d="M210 100 L340 100"/>
+            <path id="path-n2d" d="M340 130 L210 130"/>
+            <path id="path-e2n" d="M590 80 L460 80"/>
+            <path id="path-n2e" d="M460 120 L590 120"/>
+          </defs>
+          <g font-family="Vazirmatn" font-size="14" fill="#F7F6F3" text-anchor="middle">
+            <!-- Connection paths (drawn) -->
+            <path d="M210 100 L340 100" stroke="#F4A261" stroke-width="2" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200"/>
+            <path d="M340 130 L210 130" stroke="#F4A261" stroke-width="2" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200;transition-delay:.2s"/>
+            <path d="M460 80 L590 80" stroke="#F4A261" stroke-width="2" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200;transition-delay:.4s"/>
+            <path d="M590 120 L460 120" stroke="#F4A261" stroke-width="2" fill="none" class="draw-line" style="stroke-dasharray:200;stroke-dashoffset:200;transition-delay:.6s"/>
+
+            <!-- Flowing dots -->
+            <circle r="4" fill="#F4A261"><animateMotion dur="2s" repeatCount="indefinite"><mpath href="#path-d2n"/></animateMotion></circle>
+            <circle r="4" fill="#F4A261"><animateMotion dur="2s" repeatCount="indefinite" begin=".5s"><mpath href="#path-n2d"/></animateMotion></circle>
+            <circle r="4" fill="#F4A261"><animateMotion dur="2s" repeatCount="indefinite" begin=".3s"><mpath href="#path-e2n"/></animateMotion></circle>
+            <circle r="4" fill="#F4A261"><animateMotion dur="2s" repeatCount="indefinite" begin=".8s"><mpath href="#path-n2e"/></animateMotion></circle>
+
+            <!-- Circles -->
+            <g class="grow-in d1">
+              <circle cx="150" cy="100" r="60" fill="#B85C38"/>
+              <circle cx="150" cy="100" r="60" fill="none" stroke="#F4A261" stroke-width="1" class="pulse-ring"/>
+              <text x="150" y="95" font-weight="700">مهندس</text>
+              <text x="150" y="115" font-weight="700">طراح</text>
+            </g>
+            <g class="grow-in d2">
+              <circle cx="400" cy="100" r="60" fill="#136F63"/>
+              <circle cx="400" cy="100" r="60" fill="none" stroke="#F4A261" stroke-width="1" class="pulse-ring" style="animation-delay:.5s"/>
+              <text x="400" y="95" font-weight="700">مهندس</text>
+              <text x="400" y="115" font-weight="700">ناظر</text>
+            </g>
+            <g class="grow-in d3">
+              <circle cx="650" cy="100" r="60" fill="#2E7D32"/>
+              <circle cx="650" cy="100" r="60" fill="none" stroke="#F4A261" stroke-width="1" class="pulse-ring" style="animation-delay:1s"/>
+              <text x="650" y="95" font-weight="700">مهندس</text>
+              <text x="650" y="115" font-weight="700">مجری</text>
+            </g>
+
+            <text x="275" y="80" font-size="11" opacity=".9">درخواست/نظرخواهی</text>
+            <text x="275" y="155" font-size="11" opacity=".9">پاسخ + فایل</text>
+            <text x="525" y="65" font-size="11" opacity=".9">گزارش مرحله</text>
+            <text x="525" y="145" font-size="11" opacity=".9">دستور نظارتی</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 06 ================== -->
+<section class="chapter px-6 md:px-12 py-24 bg-white" id="ch6">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۰۶</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">استعلامات سازمانی</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">بخش قابل‌توجهی از مراجعات شهرداری مربوط به استعلام‌هایی است که دفاتر اسناد رسمی، بانک‌ها و ادارات آب، برق و گاز برای املاک مطرح می‌کنند. سامانه شهروندیار این فرآیند را به‌طور کامل دیجیتال و برخط کرده است.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="space-y-10 reveal">
+      <!-- Notary -->
+      <div class="grid md:grid-cols-12 gap-8 border-b border-[color:var(--line)] pb-10">
+        <div class="md:col-span-4">
+          <div class="role-badge role-notary mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/></svg></div>
+          <h3 class="font-bold text-2xl mb-2">دفاتر اسناد رسمی</h3>
+          <p class="text-[color:var(--muted)] text-sm">هر دفترخانه با نام اختصاصی در سامانه تعریف می‌شود و می‌تواند درخواست استعلام روی تمامی ملک‌های سطح شهر ثبت کند.</p>
+        </div>
+        <div class="md:col-span-8">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-3">اطلاعات معامله</div>
+              <ul class="feature-list text-sm space-y-1">
+                <li>تطبیق اطلاعات مالک</li>
+                <li>وارد کردن اطلاعات خریدار</li>
+                <li>مشخص نمودن سهم هر خریدار</li>
+                <li>جستجوی خریدار از بانک اشخاص</li>
+                <li>ثبت خریدار جدید با اطلاعات شخص</li>
+                <li>ثبت خریداران به تفکیک سهم</li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-3">اطلاعات ملک</div>
+              <ul class="feature-list text-sm space-y-1">
+                <li>شماره پرونده، کدنوسازی، کدپستی</li>
+                <li>خیابان اصلی، پلاک اصلی و فرعی</li>
+                <li>مساحت مستند و موجود، کل سهم</li>
+                <li>مشاهده مشخصات مالکین به تفکیک سهم</li>
+                <li>جستجو با کد نوسازی یا پلاک</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-6 bg-[color:var(--paper)] border border-[color:var(--line)] rounded-xl p-5">
+            <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-3">گردش کار استعلام</div>
+            <div class="grid md:grid-cols-4 gap-3 text-xs relative">
+              <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="95%" y1="20" x2="76%" y2="20" stroke="#0F4C5C" stroke-width="1.5" class="dash-flow"/>
+                <line x1="70%" y1="20" x2="51%" y2="20" stroke="#0F4C5C" stroke-width="1.5" class="dash-flow" style="animation-delay:.3s"/>
+                <line x1="45%" y1="20" x2="26%" y2="20" stroke="#0F4C5C" stroke-width="1.5" class="dash-flow" style="animation-delay:.6s"/>
+              </svg>
+              <div class="bg-white p-3 rounded border border-[color:var(--line)]">۱. ثبت درخواست و مدارک</div>
+              <div class="bg-white p-3 rounded border border-[color:var(--line)]">۲. پرداخت از درگاه بانک + ثبت فیش</div>
+              <div class="bg-white p-3 rounded border border-[color:var(--line)]">۳. بررسی، تایید و صدور گواهی</div>
+              <div class="bg-white p-3 rounded border border-[color:var(--line)]">۴. مشاهده، چاپ و ارسال پاسخ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Utilities -->
+      <div class="grid md:grid-cols-12 gap-8 border-b border-[color:var(--line)] pb-10">
+        <div class="md:col-span-4">
+          <div class="role-badge role-utility mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3 class="font-bold text-2xl mb-2">ادارات آب، برق و گاز</h3>
+          <p class="text-[color:var(--muted)] text-sm">ثبت استعلام روی تمامی ملک‌های سطح شهر با امکان تطبیق اطلاعات، مشاهده مدارک و چاپ پاسخ.</p>
+        </div>
+        <div class="md:col-span-8">
+          <div class="grid md:grid-cols-3 gap-4 reveal-stagger">
+            <div class="bg-[color:var(--paper)] rounded-lg p-4">
+              <div class="text-xs text-[color:var(--accent-3)] font-semibold mb-2">ثبت و مشاهده</div>
+              <ul class="feature-list text-xs space-y-1">
+                <li>تطبیق اطلاعات مالک</li>
+                <li>مشاهده مدارک بارگذاری‌شده</li>
+                <li>مشاهده وضعیت درخواست</li>
+                <li>مشاهده مشخصات ملک و مالکین</li>
+              </ul>
+            </div>
+            <div class="bg-[color:var(--paper)] rounded-lg p-4">
+              <div class="text-xs text-[color:var(--accent-3)] font-semibold mb-2">پیگیری</div>
+              <ul class="feature-list text-xs space-y-1">
+                <li>مشاهده مراحل طی‌شده</li>
+                <li>ساعت ورود و خروج</li>
+                <li>مسئول اجرا</li>
+                <li>شماره پرونده و کد رهگیری</li>
+              </ul>
+            </div>
+            <div class="bg-[color:var(--paper)] rounded-lg p-4">
+              <div class="text-xs text-[color:var(--accent-3)] font-semibold mb-2">پاسخ و خروجی</div>
+              <ul class="feature-list text-xs space-y-1">
+                <li>پرداخت از درگاه بانک</li>
+                <li>چاپ پاسخ استعلام</li>
+                <li>ارسال به درگاه شهروند</li>
+                <li>جریان‌اندازی در شهرنگار</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank -->
+      <div class="grid md:grid-cols-12 gap-8">
+        <div class="md:col-span-4">
+          <div class="role-badge role-bank mb-4"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg></div>
+          <h3 class="font-bold text-2xl mb-2">بانک‌ها</h3>
+          <p class="text-[color:var(--muted)] text-sm">استعلام برخط املاک با ارسال مستقیم به فرآیند مربوطه و دریافت پاسخ برخط.</p>
+        </div>
+        <div class="md:col-span-8">
+          <div class="bg-gradient-to-l from-[#FFF8E1] to-white border border-[#F9E79F] rounded-xl p-6">
+            <p class="leading-loose text-sm mb-4">
+              بانک‌ها برای تسهیلات و ضمانت‌نامه‌ها نیازمند استعلام سریع وضعیت ملک هستند. این درگاه، همان چرخه استعلام سازمانی را با <strong>پاسخ برخط</strong> در اختیارشان قرار می‌دهد؛ از ثبت درخواست، تطبیق اطلاعات مالک، مشاهده مدارک و مراحل طی‌شده تا پرداخت، چاپ پاسخ و ارسال آن به درگاه شهروند.
+            </p>
+            <div class="grid grid-cols-3 gap-3 text-center text-xs reveal-stagger">
+              <div class="bg-white rounded p-3 border border-[#F9E79F]">ثبت و تطبیق</div>
+              <div class="bg-white rounded p-3 border border-[#F9E79F]">پرداخت و صدور</div>
+              <div class="bg-white rounded p-3 border border-[#F9E79F]">پاسخ برخط</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 07 ================== -->
+<section class="chapter px-6 md:px-12 py-24" id="ch7">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۰۷</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">عملیات میدانی</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">بخشی از فرآیندهای شهرسازی نیازمند حضور فیزیکی در محل است. دو نقش «مأمور بازدید» و «پلیس ساختمان» از درگاه‌های اختصاصی برای ثبت گزارش‌های میدانی با مستندسازی کامل برخوردارند.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 reveal">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="role-badge role-inspector icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3 class="font-bold text-2xl">مأمور بازدید</h3>
+        </div>
+        <p class="text-[color:var(--muted)] leading-relaxed mb-5">
+          پروفایل اختصاصی برای هر مأمور بازدید با دسترسی به لیست ملک‌های بازدید روی نقشه، تقویم بازدید و میزکار. مأمور می‌تواند گزارش بازدید را به‌صورت گرافیکی با امکانات ترسیم ثبت و در آرشیو پروژه ذخیره کند.
+        </p>
+        <ul class="feature-list space-y-1 text-sm">
+          <li>مشاهده ملک‌های بازدید روی نقشه با مسیریابی</li>
+          <li>مشاهده اطلاعات ملک: کدنوسازی، کدپرونده، آدرس، نوع درخواست، نام درخواست‌کننده، تاریخ نوبت، شماره درخواست</li>
+          <li>تقویم بازدید با نمایش تعداد بازدیدهای انجام‌نشده در هر روز</li>
+          <li>مشاهده آخرین درخواست‌ها و درخواست فعال</li>
+          <li>مشاهده پیامک‌ها، ابلاغیه‌ها، گواهی‌ها و فیش‌ها</li>
+          <li>ثبت گزارش بازدید ناظر و بررسی الزام حضور ناظر</li>
+          <li>ثبت گزارش گرافیکی با امکانات ترسیم</li>
+          <li>مشاهده موقعیت پروژه‌ها بر روی نقشه اختصاصی</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="role-badge role-police icon-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="font-bold text-2xl">پلیس ساختمان</h3>
+        </div>
+        <p class="text-[color:var(--muted)] leading-relaxed mb-5">
+          پلیس ساختمان وظیفه رصد و رسیدگی به تخلفات ساختمانی را بر عهده دارد. درگاه اختصاصی او، ابزارهای کاملی برای ایجاد گزارش، مشخص نمودن ملک روی نقشه، ثبت تخلف بر روی ملک و اشخاص و مستندسازی با دوربین فراهم می‌کند.
+        </p>
+        <ul class="feature-list space-y-1 text-sm">
+          <li>ایجاد گزارش جدید با تعیین ملک روی نقشه</li>
+          <li>شماره ملک و تاریخ ایجاد گزارش</li>
+          <li>ایجاد و مشاهده شرح وضعیت گزارش</li>
+          <li>مشاهده جزئیات گزارش، موقعیت مکانی و عنوان گزارش</li>
+          <li>مشاهده جزئیات تخلف و توضیحات</li>
+          <li>ثبت تخلف بر روی مالک و اشخاص</li>
+          <li>ثبت تخلف از بانک اطلاعاتی با کد ملی یا ثبت شخص جدید</li>
+          <li>ثبت تخلف در دسته‌بندی‌های مختلف</li>
+          <li>تایپ صوتی توضیحات گزارش</li>
+          <li>ثبت مدارک از طریق دوربین یا فضای ذخیره‌سازی داخلی</li>
+          <li>رهگیری گزارش ثبت‌شده</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="product-shot mt-12 reveal" data-slot="field-officer-map">
+      <div class="bg-[color:var(--paper)] border border-[color:var(--line)] rounded-xl p-8">
+        <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" class="w-full" aria-hidden="true">
+          <defs>
+            <pattern id="cityGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0F4C5C" stroke-width=".3" opacity=".25"/>
+            </pattern>
+            <path id="route-path" d="M120 80 Q 250 130 350 180 T 620 70"/>
+          </defs>
+          <rect width="800" height="300" fill="#E8F4F2"/>
+          <rect width="800" height="300" fill="url(#cityGrid)"/>
+          <!-- Streets -->
+          <g stroke="#F7F6F3" stroke-width="10">
+            <line x1="0" y1="150" x2="800" y2="150"/>
+            <line x1="200" y1="0" x2="200" y2="300"/>
+            <line x1="500" y1="0" x2="500" y2="300"/>
+          </g>
+          <!-- Route line (drawn on reveal) -->
+          <path d="M120 80 Q 250 130 350 180 T 620 70" stroke="#0F4C5C" stroke-width="2.5" fill="none" class="draw-line-slow" style="stroke-dasharray:1200;stroke-dashoffset:1200"/>
+
+          <!-- Moving dot along route -->
+          <circle r="6" fill="#0F4C5C" class="pulse-soft">
+            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#route-path"/>
+            </animateMotion>
+          </circle>
+          <circle r="4" fill="#F7F6F3">
+            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#route-path"/>
+            </animateMotion>
+          </circle>
+
+          <!-- Pins drop in -->
+          <g class="pin-drop d1" transform="translate(120,80)">
+            <circle r="22" fill="#B85C38" opacity=".2" class="pulse-soft"/>
+            <path d="M0,-14 C-8,-14 -14,-8 -14,0 C-14,11 0,26 0,26 C0,26 14,11 14,0 C14,-8 8,-14 0,-14 Z" fill="#B85C38"/>
+            <circle r="4" fill="#fff"/>
+          </g>
+          <g class="pin-drop d2" transform="translate(350,180)">
+            <circle r="22" fill="#136F63" opacity=".2" class="pulse-soft" style="animation-delay:.5s"/>
+            <path d="M0,-14 C-8,-14 -14,-8 -14,0 C-14,11 0,26 0,26 C0,26 14,11 14,0 C14,-8 8,-14 0,-14 Z" fill="#136F63"/>
+            <circle r="4" fill="#fff"/>
+          </g>
+          <g class="pin-drop d3" transform="translate(620,70)">
+            <circle r="22" fill="#BF360C" opacity=".2" class="pulse-soft" style="animation-delay:1s"/>
+            <path d="M0,-14 C-8,-14 -14,-8 -14,0 C-14,11 0,26 0,26 C0,26 14,11 14,0 C14,-8 8,-14 0,-14 Z" fill="#BF360C"/>
+            <circle r="4" fill="#fff"/>
+          </g>
+
+          <text x="20" y="30" font-family="Vazirmatn" font-size="14" fill="#0F4C5C" font-weight="700">نقشه بازدیدهای روزانه</text>
+          <text x="20" y="50" font-family="Vazirmatn" font-size="11" fill="#6B7C85">مسیر بهینه بین پروژه‌ها بر اساس تقویم</text>
+        </svg>
+        <figcaption class="text-xs text-[color:var(--muted)] mt-3 text-center">نمای پیشنهادی: نقشه موقعیت بازدیدها با مسیر بهینه و نقطه متحرک</figcaption>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 08 ================== -->
+<section class="chapter ink-block" id="ch8">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3" style="color:#F4A261">فصل ۰۸</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-6 text-white">خدمات شهروندان</h2>
+      <p class="text-white/80 max-w-3xl mb-10">شهروندیار، شهروند را در مرکز خدمات شهرسازی قرار می‌دهد. از مشاهده ضوابط ساخت یک ملک بدون ورود به سامانه تا ثبت و پیگیری درخواست‌های پیچیده شهرسازی با احراز هویت کامل.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-12 reveal-stagger">
+      <div class="bg-white/10 backdrop-blur border border-white/20 rounded-xl p-6">
+        <div class="text-xs uppercase tracking-widest opacity-70 mb-3">بخش عمومی · بدون ورود</div>
+        <ul class="space-y-2 text-sm">
+          <li class="flex gap-3"><span style="color:#F4A261">۱.</span>صفحه اصلی و راهنمای تصویری هر بخش</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۲.</span>مشاهده لایه‌های نقشه و تصاویر پایه</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۳.</span>محاسبه و مشاهده آنلاین ضوابط شهرسازی هر ملک</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۴.</span>ارسال و پیگیری گزارشات مردمی ۱۳۷</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۵.</span>تصدیق گواهی شهرسازی با QR</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۶.</span>پرداخت عوارض نوسازی</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۷.</span>راهنمای برخط در سامانه</li>
+        </ul>
+      </div>
+      <div class="bg-white/10 backdrop-blur border border-white/20 rounded-xl p-6">
+        <div class="text-xs uppercase tracking-widest opacity-70 mb-3">بخش خصوصی · با احراز هویت</div>
+        <ul class="space-y-2 text-sm">
+          <li class="flex gap-3"><span style="color:#F4A261">۸.</span>پروفایل و ورود از پنجره خدمات وزارت کشور</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۹.</span>بخش «املاک من» و اطلاعات پرونده‌های ملکی</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۰.</span>انتخاب پرونده ملک خاص به‌عنوان ملک فعال</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۱.</span>پرداخت آنلاین عوارض نوسازی با جزئیات</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۲.</span>عوارض کسب‌و‌پیشه با محاسبه مجدد</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۳.</span>فیش‌های درآمدی با تقسیط و چک اقساطی</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۴.</span>رهگیری فیش‌ها</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۵.</span>ثبت انواع درخواست‌های شهرسازی</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۶.</span>محیط پیامکی با کارشناس</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۷.</span>خوداظهاری ملک</li>
+          <li class="flex gap-3"><span style="color:#F4A261">۱۸.</span>جعبه پیام، ابلاغیه و گواهی</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <h3 class="text-2xl font-bold mb-6 text-white">گزارشات مردمی ۱۳۷ · دسته‌بندی موضوعی</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 reveal-stagger">
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">آب‌گرفتگی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">آسفالت معابر</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">آسیب‌های اجتماعی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">آلودگی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">اتوبوسرانی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">برف</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">پارک‌ها و فضای سبز</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">تاکسیرانی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">تخریب معابر</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">تعمیر و نصب</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">تغییر کاربری</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">پروژه‌های عمرانی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">نخاله عمرانی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">حمل زباله</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">ترافیک</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">حیوانات</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">درخت</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">رنگ‌آمیزی</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">امور اموات</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">مزاحمت</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">شکایت‌ها</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">نظافت</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">نام‌گذاری معابر</span>
+        <span class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs text-center transition hover:bg-white/20 hover:scale-105">میوه و تره‌بار</span>
+      </div>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6 reveal-stagger">
+      <div class="bg-white text-[color:var(--ink)] rounded-xl p-6 transition hover:-translate-y-1">
+        <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-2">تصدیق گواهی</div>
+        <p class="text-sm leading-relaxed">صحت‌سنجی گواهی‌های صادره شهرسازی با کد رهگیری، اسکنر QR اختصاصی و لینک آنلاین روی شبکه‌های اجتماعی.</p>
+      </div>
+      <div class="bg-white text-[color:var(--ink)] rounded-xl p-6 transition hover:-translate-y-1">
+        <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-2">خوداظهاری</div>
+        <p class="text-sm leading-relaxed">شهروند می‌تواند اطلاعات و مدارک ملک خود را با موقعیت روی نقشه، جستجوی پیشرفته و پیوست مستندات ارسال کند.</p>
+      </div>
+      <div class="bg-white text-[color:var(--ink)] rounded-xl p-6 transition hover:-translate-y-1">
+        <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-2">داشبورد شهروند</div>
+        <p class="text-sm leading-relaxed">گزارش آمار املاک، خلاصه آمار درخواست‌ها، آمار گزارش‌های مردمی و لیست آخرین درخواست‌ها.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 09 ================== -->
+<section class="chapter px-6 md:px-12 py-24 bg-white" id="ch9">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۰۹</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">نقشه و اطلاعات مکانی</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">نقشه در سامانه شهروندیار صرفاً یک تصویر نیست؛ بستری برای جستجو، انتخاب، محاسبه و تصمیم‌گیری است. تمام درگاه‌ها از یک نقشه یکپارچه سطح شهر بهره می‌برند.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 reveal">
+      <div class="md:col-span-7">
+        <h3 class="font-bold text-xl mb-5">قابلیت‌های نقشه یکپارچه</h3>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <div class="text-sm font-semibold mb-2 text-[color:var(--accent-3)]">جستجوی چندگانه</div>
+            <ul class="feature-list text-sm space-y-1">
+              <li>جستجو با کد نوسازی</li>
+              <li>جستجو با نام معابر</li>
+              <li>بر اساس لایه یا گروه لایه‌ها</li>
+              <li>موقعیت به شکل UTM</li>
+              <li>موقعیت به شکل Decimal Degrees</li>
+              <li>پلاک اصلی و فرعی</li>
+              <li>کدپرونده و کدنوسازی قدیم</li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-sm font-semibold mb-2 text-[color:var(--accent-3)]">لایه‌ها و نقشه‌های پایه</div>
+            <ul class="feature-list text-sm space-y-1">
+              <li>نقشه یکپارچه سطح شهر</li>
+              <li>Google، OSM، Bing و تصویر دلخواه</li>
+              <li>لایه‌های گروه‌بندی‌شده</li>
+              <li>تنظیم شفافیت لایه‌ها</li>
+              <li>نمایش همپوشانی لایه‌ها</li>
+              <li>ابزار اندازه‌گیری مساحت و محیط</li>
+              <li>عکس‌برداری از نقشه (دانلود، چاپ، ذخیره)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <figure class="product-shot" data-slot="unified-map">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="w-full rounded-xl" aria-hidden="true">
+            <rect width="400" height="400" fill="#E8F4F2"/>
+            <g stroke="#0F4C5C" stroke-width=".5" opacity=".3">
+              <line x1="0" y1="80" x2="400" y2="80"/>
+              <line x1="0" y1="160" x2="400" y2="160"/>
+              <line x1="0" y1="240" x2="400" y2="240"/>
+              <line x1="0" y1="320" x2="400" y2="320"/>
+              <line x1="80" y1="0" x2="80" y2="400"/>
+              <line x1="160" y1="0" x2="160" y2="400"/>
+              <line x1="240" y1="0" x2="240" y2="400"/>
+              <line x1="320" y1="0" x2="320" y2="400"/>
+            </g>
+            <g fill="#0F4C5C" opacity=".15" stroke="#0F4C5C" stroke-width="1">
+              <rect x="40" y="40" width="80" height="60"/>
+              <rect x="140" y="40" width="60" height="80"/>
+              <rect x="220" y="40" width="100" height="60"/>
+              <rect x="40" y="140" width="100" height="80"/>
+              <rect x="160" y="140" width="80" height="100" fill="#B85C38" opacity=".6"/>
+              <rect x="260" y="120" width="100" height="120"/>
+              <rect x="40" y="260" width="120" height="100"/>
+              <rect x="180" y="260" width="80" height="80"/>
+              <rect x="280" y="260" width="80" height="100"/>
+            </g>
+            <!-- Selected parcel border (marching ants) -->
+            <rect x="160" y="140" width="80" height="100" fill="none" stroke="#B85C38" stroke-width="3" class="marching-ants"/>
+
+            <!-- Pin drops in -->
+            <g class="pin-drop d1" transform="translate(200,190)">
+              <circle r="18" fill="#B85C38" opacity=".3" class="pulse-soft"/>
+              <circle r="12" fill="#B85C38"/>
+              <circle r="5" fill="#fff"/>
+            </g>
+
+            <!-- Side UI panel slides in -->
+            <g class="slide-in-right d1">
+              <rect x="260" y="20" width="120" height="110" fill="#fff" stroke="#D9D4C7" rx="4"/>
+              <text x="270" y="40" font-family="Vazirmatn" font-size="10" fill="#0F4C5C" font-weight="700">جزئیات ملک</text>
+              <line x1="270" y1="50" x2="370" y2="50" stroke="#D9D4C7"/>
+              <text x="270" y="65" font-family="Vazirmatn" font-size="8" fill="#6B7C85">کدنوسازی: ۱۲۳۴۵</text>
+              <text x="270" y="80" font-family="Vazirmatn" font-size="8" fill="#6B7C85">مساحت: ۲۴۰ m²</text>
+              <text x="270" y="95" font-family="Vazirmatn" font-size="8" fill="#6B7C85">کاربری: مسکونی</text>
+              <text x="270" y="110" font-family="Vazirmatn" font-size="8" fill="#136F63">تراکم مجاز: ۱۸۰٪</text>
+              <rect x="270" y="118" width="100" height="6" rx="3" fill="#E8F4F2"/>
+              <rect x="270" y="118" width="0" height="6" rx="3" fill="#136F63">
+                <animate attributeName="width" values="0;80" dur="1.5s" begin="1s" fill="freeze"/>
+              </rect>
+            </g>
+
+            <!-- Scale -->
+            <line x1="20" y1="380" x2="100" y2="380" stroke="#0F4C5C" stroke-width="2"/>
+            <text x="20" y="370" font-family="Vazirmatn" font-size="9" fill="#0F4C5C">۱۰۰ متر</text>
+          </svg>
+          <figcaption class="text-xs text-[color:var(--muted)] mt-3 text-center">انتخاب ملک روی نقشه و نمایش جزئیات شهرسازی</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 gap-6 reveal-stagger">
+      <div class="border border-[color:var(--line)] rounded-xl p-6 transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="font-bold mb-3 text-[color:var(--accent-3)]">انتخاب ملک روی نقشه</h4>
+        <p class="text-sm leading-relaxed text-[color:var(--muted)]">انتخاب املاک و عارضه‌های سطح شهر با کلیک روی نقشه و مشاهده جزئیات GIS نقشه‌محور، اطلاعات شهرسازی و کاربری‌های مجاز.</p>
+      </div>
+      <div class="border border-[color:var(--line)] rounded-xl p-6 transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="font-bold mb-3 text-[color:var(--accent-3)]">ابزارهای تحلیلی</h4>
+        <p class="text-sm leading-relaxed text-[color:var(--muted)]">اندازه‌گیری مساحت و محیط عارضه‌ها، مشاهده همپوشانی لایه‌ها با تنظیم شفافیت و ذخیره عکس از نقشه.</p>
+      </div>
+      <div class="border border-[color:var(--line)] rounded-xl p-6 transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="font-bold mb-3 text-[color:var(--accent-3)]">مسیریابی</h4>
+        <p class="text-sm leading-relaxed text-[color:var(--muted)]">مسیریابی به محل پروژه و مشاهده آدرس در برنامه نقشه و مسیریاب نشان برای مهندسین و مأمورین بازدید.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 10 ================== -->
+<section class="chapter px-6 md:px-12 py-24" id="ch10">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۱۰</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">جریان کار شهرسازی</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">شهروند می‌تواند ۱۲ نوع درخواست شهرسازی را از طریق سامانه ثبت و تا صدور گواهی نهایی پیگیری کند. این فرآیند با گردش کار شفاف، محیط پیامکی و امکان رفع نقص همراه است.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 mb-12 reveal-stagger">
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۱</div><div class="text-sm font-semibold">گواهی استعلام دفترخانه</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۲</div><div class="text-sm font-semibold">گواهی استعلام بانک</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۳</div><div class="text-sm font-semibold">گواهی پروانه ساخت</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۴</div><div class="text-sm font-semibold">گواهی تمدید پروانه</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۵</div><div class="text-sm font-semibold">گواهی اصلاح پروانه</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۶</div><div class="text-sm font-semibold">گواهی پایان کار</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۷</div><div class="text-sm font-semibold">گواهی تغییر کاربری</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۸</div><div class="text-sm font-semibold">گواهی عدم خلاف</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۹</div><div class="text-sm font-semibold">گواهی تغییر بنا</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۱۰</div><div class="text-sm font-semibold">گواهی اضافه اشکوب</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۱۱</div><div class="text-sm font-semibold">گواهی تفکیک زمین</div></div>
+      <div class="bg-white border border-[color:var(--line)] rounded-lg p-4 transition hover:-translate-y-1 hover:border-[color:var(--accent-3)]"><div class="text-xs text-[color:var(--accent-3)] mb-1">۱۲</div><div class="text-sm font-semibold">گواهی تفکیک ساختمان / آپارتمان</div></div>
+    </div>
+
+    <div class="ink-block-2 rounded-2xl p-8 md:p-12 reveal">
+      <h3 class="text-2xl font-bold mb-8 text-white">گردش کار ثبت درخواست</h3>
+      <div class="grid md:grid-cols-4 gap-6 reveal-stagger relative">
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="12%" y1="20" x2="38%" y2="20" stroke="#F4A261" stroke-width="1.5" class="dash-flow"/>
+          <line x1="38%" y1="20" x2="63%" y2="20" stroke="#F4A261" stroke-width="1.5" class="dash-flow" style="animation-delay:.3s"/>
+          <line x1="63%" y1="20" x2="88%" y2="20" stroke="#F4A261" stroke-width="1.5" class="dash-flow" style="animation-delay:.6s"/>
+        </svg>
+        <div>
+          <div class="w-12 h-12 rounded-full bg-white text-[#0F4C5C] flex items-center justify-center font-bold text-lg mb-3">۱</div>
+          <div class="font-semibold mb-2">انتخاب ملک و نوع گواهی</div>
+          <p class="text-xs opacity-80">انتخاب ملک از «املاک من» یا از نقشه، و انتخاب یکی از ۱۲ نوع گواهی تعریف‌شده.</p>
+        </div>
+        <div>
+          <div class="w-12 h-12 rounded-full bg-white text-[#0F4C5C] flex items-center justify-center font-bold text-lg mb-3">۲</div>
+          <div class="font-semibold mb-2">تکمیل مدارک</div>
+          <p class="text-xs opacity-80">اسکن مدارک الزامی متناسب با نوع درخواست و اتصال به آرشیو مستندات قبلی.</p>
+        </div>
+        <div>
+          <div class="w-12 h-12 rounded-full bg-white text-[#0F4C5C] flex items-center justify-center font-bold text-lg mb-3">۳</div>
+          <div class="font-semibold mb-2">ارسال و پرداخت</div>
+          <p class="text-xs opacity-80">بررسی نهایی، پرداخت هزینه ثبت درخواست از درگاه امن اینترنتی و صدور کد پیگیری.</p>
+        </div>
+        <div>
+          <div class="w-12 h-12 rounded-full bg-white text-[#0F4C5C] flex items-center justify-center font-bold text-lg mb-3">۴</div>
+          <div class="font-semibold mb-2">پیگیری و رفع نقص</div>
+          <p class="text-xs opacity-80">گفتگو با مسئول مربوطه، بارگذاری فایل، دریافت پیام اصلاح یا تکمیل مدارک.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 reveal">
+      <h3 class="chapter-title text-2xl mb-6">محاسبات برخط عوارض</h3>
+      <div class="grid md:grid-cols-3 gap-6 reveal-stagger">
+        <div class="bg-white border border-[color:var(--line)] rounded-xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+          <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-3">عوارض نوسازی</div>
+          <ul class="feature-list text-sm space-y-1">
+            <li>مشاهده لیست فیش‌های صادره</li>
+            <li>مشاهده قالب چاپی سند</li>
+            <li>محاسبه مجدد سیستمی</li>
+            <li>صدور آنی فیش جدید</li>
+            <li>نمایش فرمول و جزئیات محاسبه</li>
+          </ul>
+        </div>
+        <div class="bg-white border border-[color:var(--line)] rounded-xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+          <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-3">عوارض کسب‌و‌پیشه</div>
+          <ul class="feature-list text-sm space-y-1">
+            <li>فیش‌های عوارض واحد شغلی</li>
+            <li>قالب چاپی سند</li>
+            <li>محاسبه مجدد سیستمی</li>
+            <li>صدور فیش بر اساس سال</li>
+            <li>فرمول و جزئیات محاسبه</li>
+          </ul>
+        </div>
+        <div class="bg-white border border-[color:var(--line)] rounded-xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+          <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-3">فیش‌های درآمدی</div>
+          <ul class="feature-list text-sm space-y-1">
+            <li>لیست محاسبات درآمدی</li>
+            <li>پرداخت از درگاه امن</li>
+            <li>درخواست تقسیط</li>
+            <li>درج چک‌های اقساطی</li>
+            <li>پیام‌دهی به کارشناس</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 11 ================== -->
+<section class="chapter px-6 md:px-12 py-24 bg-white" id="ch11">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3">فصل ۱۱</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-4">امنیت، احراز هویت و سطوح دسترسی</h2>
+      <p class="text-[color:var(--muted)] max-w-3xl mb-10">سامانه شهروندیار به‌صورت سرویس‌محور با پیش‌بینی لایه‌های امنیتی داده‌ها طراحی شده است. احراز هویت و سطوح دسترسی برای هر نقش متناسب با حساسیت اطلاعات آن نقش تعریف می‌شود.</p>
+      <div class="divider mb-12"></div>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 reveal">
+      <div class="md:col-span-7">
+        <h3 class="font-bold text-xl mb-5">روش‌های ورود و عضویت</h3>
+        <div class="space-y-4 reveal-stagger">
+          <div class="border border-[color:var(--line)] rounded-xl p-5 transition hover:border-[color:var(--accent)] hover:shadow-md">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-[color:var(--accent)] text-white flex items-center justify-center text-sm font-bold">۱</div>
+              <div class="font-semibold">ثبت‌نام با اعتبارسنجی موبایل و OTP</div>
+            </div>
+            <p class="text-sm text-[color:var(--muted)] pr-11">احراز هویت اولیه از طریق کد یک‌بار مصرف ارسال‌شده به شماره همراه شهروند.</p>
+          </div>
+          <div class="border border-[color:var(--line)] rounded-xl p-5 transition hover:border-[color:var(--accent)] hover:shadow-md">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-[color:var(--accent)] text-white flex items-center justify-center text-sm font-bold">۲</div>
+              <div class="font-semibold">پنجره واحد خدمات وزارت کشور</div>
+            </div>
+            <p class="text-sm text-[color:var(--muted)] pr-11">ورود و عضویت از طریق پنجره واحد خدمات وزارت کشور و یکپارچگی با سامانه‌های دولتی.</p>
+          </div>
+          <div class="border border-[color:var(--line)] rounded-xl p-5 transition hover:border-[color:var(--accent)] hover:shadow-md">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-[color:var(--accent)] text-white flex items-center justify-center text-sm font-bold">۳</div>
+              <div class="font-semibold">پنجره ملی خدمات دولت هوشمند</div>
+            </div>
+            <p class="text-sm text-[color:var(--muted)] pr-11">ورود از طریق درگاه ملی خدمات دولت هوشمند برای یکپارچگی با سرویس‌های ملی.</p>
+          </div>
+          <div class="border border-[color:var(--line)] rounded-xl p-5 transition hover:border-[color:var(--accent)] hover:shadow-md">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-[color:var(--accent)] text-white flex items-center justify-center text-sm font-bold">۴</div>
+              <div class="font-semibold">ورود یکپارچه سازمانی</div>
+            </div>
+            <p class="text-sm text-[color:var(--muted)] pr-11">سیستم ورود یکپارچه برای کاربران داخلی سازمان (کارشناسان، مأمورین و پلیس ساختمان).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="bg-[color:var(--paper)] border border-[color:var(--line)] rounded-xl p-6 mb-6 reveal">
+          <div class="text-xs font-semibold text-[color:var(--accent-3)] uppercase mb-3">پروفایل و امنیت</div>
+          <ul class="feature-list text-sm space-y-2">
+            <li>مدیریت و مشاهده اطلاعات شخصی</li>
+            <li>تغییر تصویر شخصی در پنل پروفایل</li>
+            <li>تغییر رمز عبور با استفاده از رمز قبلی</li>
+            <li>مدیریت مستقیم بانک اطلاعات اشخاص</li>
+            <li>فراموشی رمز با اعتبارسنجی OTP</li>
+            <li>شناسایی املاک با شماره همراه و کد ملی</li>
+          </ul>
+        </div>
+
+        <div class="ink-block rounded-xl p-6 reveal">
+          <div class="text-xs uppercase tracking-widest opacity-70 mb-3">سطوح دسترسی</div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between items-center"><span>کاربران عمومی</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۷ بخش</span></div>
+            <div class="flex justify-between items-center"><span>کاربران خصوصی</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۲۰ بخش</span></div>
+            <div class="flex justify-between items-center"><span>مهندس ناظر</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۶۰+ امکان</span></div>
+            <div class="flex justify-between items-center"><span>مهندس طراح / مجری</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۴۰+ امکان</span></div>
+            <div class="flex justify-between items-center"><span>دفاتر اسناد رسمی</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۳۰+ امکان</span></div>
+            <div class="flex justify-between items-center"><span>ادارات خدماتی / بانک</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۲۰+ امکان</span></div>
+            <div class="flex justify-between items-center"><span>مأمور بازدید</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۲۰+ امکان</span></div>
+            <div class="flex justify-between items-center"><span>پلیس ساختمان</span><span class="text-xs bg-white/20 px-2 py-1 rounded">۱۵+ امکان</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== CHAPTER 12 ================== -->
+<section class="chapter ink-block" id="ch12">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 py-24">
+    <div class="reveal">
+      <div class="chapter-kicker text-xs uppercase mb-3" style="color:#F4A261">فصل ۱۲</div>
+      <h2 class="chapter-title text-3xl md:text-5xl mb-6 text-white">جمع‌بندی و ارزش سازمانی</h2>
+      <div class="divider mb-10" style="background:rgba(247,246,243,.2)"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 reveal">
+      <div>
+        <h3 class="text-xl font-bold mb-5 text-white">سامانه شهروندیار چه چیزی را مدیریت می‌کند؟</h3>
+        <ul class="space-y-3 text-white/90 text-sm leading-relaxed">
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>تمام فرآیندهای شهرسازی میان شهروند و سامانه شهرنگار.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>گردش کار مهندسین ناظر، طراح، مجری و تعامل میان آن‌ها.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>استعلامات سازمانی دفاتر اسناد رسمی، ادارات خدماتی و بانک‌ها.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>عملیات میدانی مأمورین بازدید و پلیس ساختمان.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>محاسبه، صدور و پرداخت عوارض نوسازی، کسب‌و‌پیشه و درآمدی.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>۱۲ نوع گواهی شهرسازی از درخواست تا صدور نهایی.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>گزارشات مردمی ۱۳۷ در ۲۴ دسته موضوعی.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold mb-5 text-white">چه خروجی‌هایی تولید می‌شود؟</h3>
+        <ul class="space-y-3 text-white/90 text-sm leading-relaxed">
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>گواهی‌های رسمی شهرسازی با کد رهگیری و QR قابل تصدیق.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>فیش‌های عوارض با فرمول و جزئیات محاسباتی.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>گزارش‌های نظارتی با چک‌لیست پویا و امضای دیجیتال.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>گزارش تخلف ساختمانی با تعیین میزان اهمیت و ارسال به اداره کار.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>گزارشات آماری، نموداری و تحلیلی برای مدیران.</li>
+          <li class="flex gap-3"><span style="color:#F4A261">◆</span>ابلاغیه‌ها، پیامک‌ها و گواهی‌ها در جعبه پیام شهروند.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-8 reveal">
+      <h3 class="text-2xl font-bold mb-6 text-white">چرا این محصول برای مسئله مناسب است؟</h3>
+      <div class="grid md:grid-cols-3 gap-6 reveal-stagger">
+        <div>
+          <div class="text-xs uppercase tracking-widest opacity-70 mb-2" style="color:#F4A261">معماری میان‌لایه</div>
+          <p class="text-sm opacity-90">قرارگیری به‌عنوان لایه امن و کاربرپسند بین آحاد کاربران و سامانه شهرنگار، پیچیدگی فنی را از کاربر نهایی دور نگه می‌دارد.</p>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-widest opacity-70 mb-2" style="color:#F4A261">درگاه‌های تخصصی</div>
+          <p class="text-sm opacity-90">به‌جای یک رابط واحد برای همه، هشت درگاه تخصصی بر اساس نقش واقعی هر کاربر طراحی شده است.</p>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-widest opacity-70 mb-2" style="color:#F4A261">نقشه‌محوری</div>
+          <p class="text-sm opacity-90">تمام عملیات‌ها — از انتخاب ملک تا گزارش تخلف — حول یک نقشه یکپارچه سطح شهر انجام می‌شود.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<footer class="bg-[#0B1A24] text-white px-6 md:px-12 py-16">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12 pb-10 border-b border-white/10">
+      <div>
+        <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-12 w-auto mb-4 brightness-0 invert">
+        <div class="text-xl font-bold">محیا پرداز</div>
+        <div class="text-sm opacity-60 mt-1">طراحی و تولید سامانه‌های مدیریت شهری</div>
+      </div>
+      <div class="text-right md:text-left">
+        <div class="text-xs uppercase tracking-widest opacity-50 mb-2">سامانه</div>
+        <div class="font-semibold text-lg">شهروندیار</div>
+        <div class="text-sm opacity-60">درگاه خدمات شهروندسپاری متصل به شهرنگار</div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between gap-4 text-sm opacity-70">
+      <div>© محیا پرداز · کاتالوگ محصول ۱۴۰۵</div>
+      <div class="flex gap-6">
+        <a href="https://mahyapardaz.com" target="_blank" rel="noopener" class="hover:opacity-100 transition-opacity">mahyapardaz.com</a>
+        <a href="#toc" class="hover:opacity-100 transition-opacity">بازگشت به فهرست</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  const progressBar = document.getElementById('progressBar');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    progressBar.style.width = (scrolled * 100) + '%';
+  }
+
+  // Reveal on scroll (base + stagger)
+  const reveals = document.querySelectorAll('.reveal, .reveal-stagger');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // Animate counters (once)
+        if(!e.target.dataset.counted){
+          e.target.querySelectorAll('[data-count]').forEach(el => {
+            const target = parseInt(el.dataset.count);
+            const dur = 1400;
+            const start = performance.now();
+            const toPersian = n => n.toLocaleString('fa-IR');
+            function step(t){
+              const p = Math.min((t - start) / dur, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = toPersian(Math.floor(target * eased));
+              if(p < 1) requestAnimationFrame(step);
+              else el.textContent = toPersian(target);
+            }
+            requestAnimationFrame(step);
+          });
+          e.target.dataset.counted = "1";
+        }
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.1});
+  reveals.forEach(r => io.observe(r));
+
+  // Side nav
+  const chapters = document.querySelectorAll('.chapter');
+  const sideNav = document.getElementById('sideNav');
+  chapters.forEach((ch, i) => {
+    const a = document.createElement('a');
+    a.href = '#' + ch.id;
+    a.dataset.label = 'فصل ' + (i+1).toLocaleString('fa-IR');
+    a.setAttribute('aria-label', 'فصل ' + (i+1));
+    sideNav.appendChild(a);
+  });
+  const sideLinks = sideNav.querySelectorAll('a');
+  function updateSideNav(){
+    let current = 0;
+    chapters.forEach((ch, i) => {
+      const r = ch.getBoundingClientRect();
+      if(r.top < window.innerHeight / 2) current = i;
+    });
+    sideLinks.forEach((a, i) => a.classList.toggle('active', i === current));
+  }
+
+  window.addEventListener('scroll', () => {
+    updateProgress();
+    updateSideNav();
+  }, {passive:true});
+  updateProgress();
+  updateSideNav();
+
+  // Trigger cover animation immediately
+  setTimeout(() => {
+    document.querySelector('header .reveal')?.classList.add('visible');
+  }, 300);
+</script>
+</body>
+</html>

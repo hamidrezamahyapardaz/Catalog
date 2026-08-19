@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>کاتالوگ سامانه سااا | کنترل پروژه و مدیریت منابع انسانی — محیا پرداز</title>
+<meta name="description" content="کاتالوگ دیجیتال سامانه سااا؛ پلتفرم یکپارچه مدیریت پروژه، تیکتینگ، عملکرد پرسنل و تردد برای سازمان‌های خدماتی و پیمانکاری، محصول محیا پرداز." />
+<meta property="og:title" content="سامانه سااا | کاتالوگ دیجیتال" />
+<meta property="og:description" content="مدیریت یکپارچه پروژه، تیکت، منابع انسانی و تردد" />
+<meta property="og:type" content="product" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+<style>
+  :root{
+    --ink:#0B2545;
+    --ink-2:#13315C;
+    --ink-3:#1E4976;
+    --paper:#FAF7F2;
+    --paper-2:#F1ECE1;
+    --line:#E4DCCB;
+    --gold:#D4A24C;
+    --gold-2:#B8862F;
+    --ok:#386641;
+    --warn:#C1292E;
+    --muted:#6B6253;
+  }
+  *{font-family:'Vazirmatn', sans-serif;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);overflow-x:hidden;}
+
+  /* Chapter typography */
+  .chapter-num{font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+  .h-display{font-weight:900;letter-spacing:-.02em;line-height:1.05;}
+  .lead{font-size:1.125rem;line-height:2;color:var(--ink-2);}
+
+  /* Paper texture */
+  .paper-bg{
+    background-color:var(--paper);
+    background-image:
+      radial-gradient(rgba(11,37,69,.035) 1px, transparent 1px),
+      radial-gradient(rgba(11,37,69,.025) 1px, transparent 1px);
+    background-size: 32px 32px, 16px 16px;
+    background-position: 0 0, 8px 8px;
+  }
+
+  /* Divider line */
+  .rule{height:1px;background:linear-gradient(to left, transparent, var(--line), transparent);}
+
+  /* Progress */
+  #progress-bar{position:fixed;top:0;right:0;height:3px;background:linear-gradient(to left, var(--gold), var(--gold-2));width:0;z-index:60;transition:width .1s linear;}
+  #chap-indicator{position:fixed;top:1.25rem;left:1.25rem;z-index:55;font-variant-numeric:tabular-nums;}
+
+  /* Side chapter rail */
+  .rail{position:fixed;left:1rem;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:.5rem;}
+  .rail a{width:6px;height:22px;background:var(--line);border-radius:2px;transition:all .3s;}
+  .rail a.active{background:var(--ink);height:34px;}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal-delay-1{transition-delay:.1s;}
+  .reveal-delay-2{transition-delay:.25s;}
+  .reveal-delay-3{transition-delay:.4s;}
+
+  /* Counters */
+  .count{font-variant-numeric:tabular-nums;font-weight:800;}
+
+  /* SVG styles */
+  .stroke-ink{stroke:var(--ink);}
+  .stroke-gold{stroke:var(--gold);}
+  .stroke-ok{stroke:var(--ok);}
+  .fill-ink{fill:var(--ink);}
+  .fill-gold{fill:var(--gold);}
+  .fill-paper{fill:var(--paper);}
+
+  /* Module cards */
+  .mod-card{transition:transform .4s ease, box-shadow .4s ease;}
+  .mod-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px -30px rgba(11,37,69,.25);}
+
+  /* Chapter opener */
+  .chap-open{min-height:90vh;display:flex;flex-direction:column;justify-content:center;}
+
+  /* Ticket timeline */
+  .tl-item{position:relative;padding-right:2.5rem;padding-bottom:1.5rem;}
+  .tl-item::before{content:"";position:absolute;right:.5rem;top:.4rem;width:10px;height:10px;border-radius:50%;background:var(--ink);}
+  .tl-item::after{content:"";position:absolute;right:.93rem;top:1.2rem;bottom:-.3rem;width:1px;background:var(--line);}
+  .tl-item:last-child::after{display:none;}
+  .tl-item.gold::before{background:var(--gold);}
+
+  /* Plan table */
+  .plan-cell{border-bottom:1px dashed var(--line);padding:.75rem 1rem;}
+  .plan-head{background:var(--ink);color:var(--paper);}
+
+  /* Interactive SVG */
+  .cycle-node{cursor:pointer;transition:all .3s ease;}
+  .cycle-node:hover .node-circle{transform:scale(1.08);fill:var(--gold);}
+  .cycle-node .node-circle{transition:all .3s ease;transform-origin:center;}
+  .cycle-node.active .node-circle{fill:var(--gold);}
+  .cycle-node.active .node-label{fill:var(--paper);}
+
+  .module-dot{cursor:pointer;transition:all .3s ease;}
+  .module-dot:hover{transform:scale(1.15);}
+  .module-dot.active circle{fill:var(--gold);stroke:var(--ink-2);}
+
+  /* Print */
+  @media print{
+    .rail, #chap-indicator, #progress-bar, .no-print{display:none !important;}
+    section{break-after:page;page-break-after:always;}
+    body{background:#fff;}
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    *{animation:none !important;transition:none !important;}
+  }
+
+  /* Responsive helpers */
+  @media (max-width:768px){
+    .rail{display:none;}
+    .h-display{font-size:2.5rem;}
+    #chap-indicator{display:none;}
+  }
+
+  /* Scroll hint */
+  .scroll-hint{animation: bob 2.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* Path drawing */
+  .draw-path{stroke-dasharray: 1000;stroke-dashoffset:1000;}
+  .in .draw-path{animation: draw 2.4s ease forwards;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  /* Number ticker */
+  .num-tick{display:inline-block;}
+
+  /* Table of contents link */
+  .toc-item{display:flex;gap:1.25rem;align-items:baseline;padding:.75rem 0;border-bottom:1px dashed var(--line);transition:all .3s;}
+  .toc-item:hover{padding-right:1rem;color:var(--ink-2);}
+  .toc-num{font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;min-width:3rem;}
+
+  /* Badge */
+  .chip{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .65rem;border-radius:999px;font-size:.75rem;border:1px solid var(--line);background:var(--paper-2);color:var(--ink-2);}
+
+  /* Ticket mockup */
+  .ticket-mock{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.25rem;box-shadow:0 18px 40px -30px rgba(11,37,69,.18);}
+
+  /* Status dot */
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+</style>
+</head>
+<body class="paper-bg">
+
+<!-- Progress bar -->
+<div id="progress-bar" aria-hidden="true"></div>
+
+<!-- Header -->
+<header class="fixed top-0 right-0 left-0 z-50 backdrop-blur-md bg-[rgba(250,247,242,.85)] border-b border-[color:var(--line)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#cover" class="flex items-center gap-3" aria-label="محیا پرداز">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-9 w-auto" />
+      <span class="hidden sm:inline text-sm font-bold tracking-tight text-[color:var(--ink)]">کاتالوگ سااا</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6 text-sm text-[color:var(--ink-2)]" aria-label="فهرست فصل‌ها">
+      <a href="#toc" class="hover:text-[color:var(--ink)]">فهرست</a>
+      <a href="#ch-01" class="hover:text-[color:var(--ink)]">مسئله</a>
+      <a href="#ch-03" class="hover:text-[color:var(--ink)]">تیکتینگ</a>
+      <a href="#ch-06" class="hover:text-[color:var(--ink)]">عملکرد</a>
+      <a href="#ch-11" class="hover:text-[color:var(--ink)]">پلن‌ها</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <span id="chap-indicator" class="text-xs font-bold tabular-nums px-2 py-1 bg-[color:var(--ink)] text-[color:var(--paper)] rounded" aria-live="polite">جلد</span>
+    </div>
+  </div>
+</header>
+
+<!-- Side chapter rail -->
+<aside class="rail no-print" aria-label="فصل‌های کاتالوگ">
+  <a href="#cover" data-rail="cover" title="جلد"></a>
+  <a href="#ch-01" data-rail="ch-01" title="فصل ۰۱"></a>
+  <a href="#ch-02" data-rail="ch-02" title="فصل ۰۲"></a>
+  <a href="#ch-03" data-rail="ch-03" title="فصل ۰۳"></a>
+  <a href="#ch-04" data-rail="ch-04" title="فصل ۰۴"></a>
+  <a href="#ch-05" data-rail="ch-05" title="فصل ۰۵"></a>
+  <a href="#ch-06" data-rail="ch-06" title="فصل ۰۶"></a>
+  <a href="#ch-07" data-rail="ch-07" title="فصل ۰۷"></a>
+  <a href="#ch-08" data-rail="ch-08" title="فصل ۰۸"></a>
+  <a href="#ch-09" data-rail="ch-09" title="فصل ۰۹"></a>
+  <a href="#ch-10" data-rail="ch-10" title="فصل ۱۰"></a>
+  <a href="#ch-11" data-rail="ch-11" title="فصل ۱۱"></a>
+  <a href="#conclusion" data-rail="conclusion" title="جمع‌بندی"></a>
+</aside>
+
+<!-- ============== COVER ============== -->
+<section id="cover" class="relative min-h-screen flex items-center pt-24 pb-16">
+  <div class="absolute inset-0 pointer-events-none opacity-60">
+    <svg class="absolute -left-20 top-40 w-[500px] h-[500px] text-[color:var(--line)]" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width=".4"/>
+      <circle cx="100" cy="100" r="55" stroke="currentColor" stroke-width=".4"/>
+      <circle cx="100" cy="100" r="30" stroke="currentColor" stroke-width=".4"/>
+    </svg>
+    <svg class="absolute right-10 bottom-10 w-64 h-64 text-[color:var(--line)]" viewBox="0 0 100 100" fill="none">
+      <path d="M10,90 L90,90 M10,90 L10,10" stroke="currentColor" stroke-width=".5"/>
+      <path d="M10,70 L40,50 L60,60 L90,20" stroke="currentColor" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-7 reveal">
+      <div class="flex items-center gap-3 mb-8">
+        <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-10 w-auto" />
+        <div class="h-px w-16 bg-[color:var(--line)]"></div>
+        <span class="text-sm text-[color:var(--muted)]">کاتالوگ دیجیتال محصول · نسخه ۱۴۰۴</span>
+      </div>
+
+      <p class="text-sm tracking-[.3em] text-[color:var(--gold-2)] font-bold mb-6">SAĀ SYSTEM · DIGITAL CATALOG</p>
+
+      <h1 class="h-display text-5xl sm:text-6xl lg:text-[82px] text-[color:var(--ink)] mb-6">
+        سامانه<br/>
+        <span class="text-[color:var(--ink-3)]">کنترل پروژه</span><br/>
+        و مدیریت<br/>
+        منابع انسانی
+      </h1>
+
+      <div class="flex items-center gap-3 my-8">
+        <div class="h-px w-20 bg-[color:var(--gold)]"></div>
+        <span class="text-2xl font-bold text-[color:var(--gold-2)]">سااا</span>
+      </div>
+
+      <p class="lead max-w-2xl mb-10">
+        بستری یکپارچه برای مدیریت چرخهٔ کامل پروژه، از تعریف قرارداد و سرویس تا تیکت عملیاتی، عملکرد پرسنل و تردد — همه در یک سامانه با هویت سازمانی مشخص.
+      </p>
+
+      <div class="flex flex-wrap gap-2">
+        <span class="chip">۹ ماژول عملیاتی</span>
+        <span class="chip">پلن پایه و حرفه‌ای</span>
+        <span class="chip">کارتابل پروژه‌محور</span>
+        <span class="chip">گزارش‌گیری پیشرفته</span>
+      </div>
+    </div>
+
+    <div class="lg:col-span-5 reveal reveal-delay-2">
+      <!-- Cover illustration: Integrated ecosystem -->
+      <svg viewBox="0 0 400 500" class="w-full h-auto" aria-label="تصویرسازی جلد: اکوسیستم سااا">
+        <defs>
+          <linearGradient id="coverGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0B2545"/>
+            <stop offset="1" stop-color="#13315C"/>
+          </linearGradient>
+        </defs>
+        <rect x="20" y="20" width="360" height="460" rx="16" fill="url(#coverGrad)"/>
+        <!-- grid -->
+        <g stroke="#D4A24C" stroke-opacity=".15" stroke-width=".6">
+          <path d="M20,100 L380,100 M20,180 L380,180 M20,260 L380,260 M20,340 L380,340 M20,420 L380,420"/>
+          <path d="M100,20 L100,480 M180,20 L180,480 M260,20 L260,480 M340,20 L340,480"/>
+        </g>
+        <!-- central hub -->
+        <circle cx="200" cy="250" r="52" fill="#FAF7F2" stroke="#D4A24C" stroke-width="2"/>
+        <text x="200" y="245" text-anchor="middle" font-size="22" font-weight="800" fill="#0B2545">سااا</text>
+        <text x="200" y="268" text-anchor="middle" font-size="10" fill="#6B6253">سامانه یکپارچه</text>
+
+        <!-- orbit nodes -->
+        <g stroke="#FAF7F2" stroke-width="1" stroke-opacity=".4" fill="none">
+          <path d="M200,250 L200,110"/>
+          <path d="M200,250 L340,160"/>
+          <path d="M200,250 L340,340"/>
+          <path d="M200,250 L200,390"/>
+          <path d="M200,250 L60,340"/>
+          <path d="M200,250 L60,160"/>
+        </g>
+
+        <g font-family="Vazirmatn" font-size="11" fill="#FAF7F2">
+          <circle cx="200" cy="110" r="26" fill="#D4A24C"/>
+          <text x="200" y="114" text-anchor="middle" fill="#0B2545" font-weight="700">پروژه</text>
+
+          <circle cx="340" cy="160" r="22" fill="#FAF7F2" stroke="#D4A24C" stroke-width="1.5"/>
+          <text x="340" y="164" text-anchor="middle" fill="#0B2545">تیکت</text>
+
+          <circle cx="340" cy="340" r="22" fill="#FAF7F2" stroke="#D4A24C" stroke-width="1.5"/>
+          <text x="340" y="344" text-anchor="middle" fill="#0B2545">قرارداد</text>
+
+          <circle cx="200" cy="390" r="22" fill="#FAF7F2" stroke="#D4A24C" stroke-width="1.5"/>
+          <text x="200" y="394" text-anchor="middle" fill="#0B2545">تردد</text>
+
+          <circle cx="60" cy="340" r="22" fill="#FAF7F2" stroke="#D4A24C" stroke-width="1.5"/>
+          <text x="60" y="344" text-anchor="middle" fill="#0B2545">عملکرد</text>
+
+          <circle cx="60" cy="160" r="22" fill="#FAF7F2" stroke="#D4A24C" stroke-width="1.5"/>
+          <text x="60" y="164" text-anchor="middle" fill="#0B2545">کاربران</text>
+        </g>
+
+        <!-- stats -->
+        <g font-family="Vazirmatn" fill="#FAF7F2">
+          <text x="50" y="455" font-size="10" fill="#D4A24C">۱۰۹ قابلیت</text>
+          <text x="350" y="455" font-size="10" text-anchor="end">۹ ماژول</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[color:var(--muted)] text-xs no-print">
+    <span>برای ورق‌زدن کاتالوگ، اسکرول کنید</span>
+    <svg class="scroll-hint w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============== TABLE OF CONTENTS ============== -->
+<section id="toc" class="py-24 border-t border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="text-sm tracking-[.3em] text-[color:var(--gold-2)] font-bold mb-4">فهرست</p>
+      <h2 class="h-display text-4xl sm:text-6xl mb-4">آنچه در این کاتالوگ می‌خوانید</h2>
+      <p class="lead max-w-2xl mb-12">ساختاری روایی از مسئله سازمان تا راهکار یکپارچه؛ هر فصل یک لایه از سامانه را باز می‌کند.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-12 reveal reveal-delay-1">
+      <a href="#ch-01" class="toc-item">
+        <span class="toc-num">۰۱</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">مسئلهٔ سازمان</strong> — چرا ابزارهای پراکنده کار نمی‌کنند؟</span>
+      </a>
+      <a href="#ch-02" class="toc-item">
+        <span class="toc-num">۰۲</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">هسته سامانه</strong> — مدیریت پروژه</span>
+      </a>
+      <a href="#ch-03" class="toc-item">
+        <span class="toc-num">۰۳</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">قلب تپنده</strong> — ماژول تیکتینگ و پیگیری</span>
+      </a>
+      <a href="#ch-04" class="toc-item">
+        <span class="toc-num">۰۴</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">تعاریف پروژه</strong> — قرارداد، سرویس، کارفرما</span>
+      </a>
+      <a href="#ch-05" class="toc-item">
+        <span class="toc-num">۰۵</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">سازمان و کاربران</strong> — نقش، سمت، چارت</span>
+      </a>
+      <a href="#ch-06" class="toc-item">
+        <span class="toc-num">۰۶</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">مدیریت عملکرد</strong> — پرسنل و خروجی کار</span>
+      </a>
+      <a href="#ch-07" class="toc-item">
+        <span class="toc-num">۰۷</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">تردد و شیفت</strong> — حضور، مرخصی، ماموریت</span>
+      </a>
+      <a href="#ch-08" class="toc-item">
+        <span class="toc-num">۰۸</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">ارتباط درون‌سازمانی</strong> — چت و یادداشت</span>
+      </a>
+      <a href="#ch-09" class="toc-item">
+        <span class="toc-num">۰۹</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">مدیریت مالی</strong> — تنخواه و تاییدات</span>
+      </a>
+      <a href="#ch-10" class="toc-item">
+        <span class="toc-num">۱۰</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">گزارش و تحلیل</strong> — خروجی‌های مدیریتی</span>
+      </a>
+      <a href="#ch-11" class="toc-item">
+        <span class="toc-num">۱۱</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">پلن‌ها</strong> — پایه و حرفه‌ای</span>
+      </a>
+      <a href="#conclusion" class="toc-item">
+        <span class="toc-num">۱۲</span>
+        <span class="flex-1"><strong class="text-[color:var(--ink)]">جمع‌بندی</strong> — ارزش سامانه برای سازمان</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 01 ============== -->
+<section id="ch-01" data-chapter="۰۱" class="chap-open py-24 border-t border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۰۱</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل اول · مسئلهٔ سازمان</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">چرا ابزارهای پراکنده<br/>کار نمی‌کنند؟</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 mt-12">
+      <div class="reveal reveal-delay-1">
+        <p class="lead mb-6">
+          در یک سازمان خدماتی یا پیمانکاری، اطلاعات یک پروژه معمولاً بین چند ابزار پراکنده است: یک صفحهٔ گسترده برای قراردادها، یک نرم‌افزار جداگانه برای تیکت‌ها، یک سامانهٔ دیگر برای حضور و غیاب و اکسل‌های شخصی مدیران برای عملکرد.
+        </p>
+        <p class="lead mb-6">
+          این پراکندگی سه مسئلهٔ اصلی می‌سازد: <strong>ازدست‌رفن زمینهٔ پروژه</strong> هنگام انتقال اطلاعات بین ابزارها، <strong>تأخیر در تصمیم‌گیری</strong> به‌دلیل نبود گزارش یکپارچه، و <strong>سربار مدیریتی</strong> برای هماهنگی بین سامانه‌های ناهمگون.
+        </p>
+        <p class="lead">
+          سااا بر این فرض بنا شده که «پروژه» نقطهٔ گرانیگی تمام عملیات سازمان است. هر تیکت، هر ساعت کارکرد، هر مرخصی و هر تنخواه باید به یک پروژه و یک قرارداد مشخص متصل باشد.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <!-- SVG: Pain vs Solution -->
+        <svg viewBox="0 0 400 320" class="w-full h-auto" aria-label="مقایسه وضعیت پراکنده و یکپارچه">
+          <!-- Left: scattered -->
+          <g>
+            <rect x="10" y="10" width="180" height="300" rx="10" fill="#fff" stroke="var(--line)"/>
+            <text x="100" y="40" text-anchor="middle" font-family="Vazirmatn" font-size="12" font-weight="700" fill="var(--ink)">وضعیت سنتی</text>
+            <rect x="30" y="60" width="60" height="40" rx="6" fill="#F1ECE1" stroke="var(--line)"/>
+            <text x="60" y="85" text-anchor="middle" font-size="10" fill="var(--ink-2)">قرارداد</text>
+            <rect x="110" y="70" width="60" height="40" rx="6" fill="#F1ECE1" stroke="var(--line)"/>
+            <text x="140" y="95" text-anchor="middle" font-size="10" fill="var(--ink-2)">تیکت</text>
+            <rect x="25" y="130" width="70" height="40" rx="6" fill="#F1ECE1" stroke="var(--line)"/>
+            <text x="60" y="155" text-anchor="middle" font-size="10" fill="var(--ink-2)">عملکرد</text>
+            <rect x="115" y="140" width="55" height="40" rx="6" fill="#F1ECE1" stroke="var(--line)"/>
+            <text x="142" y="165" text-anchor="middle" font-size="10" fill="var(--ink-2)">تردد</text>
+            <rect x="70" y="210" width="60" height="40" rx="6" fill="#F1ECE1" stroke="var(--line)"/>
+            <text x="100" y="235" text-anchor="middle" font-size="10" fill="var(--ink-2)">چت</text>
+            <!-- broken lines -->
+            <path d="M60,100 Q80,115 60,130" stroke="var(--warn)" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+            <path d="M140,110 Q120,120 140,140" stroke="var(--warn)" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+            <path d="M95,170 Q80,190 100,210" stroke="var(--warn)" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+            <text x="100" y="280" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="var(--warn)">اطلاعات گسسته</text>
+          </g>
+
+          <!-- Right: integrated -->
+          <g>
+            <rect x="210" y="10" width="180" height="300" rx="10" fill="var(--ink)"/>
+            <text x="300" y="40" text-anchor="middle" font-family="Vazirmatn" font-size="12" font-weight="700" fill="#D4A24C">با سااا</text>
+            <circle cx="300" cy="160" r="55" fill="#FAF7F2"/>
+            <text x="300" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">پروژه</text>
+            <text x="300" y="170" text-anchor="middle" font-size="9" fill="var(--muted)">هسته مرکزی</text>
+            <g stroke="#D4A24C" stroke-width="1" fill="none">
+              <circle cx="300" cy="85" r="18" fill="#13315C"/>
+              <circle cx="355" cy="120" r="16" fill="#13315C"/>
+              <circle cx="365" cy="180" r="16" fill="#13315C"/>
+              <circle cx="340" cy="240" r="16" fill="#13315C"/>
+              <circle cx="260" cy="240" r="16" fill="#13315C"/>
+              <circle cx="235" cy="180" r="16" fill="#13315C"/>
+              <circle cx="245" cy="120" r="16" fill="#13315C"/>
+            </g>
+            <g font-family="Vazirmatn" font-size="9" fill="#FAF7F2" text-anchor="middle">
+              <text x="300" y="90">قرارداد</text>
+              <text x="355" y="125">تیکت</text>
+              <text x="365" y="185">تردد</text>
+              <text x="340" y="245">چت</text>
+              <text x="260" y="245">عملکرد</text>
+              <text x="235" y="185">کاربر</text>
+              <text x="245" y="125">مالی</text>
+            </g>
+            <text x="300" y="290" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="#D4A24C">اکوسیستم یکپارچه</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="rule mt-16"></div>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="reveal">
+        <p class="text-[color:var(--gold-2)] text-sm font-bold mb-2">مسئلهٔ ۱</p>
+        <h3 class="text-xl font-bold mb-3">گسست اطلاعاتی</h3>
+        <p class="text-[color:var(--muted)] leading-relaxed">سوابق یک پروژه در چند سامانه پخش می‌شود و بازسازی چرخهٔ کامل پروژه نیازمند مراجعهٔ مکرر به منابع مختلف است.</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="text-[color:var(--gold-2)] text-sm font-bold mb-2">مسئلهٔ ۲</p>
+        <h3 class="text-xl font-bold mb-3">تیکت‌های بلاتکلیف</h3>
+        <p class="text-[color:var(--muted)] leading-relaxed">وظایفی که مسئول مشخص یا مهلت معین ندارند، به‌مرور در کارتابل کاربران انباشته شده و به گلوگاه عملیاتی تبدیل می‌شوند.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="text-[color:var(--gold-2)] text-sm font-bold mb-2">مسئلهٔ ۳</p>
+        <h3 class="text-xl font-bold mb-3">ارزیابی سلیقه‌ای عملکرد</h3>
+        <p class="text-[color:var(--muted)] leading-relaxed">بدون اتصال ساعت کارکرد و تیکت‌های انجام‌شده به هویت فرد، ارزیابی عملکرد پرسنل به برداشت‌های کیفی محدود می‌شود.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 02 ============== -->
+<section id="ch-02" data-chapter="۰۲" class="py-24 border-t border-[color:var(--line)] bg-[color:var(--paper-2)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold-2)] text-7xl sm:text-9xl font-black mb-4">۰۲</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل دوم · هستهٔ سامانه</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">مدیریت پروژه؛<br/>نقطهٔ گرانیگی سازمان</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      در سااا، «پروژه» تنها یک ردیف در لیست کارها نیست؛ یک موجودیت سازمانی است که به یک قرارداد و یک کارفرما متصل می‌شود، سرویس‌های اجرایی دارد، تیکت‌هایش در کارتابل کاربران جاری می‌شوند و ساعت کارکرد پرسنل روی آن ثبت می‌گردد.
+    </p>
+
+    <div class="grid lg:grid-cols-12 gap-10 mt-16">
+      <div class="lg:col-span-5 reveal">
+        <h3 class="text-2xl font-bold mb-6">چرخهٔ زندگی یک پروژه</h3>
+        <p class="text-[color:var(--ink-2)] leading-loose mb-4">
+          هر پروژه در سااا با یک قرارداد تعریف می‌شود. قرارداد تاریخ شروع و پایان، شماره و کارفرمای مشخص دارد. پس از ثبت قرارداد، سرویس‌های پروژه تعریف می‌شوند — هر سرویس یک واحد اجرایی مستقل با چک‌لیست، مسئول، ناظر استقرار و ناظر کارفرما.
+        </p>
+        <p class="text-[color:var(--ink-2)] leading-loose mb-4">
+          روی هر سرویس، تیکت‌های عملیاتی ایجاد می‌شوند. هر تیکت مهلت انجام، اولویت، وضعیت و مسئول دارد. پایان پروژه به‌صورت سیستمی هشدار داده می‌شود و امکان بازگشایی مجدد، ارجاع و پیگیری وجود دارد.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="chip">ایجاد تسک با زمان مشخص</span>
+          <span class="chip">بایگانی قراردادها</span>
+          <span class="chip">آلارم اتمام پروژه</span>
+          <span class="chip">سرویس‌های چندگانه</span>
+          <span class="chip">کارتابل پروژه‌محور</span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 reveal reveal-delay-2">
+        <!-- Interactive SVG: Project lifecycle cycle -->
+        <svg id="cycle-svg" viewBox="0 0 500 500" class="w-full h-auto" aria-label="چرخهٔ زندگی پروژه">
+          <defs>
+            <marker id="arrowGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/>
+            </marker>
+          </defs>
+
+          <!-- outer circle -->
+          <circle cx="250" cy="250" r="200" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,6"/>
+          <circle cx="250" cy="250" r="140" fill="none" stroke="var(--line)" stroke-width="1"/>
+
+          <!-- center -->
+          <circle cx="250" cy="250" r="60" fill="var(--ink)" class="draw-path"/>
+          <text x="250" y="245" text-anchor="middle" font-size="14" font-weight="800" fill="#FAF7F2" font-family="Vazirmatn">چرخهٔ پروژه</text>
+          <text x="250" y="265" text-anchor="middle" font-size="10" fill="#D4A24C" font-family="Vazirmatn">در سااا</text>
+
+          <!-- nodes -->
+          <g class="cycle-node" data-node="contract" tabindex="0" role="button" aria-label="قرارداد">
+            <circle class="node-circle" cx="250" cy="50" r="44" fill="#FAF7F2" stroke="var(--ink)" stroke-width="2"/>
+            <text class="node-label" x="250" y="45" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" font-family="Vazirmatn">قرارداد</text>
+            <text class="node-label" x="250" y="62" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="Vazirmatn">گام آغاز</text>
+          </g>
+
+          <g class="cycle-node" data-node="service" tabindex="0" role="button" aria-label="سرویس">
+            <circle class="node-circle" cx="450" cy="250" r="44" fill="#FAF7F2" stroke="var(--ink)" stroke-width="2"/>
+            <text class="node-label" x="450" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" font-family="Vazirmatn">سرویس</text>
+            <text class="node-label" x="450" y="262" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="Vazirmatn">واحد اجرایی</text>
+          </g>
+
+          <g class="cycle-node" data-node="ticket" tabindex="0" role="button" aria-label="تیکت">
+            <circle class="node-circle" cx="250" cy="450" r="44" fill="#FAF7F2" stroke="var(--ink)" stroke-width="2"/>
+            <text class="node-label" x="250" y="445" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" font-family="Vazirmatn">تیکت</text>
+            <text class="node-label" x="250" y="462" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="Vazirmatn">عملیات</text>
+          </g>
+
+          <g class="cycle-node" data-node="report" tabindex="0" role="button" aria-label="گزارش">
+            <circle class="node-circle" cx="50" cy="250" r="44" fill="#FAF7F2" stroke="var(--ink)" stroke-width="2"/>
+            <text class="node-label" x="50" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" font-family="Vazirmatn">گزارش</text>
+            <text class="node-label" x="50" y="262" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="Vazirmatn">تحلیل</text>
+          </g>
+
+          <!-- arrows -->
+          <path d="M290,70 Q380,120 430,210" stroke="var(--gold)" stroke-width="1.5" fill="none" marker-end="url(#arrowGold)" class="draw-path"/>
+          <path d="M430,290 Q380,380 290,430" stroke="var(--gold)" stroke-width="1.5" fill="none" marker-end="url(#arrowGold)" class="draw-path"/>
+          <path d="M210,430 Q120,380 70,290" stroke="var(--gold)" stroke-width="1.5" fill="none" marker-end="url(#arrowGold)" class="draw-path"/>
+          <path d="M70,210 Q120,120 210,70" stroke="var(--gold)" stroke-width="1.5" fill="none" marker-end="url(#arrowGold)" class="draw-path"/>
+        </svg>
+
+        <div id="cycle-desc" class="mt-6 p-5 bg-white border border-[color:var(--line)] rounded-lg min-h-[120px]">
+          <p class="text-sm font-bold mb-2 text-[color:var(--ink-2)]">روی هر گره کلیک کنید</p>
+          <p class="text-[color:var(--muted)] text-sm leading-relaxed">چرخهٔ پروژه در سااا از قرارداد آغاز می‌شود، به سرویس و تیکت‌های عملیاتی می‌رسد و در نهایت با گزارش و تحلیل تکمیل می‌شود.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 03 ============== -->
+<section id="ch-03" data-chapter="۰۳" class="py-24 border-t border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۰۳</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل سوم · قلب تپنده</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">تیکتینگ و پیگیری؛<br/>از تعریف تا بایگانی</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      تیکت در سااا فقط یک پیام یا وظیفه نیست؛ یک واحد کار ساختاریافته است که دارای شناسه، اولویت، مهلت انجام، مسئول، چک‌لیست، تاریخچهٔ ارجاع و امکان تعلیق با دلیل مشخص است. تیکت می‌تواند به پروژه، سرویس یا کاربر مشخصی متصل شود.
+    </p>
+
+    <div class="grid lg:grid-cols-2 gap-12 mt-16 items-start">
+      <div class="reveal">
+        <figure class="ticket-mock" data-slot="ticket-detail">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="dot" style="background:var(--gold)"></span>
+              <span class="text-xs font-bold tabular-nums">تیکت #۱۰۲۳۴</span>
+            </div>
+            <span class="chip">اولویت: اضطراری</span>
+          </div>
+          <h4 class="text-lg font-bold mb-2">بازبینی سرویس ماهانه — کارفرما: شرکت آلفا</h4>
+          <p class="text-sm text-[color:var(--ink-2)] mb-4">شرح: بررسی چک‌لیست سرویس و تحویل گزارش به ناظر کارفرما. مهلت: ۴۸ ساعت.</p>
+          <div class="flex flex-wrap gap-2 text-xs mb-4">
+            <span class="chip"><span class="dot" style="background:var(--ok)"></span>در حال انجام</span>
+            <span class="chip">مسئول: م. رضایی</span>
+            <span class="chip">ارجاع: مدیر فنی ← کارشناس</span>
+          </div>
+          <div class="border-t border-[color:var(--line)] pt-3">
+            <p class="text-xs text-[color:var(--muted)] mb-2">چک‌لیست (۳ از ۵)</p>
+            <ul class="space-y-1 text-sm">
+              <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>بررسی فنی اولیه</li>
+              <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>تست عملکرد</li>
+              <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>ثبت گزارش</li>
+              <li class="flex items-center gap-2 text-[color:var(--muted)]"><span class="dot" style="background:var(--line)"></span>تایید ناظر استقرار</li>
+              <li class="flex items-center gap-2 text-[color:var(--muted)]"><span class="dot" style="background:var(--line)"></span>تایید ناظر کارفرما</li>
+            </ul>
+          </div>
+          <p class="text-[10px] text-[color:var(--muted)] mt-4 italic">نمونه‌ای از نمایش تیکت در کارتابل کاربر</p>
+        </figure>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <h3 class="text-2xl font-bold mb-6">ساختار یک تیکت در سااا</h3>
+        <ul class="space-y-5">
+          <li class="tl-item gold">
+            <h4 class="font-bold mb-1">ایجاد و شناسه‌گذاری</h4>
+            <p class="text-sm text-[color:var(--muted)]">هر تیکت یک شناسهٔ یکتا دارد و بر اساس نوع و اولویت طبقه‌بندی می‌شود. برای اولویت اضطراری، ثبت دلیل الزامی است.</p>
+          </li>
+          <li class="tl-item">
+            <h4 class="font-bold mb-1">چک‌لیست و مسئول چندگانه</h4>
+            <p class="text-sm text-[color:var(--muted)]">هر آیتم چک‌لیست می‌تواند توسط کاربر متفاوتی تکمیل شود و نام انجام‌دهنده در تاریخچه ثبت می‌شود.</p>
+          </li>
+          <li class="tl-item">
+            <h4 class="font-bold mb-1">زمان‌بندی دقیق</h4>
+            <p class="text-sm text-[color:var(--muted)]">تعیین مدت زمان انجام (به ساعت و دقیقه)، تاریخ انجام مشخص توسط مدیر، و امکان شروع/توقف تایمر روی تیکت.</p>
+          </li>
+          <li class="tl-item">
+            <h4 class="font-bold mb-1">ارجاع و منشن</h4>
+            <p class="text-sm text-[color:var(--muted)]">ارجاع به هم‌سطح یا سطح بالاتر با توضیح، و منشن چند کاربره در متن تیکت برای هماهنگی سریع.</p>
+          </li>
+          <li class="tl-item">
+            <h4 class="font-bold mb-1">تعلیق و بلاتکلیفی</h4>
+            <p class="text-sm text-[color:var(--muted)]">تعلیق با دلایل از پیش تعریف‌شده و محدودسازی دسترسی کاربر در صورت انباشت تیکت‌های بلاتکلیف در بازهٔ مشخص.</p>
+          </li>
+          <li class="tl-item">
+            <h4 class="font-bold mb-1">استعلام و پاسخ</h4>
+            <p class="text-sm text-[color:var(--muted)]">ثبت استعلام از همکار یا کارفرما در همان تیکت، با تاریخچهٔ کامل پرسش و پاسخ.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule my-20"></div>
+
+    <!-- Ticket priority flow -->
+    <div class="reveal">
+      <h3 class="text-2xl font-bold mb-3">چینش خودکار کارتابل</h3>
+      <p class="text-[color:var(--ink-2)] max-w-3xl mb-8">کارتابل هر کاربر بر اساس اولویت‌های تعریف‌شده در تنظیمات اولیهٔ سامانه به‌صورت خودکار چینش می‌شود. کاربر با ورود به سامانه، ابتدا مهم‌ترین وظایف را می‌بیند.</p>
+
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+          <div class="w-10 h-10 rounded-full bg-[color:var(--warn)] flex items-center justify-center text-white font-bold mb-3">!</div>
+          <h4 class="font-bold mb-1">اضطراری</h4>
+          <p class="text-xs text-[color:var(--muted)]">نیازمند ثبت دلیل. در صدر کارتابل.</p>
+        </div>
+        <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+          <div class="w-10 h-10 rounded-full bg-[color:var(--gold)] flex items-center justify-center text-white font-bold mb-3">۱</div>
+          <h4 class="font-bold mb-1">بالا</h4>
+          <p class="text-xs text-[color:var(--muted)]">اولویت اجرایی پس از اضطراری.</p>
+        </div>
+        <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+          <div class="w-10 h-10 rounded-full bg-[color:var(--ink-3)] flex items-center justify-center text-white font-bold mb-3">۲</div>
+          <h4 class="font-bold mb-1">متوسط</h4>
+          <p class="text-xs text-[color:var(--muted)]">جریان عادی کار روزانه.</p>
+        </div>
+        <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+          <div class="w-10 h-10 rounded-full bg-[color:var(--muted)] flex items-center justify-center text-white font-bold mb-3">۳</div>
+          <h4 class="font-bold mb-1">پایین</h4>
+          <p class="text-xs text-[color:var(--muted)]">وظایف پس‌زمینه و بایگانی.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 04 ============== -->
+<section id="ch-04" data-chapter="۰۴" class="py-24 border-t border-[color:var(--line)] bg-[color:var(--ink)] text-[color:var(--paper)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۰۴</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--gold)] mb-3">فصل چهارم · تعاریف پایه</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">قرارداد، سرویس و کارفرما</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 text-[color:var(--paper)]/90 reveal reveal-delay-1">
+      ماژول تعاریف پروژه در سااا، لایهٔ مرجع سامانه است. هر آن‌چه در سامانه اتفاق می‌افتد — از تیکت تا تردد — باید به یک قرارداد، یک سرویس و یک کارفرما قابل انتساب باشد.
+    </p>
+
+    <div class="grid lg:grid-cols-3 gap-8 mt-16">
+      <div class="reveal mod-card bg-[color:var(--ink-2)] p-7 rounded-lg border border-[color:var(--ink-3)]">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <rect x="4" y="6" width="32" height="28" rx="2" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <path d="M10,14 L30,14 M10,20 L30,20 M10,26 L24,26" stroke="var(--paper)" stroke-width="1.2"/>
+        </svg>
+        <h3 class="text-xl font-bold mb-3 text-[color:var(--gold)]">قرارداد</h3>
+        <p class="text-sm text-[color:var(--paper)]/80 leading-relaxed mb-4">
+          ثبت قرارداد با شماره، تاریخ، مدت، زمان شروع و پایان. امکان بایگانی یا فعال نگه‌داشتن. آلارم نزدیک‌شدن به پایان قرارداد به‌صورت خودکار فعال می‌شود.
+        </p>
+        <ul class="text-xs text-[color:var(--paper)]/70 space-y-1.5">
+          <li>· افزودن سرویس به هر قرارداد</li>
+          <li>· اتصال مستقیم به کارفرما</li>
+          <li>· نمایش روزهای باقی‌مانده</li>
+          <li>· ویرایش و جزئیات کامل</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-1 mod-card bg-[color:var(--ink-2)] p-7 rounded-lg border border-[color:var(--ink-3)]">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <circle cx="20" cy="20" r="14" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <path d="M20,10 L20,20 L28,20" stroke="var(--paper)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="2" fill="var(--gold)"/>
+        </svg>
+        <h3 class="text-xl font-bold mb-3 text-[color:var(--gold)]">سرویس</h3>
+        <p class="text-sm text-[color:var(--paper)]/80 leading-relaxed mb-4">
+          هر سرویس یک واحد اجرایی مستقل است با عنوان، نوع، تاریخ شروع و پایان، همکاران با سطوح مختلف دسترسی، و برنامه‌ریزی سرویس.
+        </p>
+        <ul class="text-xs text-[color:var(--paper)]/70 space-y-1.5">
+          <li>· چک‌لیست سرویس</li>
+          <li>· برنامه‌ریز، ناظر استقرار و ناظر کارفرما</li>
+          <li>· گروه سرویس برای طبقه‌بندی</li>
+          <li>· اتصال به محصولات تعریف‌شده</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-2 mod-card bg-[color:var(--ink-2)] p-7 rounded-lg border border-[color:var(--ink-3)]">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <circle cx="20" cy="14" r="6" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <path d="M8,32 Q8,22 20,22 Q32,22 32,32" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        </svg>
+        <h3 class="text-xl font-bold mb-3 text-[color:var(--gold)]">کارفرما</h3>
+        <p class="text-sm text-[color:var(--paper)]/80 leading-relaxed mb-4">
+          تعریف کارفرما با مشخصات کامل و امکان افزودن کاربران کارفرما به سامانه با سطوح دسترسی مشخص برای پیگیری پروژه.
+        </p>
+        <ul class="text-xs text-[color:var(--paper)]/70 space-y-1.5">
+          <li>· چند قرارداد برای یک کارفرما</li>
+          <li>· مشاهده پروژه‌ها به تفکیک کارفرما</li>
+          <li>· کارتابل کارفرما برای پیگیری</li>
+          <li>· فیلتر و جست‌وجو در لیست</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal reveal-delay-2 bg-[color:var(--ink-2)] border border-[color:var(--ink-3)] rounded-lg p-8">
+      <h3 class="text-2xl font-bold mb-6 text-[color:var(--gold)]">رابطهٔ لایه‌های تعریف</h3>
+      <svg viewBox="0 0 800 180" class="w-full h-auto" aria-label="رابطه کارفرما، قرارداد، سرویس و تیکت">
+        <g font-family="Vazirmatn" font-size="13">
+          <rect x="20" y="60" width="140" height="60" rx="8" fill="var(--gold)"/>
+          <text x="90" y="95" text-anchor="middle" fill="var(--ink)" font-weight="700">کارفرما</text>
+
+          <rect x="220" y="60" width="140" height="60" rx="8" fill="var(--paper)"/>
+          <text x="290" y="95" text-anchor="middle" fill="var(--ink)" font-weight="700">قرارداد</text>
+
+          <rect x="420" y="60" width="140" height="60" rx="8" fill="var(--paper)"/>
+          <text x="490" y="95" text-anchor="middle" fill="var(--ink)" font-weight="700">سرویس</text>
+
+          <rect x="620" y="60" width="140" height="60" rx="8" fill="var(--paper)"/>
+          <text x="690" y="95" text-anchor="middle" fill="var(--ink)" font-weight="700">تیکت</text>
+
+          <g stroke="var(--gold)" stroke-width="1.5" fill="none" marker-end="url(#arrowGold)">
+            <path d="M160,90 L220,90"/>
+            <path d="M360,90 L420,90"/>
+            <path d="M560,90 L620,90"/>
+          </g>
+
+          <text x="90" y="145" text-anchor="middle" fill="var(--paper)" font-size="10">۱ یا چند</text>
+          <text x="290" y="145" text-anchor="middle" fill="var(--paper)" font-size="10">۱ یا چند</text>
+          <text x="490" y="145" text-anchor="middle" fill="var(--paper)" font-size="10">۱ یا چند</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 05 ============== -->
+<section id="ch-05" data-chapter="۰۵" class="py-24 border-t border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۰۵</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل پنجم · سازمان</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">کاربران، نقش‌ها و چارت سازمانی</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      ماژول کاربران سااا، هویت دیجیتال سازمان را می‌سازد. هر فرد در سامانه یک کاربر است با نقش، سمت، بخش سازمانی و عکس پروفایل. دسترسی‌ها بر اساس نقش تعریف می‌شوند و امکان تعریف نقش‌های دلخواه با سطوح مختلف دسترسی وجود دارد.
+    </p>
+
+    <div class="grid lg:grid-cols-12 gap-10 mt-16">
+      <div class="lg:col-span-7 reveal">
+        <!-- SVG: Interactive Org Chart -->
+        <svg id="org-svg" viewBox="0 0 600 400" class="w-full h-auto" aria-label="چارت سازمانی تعاملی">
+          <defs>
+            <filter id="shadowOrg" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.08"/>
+            </filter>
+          </defs>
+
+          <!-- CEO -->
+          <g class="module-dot" data-org="ceo" tabindex="0">
+            <circle cx="300" cy="60" r="28" fill="var(--gold)" stroke="var(--ink)" stroke-width="2" filter="url(#shadowOrg)"/>
+            <text x="300" y="58" text-anchor="middle" font-family="Vazirmatn" font-size="11" font-weight="700" fill="var(--ink)">مدیرعامل</text>
+            <text x="300" y="72" text-anchor="middle" font-family="Vazirmatn" font-size="9" fill="var(--ink)">CEO</text>
+          </g>
+
+          <!-- Managers -->
+          <g class="module-dot" data-org="mgr1" tabindex="0">
+            <circle cx="140" cy="180" r="24" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5" filter="url(#shadowOrg)"/>
+            <text x="140" y="177" text-anchor="middle" font-family="Vazirmatn" font-size="10" font-weight="700" fill="var(--ink)">مدیر فنی</text>
+            <text x="140" y="190" text-anchor="middle" font-family="Vazirmatn" font-size="8" fill="var(--muted)">Tech</text>
+          </g>
+          <g class="module-dot" data-org="mgr2" tabindex="0">
+            <circle cx="300" cy="180" r="24" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5" filter="url(#shadowOrg)"/>
+            <text x="300" y="177" text-anchor="middle" font-family="Vazirmatn" font-size="10" font-weight="700" fill="var(--ink)">مدیر پروژه</text>
+            <text x="300" y="190" text-anchor="middle" font-family="Vazirmatn" font-size="8" fill="var(--muted)">PM</text>
+          </g>
+          <g class="module-dot" data-org="mgr3" tabindex="0">
+            <circle cx="460" cy="180" r="24" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5" filter="url(#shadowOrg)"/>
+            <text x="460" y="177" text-anchor="middle" font-family="Vazirmatn" font-size="10" font-weight="700" fill="var(--ink)">مدیر منابع</text>
+            <text x="460" y="190" text-anchor="middle" font-family="Vazirmatn" font-size="8" fill="var(--muted)">HR</text>
+          </g>
+
+          <!-- Staff -->
+          <g class="module-dot" data-org="s1" tabindex="0">
+            <circle cx="80" cy="300" r="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+            <text x="80" y="304" text-anchor="middle" font-family="Vazirmatn" font-size="9" fill="var(--ink)">کارشناس ۱</text>
+          </g>
+          <g class="module-dot" data-org="s2" tabindex="0">
+            <circle cx="160" cy="320" r="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+            <text x="160" y="324" text-anchor="middle" font-family="Vazirmatn" font-size="9" fill="var(--ink)">کارشناس ۲</text>
+          </g>
+          <g class="module-dot" data-org="s3" tabindex="0">
+            <circle cx="260" cy="300" r="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+            <text x="260" y="304" text-anchor="middle" font-family="Vazirmatn" font-size="9" fill="var(--ink)">سرپرست ۱</text>
+          </g>
+          <g class="module-dot" data-org="s4" tabindex="0">
+            <circle cx="340" cy="320" r="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+            <text x="340" y="324" text-anchor="middle" font-family="Vazirmatn" font-size="9" fill="var(--ink)">سرپرست ۲</text>
+          </g>
+          <g class="module-dot" data-org="s5" tabindex="0">
+            <circle cx="430" cy="300" r="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+            <text x="430" y="304" text-anchor="middle" font-family="Vazirmatn" font-size="9" fill="var(--ink)">پرسنل ۱</text>
+          </g>
+          <g class="module-dot" data-org="s6" tabindex="0">
+            <circle cx="520" cy="320" r="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2"/>
+            <text x="520" y="324" text-anchor="middle" font-family="Vazirmatn" font-size="9" fill="var(--ink)">پرسنل ۲</text>
+          </g>
+
+          <!-- Lines -->
+          <g stroke="var(--ink)" stroke-width="1" fill="none" opacity=".35">
+            <path d="M300,88 L300,156"/>
+            <path d="M300,156 L140,156 L140,156"/>
+            <path d="M140,156 L460,156"/>
+            <path d="M140,204 L120,280"/>
+            <path d="M140,204 L160,300"/>
+            <path d="M300,204 L260,280"/>
+            <path d="M300,204 L340,300"/>
+            <path d="M460,204 L430,280"/>
+            <path d="M460,204 L520,300"/>
+          </g>
+        </svg>
+
+        <div id="org-desc" class="mt-6 p-5 bg-white border border-[color:var(--line)] rounded-lg">
+          <p class="text-sm font-bold mb-2 text-[color:var(--ink-2)]">چارت سازمانی زنده</p>
+          <p class="text-[color:var(--muted)] text-sm leading-relaxed">در سااا، چارت سازمانی بازتاب‌دهندهٔ ساختار واقعی شرکت است. مدیران، زیرمجموعه‌ها و اعضای هر بخش به‌صورت درختی قابل مشاهده هستند.</p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 reveal reveal-delay-1">
+        <h3 class="text-2xl font-bold mb-6">لایه‌های هویت در سامانه</h3>
+
+        <div class="space-y-5">
+          <div class="border-r-4 border-[color:var(--gold)] pr-4">
+            <h4 class="font-bold mb-1">نقش (Role)</h4>
+            <p class="text-sm text-[color:var(--muted)]">مجموعه‌ای از دسترسی‌ها به ماژول‌های سامانه. می‌توان نقش‌های دلخواه تعریف کرد و سطح دسترسی هر نقش را جداگانه تنظیم کرد.</p>
+          </div>
+
+          <div class="border-r-4 border-[color:var(--gold)] pr-4">
+            <h4 class="font-bold mb-1">سمت (Position)</h4>
+            <p class="text-sm text-[color:var(--muted)]">عنوان رسمی فرد در سازمان. قابل تعریف، ویرایش و انتساب به کاربران است.</p>
+          </div>
+
+          <div class="border-r-4 border-[color:var(--gold)] pr-4">
+            <h4 class="font-bold mb-1">بخش سازمانی (Department)</h4>
+            <p class="text-sm text-[color:var(--muted)]">هر بخش یک واحد ساختاری است که می‌توان کاربران را به آن افزود و اعضای زیرمجموعه را مشاهده کرد.</p>
+          </div>
+
+          <div class="border-r-4 border-[color:var(--gold)] pr-4">
+            <h4 class="font-bold mb-1">کاربر (User)</h4>
+            <p class="text-sm text-[color:var(--muted)]">بدون محدودیت در تعداد. با مشخصات، عکس پروفایل، نقش و وضعیت فعال/غیرفعال. امکان فیلتر کاربران بر اساس معیارهای مختلف.</p>
+          </div>
+
+          <div class="border-r-4 border-[color:var(--gold)] pr-4">
+            <h4 class="font-bold mb-1">اطلاعیهٔ سازمانی</h4>
+            <p class="text-sm text-[color:var(--muted)]">ایجاد اطلاعیه با انتخاب گیرندگان مشخص، نمایش زمان، ایجادکننده و محتوای کامل اطلاعیه.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 06 ============== -->
+<section id="ch-06" data-chapter="۰۶" class="py-24 border-t border-[color:var(--line)] bg-[color:var(--paper-2)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold-2)] text-7xl sm:text-9xl font-black mb-4">۰۶</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل ششم · مدیریت عملکرد</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">از ساعت کارکرد<br/>تا ارزیابی واقعی</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      ماژول عملکرد سااا، ارزیابی پرسنل را از برداشت‌های کیفی به داده‌های قابل استناد تبدیل می‌کند. هر فعالیت ثبت‌شده با تاریخ، ساعت، گروه، نوع، سرویس و برچسب (دورکاری یا ماموریت) به کاربر منتسب می‌شود.
+    </p>
+
+    <div class="grid lg:grid-cols-12 gap-10 mt-16">
+      <div class="lg:col-span-7 reveal">
+        <figure class="bg-white rounded-xl p-6 border border-[color:var(--line)] shadow-sm" data-slot="performance-dashboard">
+          <div class="flex items-center justify-between mb-5">
+            <h4 class="font-bold">داشبورد عملکرد ماهانه</h4>
+            <span class="chip">کاربر: م. رضایی</span>
+          </div>
+          <svg viewBox="0 0 600 280" class="w-full" aria-label="داشبورد عملکرد">
+            <!-- bars -->
+            <g font-family="Vazirmatn" font-size="10" fill="var(--muted)">
+              <g transform="translate(50,220)">
+                <rect x="0" y="-80" width="40" height="80" fill="var(--ink)"/>
+                <rect x="60" y="-140" width="40" height="140" fill="var(--ink)"/>
+                <rect x="120" y="-110" width="40" height="110" fill="var(--ink)"/>
+                <rect x="180" y="-180" width="40" height="180" fill="var(--gold)"/>
+                <rect x="240" y="-130" width="40" height="130" fill="var(--ink)"/>
+                <rect x="300" y="-160" width="40" height="160" fill="var(--ink)"/>
+                <rect x="360" y="-90" width="40" height="90" fill="var(--ink)"/>
+                <rect x="420" y="-150" width="40" height="150" fill="var(--gold)"/>
+                <rect x="480" y="-120" width="40" height="120" fill="var(--ink)"/>
+              </g>
+              <text x="70" y="240" text-anchor="middle">۱</text>
+              <text x="130" y="240" text-anchor="middle">۲</text>
+              <text x="190" y="240" text-anchor="middle">۳</text>
+              <text x="250" y="240" text-anchor="middle">۴</text>
+              <text x="310" y="240" text-anchor="middle">۵</text>
+              <text x="370" y="240" text-anchor="middle">۶</text>
+              <text x="430" y="240" text-anchor="middle">۷</text>
+              <text x="490" y="240" text-anchor="middle">۸</text>
+              <text x="550" y="240" text-anchor="middle">۹</text>
+            </g>
+            <line x1="40" y1="220" x2="560" y2="220" stroke="var(--line)" stroke-width="1"/>
+            <text x="300" y="270" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="var(--muted)">هفته‌های ماه — ساعت عملکرد ثبت‌شده</text>
+          </svg>
+
+          <div class="grid grid-cols-3 gap-4 mt-5">
+            <div class="bg-[color:var(--paper-2)] rounded-lg p-3 text-center">
+              <p class="text-xs text-[color:var(--muted)]">کل ساعت</p>
+              <p class="text-2xl font-bold count num-tick" data-count="184">۰</p>
+            </div>
+            <div class="bg-[color:var(--paper-2)] rounded-lg p-3 text-center">
+              <p class="text-xs text-[color:var(--muted)]">تیکت‌های تکمیل‌شده</p>
+              <p class="text-2xl font-bold count num-tick" data-count="47">۰</p>
+            </div>
+            <div class="bg-[color:var(--paper-2)] rounded-lg p-3 text-center">
+              <p class="text-xs text-[color:var(--muted)]">ماموریت‌ها</p>
+              <p class="text-2xl font-bold count num-tick" data-count="8">۰</p>
+            </div>
+          </div>
+          <p class="text-[10px] text-[color:var(--muted)] mt-4 italic">نمونهٔ داشبورد عملکرد یک کاربر در بازه ماهانه</p>
+        </figure>
+      </div>
+
+      <div class="lg:col-span-5 reveal reveal-delay-1">
+        <h3 class="text-2xl font-bold mb-6">چه چیزی روی یک رکورد عملکرد ثبت می‌شود؟</h3>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3 p-3 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-8 h-8 rounded-full bg-[color:var(--ink)] text-[color:var(--paper)] flex items-center justify-center text-sm font-bold">۱</span>
+            <div>
+              <p class="font-bold text-sm">تاریخ شروع و پایان</p>
+              <p class="text-xs text-[color:var(--muted)]">بازهٔ زمانی فعالیت</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-8 h-8 rounded-full bg-[color:var(--ink)] text-[color:var(--paper)] flex items-center justify-center text-sm font-bold">۲</span>
+            <div>
+              <p class="font-bold text-sm">ساعت عملکرد</p>
+              <p class="text-xs text-[color:var(--muted)]">مدت دقیق به ساعت و دقیقه</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-8 h-8 rounded-full bg-[color:var(--ink)] text-[color:var(--paper)] flex items-center justify-center text-sm font-bold">۳</span>
+            <div>
+              <p class="font-bold text-sm">گروه، نوع و سرویس</p>
+              <p class="text-xs text-[color:var(--muted)]">دسته‌بندی چندبعدی فعالیت</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-8 h-8 rounded-full bg-[color:var(--gold)] text-[color:var(--ink)] flex items-center justify-center text-sm font-bold">۴</span>
+            <div>
+              <p class="font-bold text-sm">برچسب‌ها</p>
+              <p class="text-xs text-[color:var(--muted)]">دورکاری، ماموریت، عادی</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-8 h-8 rounded-full bg-[color:var(--ink)] text-[color:var(--paper)] flex items-center justify-center text-sm font-bold">۵</span>
+            <div>
+              <p class="font-bold text-sm">شرح عملکرد</p>
+              <p class="text-xs text-[color:var(--muted)]">توضیح کیفی فعالیت انجام‌شده</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-white border border-[color:var(--line)] rounded-lg">
+          <p class="text-sm font-bold mb-2">خروجی‌های ماژول</p>
+          <ul class="text-sm text-[color:var(--muted)] space-y-1">
+            <li>· خروجی از عملکردها در بازه انتخابی</li>
+            <li>· خروجی از دورکاری‌ها به‌صورت مجزا</li>
+            <li>· خروجی PDF برای ارائه مدیریتی</li>
+            <li>· فیلتر بر اساس کاربر، تاریخ، گروه، سرویس</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 07 ============== -->
+<section id="ch-07" data-chapter="۰۷" class="py-24 border-t border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۰۷</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل هفتم · تردد و شیفت</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">حضور، مرخصی و ماموریت<br/>در یک چرخهٔ بسته</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      ماژول تردد سااا ترکیبی از ثبت حضور، تعریف شیفت، تقویم تعطیلات و جریان درخواست‌های مرخصی و ماموریت است. تمامی این اجزا به هم متصل‌اند و خروجی یکپارچهٔ کارکرد پرسنل را می‌سازند.
+    </p>
+
+    <div class="grid lg:grid-cols-12 gap-10 mt-16">
+      <div class="lg:col-span-5 reveal">
+        <!-- SVG: Attendance calendar mock -->
+        <svg viewBox="0 0 400 380" class="w-full h-auto" aria-label="تقویم تردد ماهانه">
+          <rect x="10" y="10" width="380" height="360" rx="12" fill="#fff" stroke="var(--line)"/>
+          <text x="200" y="45" text-anchor="middle" font-family="Vazirmatn" font-size="13" font-weight="700" fill="var(--ink)">تقویم تردد — مرداد ۱۴۰۴</text>
+
+          <!-- weekday headers -->
+          <g font-family="Vazirmatn" font-size="9" fill="var(--muted)" text-anchor="middle">
+            <text x="45" y="75">ش</text>
+            <text x="95" y="75">ی</text>
+            <text x="145" y="75">د</text>
+            <text x="195" y="75">س</text>
+            <text x="245" y="75">چ</text>
+            <text x="295" y="75">پ</text>
+            <text x="345" y="75">ج</text>
+          </g>
+
+          <!-- cells -->
+          <g font-family="Vazirmatn" font-size="10">
+            <!-- row 1 -->
+            <g transform="translate(0,90)">
+              <rect x="20" y="0" width="40" height="40" fill="var(--paper-2)"/>
+              <rect x="70" y="0" width="40" height="40" fill="var(--paper-2)"/>
+              <rect x="120" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="140" y="22" text-anchor="middle" fill="var(--ink)">۱</text>
+              <text x="140" y="35" text-anchor="middle" font-size="7" fill="var(--ok)">۰۸:۰۲</text>
+              <rect x="170" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="190" y="22" text-anchor="middle" fill="var(--ink)">۲</text>
+              <text x="190" y="35" text-anchor="middle" font-size="7" fill="var(--ok)">۰۷:۵۸</text>
+              <rect x="220" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="240" y="22" text-anchor="middle" fill="var(--ink)">۳</text>
+              <text x="240" y="35" text-anchor="middle" font-size="7" fill="var(--warn)">۰۸:۳۴</text>
+              <rect x="270" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="290" y="22" text-anchor="middle" fill="var(--ink)">۴</text>
+              <text x="290" y="35" text-anchor="middle" font-size="7" fill="var(--gold)">ماموریت</text>
+              <rect x="320" y="0" width="40" height="40" rx="6" fill="var(--paper-2)"/>
+              <text x="340" y="25" text-anchor="middle" fill="var(--muted)">تعطیل</text>
+            </g>
+            <!-- row 2 -->
+            <g transform="translate(0,140)">
+              <rect x="20" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="40" y="22" text-anchor="middle" fill="var(--ink)">۵</text>
+              <text x="40" y="35" text-anchor="middle" font-size="7" fill="var(--ok)">۰۸:۰۰</text>
+              <rect x="70" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="90" y="22" text-anchor="middle" fill="var(--ink)">۶</text>
+              <text x="90" y="35" text-anchor="middle" font-size="7" fill="var(--ok)">۰۸:۰۵</text>
+              <rect x="120" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="140" y="22" text-anchor="middle" fill="var(--ink)">۷</text>
+              <text x="140" y="35" text-anchor="middle" font-size="7" fill="var(--muted)">مرخصی</text>
+              <rect x="170" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="190" y="22" text-anchor="middle" fill="var(--ink)">۸</text>
+              <text x="190" y="35" text-anchor="middle" font-size="7" fill="var(--ok)">۰۷:۵۰</text>
+              <rect x="220" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="240" y="22" text-anchor="middle" fill="var(--ink)">۹</text>
+              <text x="240" y="35" text-anchor="middle" font-size="7" fill="var(--warn)">۰۸:۴۵</text>
+              <rect x="270" y="0" width="40" height="40" rx="6" fill="#fff" stroke="var(--line)"/>
+              <text x="290" y="22" text-anchor="middle" fill="var(--ink)">۱۰</text>
+              <text x="290" y="35" text-anchor="middle" font-size="7" fill="var(--gold)">دورکاری</text>
+              <rect x="320" y="0" width="40" height="40" rx="6" fill="var(--paper-2)"/>
+            </g>
+          </g>
+
+          <!-- legend -->
+          <g transform="translate(20,320)" font-family="Vazirmatn" font-size="9">
+            <rect x="0" y="0" width="10" height="10" fill="var(--ok)"/>
+            <text x="14" y="9" fill="var(--ink)">به‌موقع</text>
+            <rect x="70" y="0" width="10" height="10" fill="var(--warn)"/>
+            <text x="84" y="9" fill="var(--ink)">تاخیر</text>
+            <rect x="140" y="0" width="10" height="10" fill="var(--gold)"/>
+            <text x="154" y="9" fill="var(--ink)">ماموریت/دورکاری</text>
+            <rect x="260" y="0" width="10" height="10" fill="var(--muted)"/>
+            <text x="274" y="9" fill="var(--ink)">مرخصی</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="lg:col-span-7 reveal reveal-delay-1">
+        <h3 class="text-2xl font-bold mb-6">اجزای ماژول تردد</h3>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+            <h4 class="font-bold mb-2">حضور و غیاب</h4>
+            <ul class="text-sm text-[color:var(--muted)] space-y-1">
+              <li>· ثبت تردد</li>
+              <li>· آلارم ترددهای ناقص</li>
+              <li>· ساعت حضور، موظفی، مازاد</li>
+              <li>· اضافه‌کار، کسرکار، استحقاقی، استعلاجی</li>
+            </ul>
+          </div>
+
+          <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+            <h4 class="font-bold mb-2">شیفت‌بندی</h4>
+            <ul class="text-sm text-[color:var(--muted)] space-y-1">
+              <li>· تعریف شیفت‌های دلخواه</li>
+              <li>· گروه‌های شیفتی بدون محدودیت</li>
+              <li>· استثنای تاخیر و تعجیل</li>
+              <li>· اصلاح شیفت توسط مدیر</li>
+            </ul>
+          </div>
+
+          <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+            <h4 class="font-bold mb-2">درخواست‌ها</h4>
+            <ul class="text-sm text-[color:var(--muted)] space-y-1">
+              <li>· مرخصی استحقاقی و استعلاجی</li>
+              <li>· ماموریت برون‌شهری و درون‌شهری</li>
+              <li>· اضافه‌کاری</li>
+              <li>· جریان تایید با تاریخچه</li>
+            </ul>
+          </div>
+
+          <div class="bg-white border border-[color:var(--line)] rounded-lg p-5 mod-card">
+            <h4 class="font-bold mb-2">تقویم و فیلتر</h4>
+            <ul class="text-sm text-[color:var(--muted)] space-y-1">
+              <li>· تقویم تعطیلات رسمی</li>
+              <li>· فیلتر ترددها بر اساس معیارهای مختلف</li>
+              <li>· نمایش شیفت روزانه</li>
+              <li>· گزارش تردد پرسنل</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 08 ============== -->
+<section id="ch-08" data-chapter="۰۸" class="py-24 border-t border-[color:var(--line)] bg-[color:var(--ink)] text-[color:var(--paper)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۰۸</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--gold)] mb-3">فصل هشتم · ارتباط</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">چت، کانال و یادداشت شخصی</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 text-[color:var(--paper)]/90 reveal reveal-delay-1">
+      ارتباط درون‌سازمانی نباید از سامانهٔ کاری جدا باشد. سااا یک ماژول چت و یک ماژول یادداشت را در کنار ماژول‌های عملیاتی قرار داده تا هماهنگی، پرسش‌وپاسخ و یادداشت‌های فردی در همان محیطی بمانند که کار در آن انجام می‌شود.
+    </p>
+
+    <div class="grid lg:grid-cols-3 gap-6 mt-16">
+      <div class="reveal mod-card bg-[color:var(--ink-2)] border border-[color:var(--ink-3)] rounded-lg p-6">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <path d="M8,10 Q8,6 12,6 L28,6 Q32,6 32,10 L32,22 Q32,26 28,26 L18,26 L12,32 L12,26 Q8,26 8,22 Z" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        </svg>
+        <h3 class="text-xl font-bold mb-2 text-[color:var(--gold)]">گفتگوی فردی</h3>
+        <p class="text-sm text-[color:var(--paper)]/80 leading-relaxed">گفتگوی خصوصی با هر کاربر سامانه، با امکان اشتراک فایل در هر قالب. گفتگوها به‌صورت تاریخچه در دسترس باقی می‌مانند.</p>
+      </div>
+
+      <div class="reveal reveal-delay-1 mod-card bg-[color:var(--ink-2)] border border-[color:var(--ink-3)] rounded-lg p-6">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <circle cx="14" cy="16" r="5" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <circle cx="26" cy="16" r="5" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <circle cx="20" cy="26" r="5" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        </svg>
+        <h3 class="text-xl font-bold mb-2 text-[color:var(--gold)]">گروه و کانال</h3>
+        <p class="text-sm text-[color:var(--paper)]/80 leading-relaxed">ایجاد گروه یا کانال بدون محدودیت کاربر، مناسب برای تیم‌های پروژه، واحدهای سازمانی یا اطلاع‌رسانی سراسری.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2 mod-card bg-[color:var(--ink-2)] border border-[color:var(--ink-3)] rounded-lg p-6">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <rect x="8" y="6" width="24" height="28" rx="2" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          <path d="M14,14 L26,14 M14,20 L26,20 M14,26 L22,26" stroke="var(--paper)" stroke-width="1.2"/>
+        </svg>
+        <h3 class="text-xl font-bold mb-2 text-[color:var(--gold)]">یادداشت شخصی</h3>
+        <p class="text-sm text-[color:var(--paper)]/80 leading-relaxed">ایجاد و ذخیره یادداشت‌های فردی درون سامانه — جدا از جریان تیکت‌ها، اما در دسترس همیشگی کاربر.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal reveal-delay-2 bg-[color:var(--ink-2)] border border-[color:var(--ink-3)] rounded-lg p-8">
+      <h3 class="text-2xl font-bold mb-4 text-[color:var(--gold)]">ارتباط در زمینهٔ کار</h3>
+      <p class="text-[color:var(--paper)]/80 leading-loose">
+        منشن کاربران در متن تیکت، یک سطح دیگر از ارتباط را ممکن می‌کند. یک کاربر می‌تواند در شرح تیکت، همکار یا مدیر را فرا بخواند؛ منشن‌های دریافتی و ارسالی هر کاربر به‌صورت جداگانه قابل مشاهده و فیلتر هستند. این ویژگی، چت عمومی را با گردش کار رسمی پیوند می‌زند.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 09 ============== -->
+<section id="ch-09" data-chapter="۰۹" class="py-24 border-t border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۰۹</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل نهم · مدیریت مالی</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">تنخواه و جریان تاییدات مالی</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      ماژول مالی سااا، جریان ثبت و تایید تنخواه را پوشش می‌دهد. هر تنخواه با تاریخ ثبت، عکس یا فایل ضمیمه، وضعیت تایید و واریزی‌های ثبت‌شده همراه است تا شفافیت مالی در سطح عملیاتی حفظ شود.
+    </p>
+
+    <div class="grid lg:grid-cols-12 gap-10 mt-16 items-center">
+      <div class="lg:col-span-5 reveal">
+        <svg viewBox="0 0 400 280" class="w-full h-auto" aria-label="فرآیند ثبت و تایید تنخواه">
+          <g font-family="Vazirmatn" font-size="11">
+            <!-- step 1 -->
+            <rect x="20" y="30" width="80" height="50" rx="8" fill="var(--gold)"/>
+            <text x="60" y="50" text-anchor="middle" fill="var(--ink)" font-weight="700">ثبت</text>
+            <text x="60" y="68" text-anchor="middle" fill="var(--ink)" font-size="9">تنخواه</text>
+
+            <!-- step 2 -->
+            <rect x="130" y="30" width="80" height="50" rx="8" fill="#fff" stroke="var(--line)"/>
+            <text x="170" y="50" text-anchor="middle" fill="var(--ink)" font-weight="700">ضمیمه</text>
+            <text x="170" y="68" text-anchor="middle" fill="var(--muted)" font-size="9">عکس/فایل</text>
+
+            <!-- step 3 -->
+            <rect x="240" y="30" width="80" height="50" rx="8" fill="#fff" stroke="var(--line)"/>
+            <text x="280" y="50" text-anchor="middle" fill="var(--ink)" font-weight="700">بررسی</text>
+            <text x="280" y="68" text-anchor="middle" fill="var(--muted)" font-size="9">مدیر مالی</text>
+
+            <!-- step 4 (branch) -->
+            <path d="M320,55 L340,55 L340,30 L370,30" stroke="var(--ok)" stroke-width="1.5" fill="none"/>
+            <rect x="360" y="10" width="35" height="30" rx="6" fill="var(--ok)"/>
+            <text x="377" y="28" text-anchor="middle" fill="#fff" font-size="9">تایید</text>
+
+            <path d="M320,55 L340,55 L340,85 L370,85" stroke="var(--warn)" stroke-width="1.5" fill="none"/>
+            <rect x="360" y="75" width="35" height="30" rx="6" fill="var(--warn)"/>
+            <text x="377" y="94" text-anchor="middle" fill="#fff" font-size="9">رد</text>
+
+            <!-- step 5 -->
+            <rect x="130" y="140" width="80" height="50" rx="8" fill="#fff" stroke="var(--line)"/>
+            <text x="170" y="160" text-anchor="middle" fill="var(--ink)" font-weight="700">واریز</text>
+            <text x="170" y="178" text-anchor="middle" fill="var(--muted)" font-size="9">ثبت واریزی</text>
+
+            <!-- arrows -->
+            <path d="M100,55 L130,55" stroke="var(--ink)" stroke-width="1" fill="none" marker-end="url(#arrowGold)"/>
+            <path d="M210,55 L240,55" stroke="var(--ink)" stroke-width="1" fill="none" marker-end="url(#arrowGold)"/>
+            <path d="M280,80 L170,140" stroke="var(--ink)" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+
+            <!-- bottom summary -->
+            <rect x="20" y="220" width="360" height="50" rx="8" fill="var(--paper-2)" stroke="var(--line)"/>
+            <text x="200" y="248" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="700">گزارش شفاف تنخواه به تفکیک پروژه</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="lg:col-span-7 reveal reveal-delay-1">
+        <h3 class="text-2xl font-bold mb-6">ساختار یک رکورد تنخواه</h3>
+        <div class="space-y-3">
+          <div class="flex gap-4 p-4 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-10 h-10 rounded-full bg-[color:var(--ink)] text-[color:var(--paper)] flex items-center justify-center font-bold">۱</span>
+            <div>
+              <p class="font-bold">ثبت تنخواه</p>
+              <p class="text-sm text-[color:var(--muted)]">ثبت اولیه با تاریخ ثبت و مبلغ.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 p-4 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-10 h-10 rounded-full bg-[color:var(--ink)] text-[color:var(--paper)] flex items-center justify-center font-bold">۲</span>
+            <div>
+              <p class="font-bold">بارگذاری مستندات</p>
+              <p class="text-sm text-[color:var(--muted)]">افزودن عکس یا فایل به‌عنوان سند هزینه.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 p-4 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-10 h-10 rounded-full bg-[color:var(--ink)] text-[color:var(--paper)] flex items-center justify-center font-bold">۳</span>
+            <div>
+              <p class="font-bold">بررسی و تایید</p>
+              <p class="text-sm text-[color:var(--muted)]">تایید یا عدم تایید توسط مسئول مالی.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 p-4 bg-white border border-[color:var(--line)] rounded-lg">
+            <span class="w-10 h-10 rounded-full bg-[color:var(--gold)] text-[color:var(--ink)] flex items-center justify-center font-bold">۴</span>
+            <div>
+              <p class="font-bold">ثبت واریزی</p>
+              <p class="text-sm text-[color:var(--muted)]">واریزی مربوطه به تنخواه متصل می‌شود و سابقهٔ کامل قابل گزارش است.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 10 ============== -->
+<section id="ch-10" data-chapter="۱۰" class="py-24 border-t border-[color:var(--line)] bg-[color:var(--paper-2)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold-2)] text-7xl sm:text-9xl font-black mb-4">۱۰</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل دهم · گزارش و تحلیل</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">داده به تصمیم</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      سااا داده‌های پراکندهٔ تیکت‌ها، عملکردها، ترددها و قراردادها را به گزارش‌های قابل‌اعتماد برای مدیران تبدیل می‌کند. فیلترهای چندبعدی و خروجی‌های Excel و PDF، امکان تحلیل سفارشی را در هر بازهٔ زمانی فراهم می‌کنند.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+      <div class="reveal bg-white p-6 rounded-lg border border-[color:var(--line)] mod-card">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <rect x="6" y="6" width="28" height="28" rx="3" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M12,26 L12,18 M18,26 L18,14 M24,26 L24,20 M30,26 L30,10" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h4 class="font-bold mb-1">گزارش تیکت‌ها</h4>
+        <p class="text-sm text-[color:var(--muted)]">بر اساس نوع، اولویت، وضعیت، کاربر، پروژه و بازهٔ زمانی.</p>
+      </div>
+      <div class="reveal reveal-delay-1 bg-white p-6 rounded-lg border border-[color:var(--line)] mod-card">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <circle cx="20" cy="20" r="14" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M20,20 L20,8 A12,12 0 0,1 32,20 Z" fill="var(--gold)"/>
+        </svg>
+        <h4 class="font-bold mb-1">گزارش عملکرد کاربران</h4>
+        <p class="text-sm text-[color:var(--muted)]">ساعت کار، تیکت‌ها، ماموریت و دورکاری در بازه انتخابی.</p>
+      </div>
+      <div class="reveal reveal-delay-2 bg-white p-6 rounded-lg border border-[color:var(--line)] mod-card">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <path d="M8,8 L32,8 L32,32 L8,32 Z" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M12,16 L28,16 M12,22 L28,22 M12,28 L22,28" stroke="var(--gold)" stroke-width="1.2"/>
+        </svg>
+        <h4 class="font-bold mb-1">خروجی Excel</h4>
+        <p class="text-sm text-[color:var(--muted)]">تمام گزارش‌ها با فیلتر انتخابی به‌صورت Excel قابل دریافت هستند.</p>
+      </div>
+      <div class="reveal reveal-delay-3 bg-white p-6 rounded-lg border border-[color:var(--line)] mod-card">
+        <svg viewBox="0 0 40 40" class="w-10 h-10 mb-4" aria-hidden="true">
+          <rect x="8" y="4" width="20" height="28" rx="2" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <path d="M18,32 L32,32 L32,10 L22,10" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+        </svg>
+        <h4 class="font-bold mb-1">خروجی PDF</h4>
+        <p class="text-sm text-[color:var(--muted)]">گزارش عملکرد پرسنل برای ارائه به مدیران ارشد یا کارفرما.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal bg-white border border-[color:var(--line)] rounded-lg p-8">
+      <h3 class="text-2xl font-bold mb-6">فیلترهای چندبعدی گزارش‌گیری</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <p class="font-bold text-sm mb-2 text-[color:var(--gold-2)]">بر تیکت‌ها</p>
+          <ul class="text-sm text-[color:var(--muted)] space-y-1">
+            <li>· شماره، عنوان، نوع، اولویت</li>
+            <li>· وضعیت، کاربر، پروژه</li>
+            <li>· بازهٔ زمانی</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-bold text-sm mb-2 text-[color:var(--gold-2)]">بر عملکرد</p>
+          <ul class="text-sm text-[color:var(--muted)] space-y-1">
+            <li>· کاربر، تاریخ، گروه</li>
+            <li>· سرویس، نوع عملکرد</li>
+            <li>· برچسب (دورکاری/ماموریت)</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-bold text-sm mb-2 text-[color:var(--gold-2)]">بر تردد</p>
+          <ul class="text-sm text-[color:var(--muted)] space-y-1">
+            <li>· تاریخ، کاربر، شیفت</li>
+            <li>· نوع درخواست</li>
+            <li>· وضعیت تایید</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CHAPTER 11 ============== -->
+<section id="ch-11" data-chapter="۱۱" class="py-24 border-t border-[color:var(--line)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۱۱</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--muted)] mb-3">فصل یازدهم · پلن‌ها</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">پایه و حرفه‌ای</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 reveal reveal-delay-1">
+      سااا در دو سطح قابل تهیه است: پلن پایه برای شروع مدیریت پروژه و تیکت‌های اصلی، و پلن حرفه‌ای برای سازمان‌هایی که به چارت سازمانی، تعاریف پیشرفتهٔ قرارداد، تردد، عملکرد و گزارش‌گیری کامل نیاز دارند.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-16">
+      <div class="reveal bg-white border border-[color:var(--line)] rounded-xl p-7 mod-card">
+        <p class="text-sm text-[color:var(--muted)] mb-2">پلن</p>
+        <h3 class="text-3xl font-bold mb-4">پایه</h3>
+        <p class="text-[color:var(--ink-2)] mb-6 leading-relaxed">برای تیم‌هایی که به مدیریت پروژه و تیکت‌های اصلی نیاز دارند، بدون پیچیدگی‌های سازمانی.</p>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>ثبت و ویرایش کارفرما</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>ایجاد تیکت و ارجاع</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>آرشیو و تاریخچهٔ تیکت</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>منشن و چت فردی</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>یادداشت شخصی</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--ok)"></span>داشبورد پایه</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-1 bg-[color:var(--ink)] text-[color:var(--paper)] rounded-xl p-7 mod-card relative">
+        <span class="absolute -top-3 left-6 bg-[color:var(--gold)] text-[color:var(--ink)] text-xs font-bold px-3 py-1 rounded-full">پیشنهادی برای سازمان</span>
+        <p class="text-sm text-[color:var(--gold)] mb-2">پلن</p>
+        <h3 class="text-3xl font-bold mb-4">حرفه‌ای</h3>
+        <p class="text-[color:var(--paper)]/85 mb-6 leading-relaxed">تمام امکانات پایه به‌اضافهٔ لایه‌های سازمانی، تعاریف پیشرفته و ماژول‌های منابع انسانی و مالی.</p>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--gold)"></span>قرارداد و سرویس چندگانه</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--gold)"></span>چارت سازمانی و نقش‌ها</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--gold)"></span>سطح‌بندی دسترسی همکاران و کارفرما</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--gold)"></span>چک‌لیست و تاریخچهٔ کامل تیکت</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--gold)"></span>تردد، شیفت و مرخصی</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--gold)"></span>عملکرد پرسنل و تنخواه</li>
+          <li class="flex items-center gap-2"><span class="dot" style="background:var(--gold)"></span>گزارش‌گیری با خروجی Excel و PDF</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 reveal overflow-x-auto">
+      <p class="text-sm font-bold mb-4 text-[color:var(--ink-2)]">نمونه‌ای از جدول تطبیق قابلیت‌ها (۱۰۹ قابلیت)</p>
+      <table class="w-full text-sm bg-white border border-[color:var(--line)] rounded-lg overflow-hidden">
+        <thead class="plan-head">
+          <tr>
+            <th class="text-right plan-cell font-bold">#</th>
+            <th class="text-right plan-cell font-bold">قابلیت</th>
+            <th class="plan-cell font-bold">پایه</th>
+            <th class="plan-cell font-bold">حرفه‌ای</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="plan-cell">۱</td><td class="plan-cell">ثبت کارفرما با اطلاعات پایه</td><td class="plan-cell text-center">✓</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۳</td><td class="plan-cell">تعریف چند قرارداد برای هر کارفرما</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۳۴</td><td class="plan-cell">ایجاد تیکت جدید</td><td class="plan-cell text-center">✓</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۴۴</td><td class="plan-cell">تاریخچهٔ ارجاع تیکت</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۵۱</td><td class="plan-cell">تعریف چک‌لیست تیکت</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۶۵</td><td class="plan-cell">تعلیق تیکت با ثبت دلیل</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۹۰</td><td class="plan-cell">خروجی Excel</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۹۸</td><td class="plan-cell">چت گروهی و کانال</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۱۰۲</td><td class="plan-cell">چارت سازمانی</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۱۰۵</td><td class="plan-cell">مدیریت عملکرد پرسنل</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۱۰۷</td><td class="plan-cell">ثبت تردد مکانی</td><td class="plan-cell text-center text-[color:var(--muted)]">—</td><td class="plan-cell text-center">✓</td></tr>
+          <tr><td class="plan-cell">۱۰۹</td><td class="plan-cell">داشبورد پایه</td><td class="plan-cell text-center">✓</td><td class="plan-cell text-center">✓</td></tr>
+        </tbody>
+      </table>
+      <p class="text-xs text-[color:var(--muted)] mt-3">جدول بالا نمونه‌ای از ۱۰۹ قابلیت ثبت‌شده برای دو پلن است.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CONCLUSION ============== -->
+<section id="conclusion" data-chapter="۱۲" class="py-24 border-t border-[color:var(--line)] bg-[color:var(--ink)] text-[color:var(--paper)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="reveal">
+      <p class="chapter-num text-[color:var(--gold)] text-7xl sm:text-9xl font-black mb-4">۱۲</p>
+      <p class="text-sm tracking-[.3em] text-[color:var(--gold)] mb-3">جمع‌بندی</p>
+      <h2 class="h-display text-4xl sm:text-5xl lg:text-6xl mb-8">سااا، در یک نگاه</h2>
+    </div>
+
+    <p class="lead max-w-3xl mt-10 text-[color:var(--paper)]/90 reveal reveal-delay-1">
+      سااا یک سامانهٔ یکپارچه برای سازمان‌هایی است که می‌خواهند چرخهٔ کامل پروژه — از قرارداد و کارفرما، تا تیکت عملیاتی، عملکرد پرسنل، تردد و جریان مالی — را در یک محیط با هویت واحد مدیریت کنند.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+      <div class="reveal border border-[color:var(--ink-3)] rounded-lg p-6">
+        <p class="text-[color:var(--gold)] text-sm font-bold mb-2">مدیریت می‌کند</p>
+        <p class="text-sm text-[color:var(--paper)]/80">قرارداد، سرویس، پروژه و کارفرما را در یک چرخهٔ پیوسته.</p>
+      </div>
+      <div class="reveal reveal-delay-1 border border-[color:var(--ink-3)] rounded-lg p-6">
+        <p class="text-[color:var(--gold)] text-sm font-bold mb-2">پوشش می‌دهد</p>
+        <p class="text-sm text-[color:var(--paper)]/80">از تعریف تیکت و ارجاع تا تردد، شیفت و درخواست‌های پرسنلی.</p>
+      </div>
+      <div class="reveal reveal-delay-2 border border-[color:var(--ink-3)] rounded-lg p-6">
+        <p class="text-[color:var(--gold)] text-sm font-bold mb-2">تولید می‌کند</p>
+        <p class="text-sm text-[color:var(--paper)]/80">گزارش‌های فیلتردار، داشبورد عملکرد و خروجی‌های Excel و PDF.</p>
+      </div>
+      <div class="reveal reveal-delay-3 border border-[color:var(--ink-3)] rounded-lg p-6">
+        <p class="text-[color:var(--gold)] text-sm font-bold mb-2">استفاده می‌کنند</p>
+        <p class="text-sm text-[color:var(--paper)]/80">مدیران پروژه، سرپرستان، کارشناسان، مدیران مالی و مدیران ارشد.</p>
+      </div>
+    </div>
+
+    <div class="mt-20 pt-10 border-t border-[color:var(--ink-3)] grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <p class="text-sm tracking-[.3em] text-[color:var(--gold)] font-bold mb-4">محصولی از</p>
+        <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-14 w-auto mb-5" />
+        <p class="text-xl font-bold mb-2">محیا پرداز</p>
+        <p class="text-[color:var(--paper)]/70 leading-relaxed">طراحی و پیاده‌سازی سامانه‌های سازمانی و مدیریت شهری.</p>
+      </div>
+      <div class="reveal reveal-delay-1 md:text-left">
+        <p class="text-sm text-[color:var(--paper)]/70 mb-2">وب‌سایت</p>
+        <a href="https://mahyapardaz.com" class="text-xl font-bold text-[color:var(--gold)] hover:underline">mahyapardaz.com</a>
+        <p class="text-xs text-[color:var(--paper)]/50 mt-6">کاتالوگ دیجیتال محصول · ۱۴۰۴</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-10 border-t border-[color:var(--line)] bg-[color:var(--paper-2)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-8 w-auto" />
+      <span class="text-sm text-[color:var(--ink-2)]">محیا پرداز — کاتالوگ سااا</span>
+    </div>
+    <p class="text-xs text-[color:var(--muted)]">© تمامی حقوق این کاتالوگ برای محیا پرداز محفوظ است.</p>
+  </div>
+</footer>
+
+<script>
+/* ====== Progress bar ====== */
+const progressBar = document.getElementById('progress-bar');
+function updateProgress(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progressBar.style.width = scrolled + '%';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+
+/* ====== Chapter indicator + rail ====== */
+const indicator = document.getElementById('chap-indicator');
+const sections = document.querySelectorAll('section[data-chapter], section#cover');
+const rails = document.querySelectorAll('.rail a');
+
+const chapNames = {
+  'cover':'جلد',
+  'toc':'فهرست',
+  'ch-01':'۰۱', 'ch-02':'۰۲', 'ch-03':'۰۳',
+  'ch-04':'۰۴', 'ch-05':'۰۵', 'ch-06':'۰۶',
+  'ch-07':'۰۷', 'ch-08':'۰۸', 'ch-09':'۰۹',
+  'ch-10':'۱۰', 'ch-11':'۱۱', 'conclusion':'۱۲'
+};
+
+function updateActive(){
+  const y = window.scrollY + window.innerHeight * 0.3;
+  let current = 'cover';
+  sections.forEach(sec => {
+    if (sec.offsetTop <= y) current = sec.id;
+  });
+  indicator.textContent = chapNames[current] || current;
+  rails.forEach(r => {
+    r.classList.toggle('active', r.dataset.rail === current);
+  });
+}
+window.addEventListener('scroll', updateActive, {passive:true});
+updateActive();
+
+/* ====== Reveal on scroll ====== */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12});
+revealEls.forEach(el => io.observe(el));
+
+/* ====== Number ticker ====== */
+const persian = n => n.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const counters = document.querySelectorAll('.num-tick');
+const counterIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting){
+      const el = e.target;
+      const target = parseInt(el.dataset.count, 10);
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target/40));
+      const tick = () => {
+        cur += step;
+        if (cur >= target){ cur = target; el.textContent = persian(cur); return; }
+        el.textContent = persian(cur);
+        requestAnimationFrame(tick);
+      };
+      tick();
+      counterIO.unobserve(el);
+    }
+  });
+}, {threshold: 0.5});
+counters.forEach(c => counterIO.observe(c));
+
+/* ====== Interactive cycle SVG ====== */
+const cycleDescs = {
+  contract:{t:'قرارداد', d:'پروژه با یک قرارداد تعریف می‌شود. قرارداد شامل شماره، تاریخ شروع و پایان، کارفرما و مدت باقی‌مانده است. می‌توان چند قرارداد برای یک کارفرما تعریف کرد و هر قرارداد را به سرویس‌های متعدد متصل کرد.'},
+  service:{t:'سرویس', d:'هر سرویس یک واحد اجرایی مستقل از پروژه است. سرویس دارای عنوان، نوع، تاریخ شروع/پایان، چک‌لیست، برنامه‌ریز، ناظر استقرار و ناظر کارفرماست. همکاران با سطوح مختلف دسترسی به سرویس متصل می‌شوند.'},
+  ticket:{t:'تیکت عملیاتی', d:'هر تیکت روی سرویس تعریف می‌شود و دارای شناسه، نوع، اولویت، مهلت، مسئول، چک‌لیست و تاریخچهٔ ارجاع است. امکان تعلیق با دلیل، منشن چندکاربره، استعلام و بازگشایی تیکت بسته وجود دارد.'},
+  report:{t:'گزارش و تحلیل', d:'تمام داده‌های پروژه، تیکت‌ها، عملکردها و ترددها در گزارش‌های فیلتردار جمع می‌شوند. خروجی Excel و PDF برای ارائهٔ مدیریتی و ارزیابی چرخهٔ پروژه در دسترس است.'}
+};
+document.querySelectorAll('#cycle-svg .cycle-node').forEach(node => {
+  node.addEventListener('click', () => {
+    const key = node.dataset.node;
+    const d = cycleDescs[key];
+    document.querySelectorAll('#cycle-svg .cycle-node').forEach(n => n.classList.remove('active'));
+    node.classList.add('active');
+    document.getElementById('cycle-desc').innerHTML = `<p class="text-sm font-bold mb-2 text-[color:var(--gold-2)]">${d.t}</p><p class="text-[color:var(--ink-2)] text-sm leading-relaxed">${d.d}</p>`;
+  });
+});
+
+/* ====== Interactive org chart ====== */
+const orgDescs = {
+  ceo:{t:'مدیرعامل', d:'رأس چارت سازمانی. دسترسی کامل به داشبوردهای مدیریتی، گزارش‌های سازمانی و اطلاعیه‌های سراسری.'},
+  mgr1:{t:'مدیر فنی', d:'مسئول تیم‌های فنی. می‌تواند زیرمجموعه، تیکت‌های ارجاعی و عملکرد اعضای تیم را مشاهده کند.'},
+  mgr2:{t:'مدیر پروژه', d:'مسئول پروژه‌ها و سرویس‌ها. امکان ایجاد پروژه، تعریف سرویس، ارجاع تیکت و نظارت بر ناظران.'},
+  mgr3:{t:'مدیر منابع انسانی', d:'مسئول کاربران، نقش‌ها، سمت‌ها، شیفت‌ها، مرخصی‌ها و گزارش‌های عملکرد پرسنل.'},
+  s1:{t:'کارشناس فنی ۱', d:'عضو تیم فنی. کارتابل تیکت‌های ارجاع‌شده، عملکرد فردی و درخواست‌های مرخصی/ماموریت.'},
+  s2:{t:'کارشناس فنی ۲', d:'هم‌سطح با کارشناس ۱ در زیرمجموعهٔ مدیر فنی.'},
+  s3:{t:'سرپرست پروژه ۱', d:'مسئول مستقیم تیکت‌ها و عملکرد یک گروه از پروژه.'},
+  s4:{t:'سرپرست پروژه ۲', d:'هم‌سطح با سرپرست ۱ در زیرمجموعهٔ مدیر پروژه.'},
+  s5:{t:'پرسنل منابع ۱', d:'عضو تیم منابع انسانی با دسترسی‌های متناسب با نقش.'},
+  s6:{t:'پرسنل منابع ۲', d:'عضو تیم منابع انسانی.'}
+};
+document.querySelectorAll('#org-svg .module-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    const key = dot.dataset.org;
+    const d = orgDescs[key];
+    if (!d) return;
+    document.querySelectorAll('#org-svg .module-dot').forEach(n => n.classList.remove('active'));
+    dot.classList.add('active');
+    document.getElementById('org-desc').innerHTML = `<p class="text-sm font-bold mb-2 text-[color:var(--gold-2)]">${d.t}</p><p class="text-[color:var(--muted)] text-sm leading-relaxed">${d.d}</p>`;
+  });
+});
+
+/* ====== Reduced motion check ====== */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+}
+</script>
+
+</body>
+</html>

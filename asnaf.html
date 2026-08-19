@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سامانه اصناف و بازرگانی | کاتالوگ دیجیتال محیا پرداز</title>
+<meta name="description" content="کاتالوگ دیجیتال سامانه اصناف و بازرگانی محیا پرداز؛ سامانه‌ای مکان‌محور برای مدیریت واحدهای شغلی، مجوزهای صنفی، املاک و اسناد بازرگانی.">
+<meta property="og:title" content="سامانه اصناف و بازرگانی | محیا پرداز">
+<meta property="og:description" content="کاتالوگ دیجیتال محصول؛ روایتی فصل‌به‌فصل از مدیریت واحدهای اصناف و بازرگانی: نقشه GIS، پرونده صنفی، آرشیو الکترونیک، کارتابل، پیگیری، مجوزها و محاسبات.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:image" content="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      paper:'#F6F1E6', cream:'#FBF8F0', ink:'#0E2A31', pine:'#0F3A40', pinedeep:'#0B2B31',
+      teal:'#0E6F63', tealdeep:'#0A574D', brass:'#A9762B', brasslight:'#D9B36A',
+      line:'#E3D9C4', mute:'#5C6B6C'
+    },
+    fontFamily: { sans:['Vazirmatn','system-ui','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background-image:linear-gradient(rgba(14,111,99,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(14,111,99,.035) 1px,transparent 1px);background-size:56px 56px}
+  ::selection{background:#0E6F63;color:#FBF8F0}
+  :focus-visible{outline:2px solid #A9762B;outline-offset:3px;border-radius:2px}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+  .rv.on{opacity:1;transform:none}
+  .ch-ghost{position:absolute;top:-1.5rem;inset-inline-start:-1rem;font-weight:900;font-size:clamp(7rem,20vw,15rem);line-height:1;color:rgba(14,111,99,.07);user-select:none;pointer-events:none}
+  .leader{flex:1;border-bottom:2px dotted #E3D9C4;margin:0 .6rem;transform:translateY(-.35rem)}
+  .ph{aspect-ratio:16/9;border:2px dashed #C9BC9C;border-radius:.75rem;background:repeating-linear-gradient(-45deg,rgba(169,118,43,.06) 0 14px,transparent 14px 28px),#FBF8F0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;padding:1.25rem}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #E3D9C4;background:#FBF8F0;border-radius:999px;padding:.3rem .8rem;font-size:.78rem;color:#0E2A31}
+  .field{border:1px solid #E3D9C4;background:#fff;border-radius:.5rem;padding:.45rem .7rem;font-size:.8rem;color:#33484B}
+  .rail{position:fixed;left:.9rem;top:50%;transform:translateY(-50%);z-index:40;display:none;flex-direction:column;gap:.45rem}
+  @media(min-width:1280px){.rail{display:flex}}
+  .rail a{width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#5C6B6C;border:1px solid transparent;border-radius:999px;transition:all .3s}
+  .rail a:hover{color:#0E6F63}
+  .rail a.act{background:#0E6F63;color:#FBF8F0}
+  .draw line,.draw path,.draw polyline{stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 1.8s ease .25s}
+  .on .draw line,.on .draw path,.on .draw polyline{stroke-dashoffset:0}
+  .bar{transform:scaleX(0);transform-origin:right;transition:transform 1.1s ease .3s}
+  .on .bar{transform:scaleX(1)}
+  .dashmove{stroke-dasharray:6 8;animation:dash 26s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-600}}
+  .hint-line{width:1px;height:3.2rem;background:linear-gradient(#D9B36A,transparent);animation:hint 2.2s ease infinite}
+  @keyframes hint{0%{transform:scaleY(.2);transform-origin:top}55%{transform:scaleY(1)}100%{opacity:0}}
+  .mod-node{cursor:pointer}
+  .mod-node circle{transition:all .3s}
+  .mod-node:hover circle,.mod-node.sel circle{fill:#0E6F63}
+  .mod-node:hover text,.mod-node.sel text{fill:#FBF8F0}
+  .mod-node text{transition:all .3s}
+  #mapTip{position:absolute;pointer-events:none;background:#0E2A31;color:#FBF8F0;font-size:.72rem;line-height:1.7;padding:.4rem .7rem;border-radius:.5rem;opacity:0;transition:opacity .2s;max-width:230px;z-index:10}
+  .layer-toggle input:checked + span{background:#0E6F63;color:#FBF8F0;border-color:#0E6F63}
+  .case-tab[aria-selected="true"]{background:#0E6F63;color:#FBF8F0;border-color:#0E6F63}
+  .cmp-bad li::before{content:"×";color:#A9762B;font-weight:900;margin-inline-end:.5rem}
+  .cmp-good li::before{content:"✓";color:#0E6F63;font-weight:900;margin-inline-end:.5rem}
+  @media print{
+    .no-print{display:none!important}
+    body{background:#fff}
+    .rv{opacity:1!important;transform:none!important}
+    .draw line,.draw path,.draw polyline{stroke-dashoffset:0!important}
+    .bar{transform:scaleX(1)!important}
+    section.chapter{break-before:page}
+    .ph{border-color:#999}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .draw line,.draw path,.draw polyline{stroke-dashoffset:0;transition:none}
+    .bar{transform:scaleX(1);transition:none}
+    .dashmove,.hint-line{animation:none}
+    *{transition-duration:.01ms!important}
+  }
+</style>
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-50 focus:bg-teal focus:text-cream focus:px-4 focus:py-2 focus:rounded">پرش به محتوای کاتالوگ</a>
+
+<!-- ══════════ Header ══════════ -->
+<header class="fixed top-0 inset-x-0 z-40 bg-paper/90 backdrop-blur border-b border-line no-print">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-6 h-16">
+    <a href="#cover" class="flex items-center gap-3" aria-label="بازگشت به جلد کاتالوگ">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-9 md:h-10 w-auto">
+      <span class="hidden sm:block text-sm font-extrabold">محیا پرداز</span>
+      <span class="hidden md:block text-xs text-mute border-s border-line ps-3">سامانه اصناف و بازرگانی</span>
+    </a>
+    <span id="navChapter" class="text-xs md:text-sm font-bold text-teal" aria-live="polite">جلد کاتالوگ</span>
+  </div>
+  <div class="h-[3px] bg-line/40"><div id="progressBar" class="h-full bg-brass" style="width:0%"></div></div>
+</header>
+
+<!-- ══════════ Rail ══════════ -->
+<nav class="rail no-print" aria-label="فصل‌های کاتالوگ">
+  <a href="#ch01">۰۱</a><a href="#ch02">۰۲</a><a href="#ch03">۰۳</a><a href="#ch04">۰۴</a>
+  <a href="#ch05">۰۵</a><a href="#ch06">۰۶</a><a href="#ch07">۰۷</a><a href="#ch08">۰۸</a>
+  <a href="#ch09">۰۹</a><a href="#ch10">۱۰</a><a href="#ch11">۱۱</a><a href="#ch12">۱۲</a>
+</nav>
+
+<main id="main">
+
+<!-- ══════════ جلد ══════════ -->
+<section id="cover" data-title="جلد کاتالوگ" class="relative min-h-screen bg-pinedeep text-cream overflow-hidden flex flex-col scroll-mt-24">
+  <svg aria-hidden="true" class="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#0E6F63" stroke-width="1.4">
+      <path class="dashmove" d="M-50 620 L300 590 L520 640 L900 600 L1250 640"/>
+      <path d="M180 -20 L230 300 L200 820" stroke="#155E52"/>
+      <path d="M760 -20 L800 400 L780 820" stroke="#155E52"/>
+      <polygon points="320,120 640,140 660,360 340,350" stroke="#A9762B" stroke-dasharray="5 7"/>
+      <polygon points="60,80 260,95 270,300 80,310" stroke="#1E7A6C"/>
+      <polygon points="880,120 1130,140 1120,330 900,320" stroke="#1E7A6C"/>
+      <polygon points="340,430 640,420 660,640 360,650" stroke="#1E7A6C"/>
+      <polygon points="880,420 1130,410 1120,620 900,630" stroke="#A9762B" stroke-dasharray="5 7"/>
+    </g>
+    <g fill="#D9B36A">
+      <circle cx="160" cy="190" r="5"/><circle cx="480" cy="240" r="5"/><circle cx="1000" cy="220" r="5"/>
+      <circle cx="500" cy="530" r="5"/><circle cx="1000" cy="520" r="5"/>
+    </g>
+  </svg>
+  <div class="relative max-w-6xl mx-auto w-full px-4 md:px-6 pt-28 md:pt-32 pb-16 flex-1 flex flex-col justify-center">
+    <div class="flex items-center gap-4 rv">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-12 md:h-16 w-auto bg-cream rounded-md p-1.5">
+      <p class="text-xs md:text-sm text-brasslight font-bold tracking-wide">کاتالوگ معرفی محصول · مرداد ۱۴۰۵</p>
+    </div>
+    <h1 class="rv mt-8 text-4xl md:text-7xl font-black leading-[1.25] md:leading-[1.2]">سامانه اصناف و بازرگانی</h1>
+    <p class="rv mt-6 text-lg md:text-2xl font-medium text-brasslight">مدیریت مکان‌محور واحدهای شغلی، مجوزهای صنفی و املاک بازرگانی</p>
+    <p class="rv mt-5 max-w-2xl text-sm md:text-base leading-8 text-cream/80 font-light">
+      برای هر واحد شغلی و هر ملک، یک پرونده یکپارچه از موقعیت مکانی، مشخصات شغل، مجوزها، محاسبات و اسناد — قابل ثبت، قابل پیگیری و قابل گزارش.
+    </p>
+  </div>
+  <div class="relative pb-10 flex flex-col items-center gap-3 no-print">
+    <p class="text-[11px] md:text-xs text-cream/60">برای ورق‌زدن کاتالوگ، اسکرول کنید</p>
+    <span class="hint-line" aria-hidden="true"></span>
+  </div>
+</section>
+
+<!-- ══════════ فهرست ══════════ -->
+<section id="toc" data-title="فهرست فصل‌ها" class="scroll-mt-24 py-20 md:py-28 bg-cream border-b border-line">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فهرست مطالب</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black">آنچه در این کاتالوگ می‌خوانید</h2>
+    <p class="rv mt-4 text-mute text-sm md:text-base leading-8 max-w-2xl">این کاتالوگ در دوازده فصل روایت می‌شود؛ از تعریف سامانه و ضرورت آن، تا لایه مکانی، بایگانی صنفی و ملکی، جریان کاری اداری، فرآیندهای مجوز و لایه مالی.</p>
+    <ol class="mt-12 grid md:grid-cols-2 gap-x-14 gap-y-5">
+      <li class="rv"><a href="#ch01" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۱</span><span class="leader"></span>معرفی سامانه</a></li>
+      <li class="rv"><a href="#ch02" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۲</span><span class="leader"></span>ضرورت نمای یکپارچه اصناف</a></li>
+      <li class="rv"><a href="#ch03" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۳</span><span class="leader"></span>اجزای سامانه در یک نگاه</a></li>
+      <li class="rv"><a href="#ch04" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۴</span><span class="leader"></span>نقشه GIS؛ بستر مکانی سامانه</a></li>
+      <li class="rv"><a href="#ch05" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۵</span><span class="leader"></span>ثبت اصناف؛ از لیست مشاغل تا پرونده کامل</a></li>
+      <li class="rv"><a href="#ch06" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۶</span><span class="leader"></span>ملک؛ از مشخصات ثبتی تا آرشیو اسناد</a></li>
+      <li class="rv"><a href="#ch07" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۷</span><span class="leader"></span>کارتابل و نظرخواهی داخلی</a></li>
+      <li class="rv"><a href="#ch08" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۸</span><span class="leader"></span>پیگیری؛ تصویر روشن وضعیت درخواست‌ها</a></li>
+      <li class="rv"><a href="#ch09" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۹</span><span class="leader"></span>فرآیندهای مجوز؛ از صدور تا توقف</a></li>
+      <li class="rv"><a href="#ch10" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۱۰</span><span class="leader"></span>محاسبات و کیف صنفی؛ بُعد مالی سامانه</a></li>
+      <li class="rv"><a href="#ch11" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۱۱</span><span class="leader"></span>کاربران و سطوح دسترسی</a></li>
+      <li class="rv"><a href="#ch12" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۱۲</span><span class="leader"></span>جمع‌بندی</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۱ ═════════ -->
+<section id="ch01" data-title="فصل ۰۱ · معرفی سامانه" class="chapter relative scroll-mt-24 py-20 md:py-28 overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۱</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۱</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">سامانه‌ای کامل برای مدیریت اصناف و بازرگانی</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">تعریف محصول، قلمرو آن و جایگاه هر بخش</p>
+    <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light max-w-3xl">
+      <p>سامانه اصناف و بازرگانی برای مدیریت واحدهای اصناف و بازرگانی طراحی شده است. این سامانه واحد شغلی را — با موقعیت مکانی، مشخصات شغل، اشخاص، مجوزها و عوارض آن — در مرکز قرار می‌دهد و ابزارهای موردنیاز را در یازده بخش اصلی گرد هم می‌آورد: نقشه، کارتابل، نظرخواهی داخلی، لیست اصناف، پرونده صنفی، اطلاعات ملک، آرشیو الکترونیک ملک، پیگیری، محاسبات، کیف صنفی و فرآیندها.</p>
+      <p>در این سامانه، هر واحد شغلی تنها یک ردیف در یک جدول نیست؛ بلکه نقطه‌ای روی نقشه، پرونده‌ای با سوابق و اشخاص مرتبط، آرشیوی از اسناد، تاریخچه‌ای از محاسبات و پرداخت‌ها و فرآیندهایی از مجوزهای قابل پیگیری است. این به‌هم‌پیوستگی باعث می‌شود پاسخ هر پرسش درباره یک واحد — کجاست، متعلق به کیست، چه مجوزی دارد، وضعیت عوارض آن چگونه است و چه اسنادی برای آن وجود دارد — از یک منبع واحد به دست آید.</p>
+      <p>سامانه برای دو گروه اصلی طراحی شده است: کاربران عملیاتی که ثبت، بررسی، ارجاع و پیگیری پرونده‌ها را در کارتابل‌ها انجام می‌دهند، و مدیرانی که سطوح دسترسی را تعیین می‌کنند و از دید پیگیری و نمودارهای وضعیت برای نظارت بهره می‌گیرند.</p>
+    </div>
+    <div class="rv mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-3xl font-black text-teal">۱۱</p><p class="mt-2 text-xs font-bold text-mute">بخش اصلی سامانه</p></div>
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-3xl font-black text-teal">۱۰</p><p class="mt-2 text-xs font-bold text-mute">فرآیند مجوز کسب و پیشه و بهره‌برداری</p></div>
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-3xl font-black text-teal">۹۹</p><p class="mt-2 text-xs font-bold text-mute">بلوک ساختمانی در اسناد ملک</p></div>
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-3xl font-black text-teal">۳</p><p class="mt-2 text-xs font-bold text-mute">سطح نمایش تام‌نیل در آرشیو اسناد</p></div>
+    </div>
+    <div class="rv mt-10 border-s-4 border-brass ps-5 py-2 max-w-3xl">
+      <p class="text-sm md:text-base leading-8 text-mute"><strong class="text-ink">شناسنامه محصول:</strong> نام بخش: سامانه اصناف و بازرگانی · قلمرو: مدیریت واحدهای اصناف و بازرگانی · لایه مکانی: نقشه GIS · بایگانی: پرونده صنفی و آرشیو الکترونیک ملک · جریان کاری: کارتابل، نظرخواهی و پیگیری · مالی: محاسبات و کیف صنفی.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۲ ══════════ -->
+<section id="ch02" data-title="فصل ۰۲ · ضرورت" class="chapter relative scroll-mt-24 py-20 md:py-28 bg-cream border-y border-line overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۲</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۲</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">چرا نمای یکپارچه اصناف ضرورت دارد</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">ماهیت چندبُعدی داده‌های واحدهای شغلی و پیامند پراکندگی آن‌ها</p>
+    <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light max-w-3xl">
+      <p>اطلاعات یک واحد شغلی به‌طور ذاتی چندبُعدی است. واحد، مکانی روی نقشه و ملکی مرتبط دارد؛ شغلی با کد، رده و درجه؛ مالکان و متصدیانی با مشخصات هویتی؛ مجوزهایی که صادر، تمدید، اصلاح، تعلیق یا توقف می‌شوند؛ عوارضی که باید محاسبه و وصول شود؛ و اسناد، آرا و سوابقی که باید نگهداری شوند. وقتی هر یک از این ابعاد در ابزار جداگانه‌ای نگهداری شود، پاسخ به پرسشی ساده — مانند وضعیت عوارض یک واحد با کدنوسازی مشخص — به جست‌وجویی پراکنده میان چند منبع ناهماهنگ تبدیل می‌شود.</p>
+      <p>بُعد مکانی، این ضرورت را دوچندان می‌کند. واحدهای شغلی، املاک و معابر موجودیت‌هایی مکانی هستند؛ بدون نقشه‌ای که به داده توصیفی پیوند داشته باشد، عملیاتی مانند انتخاب املاک اطراف یک معبر، مقایسه وضع موجود با لایه طرح، یا محاسبه مساحت باقیمانده پس از عقب‌نشینی، کند، تقریبی و خطاپذیر انجام می‌شود.</p>
+      <p>بُعد اداری نیز کم‌اهمیت نیست. درخواست‌های مجوز باید ارجاع شوند، در کارتابل‌ها پیش بروند و پاسخ بگیرند؛ بدون جریان کاری مشخص، بخشی از درخواست‌ها بلاتکلیف می‌ماند و تصویری روشن از زمان انتظار کارها در هر کارتابل وجود ندارد.</p>
+    </div>
+    <div class="rv mt-14 grid md:grid-cols-2 gap-6">
+      <div class="rounded-xl border border-line bg-paper p-6 md:p-8">
+        <h3 class="font-black text-lg text-brass">بدون سامانه یکپارچه</h3>
+        <ul class="cmp-bad mt-5 space-y-4 text-sm leading-7 text-mute list-none">
+          <li>اطلاعات شغلی، مکانی و مالی در ابزارهای جداگانه و ناهماهنگ</li>
+          <li>جدایی نقشه از پرونده؛ تحلیل‌های مکانی خارج از محیط کاری</li>
+          <li>اسناد پراکنده، بدون دسته‌بندی یکپارچه و جست‌وجوی سریع</li>
+          <li>درخواست‌های بدون متولی مشخص و نبود تصویر زمان انتظار کارتابل‌ها</li>
+          <li>محاسبات و عوارض بدون تاریخچه سندمند قابل ردیابی</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-teal/40 bg-teal/5 p-6 md:p-8">
+        <h3 class="font-black text-lg text-teal">با سامانه اصناف و بازرگانی</h3>
+        <ul class="cmp-good mt-5 space-y-4 text-sm leading-7 text-ink list-none">
+          <li>پرونده یکپارچه برای هر واحد شغلی و هر ملک، پیوندخورده با نقشه</li>
+          <li>بافرینگ، عقب‌نشینی و روی‌هم‌اندازی نقشه‌ها در همان محیط کاری</li>
+          <li>آرشیو الکترونیک با دسته‌بندی، Drag &amp; Drop و سطوح دسترسی</li>
+          <li>کارتابل اختصاصی، مشترک و بلاتکلیف با پیگیری کامل درخواست‌ها</li>
+          <li>محاسبات با ریز نقد/قسط/تهاتر، مفاصا و لیست اسناد بدهکاری/بستانکاری</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۳ ══════════ -->
+<section id="ch03" data-title="فصل ۰۳ · اجزای سامانه" class="chapter relative scroll-mt-24 py-20 md:py-28 overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۳</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۳</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">اجزای سامانه در یک نگاه</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">یازده بخش، پیرامون واحد شغلی و ملک — روی هر بخش بزنید تا شرح آن نمایش یابد</p>
+    <div class="rv mt-12 grid lg:grid-cols-5 gap-8 items-start">
+      <div class="lg:col-span-3">
+        <svg id="modMap" viewBox="0 0 900 560" role="group" aria-label="دیاگرام تعاملی بخش‌های یازده‌گانه سامانه" class="w-full h-auto">
+          <g stroke="#C9BC9C" stroke-width="1.2">
+            <line x1="450" y1="280" x2="450" y2="70"/><line x1="450" y1="280" x2="585" y2="105"/><line x1="450" y1="280" x2="700" y2="190"/><line x1="450" y1="280" x2="735" y2="320"/><line x1="450" y1="280" x2="660" y2="440"/><line x1="450" y1="280" x2="520" y2="505"/><line x1="450" y1="280" x2="380" y2="505"/><line x1="450" y1="280" x2="240" y2="440"/><line x1="450" y1="280" x2="165" y2="320"/><line x1="450" y1="280" x2="200" y2="190"/><line x1="450" y1="280" x2="315" y2="105"/>
+          </g>
+          <g class="mod-node" data-mod="map" tabindex="0" role="button" aria-label="نقشه"><circle cx="450" cy="70" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="450" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#0E2A31">نقشه</text></g>
+          <g class="mod-node" data-mod="kartabel" tabindex="0" role="button" aria-label="کارتابل"><circle cx="585" cy="105" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="585" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#0E2A31">کارتابل</text></g>
+          <g class="mod-node" data-mod="consult" tabindex="0" role="button" aria-label="نظرخواهی"><circle cx="700" cy="190" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="700" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#0E2A31">نظرخواهی</text></g>
+          <g class="mod-node" data-mod="archive" tabindex="0" role="button" aria-label="آرشیو ملک"><circle cx="735" cy="320" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="735" y="325" text-anchor="middle" font-size="13" font-weight="700" fill="#0E2A31">آرشیو ملک</text></g>
+          <g class="mod-node" data-mod="tracking" tabindex="0" role="button" aria-label="پیگیری"><circle cx="660" cy="440" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="660" y="445" text-anchor="middle" font-size="14" font-weight="700" fill="#0E2A31">پیگیری</text></g>
+          <g class="mod-node" data-mod="calc" tabindex="0" role="button" aria-label="محاسبات"><circle cx="520" cy="505" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="520" y="510" text-anchor="middle" font-size="14" font-weight="700" fill="#0E2A31">محاسبات</text></g>
+          <g class="mod-node" data-mod="wallet" tabindex="0" role="button" aria-label="کیف صنفی"><circle cx="380" cy="505" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="380" y="510" text-anchor="middle" font-size="13" font-weight="700" fill="#0E2A31">کیف صنفی</text></g>
+          <g class="mod-node" data-mod="processes" tabindex="0" role="button" aria-label="فرآیندها"><circle cx="240" cy="440" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="240" y="445" text-anchor="middle" font-size="14" font-weight="700" fill="#0E2A31">فرآیندها</text></g>
+          <g class="mod-node" data-mod="guildlist" tabindex="0" role="button" aria-label="لیست اصناف"><circle cx="165" cy="320" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="165" y="325" text-anchor="middle" font-size="13" font-weight="700" fill="#0E2A31">لیست اصناف</text></g>
+          <g class="mod-node" data-mod="property" tabindex="0" role="button" aria-label="اطلاعات ملک"><circle cx="200" cy="190" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="200" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#0E2A31">اطلاعات ملک</text></g>
+          <g class="mod-node" data-mod="case" tabindex="0" role="button" aria-label="پرونده صنفی"><circle cx="315" cy="105" r="42" fill="#FBF8F0" stroke="#0E6F63" stroke-width="2"/><text x="315" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0E2A31">پرونده صنفی</text></g>
+          <g><circle cx="450" cy="280" r="56" fill="#0E2A31"/><text x="450" y="272" text-anchor="middle" font-size="14" font-weight="800" fill="#FBF8F0">واحد شغلی</text><text x="450" y="294" text-anchor="middle" font-size="14" font-weight="800" fill="#D9B36A">و ملک</text></g>
+        </svg>
+      </div>
+      <aside class="lg:col-span-2 lg:sticky lg:top-24 border border-line bg-cream rounded-xl p-6 md:p-8" aria-live="polite">
+        <p class="text-[11px] font-bold text-brass tracking-widest">شرح بخش</p>
+        <h3 id="modTitle" class="mt-2 text-xl font-black text-teal">پرونده صنفی</h3>
+        <p id="modDesc" class="mt-3 text-sm leading-7 text-mute font-light">بایگانی کامل هر واحد شغلی در شش گروه اطلاعاتی مجزا.</p>
+        <ul id="modCaps" class="mt-5 space-y-2.5 text-[13px] leading-6"></ul>
+      </aside>
+    </div>
+    <div class="rv mt-12 max-w-3xl text-[15px] md:text-base leading-8 font-light text-mute">
+      <p>نقشه لایه مکانی را فراهم می‌کند؛ لیست اصناف و پرونده صنفی بایگانی شغلی را می‌سازند؛ اطلاعات ملک و آرشیو الکترونیک، لایه مالکیتی و اسناد را پوشش می‌دهند؛ کارتابل، نظرخواهی و پیگیری جریان کاری اداری را شکل می‌دهند؛ محاسبات و کیف صنفی بُعد مالی را ثبت می‌کنند؛ و فرآیندهای مجوز بر تمام این لایه‌ها سوار می‌شوند.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۴ ═════════ -->
+<section id="ch04" data-title="فصل ۰۴ · نقشه GIS" class="chapter relative scroll-mt-24 py-20 md:py-28 bg-pinedeep text-cream overflow-hidden">
+  <span class="ch-ghost" style="color:rgba(217,179,106,.08)" aria-hidden="true">۰۴</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brasslight tracking-widest">فصل ۰۴</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">نقشه؛ بستر مکانی سامانه</h2>
+    <p class="rv mt-4 text-brasslight font-bold text-sm md:text-lg">لایه‌ها، ترسیم و محاسبه، بافرینگ و عقب‌نشینی، و خروجی گزارش</p>
+    <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light text-cream/85 max-w-3xl">
+      <p>نقشه سامانه یک نمایش ساده نیست؛ محیط کاری مکانی است که در آن لایه‌های اطلاعاتی تعریف، ترسیم، تحلیل و مقایسه می‌شوند و نتیجه تحلیل مستقیم به چرخه گزارش‌گیری وارد می‌شود. پارسل‌های املاک، معابر و مشاغل روی نقشه به یکدیگر مرتبط‌اند و هر عارضه، اطلاعات توصیفی و پیوند به سایر داده‌های سامانه را همراه خود دارد.</p>
+    </div>
+
+    <div class="rv mt-12 grid md:grid-cols-2 gap-6">
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6">
+        <h3 class="font-black text-brasslight">لایه‌ها و مدیریت آن‌ها</h3>
+        <p class="mt-3 text-sm leading-7 text-cream/80 font-light">لایه‌های مختلف با دسته‌بندی دلخواه و به‌صورت پویا افزوده می‌شوند؛ نقطه‌ای، سطحي و خطی. کدگذاری و تغییر کدها در لایه‌ها پویاست، هر لایه مستقل نمایش یا پنهان می‌شود، و تصاویر ماهواره‌ای و نقشه‌های رقومی — وضع موجود، لایه طرح، معابر و غیره — در کنار هم قرار می‌گیرند. روی‌هم‌اندازی هر تعداد از نقشه‌ها، مقایسه و مطابقت دادن آن‌ها را ممکن می‌سازد.</p>
+      </div>
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6">
+        <h3 class="font-black text-brasslight">ترسیم، اندازه‌گیری و محاسبه</h3>
+        <p class="mt-3 text-sm leading-7 text-cream/80 font-light">ترسیم و ویرایش پولیگون‌ها با داده‌های GPS انجام می‌شود و مساحت در مسیر طرح‌ها به‌صورت خودکار محاسبه می‌گردد. اندازه‌گیری فاصله و مساحت، محاسبه محیط و مساحت هر چندضلعی دلخواه، نمایش طول و عرض جغرافیایی، بزرگ‌نمایی و کوچک‌نمایی در محدوده دلخواه و جست‌وجو بر اساس کدنوسازی یا نقطه GPS / مختصات UTM در همین محیط فراهم است.</p>
+      </div>
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6">
+        <h3 class="font-black text-brasslight">عقب‌نشینی و بافرینگ</h3>
+        <p class="mt-3 text-sm leading-7 text-cream/80 font-light">مساحت و ابعاد باقیمانده پس از عقب‌نشینی، به‌صورت خودکار و بر اساس لایه بلوک تفصیلی محاسبه می‌شود. با دستور بافرینگ، املاک اطراف معابر انتخاب می‌شوند؛ قابلیتی که تحلیل‌های مبتنی بر حریم معبر را از حالت دستی و تقریبی خارج می‌کند.</p>
+      </div>
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6">
+        <h3 class="font-black text-brasslight">از نقشه تا گزارش</h3>
+        <p class="mt-3 text-sm leading-7 text-cream/80 font-light">عارضه‌ها به‌صورت گروهی انتخاب می‌شوند و انتخاب‌ها برای گزارش‌گیری ذخیره و مدیریت می‌گردند. اطلاعات توصیفی هر عارضه قابل نمایش است و پیوند پارسل‌ها، معابر و مشاغل روی نقشه، تحلیل مکانی را به پرونده‌های توصیفی سامانه متصل می‌کند.</p>
+      </div>
+    </div>
+
+    <!-- نقشه تعاملی -->
+    <div class="rv mt-14">
+      <div class="flex flex-wrap items-center gap-2 mb-4" role="group" aria-label="کنترل لایه‌های نقشه">
+        <span class="text-xs font-bold text-brasslight me-2">نمایش لایه‌ها:</span>
+        <label class="layer-toggle cursor-pointer"><input type="checkbox" class="sr-only" data-layer="g-sat" checked><span class="chip transition">تصاویر ماهواره‌ای</span></label>
+        <label class="layer-toggle cursor-pointer"><input type="checkbox" class="sr-only" data-layer="g-parcels" checked><span class="chip transition">پارسل‌های املاک</span></label>
+        <label class="layer-toggle cursor-pointer"><input type="checkbox" class="sr-only" data-layer="g-plan" checked><span class="chip transition">لایه طرح</span></label>
+        <label class="layer-toggle cursor-pointer"><input type="checkbox" class="sr-only" data-layer="g-roads" checked><span class="chip transition">معابر</span></label>
+        <label class="layer-toggle cursor-pointer"><input type="checkbox" class="sr-only" data-layer="g-biz" checked><span class="chip transition">مشاغل</span></label>
+        <button id="btnBuffer" class="chip transition hover:border-brasslight" aria-pressed="false">بافرینگ معبر</button>
+        <button id="btnSelect" class="chip transition hover:border-brasslight" aria-pressed="false">انتخاب گروهی و ذخیره</button>
+      </div>
+      <div class="relative rounded-xl overflow-hidden border border-cream/20 bg-[#EFE8D6] text-ink" id="mapWrap">
+        <svg id="gisMap" viewBox="0 0 860 540" class="w-full h-auto" role="img" aria-label="شماتیک تعاملی نقشه سامانه: لایه‌های ماهواره‌ای، پارسل‌ها، لایه طرح، معابر و مشاغل">
+          <g id="g-sat">
+            <rect width="860" height="540" fill="#B5A37F" opacity=".35"/>
+            <ellipse cx="180" cy="140" rx="150" ry="90" fill="#7D8F69" opacity=".4"/>
+            <ellipse cx="650" cy="420" rx="190" ry="110" fill="#7D8F69" opacity=".35"/>
+            <ellipse cx="700" cy="120" rx="120" ry="70" fill="#6B7D5A" opacity=".35"/>
+            <ellipse cx="250" cy="440" rx="140" ry="80" fill="#6B7D5A" opacity=".3"/>
+          </g>
+          <g id="g-parcels" fill="rgba(14,111,99,.10)" stroke="#0E6F63" stroke-width="1.6">
+            <polygon class="feat buf-hl" data-tip="پارسل ملک (Polygon) — نمایش اطلاعات توصیفی و پیوند به اطلاعات ملک" points="60,60 260,70 270,250 70,260"/>
+            <polygon class="feat buf-hl" data-tip="پارسل ملک (Polygon) — نمایش اطلاعات توصیفی و پیوند به اطلاعات ملک" points="380,70 540,80 550,240 390,235"/>
+            <polygon class="feat" data-tip="پارسل ملک (Polygon) — نمایش اطلاعات توصیفی و پیوند به اطلاعات ملک" points="640,80 800,90 790,230 650,225"/>
+            <polygon class="feat buf-hl" data-tip="پارسل ملک (Polygon) — نمایش اطلاعات توصیفی و پیوند به اطلاعات ملک" points="70,330 260,325 270,480 80,470"/>
+            <polygon class="feat buf-hl" data-tip="پارسل ملک (Polygon) — نمایش اطلاعات توصیفی و پیوند به اطلاعات ملک" points="380,320 540,315 550,470 390,475"/>
+            <polygon class="feat" data-tip="پارسل ملک (Polygon) — نمایش اطلاعات توصیفی و پیوند به اطلاعات ملک" points="640,315 800,310 795,470 650,465"/>
+          </g>
+          <g id="g-plan" fill="none" stroke="#A9762B" stroke-width="2" stroke-dasharray="6 6">
+            <polygon points="360,55 820,70 810,245 370,240"/>
+            <polygon points="620,300 810,295 805,480 630,478"/>
+          </g>
+          <g id="g-roads">
+            <path class="feat" data-tip="معبر — انتخاب املاک اطراف با دستور بافرینگ" d="M40 292 L820 268" stroke="#D8CDB4" stroke-width="26" fill="none"/>
+            <path class="feat" data-tip="معبر — انتخاب املاک اطراف با دستور بافرینگ" d="M310 40 L340 500" stroke="#D8CDB4" stroke-width="22" fill="none"/>
+            <path d="M40 292 L820 268" stroke="#FBF8F0" stroke-width="2" stroke-dasharray="10 10" fill="none"/>
+          </g>
+          <g id="g-buffer" style="display:none">
+            <circle cx="322" cy="285" r="130" fill="rgba(14,111,99,.14)" stroke="#0E6F63" stroke-width="2" stroke-dasharray="4 6"/>
+            <text x="322" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="#0A574D">حریم بافرینگ معبر</text>
+          </g>
+          <g id="g-select" style="display:none" fill="rgba(169,118,43,.25)" stroke="#A9762B" stroke-width="2.4" stroke-dasharray="5 5">
+            <polygon points="640,80 800,90 790,230 650,225"/>
+            <polygon points="640,315 800,310 795,470 650,465"/>
+          </g>
+          <g id="g-biz" fill="#A9762B" stroke="#FBF8F0" stroke-width="1.6">
+            <circle class="feat" data-tip="واحد شغلی (Point) — پیوند به پرونده صنفی و لیست اصناف" cx="150" cy="150" r="7"/>
+            <circle class="feat" data-tip="واحد شغلی (Point) — پیوند به پرونده صنفی و لیست اصناف" cx="460" cy="150" r="7"/>
+            <circle class="feat" data-tip="واحد شغلی (Point) — پیوند به پرونده صنفی و لیست اصناف" cx="720" cy="150" r="7"/>
+            <circle class="feat" data-tip="واحد شغلی (Point) — پیوند به پرونده صنفی و لیست اصناف" cx="160" cy="400" r="7"/>
+            <circle class="feat" data-tip="واحد شغلی (Point) — پیوند به پرونده صنفی و لیست اصناف" cx="470" cy="400" r="7"/>
+            <circle class="feat" data-tip="واحد شغلی (Point) — پیوند به پرونده صنفی و لیست اصناف" cx="720" cy="395" r="7"/>
+          </g>
+          <g id="savedBadge" style="display:none">
+            <rect x="596" y="498" width="248" height="30" rx="6" fill="#0E2A31"/>
+            <text x="720" y="518" text-anchor="middle" font-size="12" font-weight="700" fill="#D9B36A">عارضه‌های انتخاب‌شده برای گزارش‌گیری ذخیره شد</text>
+          </g>
+          <g aria-hidden="true">
+            <polygon points="30,470 38,498 22,498" fill="#0E2A31"/>
+            <text x="30" y="516" text-anchor="middle" font-size="11" font-weight="700" fill="#0E2A31">شمال</text>
+            <rect x="700" y="30" width="120" height="6" fill="#0E2A31"/>
+            <rect x="760" y="30" width="60" height="6" fill="#FBF8F0" stroke="#0E2A31"/>
+          </g>
+        </svg>
+        <div id="mapTip" role="status"></div>
+      </div>
+      <p class="mt-3 text-[11px] md:text-xs text-cream/60">شماتیک تعاملی برای نمایش مفهوم لایه‌ها، بافرینگ و انتخاب گروهی؛ نشانگر را روی عارضه‌ها ببرید.</p>
+    </div>
+
+    <figure class="product-shot rv mt-12" data-slot="map-main">
+      <div class="ph">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#A9762B" stroke-width="1.6" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>
+        <p class="font-bold text-sm text-ink">تصویر موردنیاز: نمای اصلی نقشه سامانه با پنل لایه‌ها، پولیگون‌های ترسیم‌شده و نوار ابزار اندازه‌گیری</p>
+        <p class="text-[11px] text-mute">فصل ۰۴ — نقشه GIS · جایگذاری اسکرین‌شات واقعی در data-slot="map-main"</p>
+      </div>
+      <figcaption class="mt-2 text-xs text-cream/60">نمای واقعی محیط نقشه سامانه</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۵ ══════════ -->
+<section id="ch05" data-title="فصل ۰۵ · ثبت اصناف" class="chapter relative scroll-mt-24 py-20 md:py-28 overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۵</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۵</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">ثبت اصناف؛ از لیست مشاغل تا پرونده کامل</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">مرجع مشاغل، و پرونده صنفی در شش گروه اطلاعاتی</p>
+
+    <h3 class="rv mt-12 text-xl md:text-2xl font-black">لیست اصناف؛ مرجع مشاغل</h3>
+    <p class="rv mt-4 text-[15px] md:text-base leading-8 font-light text-mute max-w-3xl">لیست اصناف، مرجع ثبت مشاغل است؛ هر شغل با مشخصات شناسنامه‌ای، زیست‌محیطی، مالکیتی و وضعیت مجوز و عوارض ثبت می‌شود و با ابزارهایی مانند ستاره‌دار کردن و آرشیو، مدیریت می‌گردد.</p>
+    <div class="rv mt-8 grid md:grid-cols-2 gap-5">
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-xs font-black text-brass mb-3">مشخصه‌های شغل</p><div class="flex flex-wrap gap-2"><span class="field">نام شغل</span><span class="field">کد شغل</span><span class="field">عنوان شغلی / مرجع شغلی</span><span class="field">کد آیسیک</span><span class="field">نوع فعالیت</span><span class="field">رده شغلی</span><span class="field">درجه شغلی</span></div></div>
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-xs font-black text-brass mb-3">زیست‌محیطی و پسماند</p><div class="flex flex-wrap gap-2"><span class="field">سطح آلودگی</span><span class="field">دارای پسماند بله/خیر</span><span class="field">میزان پسماند</span></div></div>
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-xs font-black text-brass mb-3">اشتغال و مالکیت</p><div class="flex flex-wrap gap-2"><span class="field">تعداد کارکنان</span><span class="field">واحد مالکیت</span><span class="field">سهم کل</span></div></div>
+      <div class="border border-line bg-cream rounded-lg p-5"><p class="text-xs font-black text-brass mb-3">مجوز و عوارض</p><div class="flex flex-wrap gap-2"><span class="field">علت عدم دریافت مجوز</span><span class="field">وضعیت پرداخت عوارض</span><span class="field">تاریخ تسویه</span><span class="field">وضعیت پروانه موقت</span></div></div>
+      <div class="border border-line bg-cream rounded-lg p-5 md:col-span-2"><p class="text-xs font-black text-brass mb-3">ابزارهای مدیریتی لیست</p><div class="flex flex-wrap gap-2"><span class="field">ستاره‌دار کردن شغل</span><span class="field">پرونده شغل در آرشیو</span><span class="field">سوابق شغل</span><span class="field">افراد مرتبط</span><span class="field">تابلو</span><span class="field">تعطیلات</span><span class="field">قراردادهای پسماند</span><span class="field">آرای کمیسیون ۷۷</span></div></div>
+    </div>
+
+    <h3 class="rv mt-16 text-xl md:text-2xl font-black">پرونده صنفی؛ شش بُعد اطلاعاتی</h3>
+    <p class="rv mt-4 text-[15px] md:text-base leading-8 font-light text-mute max-w-3xl">پرونده صنفی تاریخچه کامل واحد شغلی را در شش گروه اطلاعاتی نگهداری می‌کند. هر گروه، فرم‌ها و فیلدهای اختصاصی خود را دارد و در مجموع، سابقه‌ای قابل استناد از حیات صنفی واحد می‌سازد.</p>
+    <div class="rv mt-8">
+      <div class="flex flex-wrap gap-2" role="tablist" aria-label="گروه‌های اطلاعاتی پرونده صنفی">
+        <button class="case-tab chip font-bold transition" role="tab" aria-selected="true" data-tab="t1">سوابق شغل</button>
+        <button class="case-tab chip font-bold transition" role="tab" aria-selected="false" data-tab="t2">افراد مرتبط</button>
+        <button class="case-tab chip font-bold transition" role="tab" aria-selected="false" data-tab="t3">تابلو</button>
+        <button class="case-tab chip font-bold transition" role="tab" aria-selected="false" data-tab="t4">تعطیلات</button>
+        <button class="case-tab chip font-bold transition" role="tab" aria-selected="false" data-tab="t5">قراردادهای پسماند</button>
+        <button class="case-tab chip font-bold transition" role="tab" aria-selected="false" data-tab="t6">آرای کمیسیون ۷۷</button>
+      </div>
+      <div class="mt-5 border border-line bg-cream rounded-xl p-6 min-h-[10rem]">
+        <div class="case-panel" data-panel="t1"><div class="flex flex-wrap gap-2"><span class="field">کدنوسازی واحد شغلی</span><span class="field">آدرس</span><span class="field">نحوه تصرف</span><span class="field">تاریخ شروع</span><span class="field">تاریخ پایان</span><span class="field">شعبه مرکزی</span><span class="field">توضیحات</span></div></div>
+        <div class="case-panel hidden" data-panel="t2"><div class="flex flex-wrap gap-2"><span class="field">کد شخص</span><span class="field">نام و نام خانوادگی</span><span class="field">نام پدر</span><span class="field">کد ملی</span><span class="field">شماره شناسنامه</span><span class="field">تاریخ تولد</span><span class="field">نوع شخص</span><span class="field">ارتباط با شغل</span><span class="field">میزان مالکیت</span><span class="field">تاریخ شروع تصدی</span><span class="field">تاریخ پایان تصدی</span><span class="field">تاریخ پایان مالکیت</span><span class="field">تعویض شخص</span><span class="field">ویرایش مشخصات شخص</span></div></div>
+        <div class="case-panel hidden" data-panel="t3"><div class="flex flex-wrap gap-2"><span class="field">نوع تابلو</span><span class="field">موضوع تابلو</span><span class="field">محل نصب</span><span class="field">وضعیت نصب</span><span class="field">نوع مالکیت</span><span class="field">پهنای تابلو</span><span class="field">ارتفاع تابلو</span><span class="field">ارتفاع از زمین</span><span class="field">مساحت</span><span class="field">میزان پیش‌زدگی</span><span class="field">متن تابلو</span><span class="field">تاریخ نصب</span><span class="field">تاریخ پایان نصب</span></div></div>
+        <div class="case-panel hidden" data-panel="t4"><div class="flex flex-wrap gap-2"><span class="field">تاریخ شروع تعطیلی</span><span class="field">تاریخ پایان تعطیلی</span><span class="field">توضیحات تعطیلی</span></div></div>
+        <div class="case-panel hidden" data-panel="t5"><div class="flex flex-wrap gap-2"><span class="field">تاریخ شروع</span><span class="field">تاریخ پایان</span><span class="field">توضیحات</span></div></div>
+        <div class="case-panel hidden" data-panel="t6"><div class="flex flex-wrap gap-2"><span class="field">شماره درخواست</span><span class="field">گروه کمیسیون</span><span class="field">تاریخ ابلاغ</span><span class="field">شماره رای کمیسیون</span><span class="field">تاریخ رای کمیسیون</span><span class="field">اعضای کمیسیون</span><span class="field">مبلغ</span><span class="field">خلاصه رای</span><span class="field">توضیحات</span><span class="field">تاریخ پرداخت</span><span class="field">تاریخ بازدید</span><span class="field">نتیجه بازدید</span><span class="field">وصول</span><span class="field">ابطال</span></div></div>
+      </div>
+    </div>
+
+    <figure class="product-shot rv mt-12" data-slot="sanfi-case">
+      <div class="ph">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#A9762B" stroke-width="1.6" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"/></svg>
+        <p class="font-bold text-sm text-ink">تصویر موردنیاز: نمای پرونده صنفی با تب‌های سوابق، افراد مرتبط، تابلو و آرای کمیسیون ۷۷</p>
+        <p class="text-[11px] text-mute">فصل ۰۵ — ثبت اصناف · data-slot="sanfi-case"</p>
+      </div>
+    </figure>
+    <p class="rv mt-10 border-s-4 border-teal ps-5 py-2 text-sm md:text-base leading-8 text-mute max-w-3xl">با این ساختار، پرونده صنفی به مرجع کامل تاریخچه یک واحد شغلی تبدیل می‌شود؛ از مشخصات تصدی و مالکیت تا تابلوها، تعطیلات، قراردادهای پسماند و آرای کمیسیون ۷۷.</p>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۶ ══════════ -->
+<section id="ch06" data-title="فصل ۰۶ · ملک و آرشیو" class="chapter relative scroll-mt-24 py-20 md:py-28 bg-cream border-y border-line overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۶</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۶</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">ملک؛ از مشخصات ثبتی تا آرشیو الکترونیک اسناد</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">چهار گروه اطلاعات ملک، سلسله‌مراتب ساختمان‌ها، و بایگانی اسناد</p>
+
+    <div class="rv mt-10 grid md:grid-cols-2 gap-5 max-w-4xl">
+      <div class="border border-line bg-paper rounded-lg p-5"><p class="text-xs font-black text-brass mb-2">اطلاعات پایه</p><p class="text-[13px] leading-7 text-mute font-light">مالکان، آدرس و مشخصات پستی، کروکی ملک، مشخصات ثبتی، گواهی‌های اخذ شده، تعهدات داده شده و توافقات صورت گرفته — همگی قابل مشاهده، ویرایش و ثبت.</p></div>
+      <div class="border border-line bg-paper rounded-lg p-5"><p class="text-xs font-black text-brass mb-2">اطلاعات سند</p><p class="text-[13px] leading-7 text-mute font-light">عرصه ملک، اضلاع و معابر مربوطه، نوع استفاده‌ها، محدوده‌ها، تاسیسات و امکانات، ترسیم دستی کروکی، ساختمان‌های ملک تا سقف ۹۹ بلوک ساختمانی، طبقات به تفکیک ساختمان، کاربری‌های طبقات به تفکیک طبقه، پارکینگ‌ها، واحدهای مستقل یا آپارتمانی و واحدهای شغلی.</p></div>
+      <div class="border border-line bg-paper rounded-lg p-5"><p class="text-xs font-black text-brass mb-2">موجود، ممیزی، بازدید</p><p class="text-[13px] leading-7 text-mute font-light">وضعیت موجود ملک در زمان ممیزی و بازدید، با همان محورهای اطلاعات سند ثبت می‌شود؛ تا تفاوت میان «آنچه هست» و «آنچه ثبت شده» قابل رصد باشد.</p></div>
+      <div class="border border-line bg-paper rounded-lg p-5"><p class="text-xs font-black text-brass mb-2">مجاز موجود</p><p class="text-[13px] leading-7 text-mute font-light">بخش مجاز موجود نیز با همان محورهای اطلاعاتی نگهداری می‌شود؛ این تفکیک، مبنای تحلیل‌های بعدی از جمله مقایسه وضع موجود و مجاز است.</p></div>
+    </div>
+
+    <!-- درخت ملک -->
+    <div class="rv mt-14">
+      <h3 class="text-lg md:text-xl font-black">سلسله‌مراتب اطلاعات ملک</h3>
+      <svg viewBox="0 0 900 420" class="w-full h-auto mt-6" role="img" aria-label="دیاگرام سلسله‌مراتب اطلاعات ملک: از ملک تا ساختمان‌ها، طبقات، کاربری‌ها، واحدها و واحدهای شغلی">
+        <g class="draw" stroke="#A9762B" stroke-width="1.6" fill="none">
+          <line x1="760" y1="210" x2="700" y2="210"/><line x1="610" y1="210" x2="560" y2="210"/><line x1="470" y1="210" x2="430" y2="210"/><line x1="350" y1="210" x2="310" y2="210"/><line x1="230" y1="210" x2="190" y2="210"/><line x1="110" y1="210" x2="70" y2="210"/>
+          <line x1="810" y1="185" x2="810" y2="110"/><line x1="520" y1="185" x2="520" y2="110"/><line x1="740" y1="235" x2="700" y2="320"/><line x1="830" y1="235" x2="850" y2="320"/>
+        </g>
+        <g font-size="12" font-weight="700" text-anchor="middle">
+          <rect x="760" y="185" width="105" height="50" rx="8" fill="#0E2A31"/><text x="812" y="215" fill="#FBF8F0">ملک</text>
+          <rect x="610" y="185" width="90" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="655" y="215" fill="#0E2A31">اسناد</text>
+          <rect x="470" y="185" width="140" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="540" y="208" fill="#0E2A31">ساختمان‌های ملک</text><text x="540" y="226" fill="#A9762B" font-size="10">تا ۹۹ بلوک ساختمانی</text>
+          <rect x="350" y="185" width="80" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="390" y="215" fill="#0E2A31">طبقات</text>
+          <rect x="230" y="185" width="80" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="270" y="215" fill="#0E2A31">کاربری‌ها</text>
+          <rect x="110" y="185" width="80" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="150" y="215" fill="#0E2A31">واحدها</text>
+          <rect x="5" y="185" width="70" height="50" rx="8" fill="#0E6F63"/><text x="40" y="208" fill="#FBF8F0" font-size="10">واحدهای</text><text x="40" y="224" fill="#FBF8F0" font-size="10">شغلی</text>
+          <rect x="745" y="60" width="130" height="50" rx="8" fill="#FBF8F0" stroke="#A9762B" stroke-width="1.6"/><text x="810" y="80" fill="#0E2A31" font-size="10">پایه: مالکان، کروکی،</text><text x="810" y="96" fill="#0E2A31" font-size="10">ثبتی، گواهی‌ها و تعهدات</text>
+          <rect x="455" y="60" width="130" height="50" rx="8" fill="#FBF8F0" stroke="#A9762B" stroke-width="1.6"/><text x="520" y="88" fill="#0E2A31" font-size="10">پارکینگ‌های ملک</text>
+          <rect x="620" y="320" width="160" height="50" rx="8" fill="#FBF8F0" stroke="#A9762B" stroke-width="1.6"/><text x="700" y="348" fill="#0E2A31" font-size="10">موجود / ممیزی / بازدید</text>
+          <rect x="790" y="320" width="105" height="50" rx="8" fill="#FBF8F0" stroke="#A9762B" stroke-width="1.6"/><text x="842" y="348" fill="#0E2A31" font-size="10">مجاز موجود</text>
+        </g>
+      </svg>
+    </div>
+
+    <h3 class="rv mt-16 text-xl md:text-2xl font-black">آرشیو الکترونیک ملک</h3>
+    <p class="rv mt-4 text-[15px] md:text-base leading-8 font-light text-mute max-w-3xl">اسناد و مدارک ملک در آرشیو الکترونیک نگهداری می‌شوند؛ فایل‌های تولیدشده در حین فرآیند — تصویری، صوتی، PDF و CAD — به‌طور خودکار ثبت و دسته‌بندی می‌شوند و تصاویر با Drag &amp; Drop به دسته موردنظر منتقل می‌گردند.</p>
+    <div class="rv mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="border border-line bg-paper rounded-lg p-5 text-[13px] leading-7 text-mute"><p class="font-black text-ink mb-1">مشاهده و بازنگری اسناد</p>مدارک مرتبط با ملک، بازنگری کلیه اسناد، انتخاب یا فیلتر بر اساس دسته‌بندی یا نوع مدرک و نمایش بر اساس گروه‌های خاص.</div>
+      <div class="border border-line bg-paper rounded-lg p-5 text-[13px] leading-7 text-mute"><p class="font-black text-ink mb-1">تام‌نیل در سه سطح</p>بزرگ‌نمایی و کوچک‌نمایی تصاویر با استفاده از تام‌نیل در سه سطح، همراه با دریافت و ذخیره تصویر از فایل‌های تصاویر.</div>
+      <div class="border border-line bg-paper rounded-lg p-5 text-[13px] leading-7 text-mute"><p class="font-black text-ink mb-1">ویرایش تصویر</p>ویرایش، چرخش و کراپ تصویر، حرکت و جابجایی تصاویر در دسته، حذف تصاویر و برگشت تصاویر حذف‌شده از سطل بازیافت.</div>
+      <div class="border border-line bg-paper rounded-lg p-5 text-[13px] leading-7 text-mute"><p class="font-black text-ink mb-1">سطوح دسترسی</p>تعیین سطح دسترسی‌ها (مجوزها) به هر یک از کاربران و مدیران، بدون محدودیت در تعداد کاربران.</div>
+      <div class="border border-line bg-paper rounded-lg p-5 text-[13px] leading-7 text-mute"><p class="font-black text-ink mb-1">جست‌وجو و پیمایش</p>جست‌وجوی پرونده بر اساس کد نوسازی و حرکت روی پرونده‌ها.</div>
+      <div class="border border-line bg-paper rounded-lg p-5 text-[13px] leading-7 text-mute"><p class="font-black text-ink mb-1">تاریخچه تغییرات</p>نمایش روند تغییرات اعمال‌شده بر روی پرونده در بخش اقدامات.</div>
+    </div>
+
+    <figure class="product-shot rv mt-12" data-slot="property-archive">
+      <div class="ph">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#A9762B" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/></svg>
+        <p class="font-bold text-sm text-ink">تصویر موردنیاز: نمای آرشیو الکترونیک ملک با درخت دسته‌بندی اسناد و تام‌نیل تصاویر</p>
+        <p class="text-[11px] text-mute">فصل ۰۶ — ملک و آرشیو · data-slot="property-archive"</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۷ ══════════ -->
+<section id="ch07" data-title="فصل ۰۷ · کارتابل" class="chapter relative scroll-mt-24 py-20 md:py-28 overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۷</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۷</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">جریان کاری اداری؛ کارتابل و نظرخواهی داخلی</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">میز کار کاربران، ارجاع‌ها و گفت‌وگوی درون‌سازمانی پیرامون پرونده‌ها</p>
+    <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light max-w-3xl">
+      <p>کارتابل، میز کار هر کاربر است. برای هر کاربر کارتابل اختصاصی تعریف می‌شود؛ کارتابل مشترک با تخصیص دسترسی به کاربران مورد نظر قابل ایجاد است؛ و کارتابل بلاتکلیف تضمین می‌کند هیچ درخواستی بدون متولی نماند.</p>
+    </div>
+    <div class="rv mt-8 overflow-x-auto">
+      <div class="min-w-[640px] border border-line rounded-xl overflow-hidden bg-cream">
+        <div class="grid grid-cols-7 bg-pine text-cream text-[11px] font-bold">
+          <p class="p-3">کدنوسازی</p><p class="p-3">شماره درخواست</p><p class="p-3">کد پرونده</p><p class="p-3">تاریخ ارجاع</p><p class="p-3">نام سرمایه‌گذار</p><p class="p-3">مرحله فرآیند</p><p class="p-3">ارجاع‌دهنده</p>
+        </div>
+        <div class="grid grid-cols-7 text-[11px] text-mute border-t border-line">
+          <p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p>
+        </div>
+        <div class="grid grid-cols-7 text-[11px] text-mute border-t border-line">
+          <p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p>
+        </div>
+      </div>
+      <p class="mt-2 text-[11px] text-mute">ستون‌های کارتابل مطابق ساختار سامانه؛ مقادیر در محیط عملیاتی نمایش داده می‌شود.</p>
+    </div>
+    <h3 class="rv mt-14 text-xl md:text-2xl font-black">نظرخواهی داخلی</h3>
+    <p class="rv mt-4 text-[15px] md:text-base leading-8 font-light text-mute max-w-3xl">لایه ارتباطی سامانه، گفت‌وگوی کاری را به خود پرونده گره می‌زند: ارسال پیام بین کاربران، درج پیام شخصی برای پرونده خاص، درج یادداشت شخصی و ارسال پاسخ به پیام.</p>
+    <div class="rv mt-6 flex flex-wrap gap-2"><span class="chip">ارسال پیام بین کاربران</span><span class="chip">پیام شخصی برای پرونده خاص</span><span class="chip">یادداشت شخصی</span><span class="chip">ارسال پاسخ به پیام</span></div>
+    <figure class="product-shot rv mt-12" data-slot="kartabel-view">
+      <div class="ph">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#A9762B" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M9 9v10"/></svg>
+        <p class="font-bold text-sm text-ink">تصویر موردنیاز: نمای کارتابل کاربر با لیست درخواست‌ها و ستون‌های مرحله فرآیند و ارجاع‌دهنده</p>
+        <p class="text-[11px] text-mute">فصل ۰۷ — کارتابل · data-slot="kartabel-view"</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۸ ══════════ -->
+<section id="ch08" data-title="فصل ۰۸ · پیگیری" class="chapter relative scroll-mt-24 py-20 md:py-28 bg-cream border-y border-line overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۸</span>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۸</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">پیگیری؛ تصویر روشن وضعیت درخواست‌ها</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">مدیریت کارها، فلوچارت فرآیند، نمودار زمان انتظار و سوابق درخواست</p>
+    <div class="rv mt-10 grid md:grid-cols-2 gap-6">
+      <div class="rounded-xl border border-line bg-paper p-6">
+        <h3 class="font-black">مدیریت کارها و درخواست‌ها</h3>
+        <ul class="mt-4 space-y-2.5 text-[13px] leading-6 text-mute list-none">
+          <li class="field inline-block">تکمیل کار خاص</li> <li class="field inline-block">تکمیل همه کارها</li> <li class="field inline-block">فعال کردن کار خاص</li> <li class="field inline-block">تغییر کاربر کار در حال انجام</li> <li class="field inline-block">مشاهده فرم‌های کارهای جاری</li> <li class="field inline-block">لغو / توقف درخواست</li> <li class="field inline-block">فعال‌سازی درخواست لغو/متوقف‌شده</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-line bg-paper p-6">
+        <h3 class="font-black">لیست درخواست‌ها و اطلاعات همراه</h3>
+        <ul class="mt-4 space-y-2.5 text-[13px] leading-6 text-mute list-none">
+          <li class="field inline-block">نوع درخواست</li> <li class="field inline-block">شماره درخواست</li> <li class="field inline-block">نام درخواست‌کننده</li> <li class="field inline-block">وضعیت درخواست</li> <li class="field inline-block">تاریخ درخواست</li> <li class="field inline-block">نامه‌های درخواست</li> <li class="field inline-block">یادداشت روی درخواست</li> <li class="field inline-block">ارجاعات درخواست</li> <li class="field inline-block">سوابق درخواست ملک انتخاب‌شده</li> <li class="field inline-block">مشاهده بر اساس نمودار</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rv mt-12 grid lg:grid-cols-2 gap-8 items-start">
+      <div>
+        <h3 class="text-lg font-black">روند فرآیند در فلوچارت</h3>
+        <p class="mt-3 text-sm leading-7 text-mute font-light">روند طی‌شده هر درخواست در فلوچارت مربوطه قابل مشاهده است؛ کاربر می‌بیند درخواست از کجا شروع شده، در کدام کارتابل قرار دارد و به کجا ارجاع شده است.</p>
+        <svg viewBox="0 0 460 260" class="w-full h-auto mt-5" role="img" aria-label="شماتیک نمونه از فلوچارت پیگیری فرآیند درخواست">
+          <g class="draw" stroke="#A9762B" stroke-width="1.5" fill="none">
+            <line x1="390" y1="50" x2="300" y2="50"/><line x1="210" y1="50" x2="120" y2="50"/><line x1="75" y1="75" x2="75" y2="140"/><line x1="120" y1="165" x2="210" y2="165"/><line x1="300" y1="165" x2="390" y2="165"/>
+          </g>
+          <g font-size="11" font-weight="700" text-anchor="middle">
+            <rect x="390" y="25" width="60" height="50" rx="8" fill="#0E2A31"/><text x="420" y="55" fill="#FBF8F0">ثبت درخواست</text>
+            <rect x="210" y="25" width="90" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="255" y="55" fill="#0E2A31">ارجاع به کارتابل</text>
+            <rect x="20" y="25" width="90" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="65" y="55" fill="#0E2A31">بررسی کارشناس</text>
+            <rect x="20" y="140" width="90" height="50" rx="8" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.6"/><text x="65" y="170" fill="#0E2A31">محاسبات</text>
+            <rect x="210" y="140" width="90" height="50" rx="8" fill="#0E6F63"/><text x="255" y="170" fill="#FBF8F0">صدور مجوز</text>
+            <rect x="390" y="140" width="60" height="50" rx="8" fill="#FBF8F0" stroke="#A9762B" stroke-width="1.6" stroke-dasharray="4 4"/><text x="420" y="163" fill="#A9762B" font-size="9">کارتابل</text><text x="420" y="177" fill="#A9762B" font-size="9">بلاتکلیف</text>
+          </g>
+        </svg>
+        <p class="mt-2 text-[11px] text-mute">شماتیک نمونه صرفاً برای نمایش قابلیت مشاهده روند فرآیند در فلوچارت.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-black">نمودار وضعیت بر حسب زمان انتظار</h3>
+        <p class="mt-3 text-sm leading-7 text-mute font-light">وضعیت درخواست‌ها بر حسب زمان انتظار کار در هر کارتابل قابل مشاهده است؛ نمایی که گلوگاه‌های اداری را آشکار می‌کند.</p>
+        <svg viewBox="0 0 460 240" class="w-full h-auto mt-5" role="img" aria-label="شماتیک نمونه نمودار وضعیت درخواست بر حسب زمان انتظار کار در هر کارتابل">
+          <g font-size="11" font-weight="700" fill="#0E2A31">
+            <text x="455" y="52" text-anchor="end">کارتابل ۱</text><text x="455" y="102" text-anchor="end">کارتابل ۲</text><text x="455" y="152" text-anchor="end">کارتابل ۳</text><text x="455" y="202" text-anchor="end">کارتابل ۴</text>
+          </g>
+          <line x1="20" y1="20" x2="20" y2="220" stroke="#C9BC9C" stroke-width="1.5"/>
+          <g fill="#0E6F63">
+            <rect class="bar" x="20" y="38" width="300" height="18" rx="4"/>
+            <rect class="bar" x="20" y="88" width="180" height="18" rx="4" fill="#0A574D"/>
+            <rect class="bar" x="20" y="138" width="240" height="18" rx="4"/>
+            <rect class="bar" x="20" y="188" width="90" height="18" rx="4" fill="#A9762B"/>
+          </g>
+        </svg>
+        <p class="mt-2 text-[11px] text-mute">شماتیک نمونه صرفاً برای نمایش قابلیت نمودار زمان انتظار در هر کارتابل؛ بدون داده عددی.</p>
+      </div>
+    </div>
+
+    <div class="rv mt-12 border border-line bg-paper rounded-xl p-6">
+      <h3 class="font-black">اطلاعات شغلی در دسترس پیگیری</h3>
+      <p class="mt-3 text-sm leading-7 text-mute font-light">در بخش پیگیری، اطلاعات شغلی پرونده نیز در دسترس است تا بررسی درخواست بدون جابجایی میان بخش‌ها کامل شود:</p>
+      <div class="mt-4 flex flex-wrap gap-2"><span class="chip">اطلاعات شغل</span><span class="chip">سوابق شغل</span><span class="chip">اشخاص مرتبط و مجوزها</span><span class="chip">تابلو</span><span class="chip">طبقات موثر شغل</span><span class="chip">تعطیلات شغل</span><span class="chip">قراردادهای پسماند</span></div>
+    </div>
+
+    <figure class="product-shot rv mt-12" data-slot="tracking-view">
+      <div class="ph">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#A9762B" stroke-width="1.6" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+        <p class="font-bold text-sm text-ink">تصویر موردنیاز: نمای پیگیری با فلوچارت فرآیند و نمودار وضعیت درخواست‌ها بر حسب زمان انتظار</p>
+        <p class="text-[11px] text-mute">فصل ۰۸ — پیگیری · data-slot="tracking-view"</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۰۹ ══════════ -->
+<section id="ch09" data-title="فصل ۰۹ · فرآیندهای مجوز" class="chapter relative scroll-mt-24 py-20 md:py-28 overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۰۹</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۰۹</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">فرآیندهای مجوز؛ از صدور تا توقف</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">دو خانواده فرآیندی کسب و پیشه و بهره‌برداری، هر یک با پنج فرآیند</p>
+    <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light max-w-3xl">
+      <p>مجوزها در این سامانه موجودیت‌هایی زنده هستند: صادر می‌شوند، تمدید می‌شوند، اصلاح می‌شوند، تعلیق می‌شوند و در نهایت ممکن است متوقف شوند. سامانه این چرخه را برای دو خانواده مجوز پوشش می‌دهد: مجوز کسب و پیشه و مجوز بهره‌برداری. هر یک از این ده فرآیند، به‌صورت جریان کاری قابل ارجاع و پیگیری در سامانه اجرا می‌شود و اثر آن در پرونده، کارتابل‌ها و بخش پیگیری قابل رصد است.</p>
+    </div>
+    <svg viewBox="0 0 900 400" class="rv w-full h-auto mt-10" role="img" aria-label="دیاگرام چرخه مجوز: صدور، تمدید، اصلاح، تعلیق و توقف">
+      <g class="draw" stroke="#A9762B" stroke-width="1.6" fill="none">
+        <line x1="450" y1="150" x2="450" y2="80"/><line x1="520" y1="170" x2="660" y2="120"/><line x1="520" y1="230" x2="640" y2="300"/><line x1="380" y1="230" x2="260" y2="300"/><line x1="380" y1="170" x2="240" y2="120"/>
+      </g>
+      <g font-size="14" font-weight="800" text-anchor="middle">
+        <rect x="360" y="150" width="180" height="80" rx="12" fill="#0E2A31"/>
+        <text x="450" y="185" fill="#FBF8F0">مجوز کسب و پیشه</text><text x="450" y="208" fill="#D9B36A" font-size="12">و مجوز بهره‌برداری</text>
+        <rect x="395" y="30" width="110" height="48" rx="10" fill="#0E6F63"/><text x="450" y="60" fill="#FBF8F0">صدور</text>
+        <rect x="660" y="95" width="110" height="48" rx="10" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.8"/><text x="715" y="125" fill="#0E2A31">تمدید</text>
+        <rect x="640" y="295" width="110" height="48" rx="10" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.8"/><text x="695" y="325" fill="#0E2A31">اصلاح</text>
+        <rect x="150" y="295" width="110" height="48" rx="10" fill="#FBF8F0" stroke="#0E6F63" stroke-width="1.8"/><text x="205" y="325" fill="#0E2A31">تعلیق</text>
+        <rect x="130" y="95" width="110" height="48" rx="10" fill="#FBF8F0" stroke="#A9762B" stroke-width="1.8"/><text x="185" y="125" fill="#0E2A31">توقف</text>
+      </g>
+    </svg>
+    <div class="rv mt-10 grid md:grid-cols-2 gap-6 max-w-4xl">
+      <div class="border border-line bg-cream rounded-lg p-6">
+        <h3 class="font-black text-teal">فرآیندهای کسب و پیشه</h3>
+        <ul class="mt-4 space-y-2 text-sm text-mute list-none"><li>· فرآیند صدور مجوز کسب و پیشه</li><li>· فرآیند تمدید مجوز کسب و پیشه</li><li>· فرآیند اصلاح مجوز کسب و پیشه</li><li>· فرآیند تعلیق مجوز کسب و پیشه</li><li>· فرآیند توقف مجوز کسب و پیشه</li></ul>
+      </div>
+      <div class="border border-line bg-cream rounded-lg p-6">
+        <h3 class="font-black text-teal">فرآیندهای بهره‌برداری</h3>
+        <ul class="mt-4 space-y-2 text-sm text-mute list-none"><li>· فرآیند صدور مجوز بهره‌برداری</li><li>· فرآیند تمدید مجوز بهره‌برداری</li><li>· فرآیند اصلاح مجوز بهره‌برداری</li><li>· فرآیند تعلیق مجوز بهره‌برداری</li><li>· فرآیند توقف مجوز بهره‌برداری</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۱۰ ══════════ -->
+<section id="ch10" data-title="فصل ۱۰ · محاسبات و کیف صنفی" class="chapter relative scroll-mt-24 py-20 md:py-28 bg-cream border-y border-line overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۱۰</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۱۰</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">محاسبات و کیف صنفی؛ بُعد مالی سامانه</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">از محاسبه عوارض تا پرداخت، مفاصا و اسناد بدهکاری/بستانکاری</p>
+    <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light max-w-3xl">
+      <p>لایه مالی سامانه دو بخش دارد: محاسبات و کیف صنفی. در محاسبات، هر برگه محاسبه با تاریخ، مبلغ و روش پرداخت — نقد، قسط یا تهاتر — ثبت می‌شود؛ وضعیت پرداخت و تاریخ پرداخت قابل ثبت است و ریز محاسبات در دسترس قرار دارد. مفاصا قابل مشاهده است، ابطال محاسبه ثبت می‌شود و لیست اسناد بدهکاری/بستانکاری، تصویر کاملی از وضعیت مالی می‌سازد.</p>
+      <p>کیف صنفی، تاریخچه مالی جاری شغل را نگهداری می‌کند: شرح عملیات، نوع عوارض، مبلغ، تاریخ، شماره سند، نوع و وضعیت — به همراه وضعیت ابطال. به این ترتیب هر رویداد مالی، سندمند و قابل ردیابی است.</p>
+    </div>
+    <div class="rv mt-10 grid md:grid-cols-2 gap-6">
+      <div class="border border-line bg-paper rounded-xl p-6">
+        <h3 class="font-black">محاسبات</h3>
+        <div class="mt-4 flex flex-wrap gap-2"><span class="field">تاریخ محاسبه</span><span class="field">نقد</span><span class="field">قسط</span><span class="field">تهاتر</span><span class="field">مبلغ محاسبه</span><span class="field">وضعیت پرداخت</span><span class="field">تاریخ پرداخت</span><span class="field">ریز محاسبات</span><span class="field">مفاصا</span><span class="field">ابطال محاسبه</span><span class="field">لیست اسناد</span><span class="field">بدهکاری/بستانکاری</span><span class="field">نتیجه محاسبه</span></div>
+      </div>
+      <div class="border border-line bg-paper rounded-xl p-6">
+        <h3 class="font-black">کیف صنفی</h3>
+        <div class="mt-4 flex flex-wrap gap-2"><span class="field">شرح عملیات</span><span class="field">نوع عوارض</span><span class="field">مبلغ</span><span class="field">تاریخ</span><span class="field">شماره سند</span><span class="field">نوع</span><span class="field">وضعیت</span><span class="field">وضعیت ابطال</span></div>
+      </div>
+    </div>
+    <figure class="product-shot rv mt-12" data-slot="calc-view">
+      <div class="ph">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#A9762B" stroke-width="1.6" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>
+        <p class="font-bold text-sm text-ink">تصویر موردنیاز: نمای محاسبات با ریز محاسبات، وضعیت پرداخت نقد/قسط/تهاتر و بخش مفاصا</p>
+        <p class="text-[11px] text-mute">فصل ۱۰ — محاسبات · data-slot="calc-view"</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۱۱ ══════════ -->
+<section id="ch11" data-title="فصل ۱۱ · کاربران و دسترسی" class="chapter relative scroll-mt-24 py-20 md:py-28 overflow-hidden">
+  <span class="ch-ghost" aria-hidden="true">۱۱</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brass tracking-widest">فصل ۱۱</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">کاربران، کارتابل‌ها و سطوح دسترسی</h2>
+    <p class="rv mt-4 text-teal font-bold text-sm md:text-lg">تقسیم کار میان کاربران و کنترل دسترسی به اسناد</p>
+    <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light max-w-3xl">
+      <p>سامانه برای کار گروهی طراحی شده است. هر کاربر کارتابل اختصاصی خود را دارد؛ کارتابل‌های مشترک با تخصیص دسترسی به کاربران مورد نظر ایجاد می‌شوند؛ و کارتابل بلاتکلیف، نقطه امنی برای درخواست‌هایی است که هنوز متولی ندارند. در آرشیو الکترونیک نیز سطح دسترسی (مجوزها) برای هر یک از کاربران و مدیران تعیین می‌شود و تعداد کاربران محدودیتی ندارد.</p>
+      <p>ترکیب این سازوکارها یعنی هر پرونده، همواره متولی مشخصی دارد، هر سند تنها در دسترس نقش‌های مجاز است و مرز کار هر کاربر به‌صورت شفاف تعریف می‌شود.</p>
+    </div>
+    <div class="rv mt-10 grid sm:grid-cols-3 gap-4 max-w-4xl">
+      <div class="rounded-xl border border-line bg-cream p-6 text-center"><p class="text-2xl font-black text-teal">اختصاصی</p><p class="mt-2 text-xs text-mute leading-6">کارتابل هر کاربر، مستقل و شخصی</p></div>
+      <div class="rounded-xl border border-line bg-cream p-6 text-center"><p class="text-2xl font-black text-teal">مشترک</p><p class="mt-2 text-xs text-mute leading-6">کارتابل مشترک با تخصیص دسترسی به کاربران مورد نظر</p></div>
+      <div class="rounded-xl border border-line bg-cream p-6 text-center"><p class="text-2xl font-black text-brass">بلاتکلیف</p><p class="mt-2 text-xs text-mute leading-6">درخواست‌های بدون متولی، هرگز رها نمی‌شوند</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ فصل ۱۲ جمع‌بندی ══════════ -->
+<section id="ch12" data-title="فصل ۱۲ · جمع‌بندی" class="chapter relative scroll-mt-24 py-20 md:py-28 bg-pinedeep text-cream overflow-hidden">
+  <span class="ch-ghost" style="color:rgba(217,179,106,.08)" aria-hidden="true">۱۲</span>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 relative">
+    <p class="rv text-xs font-bold text-brasslight tracking-widest">فصل ۱۲</p>
+    <h2 class="rv mt-3 text-3xl md:text-5xl font-black leading-snug">جمع‌بندی؛ آنچه سامانه به سازمان می‌سپارد</h2>
+    <div class="rv mt-12 grid md:grid-cols-2 gap-6">
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6"><h3 class="font-black text-brasslight">چه چیزی را مدیریت می‌کند؟</h3><p class="mt-3 text-sm leading-7 text-cream/80 font-light">واحدهای اصناف و بازرگانی، املاک مرتبط، مشاغل روی نقشه، تابلوها، اشخاص مرتبط و اسناد و مدارک — هر کدام با پرونده و آرشیو اختصاصی.</p></div>
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6"><h3 class="font-black text-brasslight">چه فرآیندی را پوشش می‌دهد؟</h3><p class="mt-3 text-sm leading-7 text-cream/80 font-light">ده فرآیند مجوز کسب و پیشه و بهره‌برداری، به همراه جریان کاری ارجاع، نظرخواهی داخلی، پیگیری درخواست‌ها و مدیریت کارها در کارتابل‌ها.</p></div>
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6"><h3 class="font-black text-brasslight">چه اطلاعاتی تولید می‌کند؟</h3><p class="mt-3 text-sm leading-7 text-cream/80 font-light">پرونده‌های صنفی و ملکی کامل، محاسبات سندمند با مفاصا، کیف صنفی، عارضه‌های ذخیره‌شده برای گزارش‌گیری، نمودارهای وضعیت و زمان انتظار، و تاریخچه تغییرات اسناد.</p></div>
+      <div class="rounded-xl bg-cream/5 border border-cream/15 p-6"><h3 class="font-black text-brasslight">چه کسانی از آن استفاده می‌کنند؟</h3><p class="mt-3 text-sm leading-7 text-cream/80 font-light">کاربران عملیاتی با کارتابل‌های اختصاصی و مشترک، و مدیران با تعیین سطوح دسترسی و دید پیگیری؛ بدون محدودیت در تعداد کاربران.</p></div>
+    </div>
+    <div class="rv mt-16 flex flex-col items-center gap-5 text-center border-t border-cream/15 pt-12">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-14 w-auto bg-cream rounded-md p-2">
+      <p class="text-xl font-black">محیا پرداز</p>
+      <p class="text-sm text-cream/70 font-light">طراح و ارائه‌دهنده سامانه اصناف و بازرگانی</p>
+      <a href="https://mahyapardaz.com" class="text-brasslight text-sm font-bold hover:underline" dir="ltr">mahyapardaz.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ فوتر ══════════ -->
+<footer class="bg-ink text-cream/80 py-10">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-right">
+    <div class="flex items-center gap-3">
+      <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگوی محیا پرداز" class="h-10 w-auto bg-cream rounded p-1">
+      <div><p class="font-extrabold text-cream text-sm">محیا پرداز</p><p class="text-xs text-cream/60">سامانه اصناف و بازرگانی</p></div>
+    </div>
+    <p class="text-xs text-cream/60">کاتالوگ دیجیتال محصول · مرداد ۱۴۰۵ · <a href="https://mahyapardaz.com" class="hover:text-brasslight" dir="ltr">mahyapardaz.com</a></p>
+  </div>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Progress bar */
+  var bar = document.getElementById("progressBar");
+  function onScroll(){
+    var h = document.documentElement;
+    var p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (p*100).toFixed(2) + "%";
+  }
+  document.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  /* Reveal on scroll */
+  var rvs = document.querySelectorAll(".rv");
+  if(reduced){ rvs.forEach(function(el){el.classList.add("on");}); }
+  else{
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target);} });
+    },{threshold:.12});
+    rvs.forEach(function(el){ io.observe(el); });
+  }
+
+  /* Scrollspy */
+  var nav = document.getElementById("navChapter");
+  var railLinks = document.querySelectorAll(".rail a");
+  var secs = document.querySelectorAll("section[data-title]");
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        nav.textContent = e.target.getAttribute("data-title");
+        railLinks.forEach(function(a){ a.classList.toggle("act", a.getAttribute("href") === "#"+e.target.id); });
+      }
+    });
+  },{rootMargin:"-40% 0px -55% 0px"});
+  secs.forEach(function(s){ spy.observe(s); });
+
+  /* Module explorer */
+  var MODULES = {
+    map:{t:"نقشه",d:"لایه مکانی سامانه؛ نمایش، ترسیم و تحلیل پارسل‌ها، معابر، مشاغل و لایه‌های طرح.",c:["مدیریت لایه‌ها و کدگذاری پویا","ترسیم پولیگون با GPS و محاسبه خودکار مساحت","تصاویر ماهواره‌ای و روی‌هم‌اندازی نقشه‌ها","بافرینگ و محاسبه عقب‌نشینی","ذخیره عارضه‌های انتخابی برای گزارش‌گیری"]},
+    kartabel:{t:"کارتابل",d:"میز کار کاربران برای ارجاع و بررسی درخواست‌ها.",c:["کارتابل اختصاصی برای هر کاربر","کارتابل مشترک با تخصیص دسترسی","کارتابل بلاتکلیف","نمایش کدنوسازی، شماره درخواست، کد پرونده، تاریخ ارجاع، نام سرمایه‌گذار، مرحله فرآیند و ارجاع‌دهنده"]},
+    consult:{t:"نظرخواهی داخلی",d:"لایه ارتباط درون‌سازمانی پیرامون پرونده‌ها.",c:["ارسال پیام بین کاربران","پیام شخصی برای پرونده خاص","یادداشت شخصی","ارسال پاسخ به پیام"]},
+    guildlist:{t:"لیست اصناف",d:"مرجع ثبت مشاغل با مشخصات شناسنامه‌ای، زیست‌محیطی و وضعیت مجوز و عوارض.",c:["نام، کد، عنوان شغلی و کد آیسیک","نوع فعالیت، رده و درجه شغلی","سطح آلودگی و پسماند","کارکنان، مالکیت و سهم کل","وضعیت پرداخت عوارض و پروانه موقت","ستاره‌دار کردن و آرشیو"]},
+    case:{t:"پرونده صنفی",d:"بایگانی کامل هر واحد شغلی در شش گروه اطلاعاتی مجزا.",c:["سوابق شغل","افراد مرتبط","تابلو","تعطیلات","قراردادهای پسماند","آرای کمیسیون ۷۷"]},
+    property:{t:"اطلاعات ملک",d:"لایه مالکیتی و کالبدی ملک در چهار گروه اطلاعاتی.",c:["پایه: مالکان، کروکی، گواهی‌ها و تعهدات","سند: عرصه، اضلاع، ساختمان‌ها تا ۹۹ بلوک، طبقات، کاربری‌ها، پارکینگ‌ها و واحدها","موجود / ممیزی / بازدید","مجاز موجود"]},
+    archive:{t:"آرشیو الکترونیک ملک",d:"بایگانی اسناد و مدارک ملک با مدیریت فایل و سطوح دسترسی.",c:["دسته‌بندی اسناد و Drag & Drop","ثبت خودکار فایل‌های تصویری، صوتی، PDF و CAD","تام‌نیل در سه سطح","چرخش، کراپ و سطل بازیافت","سطوح دسترسی کاربران و مدیران","روند تغییرات در بخش اقدامات"]},
+    tracking:{t:"پیگیری",d:"دید کامل وضعیت درخواست‌ها، کارها و روندها.",c:["مدیریت کارها و لغو/توقف درخواست","فلوچارت روند فرآیند","نمودار زمان انتظار کار در هر کارتابل","سوابق درخواست ملک انتخاب‌شده","یادداشت، ارجاعات و نامه‌ها","اطلاعات شغلی در دسترس پیگیری"]},
+    calc:{t:"محاسبات",d:"لایه محاسبه عوارض و پرداخت‌ها با اسناد مالی.",c:["نقد، قسط، تهاتر","ریز محاسبات و نتیجه محاسبه","مفاصا و ابطال محاسبه","لیست اسناد بدهکاری/بستانکاری"]},
+    wallet:{t:"کیف صنفی",d:"تاریخچه مالی جاری شغل با سند و وضعیت.",c:["شرح عملیات و نوع عوارض","مبلغ، تاریخ و شماره سند","وضعیت و وضعیت ابطال"]},
+    processes:{t:"فرآیندها",d:"چرخه کامل مجوزها در دو خانواده کسب و پیشه و بهره‌برداری.",c:["کسب و پیشه: صدور، تمدید، اصلاح، تعلیق، توقف","بهره‌برداری: صدور، تمدید، اصلاح، تعلیق، توقف"]}
+  };
+  var mTitle=document.getElementById("modTitle"), mDesc=document.getElementById("modDesc"), mCaps=document.getElementById("modCaps");
+  function showMod(key, node){
+    var m = MODULES[key]; if(!m) return;
+    mTitle.textContent = m.t; mDesc.textContent = m.d;
+    mCaps.innerHTML = m.c.map(function(x){return "<li class='flex gap-2 items-start'><span class='text-brass font-black'>·</span><span>"+x+"</span></li>";}).join("");
+    document.querySelectorAll(".mod-node").forEach(function(n){ n.classList.toggle("sel", n===node); });
+  }
+  document.querySelectorAll(".mod-node").forEach(function(n){
+    n.addEventListener("click", function(){ showMod(n.getAttribute("data-mod"), n); });
+    n.addEventListener("keydown", function(ev){ if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); showMod(n.getAttribute("data-mod"), n);} });
+  });
+  showMod("case", document.querySelector('.mod-node[data-mod="case"]'));
+
+  /* GIS map interactions */
+  document.querySelectorAll(".layer-toggle input").forEach(function(inp){
+    inp.addEventListener("change", function(){
+      var g = document.getElementById(inp.getAttribute("data-layer"));
+      if(g) g.style.display = inp.checked ? "" : "none";
+    });
+  });
+  var bufOn=false, selOn=false;
+  var btnB=document.getElementById("btnBuffer"), btnS=document.getElementById("btnSelect");
+  var gB=document.getElementById("g-buffer"), gS=document.getElementById("g-select"), badge=document.getElementById("savedBadge");
+  btnB.addEventListener("click", function(){
+    bufOn=!bufOn;
+    gB.style.display = bufOn ? "" : "none";
+    document.querySelectorAll(".buf-hl").forEach(function(p){
+      p.style.fill = bufOn ? "rgba(14,111,99,.30)" : "";
+      p.style.strokeWidth = bufOn ? "2.6" : "";
+    });
+    btnB.setAttribute("aria-pressed", bufOn);
+    btnB.style.background = bufOn ? "#0E6F63" : ""; btnB.style.color = bufOn ? "#FBF8F0" : "";
+  });
+  btnS.addEventListener("click", function(){
+    selOn=!selOn;
+    gS.style.display = selOn ? "" : "none";
+    badge.style.display = selOn ? "" : "none";
+    btnS.setAttribute("aria-pressed", selOn);
+    btnS.style.background = selOn ? "#A9762B" : ""; btnS.style.color = selOn ? "#FBF8F0" : "";
+  });
+  var tip=document.getElementById("mapTip"), wrap=document.getElementById("mapWrap");
+  document.querySelectorAll("#gisMap .feat").forEach(function(f){
+    f.style.cursor="pointer";
+    f.addEventListener("mouseenter", function(){ tip.textContent = f.getAttribute("data-tip"); tip.style.opacity=1; });
+    f.addEventListener("mousemove", function(ev){
+      var r = wrap.getBoundingClientRect();
+      var x = ev.clientX - r.left, y = ev.clientY - r.top;
+      tip.style.left = Math.min(x+14, r.width-240) + "px";
+      tip.style.top = (y+16) + "px";
+    });
+    f.addEventListener("mouseleave", function(){ tip.style.opacity=0; });
+  });
+
+  /* Case tabs */
+  var tabs=document.querySelectorAll(".case-tab");
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      tabs.forEach(function(x){ x.setAttribute("aria-selected", x===t); });
+      document.querySelectorAll(".case-panel").forEach(function(p){
+        p.classList.toggle("hidden", p.getAttribute("data-panel")!==t.getAttribute("data-tab"));
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
