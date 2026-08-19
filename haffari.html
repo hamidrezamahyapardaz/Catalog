@@ -92,6 +92,16 @@ tailwind.config = {
   /* ---------- placeholder ---------- */
   .ph{border:2px dashed #C9C2B2;background:
     repeating-linear-gradient(45deg,rgba(0,0,0,.025) 0 12px,transparent 12px 24px),#FBF9F3;}
+  /* ---------- chapter heading system ---------- */
+  .chapter-kicker{display:flex;align-items:center;gap:.7rem;color:#A96A0B;font-size:.76rem;font-weight:800;letter-spacing:.12em;}
+  .chapter-kicker::before{content:"";width:2.3rem;height:2px;background:#DA8A0F;box-shadow:0 0 0 4px rgba(218,138,15,.12);}
+  .chapter-heading{font-family:'Vazirmatn',system-ui,sans-serif;font-size:clamp(2rem,4.4vw,3.55rem);font-weight:800;letter-spacing:-.045em;line-height:1.32;margin-bottom:1.45rem;max-width:18ch;color:#1A1D22;}
+  .chapter-heading::after{content:"";display:block;width:3.75rem;height:3px;margin-top:.82rem;background:linear-gradient(90deg,#DA8A0F 0 68%,#2F6D62 68% 100%);border-radius:999px;}
+  .chapter-kicker--dark{color:#E6B557;}
+  .chapter-kicker--dark::before{background:#E6B557;box-shadow:0 0 0 4px rgba(230,181,87,.12);}
+  .chapter-heading--dark{color:#FFFDF7;}
+  .chapter-heading--dark::after{background:linear-gradient(90deg,#E6B557 0 68%,#6DAFBF 68% 100%);}
+  @media (max-width:640px){.chapter-heading{font-size:2rem;line-height:1.45;letter-spacing:-.035em}.chapter-kicker{font-size:.7rem;}}
   /* ---------- ghost number ---------- */
   .ghost{font-family:'Noto Kufi Arabic';line-height:1;user-select:none;}
   /* ---------- reduced motion ---------- */
@@ -165,8 +175,23 @@ tailwind.config = {
       </p>
     </div>
 
-    <figure data-reveal style="--d:.25s" class="relative overflow-hidden rounded-2xl border border-linex bg-card shadow-xl" aria-label="نمایی از نقشه شهری و مدیریت زیرساخت‌های حفاری">
-      <img src="images/haffari.png" alt="نقشه شهری و مدیریت زیرساخت‌های حفاری" class="block w-full h-auto object-cover" loading="eager">
+    <figure data-reveal style="--d:.25s" class="relative isolate mx-auto w-full max-w-[620px] py-5 pl-5" aria-label="نمایی از نقشه شهری و مدیریت زیرساخت‌های حفاری">
+      <div class="absolute inset-x-10 inset-y-8 -z-10 rounded-[2rem] border border-amber/30 bg-amber-soft/60 rotate-[-3deg]" aria-hidden="true"></div>
+      <div class="absolute inset-x-4 inset-y-4 -z-10 rounded-[2rem] border border-tealx/20 bg-card rotate-[2deg]" aria-hidden="true"></div>
+      <div class="relative overflow-hidden rounded-[1.6rem] border-4 border-card bg-card shadow-[0_24px_55px_-28px_rgba(26,29,34,.55)]">
+        <img src="images/haffari.png" alt="نقشه شهری و مدیریت زیرساخت‌های حفاری" class="block w-full aspect-[16/11] object-cover" loading="eager">
+        <div class="absolute inset-0 bg-gradient-to-t from-soot/35 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
+        <div class="absolute top-5 right-5 flex items-center gap-2 rounded-full border border-white/40 bg-soot/70 px-3 py-1.5 text-[10px] font-bold tracking-wide text-card backdrop-blur-sm">
+          <span class="inline-block h-2 w-2 rounded-full bg-amber animate-pulse"></span>
+          مدیریت مکان‌محور حفاری
+        </div>
+        <div class="absolute bottom-5 left-5 flex items-center gap-3 rounded-2xl border border-white/30 bg-white/90 px-3 py-2.5 text-ink shadow-lg backdrop-blur-sm">
+          <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-soft text-amber-dark" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-12A7 7 0 0 0 5 9c0 5.9 7 12 7 12Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+          <span class="leading-tight"><span class="block text-[10px] text-mist">نقشه عملیات</span><span class="block text-xs font-bold">حفاری‌های شهری</span></span>
+        </div>
+      </div>
     </figure>
   </div>
 
@@ -200,8 +225,8 @@ tailwind.config = {
 <section id="ch-01" data-chapter="۰۱" data-title="آشنایی با سامانه" class="relative py-24 md:py-32 overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۱</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۱</p>
-    <h2 data-reveal class="font-sans font-extrabold tracking-tight text-3xl md:text-5xl leading-tight mb-5">آشنایی با سامانه جامع حفاری</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۱</p>
+    <h2 data-reveal class="chapter-heading">آشنایی با سامانه جامع حفاری</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-12 max-w-2xl">نظارت بر عملیات حفاری، یکی از وظایف مهم معاونت‌های فنی و عمرانی شهرداری‌هاست.</p>
 
     <div class="grid lg:grid-cols-5 gap-10">
@@ -225,8 +250,8 @@ tailwind.config = {
 <section id="ch-02" data-chapter="۰۲" data-title="ضرورت نظم و نظارت" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۲</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۲</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">حفاری شهری؛ ضرورت نظم و نظارت</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۲</p>
+    <h2 data-reveal class="chapter-heading">حفاری شهری؛ ضرورت نظم و نظارت</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-12 max-w-2xl">توسعه زیرساخت‌های شهر، بدون حفاری در بستر معابر ممکن نیست؛ و حفاری، بدون نظم و نظارت، به مسئله شهر تبدیل می‌شود.</p>
 
     <div class="grid lg:grid-cols-2 gap-12 items-start">
@@ -273,8 +298,8 @@ tailwind.config = {
 <section id="ch-03" data-chapter="۰۳" data-title="آنچه سامانه تغییر می‌دهد" class="relative py-24 md:py-32 overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۳</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۳</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">آنچه سامانه تغییر می‌دهد</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۳</p>
+    <h2 data-reveal class="chapter-heading">آنچه سامانه تغییر می‌دهد</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-2xl">مزیت‌های استفاده از سامانه جامع حفاری، در هفت اثر مشخص قابل بیان است؛ اثرهایی که در فصل‌های بعد، یک‌به‌یک باز می‌شوند.</p>
 
     <ol class="space-y-0 border-t border-linex">
@@ -320,8 +345,8 @@ tailwind.config = {
 <section id="ch-04" data-chapter="۰۴" data-title="پرونده و آرشیو" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۴</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۴</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">پرونده حفاری و آرشیو الکترونیکی</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۴</p>
+    <h2 data-reveal class="chapter-heading">پرونده حفاری و آرشیو الکترونیکی</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-2xl">هر پروژه حفاری در سامانه یک پرونده است؛ با مشخصات، زمان‌بندی، اسناد و اشخاصِ خود.</p>
 
     <div class="grid lg:grid-cols-2 gap-10">
@@ -361,8 +386,8 @@ tailwind.config = {
 <section id="ch-05" data-chapter="۰۵" data-title="فرآیندها" class="relative py-24 md:py-32 bg-soot text-[#ECE9E2] overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-white/[0.04]" aria-hidden="true">۰۵</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber text-sm mb-3">فصل ۰۵</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">فرآیندها؛ از درخواست تا تحویل</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۵</p>
+    <h2 data-reveal class="chapter-heading">فرآیندها؛ از درخواست تا تحویل</h2>
     <p data-reveal class="text-[#A8A49A] text-base md:text-lg mb-14 max-w-3xl">چرخه عمر یک حفاری در شش گام اصلی روایت می‌شود؛ روایتی که در سامانه، کاملاً مکانیزه طی می‌شود. روی هر گام بایستید تا جزئیات آن باز شود.</p>
 
     <div data-reveal class="mb-6">
@@ -435,8 +460,8 @@ tailwind.config = {
 <section id="ch-06" data-chapter="۰۶" data-title="نقشه و اطلاعات مکانی" class="relative py-24 md:py-32 overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۶</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۶</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">نقشه؛ بُعد مکانی داده‌ها</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۶</p>
+    <h2 data-reveal class="chapter-heading">نقشه؛ بُعد مکانی داده‌ها</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-12 max-w-3xl">ایجاد بانک به‌روز اطلاعات توصیفی و مکانی موقعیت‌های حفاری، یکی از مزیت‌های بنیادین سامانه است؛ داده‌ای که روی نقشه معنا پیدا می‌کند.</p>
 
     <div class="grid lg:grid-cols-5 gap-10 mb-12">
@@ -512,8 +537,8 @@ tailwind.config = {
 <section id="ch-07" data-chapter="۰۷" data-title="نظارت و کنترل" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۷</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۷</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">نظارت؛ از بازدید میدانی تا امتیاز عملکرد</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۷</p>
+    <h2 data-reveal class="chapter-heading">نظارت؛ از بازدید میدانی تا امتیاز عملکرد</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">نظارت در این سامانه، یادداشت‌های پراکنده میدانی نیست؛ گزارش‌های ساختاریافته و امتیازبندی‌شده‌ای است که عملکرد را قابل پایش می‌کند.</p>
 
     <div class="grid lg:grid-cols-2 gap-12 items-start">
@@ -560,8 +585,8 @@ tailwind.config = {
 <section id="ch-08" data-chapter="۰۸" data-title="دریچه‌ها" class="relative py-24 md:py-32 overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۸</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۸</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">دریچه‌ها؛ نشانه‌گذاری و مدیریت</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۸</p>
+    <h2 data-reveal class="chapter-heading">دریچه‌ها؛ نشانه‌گذاری و مدیریت</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">دریچه‌های متعلق به شهرداری و مجموعه‌های خدماتی در سطح شهر، در فاز دوم سامانه، فرآیندهای مستقل خود را دارند.</p>
 
     <div class="grid lg:grid-cols-3 gap-10 items-start">
@@ -604,8 +629,8 @@ tailwind.config = {
 <section id="ch-09" data-chapter="۰۹" data-title="بستر تنظیم‌پذیر" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۹</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۹</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">بستر تنظیم‌پذیر؛ فرآیندساز و فرم‌ساز</h2>
+    <p data-reveal class="chapter-kicker">فصل ۰۹</p>
+    <h2 data-reveal class="chapter-heading">بستر تنظیم‌پذیر؛ فرآیندساز و فرم‌ساز</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">سامانه بر بستری قابل تنظیم بنا شده است تا فرآیندها، فرم‌ها، تعاریف و خروجی‌های چاپی بر اساس نیاز هر شهرداری شکل بگیرند.</p>
 
     <div class="grid md:grid-cols-2 gap-6 mb-14">
@@ -684,8 +709,8 @@ tailwind.config = {
 <section id="ch-10" data-chapter="۱۰" data-title="کاربران و کارتابل‌ها" class="relative py-24 md:py-32 overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۱۰</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۱۰</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">کاربران، وظایف و کارتابل‌ها</h2>
+    <p data-reveal class="chapter-kicker">فصل ۱۰</p>
+    <h2 data-reveal class="chapter-heading">کاربران، وظایف و کارتابل‌ها</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">هر نقش در سامانه — کارشناس، ناظر، پیمانکار یا مدیر — کارتابل، دسترسی و وظایف خود را دارد.</p>
 
     <div class="grid lg:grid-cols-2 gap-10">
@@ -731,8 +756,8 @@ tailwind.config = {
 <section id="ch-11" data-chapter="۱۱" data-title="گزارش و داشبورد" class="relative py-24 md:py-32 bg-card border-y border-linex overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۱۱</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۱۱</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">گزارش‌ساز و داشبورد مدیریتی</h2>
+    <p data-reveal class="chapter-kicker">فصل ۱۱</p>
+    <h2 data-reveal class="chapter-heading">گزارش‌ساز و داشبورد مدیریتی</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-14 max-w-3xl">داده‌های ثبت‌شده در طول فرآیندها، در گزارش‌ساز و داشبورد مدیریتی به اطلاعات تصمیم‌سازی تبدیل می‌شوند.</p>
 
     <div class="grid lg:grid-cols-2 gap-10 items-start mb-12">
@@ -800,8 +825,8 @@ tailwind.config = {
 <section id="ch-12" data-chapter="۱۲" data-title="جمع‌بندی" class="relative py-24 md:py-32 bg-soot text-[#ECE9E2] overflow-hidden">
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-white/[0.04]" aria-hidden="true">۱۲</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
-    <p data-reveal class="font-display text-amber text-sm mb-3">فصل ۱۲</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-12">جمع‌بندی</h2>
+    <p data-reveal class="chapter-kicker chapter-kicker--dark">فصل ۱۲</p>
+    <h2 data-reveal class="chapter-heading chapter-heading--dark mb-12">جمع‌بندی</h2>
 
     <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 mb-16">
       <div data-reveal>
