@@ -170,6 +170,42 @@ tailwind.config = {
   }
   .scroll-arrow { animation: scroll-pulse 2.2s ease-in-out infinite; }
 
+  /* Cover diagram motion */
+  .cover-orbits, .cover-shape-a, .cover-shape-b, .cover-network, .cover-core, .cover-compass {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cover-orbits { animation: cover-orbit-rotate 28s linear infinite; }
+  .cover-dotted-orbit { animation: cover-dash-flow 16s linear infinite; }
+  .cover-shape-a { animation: cover-shape-drift-a 9s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+  .cover-shape-b { animation: cover-shape-drift-b 11s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+  .cover-network { animation: cover-network-breathe 4.6s ease-in-out infinite; }
+  .cover-core { animation: cover-core-pulse 2.8s ease-in-out infinite; }
+  .cover-compass { animation: cover-compass-turn 18s linear infinite; }
+
+  @keyframes cover-orbit-rotate { to { transform: rotate(360deg); } }
+  @keyframes cover-dash-flow { to { stroke-dashoffset: -48; } }
+  @keyframes cover-shape-drift-a {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(5px, -8px) rotate(2deg); }
+  }
+  @keyframes cover-shape-drift-b {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-7px, 6px) rotate(-2deg); }
+  }
+  @keyframes cover-network-breathe {
+    0%, 100% { transform: scale(1); opacity: 0.78; }
+    50% { transform: scale(1.035); opacity: 1; }
+  }
+  @keyframes cover-core-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.72; }
+    50% { transform: scale(1.4); opacity: 1; }
+  }
+  @keyframes cover-compass-turn {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(12deg); }
+  }
+
   /* Print styles */
   @media print {
     body { background: white; }
@@ -347,11 +383,13 @@ tailwind.config = {
             </linearGradient>
           </defs>
 
-          <circle cx="250" cy="250" r="220" fill="none" stroke="#F2ECE0" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="2 6"/>
-          <circle cx="250" cy="250" r="170" fill="none" stroke="#F2ECE0" stroke-opacity="0.15" stroke-width="1"/>
-          <circle cx="250" cy="250" r="120" fill="none" stroke="#F2ECE0" stroke-opacity="0.1" stroke-width="1"/>
+          <g class="cover-orbits">
+            <circle class="cover-dotted-orbit" cx="250" cy="250" r="220" fill="none" stroke="#F2ECE0" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="2 6"/>
+            <circle cx="250" cy="250" r="170" fill="none" stroke="#F2ECE0" stroke-opacity="0.15" stroke-width="1"/>
+            <circle cx="250" cy="250" r="120" fill="none" stroke="#F2ECE0" stroke-opacity="0.1" stroke-width="1"/>
+          </g>
 
-          <g transform="translate(0,0)">
+          <g class="cover-shape-a">
             <polygon points="180,200 320,180 380,280 300,360 180,340"
                      fill="url(#coverGrad1)" opacity="0.35"/>
             <polygon points="180,200 320,180 380,280 300,360 180,340"
@@ -359,40 +397,46 @@ tailwind.config = {
           </g>
 
           <g transform="translate(-20,20)">
-            <polygon points="140,260 260,220 340,300 280,400 140,380"
-                     fill="url(#coverGrad2)" opacity="0.3"/>
-            <polygon points="140,260 260,220 340,300 280,400 140,380"
-                     fill="none" stroke="#6DAFBF" stroke-width="1.5"/>
+            <g class="cover-shape-b">
+              <polygon points="140,260 260,220 340,300 280,400 140,380"
+                       fill="url(#coverGrad2)" opacity="0.3"/>
+              <polygon points="140,260 260,220 340,300 280,400 140,380"
+                       fill="none" stroke="#6DAFBF" stroke-width="1.5"/>
+            </g>
           </g>
 
-          <g fill="#F2ECE0">
-            <circle cx="210" cy="270" r="3"/>
-            <circle cx="290" cy="240" r="3"/>
-            <circle cx="340" cy="320" r="3"/>
-            <circle cx="260" cy="360" r="3"/>
-            <circle cx="200" cy="330" r="3"/>
-            <circle cx="310" cy="290" r="3"/>
+          <g class="cover-network">
+            <g fill="#F2ECE0">
+              <circle cx="210" cy="270" r="3"/>
+              <circle cx="290" cy="240" r="3"/>
+              <circle cx="340" cy="320" r="3"/>
+              <circle cx="260" cy="360" r="3"/>
+              <circle cx="200" cy="330" r="3"/>
+              <circle cx="310" cy="290" r="3"/>
+            </g>
+
+            <g stroke="#C78A4E" stroke-width="1" opacity="0.6">
+              <line x1="210" y1="270" x2="290" y2="240"/>
+              <line x1="290" y1="240" x2="340" y2="320"/>
+              <line x1="340" y1="320" x2="260" y2="360"/>
+              <line x1="260" y1="360" x2="200" y2="330"/>
+              <line x1="200" y1="330" x2="210" y2="270"/>
+            </g>
           </g>
 
-          <g stroke="#C78A4E" stroke-width="1" opacity="0.6">
-            <line x1="210" y1="270" x2="290" y2="240"/>
-            <line x1="290" y1="240" x2="340" y2="320"/>
-            <line x1="340" y1="320" x2="260" y2="360"/>
-            <line x1="260" y1="360" x2="200" y2="330"/>
-            <line x1="200" y1="330" x2="210" y2="270"/>
-          </g>
-
-          <g stroke="#F2ECE0" stroke-width="0.8" opacity="0.5">
+          <g class="cover-core" stroke="#F2ECE0" stroke-width="0.8" opacity="0.5">
             <line x1="245" y1="250" x2="255" y2="250"/>
             <line x1="250" y1="245" x2="250" y2="255"/>
+            <circle cx="250" cy="250" r="6" fill="none" stroke="#C78A4E" stroke-width="1.5"/>
           </g>
-          <circle cx="250" cy="250" r="6" fill="none" stroke="#C78A4E" stroke-width="1.5"/>
 
-          <g transform="translate(430, 70)" stroke="#F2ECE0" stroke-width="0.8" fill="none" opacity="0.5">
-            <circle r="25"/>
-            <line x1="0" y1="-30" x2="0" y2="30"/>
-            <line x1="-30" y1="0" x2="30" y2="0"/>
-            <text x="0" y="-35" text-anchor="middle" font-size="10" fill="#F2ECE0" font-weight="700">N</text>
+          <g transform="translate(430, 70)">
+            <g class="cover-compass" stroke="#F2ECE0" stroke-width="0.8" fill="none" opacity="0.5">
+              <circle r="25"/>
+              <line x1="0" y1="-30" x2="0" y2="30"/>
+              <line x1="-30" y1="0" x2="30" y2="0"/>
+              <text x="0" y="-35" text-anchor="middle" font-size="10" fill="#F2ECE0" font-weight="700">N</text>
+            </g>
           </g>
         </svg>
       </div>
@@ -710,12 +754,21 @@ tailwind.config = {
             افزودن لایه از طریق سرویس‌های GeoServer که قبلاً در بخش تنظیمات معرفی شده‌اند.
           </p>
         </div>
-        <div class="module-card bg-ink-900 text-sand-100 p-6 flex flex-col justify-center">
-          <div class="text-[10px] tracking-widest text-accent-light uppercase mb-2">فرمت‌های پشتیبانی</div>
-          <div class="font-mono text-xs text-sand-200 space-y-1">
-            <div>.SHP · .KML · .KMZ</div>
-            <div>.JSON · .DXF · ...</div>
+        <div class="module-card relative overflow-hidden bg-ink-900 text-sand-100 p-6 flex flex-col justify-center">
+          <div class="absolute top-0 right-0 h-1 w-20 bg-accent"></div>
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <div class="text-[10px] tracking-widest text-accent-light uppercase">فرمت‌های پشتیبانی</div>
+            <div class="h-px flex-1 bg-sand-100/15"></div>
           </div>
+          <div dir="ltr" class="grid grid-cols-3 gap-2 font-mono text-center text-[11px] font-bold tracking-wide">
+            <span class="rounded-sm border border-sand-100/25 bg-white/10 px-2 py-2 text-sand-50">.SHP</span>
+            <span class="rounded-sm border border-sand-100/25 bg-white/10 px-2 py-2 text-sand-50">.KML</span>
+            <span class="rounded-sm border border-sand-100/25 bg-white/10 px-2 py-2 text-sand-50">.KMZ</span>
+            <span class="rounded-sm border border-sand-100/25 bg-white/10 px-2 py-2 text-sand-50">.JSON</span>
+            <span class="rounded-sm border border-sand-100/25 bg-white/10 px-2 py-2 text-sand-50">.DXF</span>
+            <span class="rounded-sm border border-dashed border-sand-100/30 px-2 py-2 text-sand-200/75">...</span>
+          </div>
+          <div class="mt-4 text-[10px] text-sand-200/70">برداری، تبادل داده و فرمت‌های استاندارد سازمانی</div>
         </div>
       </div>
     </div>
@@ -785,20 +838,20 @@ tailwind.config = {
               </defs>
 
               <g class="l-4">
-                <polygon points="100,300 300,300 340,330 140,330" fill="url(#ls4)" stroke="#0F2A44" stroke-opacity="0.3"/>
-                <text x="120" y="322" font-size="12" fill="#0B1E2D" font-weight="600">اقلام توصیفی</text>
+                <polygon points="100,300 300,300 340,330 140,330" fill="url(#ls4)" stroke="#0F2A44" stroke-opacity="0.62"/>
+                <text x="220" y="322" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-size="12" fill="#0B1E2D" font-weight="800">اقلام توصیفی</text>
               </g>
               <g class="l-3">
-                <polygon points="100,240 300,240 340,270 140,270" fill="url(#ls3)" stroke="#0B1E2D" stroke-opacity="0.4"/>
-                <text x="120" y="262" font-size="12" fill="#FAF7F1" font-weight="600">تنظیمات لیبل</text>
+                <polygon points="100,240 300,240 340,270 140,270" fill="url(#ls3)" stroke="#0B1E2D" stroke-opacity="0.68"/>
+                <text x="220" y="262" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-size="12" fill="#FFFFFF" font-weight="800">تنظیمات لیبل</text>
               </g>
               <g class="l-2">
-                <polygon points="100,180 300,180 340,210 140,210" fill="url(#ls2)" stroke="#0B1E2D" stroke-opacity="0.4"/>
-                <text x="120" y="202" font-size="12" fill="#FAF7F1" font-weight="600">تنظیمات پایه</text>
+                <polygon points="100,180 300,180 340,210 140,210" fill="url(#ls2)" stroke="#0B1E2D" stroke-opacity="0.68"/>
+                <text x="220" y="202" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-size="12" fill="#FFFFFF" font-weight="800">تنظیمات پایه</text>
               </g>
               <g class="l-1">
-                <polygon points="100,120 300,120 340,150 140,150" fill="url(#ls1)" stroke="#0B1E2D" stroke-opacity="0.4"/>
-                <text x="120" y="142" font-size="12" fill="#FAF7F1" font-weight="600">مشخصات لایه</text>
+                <polygon points="100,120 300,120 340,150 140,150" fill="url(#ls1)" stroke="#0B1E2D" stroke-opacity="0.68"/>
+                <text x="220" y="142" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-size="12" fill="#FFFFFF" font-weight="800">مشخصات لایه</text>
               </g>
 
               <line x1="80" y1="120" x2="80" y2="330" stroke="#0F2A44" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
@@ -1743,9 +1796,6 @@ tailwind.config = {
       <div class="text-xs text-sand-200/50">
         کاتالوگ دیجیتال محصول · ویراست ۱۴۰۵ · محیا پرداز
       </div>
-      <div class="text-xs text-sand-200/50">
-        طراحی و تولید محتوا بر اساس مستندات رسمی سامانه ژئونیک
-      </div>
     </div>
   </div>
 </footer>
@@ -1785,7 +1835,7 @@ tailwind.config = {
      -------------------------------------------------------- */
   const layerStack = document.querySelector('[data-layer-cycle]');
   if (layerStack) {
-    const layerSteps = ['.l-1', '.l-2', '.l-3'].map(selector => layerStack.querySelector(selector));
+    const layerSteps = ['.l-1', '.l-2', '.l-3', '.l-4'].map(selector => layerStack.querySelector(selector));
     let activeLayer = 0;
     let layerTimer = null;
 
