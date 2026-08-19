@@ -165,53 +165,8 @@ tailwind.config = {
       </p>
     </div>
 
-    <figure data-reveal style="--d:.25s" aria-label="تصویرسازی برش عرضی خیابان و تأسیسات زیرزمینی">
-      <svg viewBox="0 0 640 430" class="w-full h-auto" role="img" aria-label="برش عرضی خیابان با لوله‌ها و کابل‌های آب، گاز، برق و مخابرات در بستر خاک و یک محل حفاری">
-        <rect x="0" y="0" width="640" height="250" fill="#DCE6EF"/>
-        <circle cx="540" cy="70" r="36" fill="#F4E6C6"/>
-        <g fill="#2F3E4C">
-          <rect x="30" y="120" width="70" height="130"/><rect x="120" y="80" width="55" height="170"/>
-          <rect x="200" y="140" width="80" height="110"/><rect x="470" y="100" width="60" height="150"/>
-          <rect x="550" y="150" width="70" height="100"/>
-        </g>
-        <g fill="#F4E6C6" opacity=".9">
-          <rect x="132" y="96" width="8" height="8"/><rect x="150" y="120" width="8" height="8"/>
-          <rect x="482" y="118" width="8" height="8"/><rect x="500" y="146" width="8" height="8"/>
-          <rect x="216" y="156" width="8" height="8"/>
-        </g>
-        <rect x="0" y="250" width="640" height="14" fill="#4A4A4A"/>
-        <line x1="0" y1="257" x2="640" y2="257" stroke="#DA8A0F" stroke-width="2" stroke-dasharray="18 14"/>
-        <rect x="0" y="264" width="640" height="166" fill="#C9A876"/>
-        <g stroke="#B3945F" stroke-width="1">
-          <line x1="0" y1="300" x2="640" y2="300"/><line x1="0" y1="345" x2="640" y2="345"/><line x1="0" y1="390" x2="640" y2="390"/>
-        </g>
-        <g>
-          <rect x="330" y="250" width="110" height="120" fill="#8B6F47" stroke="#DA8A0F" stroke-width="1.5" stroke-dasharray="6 5"/>
-          <g stroke="#DA8A0F" stroke-width="1" opacity=".7">
-            <line x1="336" y1="262" x2="348" y2="252"/><line x1="336" y1="286" x2="360" y2="262"/><line x1="336" y1="312" x2="386" y2="262"/>
-          </g>
-          <g>
-            <rect x="316" y="228" width="138" height="8" fill="#DA8A0F"/>
-            <g fill="#12141A"><rect x="326" y="228" width="10" height="8"/><rect x="352" y="228" width="10" height="8"/><rect x="378" y="228" width="10" height="8"/><rect x="404" y="228" width="10" height="8"/><rect x="430" y="228" width="10" height="8"/></g>
-            <line x1="322" y1="236" x2="322" y2="250" stroke="#DA8A0F" stroke-width="3"/>
-            <line x1="448" y1="236" x2="448" y2="250" stroke="#DA8A0F" stroke-width="3"/>
-          </g>
-        </g>
-        <line class="flow" x1="0" y1="300" x2="330" y2="300" stroke="#C96A3B" stroke-width="5" stroke-dasharray="10 8"/>
-        <line class="flow" x1="440" y1="300" x2="640" y2="300" stroke="#C96A3B" stroke-width="5" stroke-dasharray="10 8"/>
-        <line class="flow" x1="0" y1="340" x2="330" y2="340" stroke="#33628F" stroke-width="7" stroke-dasharray="16 10"/>
-        <line class="flow" x1="440" y1="340" x2="640" y2="340" stroke="#33628F" stroke-width="7" stroke-dasharray="16 10"/>
-        <line x1="0" y1="378" x2="640" y2="378" stroke="#2F6D62" stroke-width="4" stroke-dasharray="4 6"/>
-        <line x1="0" y1="408" x2="640" y2="408" stroke="#B8524C" stroke-width="3" stroke-dasharray="2 6"/>
-        <rect x="150" y="246" width="34" height="6" fill="#3A3F49"/>
-        <g font-size="12" fill="#2F3E4C" font-weight="600">
-          <line x1="560" y1="300" x2="600" y2="286" stroke="#5B6470" stroke-width="1"/><text x="604" y="290">گاز</text>
-          <line x1="560" y1="340" x2="600" y2="330" stroke="#5B6470" stroke-width="1"/><text x="604" y="334">آب</text>
-          <line x1="560" y1="378" x2="600" y2="372" stroke="#5B6470" stroke-width="1"/><text x="604" y="376">مخابرات</text>
-          <line x1="560" y1="408" x2="600" y2="408" stroke="#5B6470" stroke-width="1"/><text x="604" y="412">برق</text>
-          <text x="336" y="420" fill="#DA8A0F" font-weight="700">محل حفاری</text>
-        </g>
-      </svg>
+    <figure data-reveal style="--d:.25s" class="relative overflow-hidden rounded-2xl border border-linex bg-card shadow-xl" aria-label="نمایی از نقشه شهری و مدیریت زیرساخت‌های حفاری">
+      <img src="images/haffari.png" alt="نقشه شهری و مدیریت زیرساخت‌های حفاری" class="block w-full h-auto object-cover" loading="eager">
     </figure>
   </div>
 
@@ -226,7 +181,7 @@ tailwind.config = {
     <p data-reveal class="text-xs text-amber-dark font-display mb-3">فهرست مطالب</p>
     <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl mb-12 md:mb-16">آنچه در این کاتالوگ می‌خوانید</h2>
     <ol class="grid md:grid-cols-2 gap-x-14 gap-y-1">
-      <li data-reveal><a href="#ch-01" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۱</span><span class="font-medium group-hover:text-amber-dark transition-colors">آشنایی با سامانه جامع حفاری</span></a></li>
+      <li data-reveal><a href="#ch-01" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۱</span><span class="font-semibold tracking-tight group-hover:text-amber-dark transition-colors">آشنایی با سامانه جامع حفاری</span></a></li>
       <li data-reveal><a href="#ch-02" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۲</span><span class="font-medium group-hover:text-amber-dark transition-colors">حفاری شهری؛ ضرورت نظم و نظارت</span></a></li>
       <li data-reveal><a href="#ch-03" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۳</span><span class="font-medium group-hover:text-amber-dark transition-colors">آنچه سامانه تغییر می‌دهد</span></a></li>
       <li data-reveal><a href="#ch-04" class="group flex items-baseline gap-3 py-3.5 border-b border-dashed border-linex hover:border-amber transition-colors"><span class="font-display font-bold text-amber-dark">۰۴</span><span class="font-medium group-hover:text-amber-dark transition-colors">پرونده حفاری و آرشیو الکترونیکی</span></a></li>
@@ -246,7 +201,7 @@ tailwind.config = {
   <span class="ghost absolute -top-6 left-4 text-[9rem] md:text-[15rem] font-extrabold text-ink/[0.045]" aria-hidden="true">۰۱</span>
   <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
     <p data-reveal class="font-display text-amber-dark text-sm mb-3">فصل ۰۱</p>
-    <h2 data-reveal class="font-display font-extrabold text-3xl md:text-5xl leading-snug mb-4">آشنایی با سامانه جامع حفاری</h2>
+    <h2 data-reveal class="font-sans font-extrabold tracking-tight text-3xl md:text-5xl leading-tight mb-5">آشنایی با سامانه جامع حفاری</h2>
     <p data-reveal class="text-mist text-base md:text-lg mb-12 max-w-2xl">نظارت بر عملیات حفاری، یکی از وظایف مهم معاونت‌های فنی و عمرانی شهرداری‌هاست.</p>
 
     <div class="grid lg:grid-cols-5 gap-10">
@@ -635,9 +590,9 @@ tailwind.config = {
           <g><rect x="70" y="80" width="18" height="18" transform="rotate(45 79 89)" fill="#2F6D62"/>
              <rect x="190" y="200" width="18" height="18" transform="rotate(45 199 209)" fill="#DA8A0F"/>
              <rect x="220" y="80" width="18" height="18" transform="rotate(45 229 89)" fill="#DA8A0F"/></g>
-          <g font-size="11" fill="#5B6470">
-            <text x="60" y="130">دریچه شهرداری</text>
-            <text x="150" y="250">دریچه مجموعه خدماتی</text>
+          <g font-size="9.5" fill="#5B6470" text-anchor="middle" direction="rtl" unicode-bidi="plaintext">
+            <text x="82" y="130">دریچه شهرداری</text>
+            <text x="202" y="250">دریچه مجموعه خدماتی</text>
           </g>
         </svg>
         <figcaption class="text-xs text-mist mt-3">نشانه‌گذاری دریچه‌ها بر اساس مالکیت</figcaption>
@@ -684,12 +639,6 @@ tailwind.config = {
       <article data-reveal class="border border-linex bg-paper p-6 md:p-8">
         <h3 class="font-display font-bold text-xl mb-5">قالب‌های چاپی</h3>
         <p class="text-sm leading-7 text-justify text-ink/80">امکان طراحی و سفارشی‌سازی تمام فرمت‌های چاپی مورد استفاده در سامانه؛ از جمله فرمت نامه‌های استعلام، گواهی‌های صادره، فرم‌های خلاصه اطلاعات پرونده و سایر خروجی‌ها.</p>
-        <figure class="product-shot mt-5" data-slot="print-templates">
-          <div class="ph p-5 text-center">
-            <p class="font-display font-bold text-sm mb-1">تصویر موردنیاز: نمونه قالب‌های چاپی</p>
-            <p class="text-[11px] text-mist leading-5">نمونه نامه استعلام، گواهی صادرشده و فرم خلاصه پرونده — فصل ۰۹</p>
-          </div>
-        </figure>
       </article>
     </div>
 
@@ -774,12 +723,6 @@ tailwind.config = {
           <h3 class="font-display font-bold text-xl mb-3">یادداشت‌ها</h3>
           <p class="text-justify leading-8 text-ink/80">یادداشت بر روی پرونده جاری برای اطلاع‌رسانی موارد خاص درج می‌شود و در طول مراحل فرآیند برای تمام کاربران مربوطه قابل مشاهده است.</p>
         </div>
-        <figure class="product-shot" data-slot="cartable-view" data-reveal>
-          <div class="ph p-6 text-center">
-            <p class="font-display font-bold text-sm mb-1">تصویر موردنیاز: نمای کارتابل وظایف</p>
-            <p class="text-[11px] text-mist leading-5">اسکرین‌شات کارتابل با لیست پرونده‌ها، وضعیت‌ها، مهلت انجام کار و نمودار وضعیت فرآیند — فصل ۱۰</p>
-          </div>
-        </figure>
       </div>
     </div>
   </div>
@@ -819,10 +762,14 @@ tailwind.config = {
           </g>
           <g id="gPie" class="chart-g">
             <circle cx="320" cy="170" r="110" fill="none" stroke="#E2DDD0" stroke-width="2"/>
-            <path d="M320 170 L320 60 A110 110 0 0 1 425 205 Z" fill="#DA8A0F"/>
-            <path d="M320 170 L425 205 A110 110 0 0 1 240 262 Z" fill="#2F6D62"/>
-            <path d="M320 170 L240 262 A110 110 0 1 1 320 60 Z" fill="#33628F"/>
-            <g font-size="11" fill="#5B6470"><text x="470" y="120">طرح توسعه</text><text x="470" y="230">انشعاب شخصی</text><text x="90" y="120">اضطراری / مطالعاتی</text></g>
+            <path d="M320 170 L320 60 A110 110 0 0 1 395.17 250.31 Z" fill="#DA8A0F" stroke="#FFFDF7" stroke-width="2"/>
+            <path d="M320 170 L395.17 250.31 A110 110 0 0 1 211.85 190.65 Z" fill="#2F6D62" stroke="#FFFDF7" stroke-width="2"/>
+            <path d="M320 170 L211.85 190.65 A110 110 0 0 1 320 60 Z" fill="#33628F" stroke="#FFFDF7" stroke-width="2"/>
+            <g font-size="10.5" fill="#5B6470" direction="rtl" unicode-bidi="plaintext">
+              <circle cx="120" cy="312" r="5" fill="#DA8A0F"/><text x="132" y="316">طرح توسعه</text>
+              <circle cx="292" cy="312" r="5" fill="#2F6D62"/><text x="304" y="316">انشعاب شخصی</text>
+              <circle cx="454" cy="312" r="5" fill="#33628F"/><text x="466" y="316">اضطراری / مطالعاتی</text>
+            </g>
           </g>
           <g id="gLine" class="chart-g">
             <line x1="60" y1="290" x2="580" y2="290" stroke="#1A1D22" stroke-width="1.5"/>
@@ -830,7 +777,6 @@ tailwind.config = {
             <g fill="#12141A"><circle cx="90" cy="230" r="5"/><circle cx="190" cy="170" r="5"/><circle cx="290" cy="200" r="5"/><circle cx="390" cy="110" r="5"/><circle cx="490" cy="140" r="5"/><circle cx="570" cy="80" r="5"/></g>
           </g>
         </svg>
-        <p class="text-xs text-mist mt-3">نمایش شماتیک انواع نمودار خروجی گزارش‌ساز (بدون داده واقعی).</p>
       </div>
     </div>
 
