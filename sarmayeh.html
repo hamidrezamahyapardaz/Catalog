@@ -107,6 +107,15 @@
   .toc-item .toc-num{color:var(--gold);font-weight:700;min-width:3.5rem;display:inline-block}
   .svg-draw path{stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 2.5s ease}
   .svg-draw.in path{stroke-dashoffset:0}
+  .diagram-frame{overflow:hidden}
+  .economic-cycle .econ-node circle{transform-box:fill-box;transform-origin:center;transition:transform .28s cubic-bezier(.23,1,.32,1),filter .28s ease}
+  .economic-cycle .econ-node:hover circle{transform:scale(1.06);filter:drop-shadow(0 10px 14px rgba(15,61,62,.14))}
+  .economic-cycle .econ-flow{stroke-dasharray:8 8;animation:econ-flow 16s linear infinite}
+  @keyframes econ-flow{to{stroke-dashoffset:-96}}
+  .comm-node{cursor:pointer;transform-box:fill-box;transform-origin:center;transition:transform .24s cubic-bezier(.23,1,.32,1),filter .24s ease}
+  .comm-node:hover,.comm-node:focus,.comm-node.active{transform:scale(1.14);filter:drop-shadow(0 8px 12px rgba(15,61,62,.2));outline:none}
+  .comm-node.active circle{stroke:#C9A961;stroke-width:3}
+  .comm-node.active + .comm-node{opacity:.9}
   /* Interactive Map */
   .layer-toggle{
     cursor:pointer;transition:all .3s;
@@ -115,6 +124,9 @@
   }
   .layer-toggle:hover{stroke-width:2;filter:brightness(1.2)}
   .layer-toggle.off{opacity:.1}
+  #interactiveMap .layer{transition:opacity .26s ease}
+  .map-toggle[aria-pressed="true"]{background:var(--gold);color:var(--ink);font-weight:600}
+  .map-toggle[aria-pressed="false"]{background:rgba(255,255,255,.2);color:var(--paper);font-weight:400}
   .parcel:hover{fill:rgba(201,169,97,.3) !important}
   /* Process step interaction */
   .process-step{
@@ -612,27 +624,20 @@
       </div>
     </div>
 
-    <figure class="reveal mt-16">
-      <svg viewBox="0 0 800 320" class="w-full svg-draw" aria-label="دیاگرام سه محور سامانه">
+    <figure class="reveal mt-16 diagram-frame">
+      <svg viewBox="0 0 840 390" class="w-full svg-draw" preserveAspectRatio="xMidYMid meet" aria-label="دیاگرام سه محور سامانه">
         <defs>
-          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-            <polygon points="0 0, 10 3, 0 6" fill="#0F3D3E"/>
-          </marker>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><polygon points="0 0, 10 3, 0 6" fill="#0F3D3E"/></marker>
         </defs>
-        <circle cx="400" cy="160" r="60" fill="none" stroke="#C9A961" stroke-width="2"/>
-        <text x="400" y="155" text-anchor="middle" fill="#0F3D3E" font-size="14" font-weight="700">پرونده</text>
-        <text x="400" y="175" text-anchor="middle" fill="#0F3D3E" font-size="14" font-weight="700">سرمایه‌گذاری</text>
-        <line x1="460" y1="140" x2="620" y2="80" stroke="#0F3D3E" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <circle cx="660" cy="60" r="50" fill="none" stroke="#C9A961" stroke-width="2"/>
-        <text x="660" y="58" text-anchor="middle" fill="#0F3D3E" font-size="13" font-weight="600">طرح</text>
-        <text x="660" y="76" text-anchor="middle" fill="#6B6B6B" font-size="10">اقتصادی · تولید</text>
-        <line x1="400" y1="220" x2="400" y2="280" stroke="#0F3D3E" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <circle cx="400" cy="310" r="40" fill="none" stroke="#0F3D3E" stroke-width="2"/>
-        <text x="400" y="314" text-anchor="middle" fill="#0F3D3E" font-size="13" font-weight="600">نقشه</text>
-        <line x1="340" y1="140" x2="180" y2="80" stroke="#0F3D3E" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <circle cx="140" cy="60" r="50" fill="none" stroke="#8B2E2E" stroke-width="2"/>
-        <text x="140" y="58" text-anchor="middle" fill="#0F3D3E" font-size="13" font-weight="600">فرایند</text>
-        <text x="140" y="76" text-anchor="middle" fill="#6B6B6B" font-size="10">مجوز · کمیسیون</text>
+        <g font-family="Vazirmatn">
+          <g class="econ-flow" fill="none" stroke="#0F3D3E" stroke-width="1.5" marker-end="url(#arrowhead)">
+            <path d="M470,170 C540,140 595,115 625,104"/><path d="M420,253 L420,282"/><path d="M370,170 C300,140 245,115 215,104"/>
+          </g>
+          <g class="econ-node"><circle cx="420" cy="195" r="58" fill="#F7F4EE" stroke="#C9A961" stroke-width="2"/><text x="420" y="189" text-anchor="middle" fill="#0F3D3E" font-size="14" font-weight="700">پرونده</text><text x="420" y="210" text-anchor="middle" fill="#0F3D3E" font-size="14" font-weight="700">سرمایه‌گذاری</text></g>
+          <g class="econ-node"><circle cx="675" cy="88" r="50" fill="#F7F4EE" stroke="#C9A961" stroke-width="2"/><text x="675" y="86" text-anchor="middle" fill="#0F3D3E" font-size="13" font-weight="700">طرح</text><text x="675" y="105" text-anchor="middle" fill="#6B6B6B" font-size="10">اقتصادی · تولید</text></g>
+          <g class="econ-node"><circle cx="420" cy="332" r="44" fill="#F7F4EE" stroke="#0F3D3E" stroke-width="2"/><text x="420" y="336" text-anchor="middle" fill="#0F3D3E" font-size="13" font-weight="700">نقشه</text></g>
+          <g class="econ-node"><circle cx="165" cy="88" r="50" fill="#F7F4EE" stroke="#8B2E2E" stroke-width="2"/><text x="165" y="86" text-anchor="middle" fill="#0F3D3E" font-size="13" font-weight="700">فرایند</text><text x="165" y="105" text-anchor="middle" fill="#6B6B6B" font-size="10">مجوز · کمیسیون</text></g>
+        </g>
       </svg>
       <figcaption class="text-center text-sm text-[color:var(--muted)] mt-4">سه محور طراحی سامانه حول محور پرونده دیجیتال طرح</figcaption>
     </figure>
@@ -871,44 +876,16 @@
       </div>
     </div>
 
-    <figure class="reveal mt-16">
-      <svg viewBox="0 0 800 360" class="w-full" aria-label="چرخه مطالعات اقتصادی">
-        <defs>
-          <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-            <polygon points="0 0, 10 3, 0 6" fill="#C9A961"/>
-          </marker>
-        </defs>
+    <figure class="reveal mt-16 diagram-frame">
+      <svg viewBox="0 0 840 440" class="economic-cycle w-full" preserveAspectRatio="xMidYMid meet" aria-label="چرخه مطالعات اقتصادی">
+        <defs><marker id="arrowGold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><polygon points="0 0, 10 3, 0 6" fill="#C9A961"/></marker></defs>
+        <g class="econ-flow" fill="none" stroke="#C9A961" stroke-width="1.5" marker-end="url(#arrowGold)"><path d="M470,100 Q600,120 650,165"/><path d="M720,235 Q680,320 625,350"/><path d="M545,395 Q420,420 295,395"/><path d="M215,350 Q160,280 145,235"/><path d="M190,150 Q260,100 370,100"/></g>
         <g font-family="Vazirmatn">
-          <g transform="translate(400,60)">
-            <circle r="48" fill="#C9A961" opacity="0.15" stroke="#C9A961" stroke-width="1.5"/>
-            <text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">تأمین</text>
-            <text text-anchor="middle" y="8" font-size="11" font-weight="700" fill="#0F3D3E">سرمایه</text>
-          </g>
-          <g transform="translate(680,180)">
-            <circle r="48" fill="#0F3D3E" opacity="0.1" stroke="#0F3D3E" stroke-width="1.5"/>
-            <text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">سرمایه</text>
-            <text text-anchor="middle" y="8" font-size="11" font-weight="700" fill="#0F3D3E">ثابت</text>
-          </g>
-          <g transform="translate(580,320)">
-            <circle r="48" fill="#C9A961" opacity="0.15" stroke="#C9A961" stroke-width="1.5"/>
-            <text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">گردش</text>
-            <text text-anchor="middle" y="8" font-size="11" font-weight="700" fill="#0F3D3E">کار</text>
-          </g>
-          <g transform="translate(220,320)">
-            <circle r="48" fill="#8B2E2E" opacity="0.1" stroke="#8B2E2E" stroke-width="1.5"/>
-            <text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">نرخ</text>
-            <text text-anchor="middle" y="8" font-size="11" font-weight="700" fill="#0F3D3E">بازگشت</text>
-          </g>
-          <g transform="translate(120,180)">
-            <circle r="48" fill="#0F3D3E" opacity="0.1" stroke="#0F3D3E" stroke-width="1.5"/>
-            <text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">بازگشت</text>
-            <text text-anchor="middle" y="8" font-size="11" font-weight="700" fill="#0F3D3E">سرمایه</text>
-          </g>
-          <path d="M 450 60 Q 600 100 680 140" fill="none" stroke="#C9A961" stroke-width="1.5" marker-end="url(#arrowGold)"/>
-          <path d="M 700 220 Q 680 300 620 320" fill="none" stroke="#C9A961" stroke-width="1.5" marker-end="url(#arrowGold)"/>
-          <path d="M 540 340 Q 400 370 260 340" fill="none" stroke="#C9A961" stroke-width="1.5" marker-end="url(#arrowGold)"/>
-          <path d="M 180 320 Q 140 260 120 220" fill="none" stroke="#C9A961" stroke-width="1.5" marker-end="url(#arrowGold)"/>
-          <path d="M 140 140 Q 200 90 350 60" fill="none" stroke="#C9A961" stroke-width="1.5" marker-end="url(#arrowGold)"/>
+          <g class="econ-node" transform="translate(420,90)"><circle r="50" fill="#C9A961" opacity=".15" stroke="#C9A961" stroke-width="1.5"/><text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">تأمین</text><text text-anchor="middle" y="10" font-size="11" font-weight="700" fill="#0F3D3E">سرمایه</text></g>
+          <g class="econ-node" transform="translate(690,190)"><circle r="50" fill="#0F3D3E" opacity=".1" stroke="#0F3D3E" stroke-width="1.5"/><text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">سرمایه</text><text text-anchor="middle" y="10" font-size="11" font-weight="700" fill="#0F3D3E">ثابت</text></g>
+          <g class="econ-node" transform="translate(590,360)"><circle r="50" fill="#C9A961" opacity=".15" stroke="#C9A961" stroke-width="1.5"/><text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">گردش</text><text text-anchor="middle" y="10" font-size="11" font-weight="700" fill="#0F3D3E">کار</text></g>
+          <g class="econ-node" transform="translate(250,360)"><circle r="50" fill="#8B2E2E" opacity=".1" stroke="#8B2E2E" stroke-width="1.5"/><text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">نرخ</text><text text-anchor="middle" y="10" font-size="11" font-weight="700" fill="#0F3D3E">بازگشت</text></g>
+          <g class="econ-node" transform="translate(150,190)"><circle r="50" fill="#0F3D3E" opacity=".1" stroke="#0F3D3E" stroke-width="1.5"/><text text-anchor="middle" y="-8" font-size="11" font-weight="700" fill="#0F3D3E">بازگشت</text><text text-anchor="middle" y="10" font-size="11" font-weight="700" fill="#0F3D3E">سرمایه</text></g>
         </g>
       </svg>
       <figcaption class="text-center text-sm text-[color:var(--muted)] mt-4">چرخه ثبت‌شده مطالعات اقتصادی در پرونده طرح</figcaption>
@@ -955,7 +932,7 @@
             </div>
           </div>
         </div>
-        <p class="text-xs text-[color:var(--muted)] mt-3 text-center">اعداد و نام‌ها نمونه‌اند و در استقرار واقعی از پرونده بارگذاری می‌شوند.</p>
+        <p class="text-xs text-[color:var(--muted)] mt-3 text-center">طراحی و پیاده‌سازی کاتالوگ توسط شرکت مهندسی محیا پرداز · mahyapardaz.com</p>
       </div>
     </div>
   </div>
@@ -1023,10 +1000,10 @@
     <div class="reveal mb-12">
       <div class="bg-[color:var(--ink-deep)] p-4 rounded-t flex flex-wrap items-center gap-3">
         <div class="text-xs text-[color:var(--gold)] tracking-wider ml-auto">لایه‌های نقشه را روشن/خاموش کنید:</div>
-        <button type="button" class="map-toggle text-xs px-3 py-1 rounded bg-[color:var(--gold)] text-[color:var(--ink)] font-semibold" data-layer="parcels">پارسل‌ها</button>
-        <button type="button" class="map-toggle text-xs px-3 py-1 rounded bg-white/20 text-[color:var(--paper)]" data-layer="roads">معابر</button>
-        <button type="button" class="map-toggle text-xs px-3 py-1 rounded bg-white/20 text-[color:var(--paper)]" data-layer="plan">لایه طرح</button>
-        <button type="button" class="map-toggle text-xs px-3 py-1 rounded bg-white/20 text-[color:var(--paper)]" data-layer="satellite">ماهواره‌ای</button>
+        <button type="button" class="map-toggle text-xs px-3 py-1 rounded" data-layer="parcels" aria-pressed="true">پارسل‌ها</button>
+        <button type="button" class="map-toggle text-xs px-3 py-1 rounded" data-layer="roads" aria-pressed="true">معابر</button>
+        <button type="button" class="map-toggle text-xs px-3 py-1 rounded" data-layer="plan" aria-pressed="true">لایه طرح</button>
+        <button type="button" class="map-toggle text-xs px-3 py-1 rounded" data-layer="satellite" aria-pressed="true">ماهواره‌ای</button>
       </div>
       <div class="bg-[#1a4a4b] p-6 rounded-b relative overflow-hidden" style="aspect-ratio:16/10">
         <svg id="interactiveMap" viewBox="0 0 800 500" class="w-full h-full" aria-label="نقشه تعاملی سامانه">
@@ -1136,32 +1113,27 @@
     </p>
 
     <div class="reveal mb-16">
-      <div class="text-sm text-[color:var(--muted)] mb-4">برای مشاهده جزئیات، روی هر مرحله کلیک کنید</div>
-      <div class="grid md:grid-cols-4 gap-4" id="processFlow">
+      <div class="grid md:grid-cols-2 gap-4" id="processFlow">
         <div class="process-step" data-step="1">
           <div class="step-body p-5 rounded">
             <div class="step-title text-lg font-bold text-[color:var(--ink)]">ثبت درخواست</div>
             <div class="step-desc text-sm">درخواست در سامانه ثبت و شماره درخواست، شماره پرونده، نوع درخواست و مرجع ثبت مشخص می‌شود. اطلاعات منطقه و مرحله جاری نیز وارد می‌گردد.</div>
           </div>
         </div>
-        <div class="flow-arrow md:block hidden">←</div>
         <div class="process-step" data-step="2">
           <div class="step-body p-5 rounded">
             <div class="step-title text-lg font-bold text-[color:var(--ink)]">بررسی کارشناسی</div>
             <div class="step-desc text-sm">پرونده به کارتابل کارشناس مربوطه ارجاع می‌شود. مدارک در آرشیو الکترونیک بازنگری، استعلامات بین‌سازمانی انجام و نظرخواهی داخلی بین واحدها صورت می‌گیرد.</div>
           </div>
         </div>
-        <div class="flow-arrow md:block hidden">←</div>
       </div>
-      <div class="grid md:grid-cols-4 gap-4 mt-4" id="processFlow2">
-        <div class="flow-arrow md:hidden"></div>
+      <div class="grid md:grid-cols-2 gap-4 mt-4" id="processFlow2">
         <div class="process-step" data-step="3">
           <div class="step-body p-5 rounded">
             <div class="step-title text-lg font-bold text-[color:var(--ink)]">کمیسیون اقتصادی</div>
             <div class="step-desc text-sm">طرح در کمیسیون مطرح می‌شود. شماره جلسه، تاریخ، شماره رای و شرح مصوبات ثبت و صورتجلسه در پرونده بارگذاری می‌شود.</div>
           </div>
         </div>
-        <div class="flow-arrow md:block hidden">←</div>
         <div class="process-step" data-step="4">
           <div class="step-body p-5 rounded">
             <div class="step-title text-lg font-bold text-[color:var(--ink)]">صدور مجوز</div>
@@ -1256,34 +1228,34 @@
       <div class="text-sm text-[color:var(--muted)] mb-3">برای مشاهده جزئیات هر جلسه، روی دایره‌ها کلیک کنید</div>
       <svg id="commissionTimeline" viewBox="0 0 800 280" class="w-full" aria-label="خط زمانی جلسات کمیسیون">
         <line x1="60" y1="140" x2="740" y2="140" stroke="#0F3D3E" stroke-width="1" stroke-dasharray="3 3"/>
-        <g font-family="Vazirmatn" class="comm-node" data-info="اولین بررسی کارشناسی طرح">
+        <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="اولین بررسی کارشناسی طرح">
           <circle cx="100" cy="140" r="16" fill="#C9A961" class="cursor-pointer hover:scale-110 transition"/>
           <text x="100" y="145" text-anchor="middle" fill="#0F3D3E" font-size="11" font-weight="700">۱</text>
           <text x="100" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">معرفی</text>
         </g>
-        <g font-family="Vazirmatn" class="comm-node" data-info="ارائه مطالعات اقتصادی و بررسی IRR">
+        <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="ارائه مطالعات اقتصادی و بررسی IRR">
           <circle cx="260" cy="140" r="16" fill="#0F3D3E" class="cursor-pointer hover:scale-110 transition"/>
           <text x="260" y="145" text-anchor="middle" fill="#F7F4EE" font-size="11" font-weight="700">۲</text>
           <text x="260" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">اقتصادی</text>
         </g>
-        <g font-family="Vazirmatn" class="comm-node" data-info="بررسی نیازمندی مکان و جانمایی روی نقشه">
+        <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="بررسی نیازمندی مکان و جانمایی روی نقشه">
           <circle cx="420" cy="140" r="16" fill="#0F3D3E" class="cursor-pointer hover:scale-110 transition"/>
           <text x="420" y="145" text-anchor="middle" fill="#F7F4EE" font-size="11" font-weight="700">۳</text>
           <text x="420" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">جانمایی</text>
         </g>
-        <g font-family="Vazirmatn" class="comm-node" data-info="پاسخ استعلامات بین‌سازمانی و HSE">
+        <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="پاسخ استعلامات بین‌سازمانی و HSE">
           <circle cx="580" cy="140" r="16" fill="#8B2E2E" class="cursor-pointer hover:scale-110 transition"/>
           <text x="580" y="145" text-anchor="middle" fill="#F7F4EE" font-size="11" font-weight="700">۴</text>
           <text x="580" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">استعلام</text>
         </g>
-        <g font-family="Vazirmatn" class="comm-node" data-info="رای‌گیری نهایی و صدور صورتجلسه">
+        <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="رای‌گیری نهایی و صدور صورتجلسه">
           <circle cx="740" cy="140" r="20" fill="#C9A961" class="cursor-pointer hover:scale-110 transition"/>
           <text x="740" y="145" text-anchor="middle" fill="#0F3D3E" font-size="12" font-weight="700">✓</text>
           <text x="740" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">تصویب</text>
         </g>
         <foreignObject x="60" y="200" width="680" height="70">
-          <div xmlns="http://www.w3.org/1999/xhtml" id="commInfo" class="text-center text-sm text-[color:var(--ink)] p-3 bg-[color:var(--paper-deep)] rounded border border-[color:var(--line)]" style="font-family:Vazirmatn">
-            برای مشاهده توضیح هر مرحله، روی دایره‌ها کلیک کنید.
+          <div xmlns="http://www.w3.org/1999/xhtml" id="commInfo" class="text-center text-sm text-[color:var(--ink)] p-3 bg-[color:var(--paper-deep)] rounded border border-[color:var(--line)]" style="font-family:Vazirmatn" aria-live="polite">
+            یک مرحله را برای مشاهدهٔ تصمیم و مستندات مرتبط انتخاب کنید.
           </div>
         </foreignObject>
       </svg>
@@ -1565,28 +1537,20 @@
   onScroll();
 
   // ============ Interactive Map: layer toggle ============
-  const mapToggles = document.querySelectorAll('.map-toggle');
-  const mapLayers = document.querySelectorAll('#interactiveMap .layer');
-  mapToggles.forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const layer = btn.dataset.layer;
-      const isActive = btn.classList.contains('bg-[color:var(--gold)]');
-      if(isActive){
-        btn.classList.remove('bg-[color:var(--gold)]','text-[color:var(--ink)]','font-semibold');
-        btn.classList.add('bg-white/20','text-[color:var(--paper)]');
-      } else {
-        btn.classList.add('bg-[color:var(--gold)]','text-[color:var(--ink)]','font-semibold');
-        btn.classList.remove('bg-white/20','text-[color:var(--paper)]');
-      }
-      mapLayers.forEach(l=>{
-        if(l.dataset.layer === layer){
-          l.style.display = isActive ? 'none' : '';
-        }
-      });
-    });
+  const mapToggles = Array.from(document.querySelectorAll('.map-toggle'));
+  const mapLayers = Array.from(document.querySelectorAll('#interactiveMap .layer'));
+  function setMapLayer(layerName, isVisible){
+    const layer = mapLayers.find(node => node.dataset.layer === layerName);
+    const button = mapToggles.find(node => node.dataset.layer === layerName);
+    if (!layer || !button) return;
+    layer.style.opacity = isVisible ? (layer.getAttribute('opacity') || '1') : '0';
+    layer.style.pointerEvents = isVisible ? 'auto' : 'none';
+    button.setAttribute('aria-pressed', String(isVisible));
+  }
+  mapToggles.forEach(button => {
+    setMapLayer(button.dataset.layer, true);
+    button.addEventListener('click', () => setMapLayer(button.dataset.layer, button.getAttribute('aria-pressed') !== 'true'));
   });
-  // init all layers visible
-  mapLayers.forEach(l=>l.style.display='');
 
   // ============ Process flow step click ============
   document.querySelectorAll('.process-step').forEach(s=>{
@@ -1599,20 +1563,22 @@
 
   // ============ Commission timeline click ============
   const commInfo = document.getElementById('commInfo');
-  document.querySelectorAll('.comm-node').forEach(node=>{
-    node.addEventListener('click',()=>{
-      const info = node.dataset.info;
-      if(commInfo && info){
-        commInfo.textContent = info;
-        commInfo.style.background = '#C9A961';
-        commInfo.style.color = '#0F3D3E';
-        setTimeout(()=>{
-          commInfo.style.background = '';
-          commInfo.style.color = '';
-        },2000);
-      }
-    });
+  const commNodes = Array.from(document.querySelectorAll('.comm-node'));
+  function activateCommission(node){
+    const info = node.dataset.info;
+    if (!commInfo || !info) return;
+    commNodes.forEach(item => { item.classList.remove('active'); item.setAttribute('aria-pressed','false'); });
+    node.classList.add('active');
+    node.setAttribute('aria-pressed','true');
+    commInfo.textContent = info;
+    commInfo.style.background = '#F7F4EE';
+    commInfo.style.color = '#0F3D3E';
+  }
+  commNodes.forEach(node => {
+    node.addEventListener('click', () => activateCommission(node));
+    node.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); activateCommission(node); } });
   });
+  if (commNodes[0]) activateCommission(commNodes[0]);
 
   // ============ TOC smooth scroll with offset ============
   document.querySelectorAll('a[href^="#"]').forEach(a=>{

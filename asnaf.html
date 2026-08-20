@@ -90,6 +90,13 @@ tailwind.config = {
   .case-tab[aria-selected="true"]{background:#0E6F63;color:#FBF8F0;border-color:#0E6F63}
   .cmp-bad li::before{content:"×";color:#A9762B;font-weight:900;margin-inline-end:.5rem}
   .cmp-good li::before{content:"✓";color:#0E6F63;font-weight:900;margin-inline-end:.5rem}
+  #toc ol{direction:rtl;text-align:right}
+  #toc ol a{direction:rtl;text-align:right}
+  .ticket-row{opacity:0;transform:translateY(10px)}
+  .rv.on .ticket-row{animation:ticket-row-in .56s cubic-bezier(.23,1,.32,1) forwards}
+  .rv.on .ticket-row:nth-child(3){animation-delay:.12s}
+  .rv.on .ticket-row:nth-child(4){animation-delay:.22s}
+  @keyframes ticket-row-in{to{opacity:1;transform:translateY(0)}}
   @media print{
     .no-print{display:none!important}
     body{background:#fff}
@@ -175,7 +182,7 @@ tailwind.config = {
     <p class="rv text-xs font-bold text-brass tracking-widest">فهرست مطالب</p>
     <h2 class="rv mt-3 text-3xl md:text-5xl font-black">آنچه در این کاتالوگ می‌خوانید</h2>
     <p class="rv mt-4 text-mute text-sm md:text-base leading-8 max-w-2xl">این کاتالوگ در دوازده فصل روایت می‌شود؛ از تعریف سامانه و ضرورت آن، تا لایه مکانی، بایگانی صنفی و ملکی، جریان کاری اداری، فرآیندهای مجوز و لایه مالی.</p>
-    <ol class="mt-12 grid md:grid-cols-2 gap-x-14 gap-y-5">
+    <ol dir="rtl" class="mt-12 grid md:grid-cols-2 gap-x-14 gap-y-5 text-right">
       <li class="rv"><a href="#ch01" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۱</span><span class="leader"></span>معرفی سامانه</a></li>
       <li class="rv"><a href="#ch02" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۲</span><span class="leader"></span>ضرورت نمای یکپارچه اصناف</a></li>
       <li class="rv"><a href="#ch03" class="flex items-baseline text-sm md:text-base font-bold hover:text-teal transition"><span class="text-brass">۰۳</span><span class="leader"></span>اجزای سامانه در یک نگاه</a></li>
@@ -465,9 +472,12 @@ tailwind.config = {
     <div class="rv mt-14">
       <h3 class="text-lg md:text-xl font-black">سلسله‌مراتب اطلاعات ملک</h3>
       <svg viewBox="0 0 900 420" class="w-full h-auto mt-6" role="img" aria-label="دیاگرام سلسله‌مراتب اطلاعات ملک: از ملک تا ساختمان‌ها، طبقات، کاربری‌ها، واحدها و واحدهای شغلی">
+        <defs><marker id="propertyArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#A9762B"/></marker></defs>
         <g class="draw" stroke="#A9762B" stroke-width="1.6" fill="none">
           <line x1="760" y1="210" x2="700" y2="210"/><line x1="610" y1="210" x2="560" y2="210"/><line x1="470" y1="210" x2="430" y2="210"/><line x1="350" y1="210" x2="310" y2="210"/><line x1="230" y1="210" x2="190" y2="210"/><line x1="110" y1="210" x2="70" y2="210"/>
-          <line x1="810" y1="185" x2="810" y2="110"/><line x1="520" y1="185" x2="520" y2="110"/><line x1="740" y1="235" x2="700" y2="320"/><line x1="830" y1="235" x2="850" y2="320"/>
+          <line x1="810" y1="185" x2="810" y2="110"/><line x1="520" y1="185" x2="520" y2="110"/>
+          <path d="M810,235 C810,270 760,294 700,320" marker-end="url(#propertyArrow)"/>
+          <path d="M830,235 C830,270 838,294 842,320" marker-end="url(#propertyArrow)"/>
         </g>
         <g font-size="12" font-weight="700" text-anchor="middle">
           <rect x="760" y="185" width="105" height="50" rx="8" fill="#0E2A31"/><text x="812" y="215" fill="#FBF8F0">ملک</text>
@@ -515,19 +525,19 @@ tailwind.config = {
     <div class="rv mt-10 space-y-6 text-[15px] md:text-lg leading-8 md:leading-9 font-light max-w-3xl">
       <p>کارتابل، میز کار هر کاربر است. برای هر کاربر کارتابل اختصاصی تعریف می‌شود؛ کارتابل مشترک با تخصیص دسترسی به کاربران مورد نظر قابل ایجاد است؛ و کارتابل بلاتکلیف تضمین می‌کند هیچ درخواستی بدون متولی نماند.</p>
     </div>
-    <div class="rv mt-8 overflow-x-auto">
-      <div class="min-w-[640px] border border-line rounded-xl overflow-hidden bg-cream">
-        <div class="grid grid-cols-7 bg-pine text-cream text-[11px] font-bold">
+    <div class="rv mt-8 overflow-x-auto" data-ticket-table>
+      <div class="min-w-[880px] border border-line rounded-xl overflow-hidden bg-cream">
+        <div class="grid grid-cols-7 bg-pine text-cream text-[11px] font-bold text-center">
           <p class="p-3">کدنوسازی</p><p class="p-3">شماره درخواست</p><p class="p-3">کد پرونده</p><p class="p-3">تاریخ ارجاع</p><p class="p-3">نام سرمایه‌گذار</p><p class="p-3">مرحله فرآیند</p><p class="p-3">ارجاع‌دهنده</p>
         </div>
-        <div class="grid grid-cols-7 text-[11px] text-mute border-t border-line">
-          <p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p>
+        <div class="ticket-row grid grid-cols-7 text-[11px] text-mute border-t border-line bg-white/60 text-center">
+          <p class="p-3 font-bold text-ink">۱۲۳۴۵/۰۱</p><p class="p-3">۱۴۰۵-۱۱۸</p><p class="p-3">ص-۱۴۰۵-۰۷۲</p><p class="p-3">۱۴۰۵/۰۵/۱۳</p><p class="p-3">شرکت آتیه‌سازان</p><p class="p-3"><span class="rounded-full bg-teal/10 text-teal px-2 py-1">بررسی کارشناسی</span></p><p class="p-3">م. احمدی</p>
         </div>
-        <div class="grid grid-cols-7 text-[11px] text-mute border-t border-line">
-          <p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p><p class="p-3">—</p>
+        <div class="ticket-row grid grid-cols-7 text-[11px] text-mute border-t border-line text-center">
+          <p class="p-3 font-bold text-ink">۱۲۳۴۵/۰۲</p><p class="p-3">۱۴۰۵-۱۲۷</p><p class="p-3">ص-۱۴۰۵-۰۸۱</p><p class="p-3">۱۴۰۵/۰۵/۱۴</p><p class="p-3">تعاونی تجاری سپهر</p><p class="p-3"><span class="rounded-full bg-brass/10 text-brass px-2 py-1">استعلام بین‌سازمانی</span></p><p class="p-3">ن. صادقی</p>
         </div>
       </div>
-      <p class="mt-2 text-[11px] text-mute">ستون‌های کارتابل مطابق ساختار سامانه؛ مقادیر در محیط عملیاتی نمایش داده می‌شود.</p>
+      <p class="mt-2 text-[11px] text-mute">نمونهٔ نمای کارتابل؛ ترتیب ستون‌ها و وضعیت هر ارجاع در محیط عملیاتی قابل پیگیری است.</p>
     </div>
     <h3 class="rv mt-14 text-xl md:text-2xl font-black">نظرخواهی داخلی</h3>
     <p class="rv mt-4 text-[15px] md:text-base leading-8 font-light text-mute max-w-3xl">لایه ارتباطی سامانه، گفت‌وگوی کاری را به خود پرونده گره می‌زند: ارسال پیام بین کاربران، درج پیام شخصی برای پرونده خاص، درج یادداشت شخصی و ارسال پاسخ به پیام.</p>
