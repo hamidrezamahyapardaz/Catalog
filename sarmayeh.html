@@ -112,10 +112,17 @@
   .economic-cycle .econ-node:hover circle{transform:scale(1.06);filter:drop-shadow(0 10px 14px rgba(15,61,62,.14))}
   .economic-cycle .econ-flow{stroke-dasharray:8 8;animation:econ-flow 16s linear infinite}
   @keyframes econ-flow{to{stroke-dashoffset:-96}}
-  .comm-node{cursor:pointer;transform-box:fill-box;transform-origin:center;transition:transform .24s cubic-bezier(.23,1,.32,1),filter .24s ease}
-  .comm-node:hover,.comm-node:focus,.comm-node.active{transform:scale(1.14);filter:drop-shadow(0 8px 12px rgba(15,61,62,.2));outline:none}
-  .comm-node.active circle{stroke:#C9A961;stroke-width:3}
-  .comm-node.active + .comm-node{opacity:.9}
+  .comm-node{cursor:pointer;transform-box:fill-box;transform-origin:center;outline:none}
+  .comm-node circle{transform-box:fill-box;transform-origin:center;transition:transform .2s cubic-bezier(.23,1,.32,1),filter .2s ease,stroke-width .2s ease}
+  .comm-node:hover circle,.comm-node:focus circle,.comm-node.active circle{transform:scale(1.08);filter:drop-shadow(0 7px 10px rgba(15,61,62,.18));stroke:#C9A961;stroke-width:3}
+  .comm-info{min-height:48px;display:flex;align-items:center;justify-content:center;transition:opacity .16s ease,transform .16s cubic-bezier(.23,1,.32,1)}
+  .comm-info.is-changing{opacity:.3;transform:translateY(2px)}
+  .hse-checklist li{align-items:center}
+  .hse-check{width:18px;height:18px;display:inline-grid;place-items:center;flex:0 0 18px;border:1.5px solid rgba(247,244,238,.48);border-radius:4px;color:var(--gold);font-weight:800;line-height:1}
+  .hse-check::after{content:'✓';opacity:0;transform:scale(.7);transition:opacity .18s ease,transform .22s cubic-bezier(.23,1,.32,1)}
+  .hse-card.is-checked .hse-check::after{opacity:1;transform:scale(1)}
+  .hse-card.is-checked .hse-checklist li:nth-child(2) .hse-check::after{transition-delay:.08s}.hse-card.is-checked .hse-checklist li:nth-child(3) .hse-check::after{transition-delay:.16s}.hse-card.is-checked .hse-checklist li:nth-child(4) .hse-check::after{transition-delay:.24s}.hse-card.is-checked .hse-checklist li:nth-child(5) .hse-check::after{transition-delay:.32s}
+  @media (prefers-reduced-motion:reduce){.comm-node circle,.comm-info,.hse-check::after{transition:none}}
   /* Interactive Map */
   .layer-toggle{
     cursor:pointer;transition:all .3s;
@@ -920,19 +927,18 @@
         <div class="bg-[color:var(--ink)] text-[color:var(--paper)] p-8 rounded">
           <div class="text-xs text-[color:var(--gold)] mb-3 tracking-wider">شناسنامه سرمایه‌گذار</div>
           <div class="space-y-4">
-            <div><div class="text-xs opacity-60 mb-1">نام شرکت</div><div class="text-lg font-semibold">شرکت توسعه صنعتی آریا</div></div>
-            <div><div class="text-xs opacity-60 mb-1">شناسه ثبتی</div><div class="num-fa">۱۲۳۴۵۶۷۸۹</div></div>
+            <div><div class="text-xs opacity-60 mb-1">نام شرکت</div><div class="text-lg font-semibold">شرکت مهندسی محیا پرداز</div></div>
+            <div><div class="text-xs opacity-60 mb-1">حوزه فعالیت</div><div>سامانه‌های سازمانی و مدیریت شهری</div></div>
             <div class="grid grid-cols-2 gap-4 pt-3 border-t border-white/10">
-              <div><div class="text-xs opacity-60 mb-1">درصد شراکت</div><div class="text-2xl font-bold text-[color:var(--gold)]">۶۰٪</div></div>
-              <div><div class="text-xs opacity-60 mb-1">مدیرعامل</div><div>—</div></div>
+              <div><div class="text-xs opacity-60 mb-1">نقش در پروژه</div><div class="text-[color:var(--gold)] font-semibold">توسعه و استقرار سامانه</div></div>
+              <div><div class="text-xs opacity-60 mb-1">وب‌سایت</div><div dir="ltr" class="text-left">mahyapardaz.com</div></div>
             </div>
             <div class="grid grid-cols-2 gap-4 pt-3 border-t border-white/10">
-              <div><div class="text-xs opacity-60 mb-1">شروع مشارکت</div><div class="num-fa">—</div></div>
-              <div><div class="text-xs opacity-60 mb-1">پایان مشارکت</div><div class="num-fa">—</div></div>
+              <div><div class="text-xs opacity-60 mb-1">خدمات</div><div>تحلیل، طراحی و پیاده‌سازی</div></div>
+              <div><div class="text-xs opacity-60 mb-1">وضعیت همکاری</div><div class="text-[color:var(--gold)]">ارائه‌دهنده راهکار</div></div>
             </div>
           </div>
         </div>
-        <p class="text-xs text-[color:var(--muted)] mt-3 text-center">طراحی و پیاده‌سازی کاتالوگ توسط شرکت مهندسی محیا پرداز · mahyapardaz.com</p>
       </div>
     </div>
   </div>
@@ -1229,32 +1235,32 @@
       <svg id="commissionTimeline" viewBox="0 0 800 280" class="w-full" aria-label="خط زمانی جلسات کمیسیون">
         <line x1="60" y1="140" x2="740" y2="140" stroke="#0F3D3E" stroke-width="1" stroke-dasharray="3 3"/>
         <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="اولین بررسی کارشناسی طرح">
-          <circle cx="100" cy="140" r="16" fill="#C9A961" class="cursor-pointer hover:scale-110 transition"/>
+          <circle cx="100" cy="140" r="16" fill="#C9A961"/>
           <text x="100" y="145" text-anchor="middle" fill="#0F3D3E" font-size="11" font-weight="700">۱</text>
           <text x="100" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">معرفی</text>
         </g>
         <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="ارائه مطالعات اقتصادی و بررسی IRR">
-          <circle cx="260" cy="140" r="16" fill="#0F3D3E" class="cursor-pointer hover:scale-110 transition"/>
+          <circle cx="260" cy="140" r="16" fill="#0F3D3E"/>
           <text x="260" y="145" text-anchor="middle" fill="#F7F4EE" font-size="11" font-weight="700">۲</text>
           <text x="260" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">اقتصادی</text>
         </g>
         <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="بررسی نیازمندی مکان و جانمایی روی نقشه">
-          <circle cx="420" cy="140" r="16" fill="#0F3D3E" class="cursor-pointer hover:scale-110 transition"/>
+          <circle cx="420" cy="140" r="16" fill="#0F3D3E"/>
           <text x="420" y="145" text-anchor="middle" fill="#F7F4EE" font-size="11" font-weight="700">۳</text>
           <text x="420" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">جانمایی</text>
         </g>
         <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="پاسخ استعلامات بین‌سازمانی و HSE">
-          <circle cx="580" cy="140" r="16" fill="#8B2E2E" class="cursor-pointer hover:scale-110 transition"/>
+          <circle cx="580" cy="140" r="16" fill="#8B2E2E"/>
           <text x="580" y="145" text-anchor="middle" fill="#F7F4EE" font-size="11" font-weight="700">۴</text>
           <text x="580" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">استعلام</text>
         </g>
         <g font-family="Vazirmatn" class="comm-node" role="button" tabindex="0" aria-pressed="false" data-info="رای‌گیری نهایی و صدور صورتجلسه">
-          <circle cx="740" cy="140" r="20" fill="#C9A961" class="cursor-pointer hover:scale-110 transition"/>
+          <circle cx="740" cy="140" r="20" fill="#C9A961"/>
           <text x="740" y="145" text-anchor="middle" fill="#0F3D3E" font-size="12" font-weight="700">✓</text>
           <text x="740" y="180" text-anchor="middle" fill="#6B6B6B" font-size="10">تصویب</text>
         </g>
         <foreignObject x="60" y="200" width="680" height="70">
-          <div xmlns="http://www.w3.org/1999/xhtml" id="commInfo" class="text-center text-sm text-[color:var(--ink)] p-3 bg-[color:var(--paper-deep)] rounded border border-[color:var(--line)]" style="font-family:Vazirmatn" aria-live="polite">
+          <div xmlns="http://www.w3.org/1999/xhtml" id="commInfo" class="comm-info text-center text-sm text-[color:var(--ink)] p-3 bg-[color:var(--paper-deep)] rounded border border-[color:var(--line)]" style="font-family:Vazirmatn" aria-live="polite">
             یک مرحله را برای مشاهدهٔ تصمیم و مستندات مرتبط انتخاب کنید.
           </div>
         </foreignObject>
@@ -1368,14 +1374,14 @@
         <p class="md:col-span-2 text-[color:var(--stone)] leading-relaxed">
           ارزیابی HSE یکی از شروط لازم برای تصویب بسیاری از پروژه‌های سرمایه‌گذاری است. سامانه یک چک‌لیست استاندارد ایمنی، سلامت و محیط زیست در اختیار کارشناس قرار می‌دهد تا ارزیابی طرح بر اساس این معیارها به‌صورت ساختاریافته ثبت شود. نتیجه این ارزیابی به‌عنوان یکی از مستندات پرونده در کمیسیون اقتصادی ارائه می‌شود.
         </p>
-        <div class="bg-[color:var(--ink)] text-[color:var(--paper)] p-5 rounded">
+        <div id="hseChecklistCard" class="hse-card bg-[color:var(--ink)] text-[color:var(--paper)] p-5 rounded">
           <div class="text-xs text-[color:var(--gold)] mb-2">HSE Checklist</div>
-          <ul class="space-y-2 text-sm">
-            <li class="flex gap-2"><span>☐</span>ارزیابی ریسک ایمنی</li>
-            <li class="flex gap-2"><span>☐</span>اثرات سلامت عمومی</li>
-            <li class="flex gap-2"><span>☐</span>اثرات زیست‌محیطی</li>
-            <li class="flex gap-2"><span>☐</span>مدیریت پسماند</li>
-            <li class="flex gap-2"><span>☐</span>مصرف انرژی</li>
+          <ul class="hse-checklist space-y-2 text-sm">
+            <li class="flex gap-2"><span class="hse-check" aria-hidden="true"></span>ارزیابی ریسک ایمنی</li>
+            <li class="flex gap-2"><span class="hse-check" aria-hidden="true"></span>اثرات سلامت عمومی</li>
+            <li class="flex gap-2"><span class="hse-check" aria-hidden="true"></span>اثرات زیست‌محیطی</li>
+            <li class="flex gap-2"><span class="hse-check" aria-hidden="true"></span>مدیریت پسماند</li>
+            <li class="flex gap-2"><span class="hse-check" aria-hidden="true"></span>مصرف انرژی</li>
           </ul>
         </div>
       </div>
@@ -1442,7 +1448,7 @@
         <p class="text-lg text-[color:var(--paper-deep)] mb-6 max-w-2xl">
           این کاتالوگ، بخشی از مجموعه محصولات سازمانی محیا پرداز در حوزه سامانه‌های مدیریت شهری است. برای دریافت جزئیات فنی، دموی سامانه یا اطلاعات استقرار با ما در تماس باشید.
         </p>
-        <div class="flex flex-wrap items-center gap-6 text-sm">
+        <div class="flex flex-wrap items-center justify-start gap-6 text-sm" dir="ltr">
           <a href="https://mahyapardaz.com" target="_blank" rel="noopener" class="text-[color:var(--gold)] hover:underline">mahyapardaz.com ↗</a>
         </div>
       </div>
@@ -1494,6 +1500,31 @@
     });
   },{threshold:0.12});
   document.querySelectorAll('.reveal, .svg-draw').forEach(el=>revealObserver.observe(el));
+
+  // ============ HSE checklist ============
+  const hseChecklistCard = document.getElementById('hseChecklistCard');
+  if(hseChecklistCard){
+    let hseActivated = false;
+    const activateHseChecklist = () => {
+      if(hseActivated) return;
+      const rect = hseChecklistCard.getBoundingClientRect();
+      if(rect.top < window.innerHeight * .82 && rect.bottom > window.innerHeight * .18){
+        hseActivated = true;
+        hseChecklistCard.classList.add('is-checked');
+        window.removeEventListener('scroll', activateHseChecklist);
+        window.removeEventListener('resize', activateHseChecklist);
+      }
+    };
+    const hseObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) activateHseChecklist();
+      });
+    }, {threshold:0.45});
+    hseObserver.observe(hseChecklistCard);
+    window.addEventListener('scroll', activateHseChecklist, {passive:true});
+    window.addEventListener('resize', activateHseChecklist);
+    window.requestAnimationFrame(activateHseChecklist);
+  }
 
   // ============ Progress & current chapter ============
   const chapters = document.querySelectorAll('.chapter');
@@ -1564,15 +1595,22 @@
   // ============ Commission timeline click ============
   const commInfo = document.getElementById('commInfo');
   const commNodes = Array.from(document.querySelectorAll('.comm-node'));
+  let commissionUpdate = 0;
   function activateCommission(node){
+    const request = ++commissionUpdate;
     const info = node.dataset.info;
     if (!commInfo || !info) return;
     commNodes.forEach(item => { item.classList.remove('active'); item.setAttribute('aria-pressed','false'); });
     node.classList.add('active');
     node.setAttribute('aria-pressed','true');
-    commInfo.textContent = info;
-    commInfo.style.background = '#F7F4EE';
-    commInfo.style.color = '#0F3D3E';
+    commInfo.classList.add('is-changing');
+    window.setTimeout(() => {
+      if (request !== commissionUpdate) return;
+      commInfo.textContent = info;
+      commInfo.style.background = '#F7F4EE';
+      commInfo.style.color = '#0F3D3E';
+      commInfo.classList.remove('is-changing');
+    }, 120);
   }
   commNodes.forEach(node => {
     node.addEventListener('click', () => activateCommission(node));

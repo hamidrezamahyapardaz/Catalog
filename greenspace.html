@@ -140,6 +140,13 @@ section{scroll-margin-top:2rem}
 .layerbtn.on{background:#16342A;color:#F6F2E6;border-color:#16342A}
 .bmtab{cursor:pointer;border:1px solid #DFE4D2;background:#FBF8EF;color:#40513F;border-radius:.7rem;padding:.5rem .9rem;font-size:13px;font-weight:700;transition:all .25s}
 .bmtab.on{background:#4C7A3F;color:#fff;border-color:#4C7A3F}
+.bm-stage{position:relative;overflow:hidden;border-radius:.5rem;background:#EEF2E8}
+.bm-stage img{transition:opacity .22s cubic-bezier(.23,1,.32,1),transform .22s cubic-bezier(.23,1,.32,1)}
+.bm-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:.55rem;background:rgba(22,52,42,.66);color:#fff;font-size:.78rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:2}
+.bm-stage.is-loading .bm-loader{opacity:1}
+.bm-stage.is-loading img{opacity:.25;transform:scale(1.025)}
+.bm-spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%}
+@media (prefers-reduced-motion:no-preference){.bm-stage.is-loading .bm-spinner{animation:bm-spin .8s linear infinite}@keyframes bm-spin{to{transform:rotate(360deg)}}}
 /* vine */
 #vine{position:fixed;left:.55rem;top:0;bottom:0;width:3px;z-index:60;pointer-events:none}
 @media(min-width:768px){#vine{left:1.1rem}}
@@ -355,8 +362,8 @@ section{scroll-margin-top:2rem}
         <g id="ly-park">
           <path d="M30 20 Q120 5 130 60 Q135 105 70 108 Q15 100 30 20Z" fill="#7FA65A" opacity=".55"/>
           <path d="M360 270 Q450 255 480 300 Q490 345 400 348 Q340 340 360 270Z" fill="#7FA65A" opacity=".55"/>
-          <text x="62" y="66" font-size="11" fill="#16342A" font-weight="700">بوستان ولیعصر</text>
-          <text x="385" y="312" font-size="11" fill="#16342A" font-weight="700">پارک نرگس</text>
+          <text x="110" y="66" font-size="11" fill="#16342A" font-weight="700">بوستان ولیعصر</text>
+          <text x="430" y="312" font-size="11" fill="#16342A" font-weight="700">پارک نرگس</text>
         </g>
         <g id="ly-strip">
           <path d="M150 128 H320" stroke="#4C7A3F" stroke-width="7" stroke-linecap="round" opacity=".8"/>
@@ -415,11 +422,12 @@ section{scroll-margin-top:2rem}
         </button>
     </div>
 
-    <div class="kb h-56 md:h-80">
+    <div id="bmStage" class="bm-stage h-56 md:h-80">
         <img id="bmImg"
              src="https://vectormap.net/wp-content/uploads/2018/08/tehran_iran_map_vector_farci_eng_gvl13_b_ai_10_ai_pdf_2.jpg"
              alt="نقشه پایه"
-             class="w-full h-full object-cover rounded-lg transition-all duration-300">
+             class="w-full h-full object-cover">
+        <div id="bmLoader" class="bm-loader" role="status" aria-live="polite" aria-hidden="true"><span class="bm-spinner" aria-hidden="true"></span><span>در حال بارگذاری نقشه…</span></div>
     </div>
 
     <p id="bmCap" class="text-xs text-forest/60 mt-3 text-center">
@@ -1528,12 +1536,37 @@ lbtns.forEach(b => b.onclick = () => {
 });
 
 /* نقشه‌های پایه */
-document.querySelectorAll('.bmtab').forEach(b => b.onclick = () => {
-  document.querySelectorAll('.bmtab').forEach(x => x.classList.remove('on'));
-  b.classList.add('on');
-  document.getElementById('bmImg').src = 'https://picsum.photos/seed/' + b.dataset.seed + '/1400/600';
-  document.getElementById('bmCap').textContent = b.dataset.cap;
-});
+const baseMapTabs = Array.from(document.querySelectorAll('.bmtab'));
+const baseMapImage = document.getElementById('bmImg');
+const baseMapCaption = document.getElementById('bmCap');
+const baseMapStage = document.getElementById('bmStage');
+const baseMapLoader = document.getElementById('bmLoader');
+let baseMapRequest = 0;
+function selectBaseMap(tab){
+  const request = ++baseMapRequest;
+  const startedAt = performance.now();
+  const nextSource = tab.dataset.img;
+  let settled = false;
+  baseMapTabs.forEach(item => item.classList.toggle('on', item === tab));
+  baseMapStage.classList.add('is-loading');
+  baseMapLoader.setAttribute('aria-hidden','false');
+  const finish = () => {
+    if (settled || request !== baseMapRequest) return;
+    settled = true;
+    window.setTimeout(() => {
+      if (request !== baseMapRequest) return;
+      baseMapImage.alt = tab.dataset.cap;
+      baseMapCaption.textContent = tab.dataset.cap;
+      baseMapStage.classList.remove('is-loading');
+      baseMapLoader.setAttribute('aria-hidden','true');
+    }, Math.max(0, 420 - (performance.now() - startedAt)));
+  };
+  baseMapImage.addEventListener('load', finish, {once:true});
+  baseMapImage.addEventListener('error', finish, {once:true});
+  baseMapImage.src = nextSource;
+  window.setTimeout(finish, 900);
+}
+baseMapTabs.forEach(tab => tab.addEventListener('click', () => selectBaseMap(tab)));
 
 /* هایلایت ناوبری عملیات */
 const opNav = [...document.querySelectorAll('.opnav a')];
@@ -1543,25 +1576,6 @@ const opObs = new IntersectionObserver(es => es.forEach(e => {
 }), { rootMargin: '-35% 0px -55% 0px' });
 document.querySelectorAll('[id^="op-"]').forEach(el => opObs.observe(el));
 
-const tabs = document.querySelectorAll(".bmtab");
-const img = document.getElementById("bmImg");
-const cap = document.getElementById("bmCap");
-
-tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-
-        // فعال کردن دکمه
-        tabs.forEach(t => t.classList.remove("on"));
-        tab.classList.add("on");
-
-        // تغییر عکس
-        img.src = tab.dataset.img;
-        img.alt = tab.dataset.cap;
-
-        // تغییر کپشن
-        cap.textContent = tab.dataset.cap;
-    });
-});
 </script>
 </body>
 </html>
