@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" font-family="Vazirmatn, Tahoma, sans-serif">
+  <rect width="400" height="250" rx="12" fill="#ECFDF5"/>
+  <circle cx="40" cy="220" r="55" fill="#059669" opacity=".08"/>
+  <g transform="translate(24,24)">
+    <rect x="0" y="0" width="352" height="170" rx="10" fill="#ffffff" stroke="#A7F3D0" stroke-width="2"/>
+    <rect x="16" y="18" width="140" height="14" rx="7" fill="#6EE7B7"/>
+    <!-- checklist -->
+    <circle cx="28" cy="58" r="9" fill="#059669"/>
+    <path d="M24 58 L27 61 L33 54" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="46" y="53" width="180" height="10" rx="5" fill="#CBD5E1"/>
+    <circle cx="28" cy="88" r="9" fill="#059669"/>
+    <path d="M24 88 L27 91 L33 84" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="46" y="83" width="150" height="10" rx="5" fill="#CBD5E1"/>
+    <circle cx="28" cy="118" r="9" fill="#F59E0B"/>
+    <rect x="46" y="113" width="165" height="10" rx="5" fill="#CBD5E1"/>
+    <circle cx="28" cy="148" r="9" fill="#E2E8F0"/>
+    <rect x="46" y="143" width="130" height="10" rx="5" fill="#E2E8F0"/>
+    <!-- inquiry chip -->
+    <g transform="translate(300,60)">
+      <circle r="26" fill="#D1FAE5" stroke="#059669" stroke-width="3"/>
+      <path d="M-8 0 L-3 -10 L4 8 L10 -4" stroke="#059669" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <rect x="252" y="120" width="76" height="22" rx="11" fill="#059669" opacity=".9"/>
+  </g>
+  <text x="200" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#065F46">پنل بررسی کارشناس</text>
+</svg>

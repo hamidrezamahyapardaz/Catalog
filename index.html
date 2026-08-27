@@ -64,10 +64,12 @@
           { "@type": "ListItem", "position": 2, "name": "سامانه جامع مدیریت حفاری‌های شهری", "url": "https://mahyapardaz.com/catalogs/haffari.html" },
           { "@type": "ListItem", "position": 3, "name": "سامانه زیرساخت اطلاعات مکانی SDI", "url": "https://mahyapardaz.com/catalogs/sdi.html" },
           { "@type": "ListItem", "position": 4, "name": "سامانه جامع مدیریت املاک و مستغلات", "url": "https://mahyapardaz.com/catalogs/amlak.html" },
-          { "@type": "ListItem", "position": 5, "name": "سامانه شهرنگار PRO", "url": "https://mahyapardaz.com/catalogs/shahrvandyar.html" },
-          { "@type": "ListItem", "position": 6, "name": "سامانه مدیریت وظایف و پروژه", "url": "https://mahyapardaz.com/catalogs/saaa.html" },
-          { "@type": "ListItem", "position": 7, "name": "سامانه اصناف و بازرگانی", "url": "https://mahyapardaz.com/catalogs/asnaf.html" },
-          { "@type": "ListItem", "position": 8, "name": "سامانه سرمایه‌گذاری", "url": "https://mahyapardaz.com/catalogs/sarmayeh.html" }
+          { "@type": "ListItem", "position": 5, "name": "سامانه مدیریت وظایف و پروژه", "url": "https://mahyapardaz.com/catalogs/saaa.html" },
+          { "@type": "ListItem", "position": 6, "name": "سامانه اصناف و بازرگانی", "url": "https://mahyapardaz.com/catalogs/asnaf.html" },
+          { "@type": "ListItem", "position": 7, "name": "سامانه سرمایه‌گذاری", "url": "https://mahyapardaz.com/catalogs/sarmayeh.html" },
+          { "@type": "ListItem", "position": 8, "name": "سامانه مدیریت هوشمند فضای سبز", "url": "https://mahyapardaz.com/catalogs/greenspace.html" },
+          { "@type": "ListItem", "position": 9, "name": "درگاه ویژه مدیریت اصناف", "url": "https://mahyapardaz.com/catalogs/asnaf-portal.html" },
+          { "@type": "ListItem", "position": 10, "name": "درگاه یکپارچه امور سرمایه‌گذاری", "url": "https://mahyapardaz.com/catalogs/sarmayeh-portal.html" }
         ]
       }
     }
@@ -749,6 +751,44 @@
                     </a>
                 </article>
 
+                <article class="catalog-card" data-category="urban enterprise">
+                    <a href="asnaf-portal.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
+                        <div class="card-artwork-wrapper">
+                            <img 
+                                src="images/asnaf-portal.jpeg" 
+                                alt="درگاه ویژه مدیریت اصناف"
+                                width="600" height="375"
+                                loading="lazy" decoding="async" class="card-artwork"
+                            >
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">مدیریت شهری</span>
+                            <h3 class="card-title">درگاه ویژه مدیریت اصناف</h3>
+                            <p class="card-desc">صدور، تمدید و مدیریت مجوزهای کسب و پیشه و بهره‌برداری با اتصال به درگاه ملی مجوزها، کارتابل هوشمند و گواهینامه افتا.</p>
+                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="catalog-card" data-category="enterprise">
+                    <a href="sarmayeh-portal.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
+                        <div class="card-artwork-wrapper">
+                            <img 
+                                src="images/sarmayeh-portal.jpeg" 
+                                alt="درگاه یکپارچه امور سرمایه‌گذاری"
+                                width="600" height="375"
+                                loading="lazy" decoding="async" class="card-artwork"
+                            >
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">مدیریت سازمانی</span>
+                            <h3 class="card-title">درگاه یکپارچه امور سرمایه‌گذاری</h3>
+                            <p class="card-desc">مدیریت متمرکز درخواست‌ها، استعلامات هوشمند و ردیابی لحظه‌ای فرآیندهای سرمایه‌گذاری شهری در یک کارتابل واحد.</p>
+                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        </div>
+                    </a>
+                </article>
+
             </section>
 
             <section class="final-cta">
@@ -801,7 +841,54 @@
     </footer>
 
     <script>
+        /* Fallback تصویری اختصاصی برای هر کاتالوگ:
+           اگر تصویر کارت لود نشود، یک SVG هم‌تم با همان محصول ساخته می‌شود
+           تا جای خالی یا آیکون شکسته دیده نشود. */
+        const CATALOG_FALLBACKS = {
+            'haffari':         { title: 'سامانه جامع حفاری',            c1: '#92400E', c2: '#F59E0B' },
+            'sdi':             { title: 'زیرساخت اطلاعات مکانی SDI',    c1: '#0F172A', c2: '#0D9488' },
+            'amlak':           { title: 'مدیریت املاک و مستغلات',       c1: '#065F46', c2: '#D97706' },
+            'shahrnager':      { title: 'سامانه شهرنگار PRO',           c1: '#0C4A6E', c2: '#0EA5E9' },
+            'saaa':            { title: 'مدیریت وظایف و پروژه',         c1: '#1E3A8A', c2: '#6366F1' },
+            'asnaf':           { title: 'اصناف و بازرگانی',             c1: '#134E4A', c2: '#14B8A6' },
+            'sarmayeh':        { title: 'سامانه سرمایه‌گذاری',          c1: '#0A355C', c2: '#059669' },
+            'greenspace-c':    { title: 'فضای سبز هوشمند',              c1: '#14532D', c2: '#22C55E' },
+            'asnaf-portal':    { title: 'درگاه ویژه مدیریت اصناف',      c1: '#1E3A8A', c2: '#0D9488' },
+            'sarmayeh-portal': { title: 'درگاه امور سرمایه‌گذاری',      c1: '#0A355C', c2: '#059669' }
+        };
+
+        function buildFallbackSVG(key) {
+            const cfg = CATALOG_FALLBACKS[key] || { title: 'کاتالوگ محیا پرداز', c1: '#0F172A', c2: '#0D9488' };
+            const svg =
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375" font-family="Vazirmatn, Tahoma, sans-serif">' +
+                '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+                '<stop offset="0" stop-color="' + cfg.c1 + '"/><stop offset="1" stop-color="' + cfg.c2 + '"/>' +
+                '</linearGradient></defs>' +
+                '<rect width="600" height="375" fill="url(#g)"/>' +
+                '<circle cx="520" cy="60" r="95" fill="#ffffff" opacity=".08"/>' +
+                '<circle cx="70" cy="330" r="80" fill="#ffffff" opacity=".07"/>' +
+                '<rect x="230" y="92" width="140" height="100" rx="14" fill="#ffffff" opacity=".16"/>' +
+                '<rect x="248" y="76" width="104" height="26" rx="8" fill="#ffffff" opacity=".35"/>' +
+                '<path d="M258 168 L278 148 L296 158 L318 136 L344 128" stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>' +
+                '<text x="300" y="268" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff">' + cfg.title + '</text>' +
+                '<text x="300" y="300" text-anchor="middle" font-size="15" fill="#ffffff" opacity=".75">کاتالوگ دیجیتال محیا پرداز</text>' +
+                '</svg>';
+            return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+        }
+
+        function applyFallback(img) {
+            if (img.dataset.fbDone) return;
+            img.dataset.fbDone = '1';
+            const key = (img.getAttribute('src') || '').split('/').pop().split('.')[0];
+            img.src = buildFallbackSVG(key);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.card-artwork, .featured-artwork img').forEach(img => {
+                img.addEventListener('error', () => applyFallback(img));
+                if (img.complete && img.naturalWidth === 0) applyFallback(img);
+            });
+
             const filterBtns = document.querySelectorAll('.filter-btn');
             const catalogCards = document.querySelectorAll('.catalog-card');
 

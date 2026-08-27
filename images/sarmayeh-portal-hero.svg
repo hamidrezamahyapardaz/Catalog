@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Vazirmatn, Tahoma, sans-serif">
+  <defs>
+    <linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFF6FF"/>
+      <stop offset="1" stop-color="#ECFDF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#hbg)"/>
+  <circle cx="720" cy="70" r="110" fill="#059669" opacity=".07"/>
+  <circle cx="70" cy="440" r="90" fill="#0F4C81" opacity=".07"/>
+
+  <!-- browser window -->
+  <g transform="translate(60,55)">
+    <rect x="0" y="0" width="680" height="400" rx="16" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+    <rect x="0" y="0" width="680" height="44" rx="16" fill="#F1F5F9"/>
+    <rect x="0" y="28" width="680" height="16" fill="#F1F5F9"/>
+    <circle cx="28" cy="22" r="7" fill="#EF4444"/>
+    <circle cx="52" cy="22" r="7" fill="#F59E0B"/>
+    <circle cx="76" cy="22" r="7" fill="#10B981"/>
+    <rect x="220" y="13" width="240" height="18" rx="9" fill="#E2E8F0"/>
+
+    <!-- sidebar -->
+    <rect x="14" y="58" width="150" height="328" rx="10" fill="#F8FAFC"/>
+    <rect x="30" y="80" width="118" height="12" rx="6" fill="#CBD5E1"/>
+    <rect x="30" y="108" width="118" height="26" rx="8" fill="#0F4C81" opacity=".9"/>
+    <rect x="30" y="146" width="118" height="26" rx="8" fill="#E2E8F0"/>
+    <rect x="30" y="184" width="118" height="26" rx="8" fill="#E2E8F0"/>
+    <rect x="30" y="222" width="118" height="26" rx="8" fill="#E2E8F0"/>
+    <rect x="30" y="260" width="118" height="26" rx="8" fill="#E2E8F0"/>
+
+    <!-- stat cards -->
+    <rect x="180" y="58" width="152" height="84" rx="10" fill="#EFF6FF"/>
+    <rect x="196" y="76" width="70" height="10" rx="5" fill="#94A3B8"/>
+    <rect x="196" y="98" width="100" height="20" rx="6" fill="#0F4C81"/>
+    <rect x="344" y="58" width="152" height="84" rx="10" fill="#ECFDF5"/>
+    <rect x="360" y="76" width="70" height="10" rx="5" fill="#94A3B8"/>
+    <rect x="360" y="98" width="100" height="20" rx="6" fill="#059669"/>
+    <rect x="508" y="58" width="152" height="84" rx="10" fill="#FEF3C7"/>
+    <rect x="524" y="76" width="70" height="10" rx="5" fill="#94A3B8"/>
+    <rect x="524" y="98" width="100" height="20" rx="6" fill="#D97706"/>
+
+    <!-- chart area -->
+    <rect x="180" y="158" width="300" height="228" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <polyline points="200,340 250,310 300,325 350,270 400,290 450,230" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="450" cy="230" r="9" fill="#059669"/>
+    <rect x="200" y="178" width="90" height="10" rx="5" fill="#CBD5E1"/>
+
+    <!-- timeline / cartable -->
+    <rect x="492" y="158" width="168" height="228" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <circle cx="520" cy="192" r="8" fill="#0F4C81"/>
+    <rect x="536" y="186" width="104" height="11" rx="5" fill="#CBD5E1"/>
+    <circle cx="520" cy="236" r="8" fill="#0F4C81"/>
+    <rect x="536" y="230" width="88" height="11" rx="5" fill="#CBD5E1"/>
+    <circle cx="520" cy="280" r="8" fill="#F59E0B"/>
+    <rect x="536" y="274" width="96" height="11" rx="5" fill="#CBD5E1"/>
+    <circle cx="520" cy="324" r="8" fill="#10B981"/>
+    <rect x="536" y="318" width="80" height="11" rx="5" fill="#CBD5E1"/>
+  </g>
+
+  <text x="400" y="482" text-anchor="middle" font-size="17" font-weight="700" fill="#334155">داشبورد درگاه یکپارچه امور سرمایه‌گذاری — تصویر محصول</text>
+</svg>

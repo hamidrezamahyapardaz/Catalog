@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" font-family="Vazirmatn, Tahoma, sans-serif">
+  <rect width="400" height="250" rx="12" fill="#F5F3FF"/>
+  <circle cx="365" cy="215" r="55" fill="#7C3AED" opacity=".08"/>
+  <g transform="translate(24,24)">
+    <rect x="0" y="0" width="352" height="170" rx="10" fill="#ffffff" stroke="#DDD6FE" stroke-width="2"/>
+    <rect x="16" y="18" width="130" height="14" rx="7" fill="#C4B5FD"/>
+    <!-- bars -->
+    <rect x="30" y="128" width="34" height="26" rx="4" fill="#C4B5FD"/>
+    <rect x="78" y="104" width="34" height="50" rx="4" fill="#A78BFA"/>
+    <rect x="126" y="80" width="34" height="74" rx="4" fill="#8B5CF6"/>
+    <rect x="174" y="92" width="34" height="62" rx="4" fill="#A78BFA"/>
+    <rect x="222" y="60" width="34" height="94" rx="4" fill="#7C3AED"/>
+    <path d="M40 118 L90 94 L138 70 L186 82 L234 50" stroke="#F59E0B" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- kpi ring -->
+    <g transform="translate(300,64)">
+      <circle r="28" fill="none" stroke="#EDE9FE" stroke-width="9"/>
+      <path d="M0 -28 A28 28 0 1 1 -26 10" fill="none" stroke="#7C3AED" stroke-width="9" stroke-linecap="round"/>
+      <text y="6" text-anchor="middle" font-size="14" font-weight="800" fill="#5B21B6">٪۷۸</text>
+    </g>
+    <rect x="258" y="120" width="86" height="10" rx="5" fill="#E2E8F0"/>
+  </g>
+  <text x="200" y="228" text-anchor="middle" font-size="15" font-weight="700" fill="#5B21B6">داشبورد مدیران ارشد</text>
+</svg>
