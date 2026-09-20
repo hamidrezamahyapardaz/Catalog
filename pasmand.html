@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه هوشمند مدیریت پسماند شهری | راهکار سازمانی محیا پرداز</title>
+    <meta name="description" content="راهکار جامع نرم‌افزاری مدیریت پسماند شهری با قابلیت ردیابی لحظه‌ای GIS، بهینه‌سازی مسیر، شفافیت مالی و افزایش مشارکت شهروندی. مورد تأیید افتا.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mahyapardaz.com/catalogs/pasmand.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="سامانه هوشمند مدیریت پسماند شهری | محیا پرداز">
+    <meta property="og:description" content="کاهش ۳۰ درصدی هزینه‌های عملیاتی و افزایش شفافیت در چرخه مدیریت پسماند شهری.">
+    <meta property="og:url" content="https://mahyapardaz.com/catalogs/pasmand.html">
+    <meta property="og:image" content="https://mahyapardaz.com/catalogs/images/pasmand.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Vazirmatn', 'sans-serif'] },
+                    colors: {
+                        primary: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b' },
+                        accent: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
+                        surface: '#f8fafc', ink: '#0f172a'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'scan': 'scan 3s linear infinite',
+                        'shimmer': 'shimmer 2.5s linear infinite',
+                        'gradient-x': 'gradientX 8s ease infinite',
+                        'blob': 'blob 7s infinite'
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        scan: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100%)' } },
+                        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+                        gradientX: { '0%, 100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
+                        blob: { '0%': { transform: 'translate(0px, 0px) scale(1)' }, '33%': { transform: 'translate(30px, -50px) scale(1.1)' }, '66%': { transform: 'translate(-20px, 20px) scale(0.9)' }, '100%': { transform: 'translate(0px, 0px) scale(1)' } }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #059669, #0369a1); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #047857, #075985); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal.delay-100 { transition-delay: 0.1s; }
+        .reveal.delay-200 { transition-delay: 0.2s; }
+        .reveal.delay-300 { transition-delay: 0.3s; }
+        *:focus-visible { outline: 2px solid #059669; outline-offset: 2px; }
+
+        /* SVG Specific Animations */
+        .svg-path-anim { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s linear forwards; }
+        @keyframes dash { to { stroke-dashoffset: 0; } }
+
+        /* Animated Gradient Text */
+        .gradient-text-animated {
+            background: linear-gradient(90deg, #059669, #0284c7, #059669);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientX 6s linear infinite;
+        }
+
+        /* Shimmer Effect for Stats */
+        .shimmer-bg {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        /* Card Glow on Hover */
+        .card-glow { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-glow:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.25); }
+
+        /* Animated Background Blobs */
+        .blob { border-radius: 50%; filter: blur(60px); position: absolute; animation: blob 12s infinite; }
+
+        /* Glassmorphism */
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+        /* Number Counter Style */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* Mobile menu transition */
+        .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        .mobile-menu.open { max-height: 300px; }
+
+        /* Underline animation for nav links */
+        .nav-underline { position: relative; }
+        .nav-underline::after { content: ''; position: absolute; bottom: -4px; right: 0; width: 0; height: 2px; background: #059669; transition: width 0.3s ease; }
+        .nav-underline:hover::after { width: 100%; }
+
+        /* Architecture Tabs */
+        .arch-tab { transition: all 0.3s ease; }
+        .arch-content { animation: fadeInUp 0.5s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-surface text-ink font-sans antialiased selection:bg-primary-100 selection:text-primary-900">
+
+    <!-- Scroll Progress -->
+    <div class="fixed top-0 left-0 h-1 bg-gradient-to-l from-primary-600 to-accent-600 z-[60] transition-all duration-150" id="scrollProgress" style="width: 0%"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-lg border-b border-slate-200 z-50 transition-all duration-300" id="mainHeader">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo only -->
+                <a href="#hero" class="flex items-center gap-2.5">
+                    <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگو محیا پرداز" class="h-9 w-auto object-contain" loading="eager" onerror="this.style.display='none'">
+                    <span class="text-base font-bold text-ink hidden sm:block">محیا پرداز</span>
+                </a>
+
+                <!-- Desktop Nav (compact) -->
+                <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+                    <a href="#business-value" class="nav-underline text-slate-600 hover:text-primary-600 transition-colors">ارزش‌ها</a>
+                    <a href="#ecosystem" class="nav-underline text-slate-600 hover:text-primary-600 transition-colors">ماژول‌ها</a>
+                    <a href="#architecture" class="nav-underline text-slate-600 hover:text-primary-600 transition-colors">نقشه راه</a>
+                    <a href="#security" class="nav-underline text-slate-600 hover:text-primary-600 transition-colors">امنیت</a>
+                </nav>
+
+                <!-- Right side actions -->
+                <div class="flex items-center gap-2">
+                    <a href="https://catalog.mahyapardaz.com/" class="hidden md:flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-primary-600 transition-colors px-3 py-2 rounded-lg hover:bg-slate-50">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                        <span>کاتالوگ‌ها</span>
+                    </a>
+                    <a href="tel:03591008081" class="flex items-center gap-1.5 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-md shadow-primary-600/20 hover:-translate-y-0.5">
+                        <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                        <span class="hidden sm:inline" dir="ltr">۰۳۵-۹۱۰۰۸۰۸۱</span>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="منو">
+                        <i data-lucide="menu" class="w-5 h-5 text-ink"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu lg:hidden">
+                <nav class="flex flex-col gap-1 pb-4 pt-2">
+                    <a href="#business-value" class="mobile-link px-4 py-2.5 rounded-lg text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors text-sm font-medium">ارزش‌های کسب‌وکار</a>
+                    <a href="#ecosystem" class="mobile-link px-4 py-2.5 rounded-lg text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors text-sm font-medium">معماری ماژولار</a>
+                    <a href="#architecture" class="mobile-link px-4 py-2.5 rounded-lg text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors text-sm font-medium">نقشه راه سامانه</a>
+                    <a href="#security" class="mobile-link px-4 py-2.5 rounded-lg text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors text-sm font-medium">امنیت سازمانی</a>
+                    <a href="#contact" class="mobile-link px-4 py-2.5 rounded-lg text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition-colors text-sm font-medium">تماس با ما</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- Hero Section with Business Focus -->
+        <section class="relative overflow-hidden bg-gradient-to-b from-primary-50 via-surface to-surface pt-16 pb-24 lg:pt-24 lg:pb-32" id="hero">
+            <!-- Animated Background Blobs -->
+            <div class="blob bg-primary-300/30 w-72 h-72 -top-10 -right-10"></div>
+            <div class="blob bg-accent-300/30 w-96 h-96 top-40 -left-20" style="animation-delay: 3s;"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-right reveal active">
+                        <div class="inline-flex items-center gap-2 bg-white border border-primary-200 text-primary-700 px-3 py-1 rounded-full text-xs font-medium mb-5 shadow-sm">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-600"></span>
+                            </span>
+                            بهینه‌سازی هزینه‌های عملیاتی شهرداری‌ها
+                        </div>
+                        <h1 class="text-3xl lg:text-4xl xl:text-5xl font-black text-ink leading-tight mb-5">
+                            تبدیل پسماند شهری به <br>
+                            <span class="gradient-text-animated">ارزش اقتصادی پایدار</span>
+                        </h1>
+                        <p class="text-base text-slate-600 mb-7 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            سامانه یکپارچه محیا پرداز، حلقه گمشده میان شهروندان، پیمانکاران و مدیریت شهری را پر می‌کند. با شفافیت ۱۰۰٪ در تردد ناوگان، حذف واسطه‌های مالی و افزایش مشارکت عمومی، هزینه‌های مدیریت پسماند را تا <strong class="text-primary-700">۳۰٪</strong> کاهش دهید.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                            <a href="tel:03591008081" class="group inline-flex justify-center items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-bold text-sm transition-all duration-300 shadow-lg shadow-primary-600/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-600/40 whitespace-nowrap">
+                                <i data-lucide="headphones" class="w-4 h-4 group-hover:rotate-12 transition-transform flex-shrink-0"></i>
+                                <span>تماس جهت مشاوره و خرید</span>
+                            </a>
+                            <a href="#business-value" class="group inline-flex justify-center items-center gap-2 bg-white border border-slate-200 hover:border-primary-400 text-ink px-6 py-3 rounded-lg font-bold text-sm transition-all duration-300 hover:bg-primary-50 hover:shadow-lg whitespace-nowrap">
+                                <i data-lucide="bar-chart-2" class="w-4 h-4 text-primary-600 group-hover:scale-110 transition-transform flex-shrink-0"></i>
+                                <span>مشاهده ارزش‌های کسب‌وکار</span>
+                            </a>
+                        </div>
+
+                        <!-- Quick Stats Bar -->
+                        <div class="grid grid-cols-3 gap-4 mt-10 pt-6 border-t border-slate-200">
+                            <div class="text-center lg:text-right">
+                                <div class="text-2xl font-black text-primary-600 counter" data-target="30">۰</div>
+                                <div class="text-xs text-slate-500 mt-1">٪ کاهش هزینه</div>
+                            </div>
+                            <div class="text-center lg:text-right">
+                                <div class="text-2xl font-black text-accent-600 counter" data-target="100">۰</div>
+                                <div class="text-xs text-slate-500 mt-1">٪ شفافیت مالی</div>
+                            </div>
+                            <div class="text-center lg:text-right">
+                                <div class="text-2xl font-black text-primary-600 counter" data-target="45">۰</div>
+                                <div class="text-xs text-slate-500 mt-1">٪ مشارکت شهروندی</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANIMATED SVG 1: Live GIS Fleet Tracking -->
+                    <div class="relative reveal active delay-200">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-3xl opacity-20 blur-2xl animate-pulse-slow"></div>
+                        <div class="relative bg-slate-900 rounded-3xl shadow-2xl border border-slate-700 overflow-hidden p-4">
+                            <div class="absolute top-4 right-4 bg-slate-800/80 backdrop-blur px-3 py-1 rounded-full border border-slate-600 flex items-center gap-2 z-10">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                <span class="text-xs text-slate-300 font-mono" dir="ltr">LIVE GIS TRACKING</span>
+                            </div>
+                            <!-- SVG Map Animation -->
+                            <svg viewBox="0 0 400 250" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Grid -->
+                                <defs>
+                                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.5"/>
+                                    </pattern>
+                                    <radialGradient id="glow1">
+                                        <stop offset="0%" stop-color="#10b981" stop-opacity="0.8"/>
+                                        <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                                <rect width="400" height="250" fill="url(#grid)" />
+
+                                <!-- Roads -->
+                                <path d="M 50 125 Q 150 50 250 125 T 350 125" fill="none" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M 200 20 Q 200 125 200 230" fill="none" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+
+                                <!-- Moving Truck 1 (Normal Waste) -->
+                                <circle r="20" fill="url(#glow1)">
+                                    <animateMotion dur="6s" repeatCount="indefinite" path="M 50 125 Q 150 50 250 125 T 350 125" />
+                                </circle>
+                                <circle r="6" fill="#10b981">
+                                    <animateMotion dur="6s" repeatCount="indefinite" path="M 50 125 Q 150 50 250 125 T 350 125" />
+                                </circle>
+                                <circle r="12" fill="#10b981" opacity="0.3">
+                                    <animateMotion dur="6s" repeatCount="indefinite" path="M 50 125 Q 150 50 250 125 T 350 125" />
+                                    <animate attributeName="r" values="6;16;6" dur="2s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
+                                </circle>
+
+                                <!-- Moving Truck 2 (Dry Waste) -->
+                                <circle r="6" fill="#0284c7">
+                                    <animateMotion dur="8s" repeatCount="indefinite" path="M 200 230 Q 200 125 200 20" />
+                                </circle>
+
+                                <!-- Stations -->
+                                <circle cx="150" cy="85" r="4" fill="#f59e0b" />
+                                <circle cx="250" cy="125" r="4" fill="#f59e0b" />
+                                <circle cx="200" cy="180" r="4" fill="#f59e0b" />
+                            </svg>
+                            <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+                                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700 hover:border-primary-500 transition-colors">
+                                    <div class="text-xs text-slate-400 mb-1">ناوگان فعال</div>
+                                    <div class="text-xl font-bold text-white">۱۲ <span class="text-xs font-normal text-slate-400">دستگاه</span></div>
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700 hover:border-primary-500 transition-colors">
+                                    <div class="text-xs text-slate-400 mb-1">پسماند خشک امروز</div>
+                                    <div class="text-xl font-bold text-primary-400">۲.۴ <span class="text-xs font-normal text-slate-400">تن</span></div>
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700 hover:border-accent-500 transition-colors">
+                                    <div class="text-xs text-slate-400 mb-1">رانندگان آنلاین</div>
+                                    <div class="text-xl font-bold text-accent-400">۱۰ <span class="text-xs font-normal text-slate-400">نفر</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Value & ROI Section -->
+        <section id="business-value" class="py-20 lg:py-28 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <span class="inline-block text-primary-600 font-bold text-sm mb-3 tracking-wider">چرا محیا پرداز؟</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-ink mb-4">چرا این سامانه یک سرمایه‌گذاری است، نه هزینه؟</h2>
+                    <p class="text-lg text-slate-600">مدیریت پسماند سنتی با هدررفت منابع، عدم شفافیت مالی و نارضایتی شهروندی همراه است. راهکار محیا پرداز این چالش‌ها را به مزیت رقابتی تبدیل می‌کند.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Value 1 -->
+                    <div class="card-glow bg-surface p-8 rounded-2xl border border-slate-100 reveal group">
+                        <div class="w-14 h-14 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                            <i data-lucide="wallet" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-ink mb-3">کاهش ۳۰٪ هزینه‌های عملیاتی</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            بهینه‌سازی هوشمند مسیرها (Route Optimization) و حذف تردد‌های موازی خودروها، مصرف سوخت و استهلاک ناوگان شهرداری یا پیمانکار را به‌طور محسوسی کاهش می‌دهد.
+                        </p>
+                    </div>
+
+                    <!-- Value 2 -->
+                    <div class="card-glow bg-surface p-8 rounded-2xl border border-slate-100 reveal delay-100 group">
+                        <div class="w-14 h-14 bg-gradient-to-br from-accent-100 to-accent-200 rounded-xl flex items-center justify-center text-accent-600 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                            <i data-lucide="scale" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-ink mb-3">شفافیت ۱۰۰٪ مالی و حذف واسطه</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            ثبت وزن پسماند در لحظه توسط راننده و واریز مستقیم به کیف پول شهروند، هرگونه خطای انسانی، تبانی یا اختلاف حساب میان شهروند، شرکت پسماند و شهرداری را حذف می‌کند.
+                        </p>
+                    </div>
+
+                    <!-- Value 3 -->
+                    <div class="card-glow bg-surface p-8 rounded-2xl border border-slate-100 reveal delay-200 group">
+                        <div class="w-14 h-14 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                            <i data-lucide="users-round" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-ink mb-3">افزایش ۴۵٪ مشارکت شهروندی</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            تبدیل پسماند به «دارایی نقدشونده» برای شهروند (از طریق کیف پول و تهاتر)، انگیزه تفکیک از مبدأ را به‌شدت افزایش داده و حجم پسماند ورودی به مراکز دفن را کاهش می‌دهد.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pain Points vs Solution (Business Narrative) -->
+        <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"></div>
+            <!-- Decorative gradient orbs -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-accent-600/10 rounded-full blur-3xl"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal">
+                        <span class="inline-block text-primary-400 font-bold text-sm mb-3 tracking-wider">مقایسه‌ای روشن</span>
+                        <h2 class="text-3xl lg:text-4xl font-black mb-8">پایان دوران مدیریت پسماند کور و پرهزینه</h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-4 items-start group">
+                                <div class="bg-red-500/20 p-2 rounded-lg text-red-400 mt-1 group-hover:scale-110 transition-transform flex-shrink-0"><i data-lucide="x-circle" class="w-6 h-6"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-red-300">چالش سنتی: عدم اطلاع از موقعیت ناوگان</h4>
+                                    <p class="text-slate-400 text-sm mt-1">مدیران نمی‌دانند خودروها واقعاً کجا هستند، چه مدت در ایستگاه توقف کرده‌اند یا آیا مسیر تعیین‌شده را طی می‌کنند.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start group">
+                                <div class="bg-green-500/20 p-2 rounded-lg text-green-400 mt-1 group-hover:scale-110 transition-transform flex-shrink-0"><i data-lucide="check-circle-2" class="w-6 h-6"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-green-300">راهکار محیا پرداز: نظارت و کنترل یکپارچه</h4>
+                                    <p class="text-slate-300 text-sm mt-1">داشبورد مدیریتی با ردیابی GPS هر ۱۰ ثانیه، ثبت خودکار تخلفات (خروج از مسیر، توقف غیرمجاز) و گزارش‌دهی لحظه‌ای عملکرد رانندگان.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start group">
+                                <div class="bg-red-500/20 p-2 rounded-lg text-red-400 mt-1 group-hover:scale-110 transition-transform flex-shrink-0"><i data-lucide="x-circle" class="w-6 h-6"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-red-300">چالش سنتی: فرآیند تسویه حساب دستی و فرسایشی</h4>
+                                    <p class="text-slate-400 text-sm mt-1">محاسبه دستی وزن پسماند خشک، تأخیر در پرداخت به شهروندان و کاهش اعتماد عمومی به طرح‌های تفکیک.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start group">
+                                <div class="bg-green-500/20 p-2 rounded-lg text-green-400 mt-1 group-hover:scale-110 transition-transform flex-shrink-0"><i data-lucide="check-circle-2" class="w-6 h-6"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-green-300">راهکار محیا پرداز: چرخه ارزش خودکار و آنی</h4>
+                                    <p class="text-slate-300 text-sm mt-1">محاسبه خودکار بر اساس تعرفه تعریف‌شده، کسر از بودجه شرکت پیمانکار و واریز آنی به کیف پول دیجیتال شهروند در کمتر از ۵ ثانیه.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANIMATED SVG 2: Value Cycle Flow -->
+                    <div class="reveal delay-200 flex justify-center">
+                        <svg viewBox="0 0 400 320" class="w-full max-w-md" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer glow ring -->
+                            <circle cx="200" cy="160" r="120" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="3,6" opacity="0.5"/>
+
+                            <!-- Nodes -->
+                            <circle cx="200" cy="50" r="34" fill="#0f172a" stroke="#059669" stroke-width="3" />
+                            <text x="200" y="55" text-anchor="middle" fill="#10b981" font-size="12" font-family="Vazirmatn" font-weight="bold">شهروند</text>
+
+                            <circle cx="320" cy="220" r="34" fill="#0f172a" stroke="#0284c7" stroke-width="3" />
+                            <text x="320" y="225" text-anchor="middle" fill="#0284c7" font-size="12" font-family="Vazirmatn" font-weight="bold">راننده</text>
+
+                            <circle cx="80" cy="220" r="34" fill="#0f172a" stroke="#f59e0b" stroke-width="3" />
+                            <text x="80" y="225" text-anchor="middle" fill="#f59e0b" font-size="12" font-family="Vazirmatn" font-weight="bold">سامانه</text>
+
+                            <!-- Paths (curved, smooth) -->
+                            <path id="path1" d="M 230 70 Q 300 110 310 190" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" />
+                            <path id="path2" d="M 285 240 Q 200 290 115 240" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" />
+                            <path id="path3" d="M 95 190 Q 100 110 170 70" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" />
+
+                            <!-- Animated Data Packets with trails -->
+                            <circle r="8" fill="#10b981" opacity="0.2">
+                                <animateMotion dur="3s" repeatCount="indefinite" path="M 230 70 Q 300 110 310 190" />
+                            </circle>
+                            <circle r="6" fill="#10b981">
+                                <animateMotion dur="3s" repeatCount="indefinite" path="M 230 70 Q 300 110 310 190" />
+                            </circle>
+                            <circle r="8" fill="#0284c7" opacity="0.2">
+                                <animateMotion dur="3s" begin="1s" repeatCount="indefinite" path="M 285 240 Q 200 290 115 240" />
+                            </circle>
+                            <circle r="6" fill="#0284c7">
+                                <animateMotion dur="3s" begin="1s" repeatCount="indefinite" path="M 285 240 Q 200 290 115 240" />
+                            </circle>
+                            <circle r="8" fill="#f59e0b" opacity="0.2">
+                                <animateMotion dur="3s" begin="2s" repeatCount="indefinite" path="M 95 190 Q 100 110 170 70" />
+                            </circle>
+                            <circle r="6" fill="#f59e0b">
+                                <animateMotion dur="3s" begin="2s" repeatCount="indefinite" path="M 95 190 Q 100 110 170 70" />
+                            </circle>
+
+                            <!-- Labels on paths -->
+                            <text x="290" y="125" fill="#94a3b8" font-size="10" font-family="Vazirmatn">۱. ثبت درخواست</text>
+                            <text x="180" y="280" fill="#94a3b8" font-size="10" font-family="Vazirmatn">۲. جمع‌آوری و توزین</text>
+                            <rect x="42" y="128" width="105" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+                            <text x="50" y="141" fill="#e2e8f0" font-size="10" font-family="Vazirmatn">۳. واریز آنی وجه</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Deep Dive with Animated UI Mockups -->
+        <section id="ecosystem" class="py-20 lg:py-28 bg-surface relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <span class="inline-block text-primary-600 font-bold text-sm mb-3 tracking-wider">معماری ماژولار</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-ink mb-4">معماری ماژولار برای تمام ذینفعان</h2>
+                    <p class="text-lg text-slate-600">هر بخش از سامانه برای حل یک مشکل کسب‌وکاری خاص طراحی شده است.</p>
+                </div>
+
+                <div class="space-y-20">
+                    <!-- Citizen Module -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
+                        <div class="order-2 lg:order-1 flex justify-center">
+                            <!-- HTML Mobile Mockup (text guaranteed inside boxes) -->
+                            <div class="relative w-64 h-[400px] drop-shadow-2xl mx-auto">
+                                <!-- Glow effect behind phone -->
+                                <div class="absolute -inset-3 bg-gradient-to-br from-primary-400/30 to-accent-400/30 blur-2xl rounded-3xl"></div>
+                                
+                                <!-- Phone Body -->
+                                <div class="relative w-full h-full bg-gradient-to-b from-slate-50 to-slate-200 rounded-[32px] border-2 border-slate-200 shadow-2xl overflow-hidden">
+                                    <!-- Notch -->
+                                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-6 bg-slate-900 rounded-b-2xl z-10"></div>
+                                    
+                                    <!-- App UI: Header -->
+                                    <div class="absolute top-10 right-5 left-5 h-10 bg-gradient-to-l from-primary-600 to-primary-700 rounded-xl flex items-center justify-center shadow-md">
+                                        <span class="text-white font-bold text-sm">کیف پول پسماند</span>
+                                    </div>
+                                    
+                                    <!-- App UI: Balance Card -->
+                                    <div class="absolute top-24 right-5 left-5 h-20 bg-white border border-slate-200 rounded-xl p-3 flex flex-col justify-center shadow-sm">
+                                        <p class="text-[11px] text-slate-500">موجودی قابل برداشت</p>
+                                        <p class="text-2xl font-black text-ink mt-1 leading-none">۱۲۵,۰۰۰ <span class="text-xs font-normal text-slate-500">تومان</span></p>
+                                    </div>
+                                    
+                                    <!-- Animated Notification Popup -->
+                                    <div id="notifPopup" class="absolute top-44 right-3 left-3 bg-slate-900 rounded-xl p-3 flex items-center gap-3 opacity-0 transition-all duration-500" style="transform: translateY(60px);">
+                                        <div class="w-9 h-9 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-xs font-bold">واریز موفق</p>
+                                            <p class="text-slate-400 text-[10px] mt-0.5">۵ کیلوگرم مقوا اضافه شد</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- App UI: Bottom Nav -->
+                                    <div class="absolute bottom-0 right-0 left-0 h-10 bg-white border-t border-slate-200 flex items-center justify-around">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-primary-600"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2">
+                            <div class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 px-3 py-1.5 rounded-full text-xs font-bold mb-4 whitespace-nowrap">
+                                <i data-lucide="smartphone" class="w-4 h-4 flex-shrink-0"></i>
+                                <span>اپلیکیشن شهروند (PWA)</span>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-black text-ink mb-4">تبدیل شهروند از «تولیدکننده زباله» به «شریک تجاری»</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                با ارائه شفافیت کامل (مشاهده لحظه‌ای خودرو روی نقشه) و پاداش آنی (کیف پول دیجیتال)، موانع روانی مشارکت در تفکیک زباله از بین می‌رود. سیستم یادآوری هوشمند، نرخ جمع‌آوری را به‌صورت خودکار افزایش می‌دهد.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>
+                                    <span>اعلان هوشمند نزدیک شدن خودرو (تنظیم شعاع ۵۰۰ متر تا ۲ کیلومتر)</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>
+                                    <span>کیف پول چندمنظوره: برداشت ریالی، تهاتر با عوارض شهرداری یا کالای فروشگاه‌ها</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Module -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
+                        <div>
+                            <div class="inline-flex items-center gap-2 bg-accent-100 text-accent-700 px-3 py-1.5 rounded-full text-xs font-bold mb-4 whitespace-nowrap">
+                                <i data-lucide="bar-chart-3" class="w-4 h-4 flex-shrink-0"></i>
+                                <span>هوش تجاری و گزارش‌دهی (BI)</span>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-black text-ink mb-4">تصمیم‌گیری بر اساس داده، نه حدس و گمان</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                مدیران شهری نیاز دارند بدانند بودجه کجا هزینه می‌شود. ماژول گزارش‌دهی پیشرفته، الگوهای پنهان تولید پسماند را آشکار کرده و امکان ارزیابی دقیق عملکرد پیمانکاران را فراهم می‌کند.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-accent-500 flex-shrink-0"></i>
+                                    <span>نقشه حرارتی (Heatmap) تراکم درخواست‌ها برای بهینه‌سازی مسیرهای آینده</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-accent-500 flex-shrink-0"></i>
+                                    <span>رتبه‌بندی خودکار رانندگان و شرکت‌ها بر اساس شاخص‌های کلیدی عملکرد (KPI)</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-accent-500 flex-shrink-0"></i>
+                                    <span>خروجی‌گیری حرفه‌ای به فرمت‌های Excel و PDF برای ارائه به شوراهای شهری</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-center">
+                            <!-- ANIMATED SVG 4: Analytics Dashboard (FIXED: bars grow upward correctly) -->
+                            <svg viewBox="0 0 400 270" class="w-full max-w-lg drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Dashboard BG -->
+                                <rect x="10" y="10" width="380" height="250" rx="14" fill="#ffffff" stroke="#e2e8f0" />
+
+                                <!-- Header -->
+                                <rect x="30" y="28" width="140" height="18" rx="4" fill="#0f172a" />
+                                <text x="100" y="41" text-anchor="middle" fill="#ffffff" font-size="11" font-family="Vazirmatn" font-weight="bold">هوش تجاری و گزارش‌دهی</text>
+                                <rect x="290" y="28" width="80" height="20" rx="6" fill="#0284c7" />
+                                <text x="330" y="42" text-anchor="middle" fill="#ffffff" font-size="10" font-family="Vazirmatn">خروجی Excel</text>
+
+                                <!-- Chart Area -->
+                                <rect x="30" y="70" width="340" height="160" fill="#f8fafc" rx="8" />
+
+                                <!-- Grid lines -->
+                                <line x1="30" y1="110" x2="370" y2="110" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,3"/>
+                                <line x1="30" y1="150" x2="370" y2="150" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,3"/>
+
+                                <!-- Animated Bars (continuous grow/shrink animation, no freeze) -->
+                                <!-- Baseline at y=210. Bar grows from y=210 height=0 to y=(210-h) height=h, then back to 0 -->
+                                <rect x="50" y="210" width="30" height="0" fill="#059669" rx="4">
+                                    <animate attributeName="y" values="210;150;150;210" dur="3s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                    <animate attributeName="height" values="0;60;60;0" dur="3s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                </rect>
+                                <rect x="100" y="210" width="30" height="0" fill="#059669" rx="4">
+                                    <animate attributeName="y" values="210;110;110;210" dur="3s" begin="0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                    <animate attributeName="height" values="0;100;100;0" dur="3s" begin="0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                </rect>
+                                <rect x="150" y="210" width="30" height="0" fill="#059669" rx="4">
+                                    <animate attributeName="y" values="210;170;170;210" dur="3s" begin="0.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                    <animate attributeName="height" values="0;40;40;0" dur="3s" begin="0.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                </rect>
+                                <rect x="200" y="210" width="30" height="0" fill="#0284c7" rx="4">
+                                    <animate attributeName="y" values="210;90;90;210" dur="3s" begin="0.9s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                    <animate attributeName="height" values="0;120;120;0" dur="3s" begin="0.9s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                </rect>
+                                <rect x="250" y="210" width="30" height="0" fill="#0284c7" rx="4">
+                                    <animate attributeName="y" values="210;130;130;210" dur="3s" begin="1.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                    <animate attributeName="height" values="0;80;80;0" dur="3s" begin="1.1s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                </rect>
+                                <rect x="300" y="210" width="30" height="0" fill="#0284c7" rx="4">
+                                    <animate attributeName="y" values="210;70;70;210" dur="3s" begin="1.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                    <animate attributeName="height" values="0;140;140;0" dur="3s" begin="1.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1;0 0 0 0;0.25 0.1 0.25 1" keyTimes="0;0.4;0.7;1"/>
+                                </rect>
+
+                                <!-- Baseline -->
+                                <line x1="40" y1="210" x2="350" y2="210" stroke="#cbd5e1" stroke-width="2" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comprehensive System Architecture (Tabbed) -->
+        <section id="architecture" class="py-20 lg:py-28 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                    <span class="inline-block text-primary-600 font-bold text-sm mb-3 tracking-wider">معماری یکپارچه</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-ink mb-4">نقشه راه کامل سامانه مدیریت پسماند</h2>
+                    <p class="text-lg text-slate-600">شش زیرسامانه مستقل که به‌صورت یکپارچه، چرخه کامل مدیریت پسماند شهری را از لحظه تولید تا بازیافت پوشش می‌دهند.</p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="flex flex-wrap justify-center gap-2 mb-10 reveal" id="archTabs">
+                    <button data-tab="citizen" class="arch-tab active inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-primary-600 text-white shadow-lg shadow-primary-600/30">
+                        <i data-lucide="smartphone" class="w-4 h-4"></i> اپلیکیشن شهروند
+                    </button>
+                    <button data-tab="driver" class="arch-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        <i data-lucide="truck" class="w-4 h-4"></i> اپلیکیشن راننده
+                    </button>
+                    <button data-tab="company" class="arch-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        <i data-lucide="building-2" class="w-4 h-4"></i> سامانه شرکت پسماند
+                    </button>
+                    <button data-tab="dashboard" class="arch-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4"></i> داشبورد مدیریت
+                    </button>
+                    <button data-tab="reports" class="arch-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> گزارشات پیشرفته
+                    </button>
+                    <button data-tab="alerts" class="arch-tab inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        <i data-lucide="bell-ring" class="w-4 h-4"></i> اعلان‌رسانی و هشدار
+                    </button>
+                </div>
+
+                <!-- Tab Content Container -->
+                <div class="max-w-6xl mx-auto">
+
+                    <!-- TAB 1: Citizen App -->
+                    <div data-content="citizen" class="arch-content reveal active">
+                        <div class="grid lg:grid-cols-12 gap-8 mb-8">
+                            <div class="lg:col-span-4 bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl p-8 text-white relative overflow-hidden">
+                                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                                <i data-lucide="smartphone" class="w-10 h-10 mb-4 text-primary-100"></i>
+                                <h3 class="text-2xl font-black mb-3">اپلیکیشن شهروند (PWA)</h3>
+                                <p class="text-primary-100 text-sm leading-relaxed">تبدیل شهروند از مصرف‌کننده منفعل به شریک تجاری فعال در چرخه اقتصاد چرخشی پسماند.</p>
+                                <div class="mt-6 pt-6 border-t border-white/20">
+                                    <div class="text-3xl font-black">۷</div>
+                                    <div class="text-xs text-primary-100 mt-1">ماژول کارکردی</div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 bg-surface rounded-2xl p-8 border border-slate-100">
+                                <h4 class="font-bold text-ink mb-4 flex items-center gap-2"><i data-lucide="map-pin" class="w-5 h-5 text-primary-600"></i> صفحه اصلی و نقشه زنده</h4>
+                                <ul class="space-y-2.5 text-sm text-slate-600">
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>نمایش لحظه‌ای موقعیت خودروهای جمع‌آوری در شعاع ۵ کیلومتر کاربر</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>تقویم روزهای جمع‌آوری زباله عادی و خشک هر منطقه</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>یادآوری هوشمند پیش از موعد جمع‌آوری</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>کیف پول دیجیتال با نمایش موجودی آنی و گزینه برداشت/تهاتر</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-primary-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mb-3"><i data-lucide="navigation" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">ردیابی خودرو</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">آیکون‌های رنگی (سبز/آبی/نارنجی)، مسیر پیش‌بینی شده و اعلان قابل تنظیم فاصله (۵۰۰م تا ۲کم).</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-primary-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mb-3"><i data-lucide="package-search" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">درخواست جمع‌آوری</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">۵ مرحله: انتخاب لوکیشن → مشاهده شرکت‌های فعال → مقایسه تعرفه → ثبت درخواست با عکس و وزن → دریافت قیمت تخمینی.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-primary-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mb-3"><i data-lucide="map-pinned" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">آدرس‌های ذخیره‌شده</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">برچسب‌گذاری منزل، محل کار، فروشگاه با یادآوری خودکار منطقه و فعال/غیرفعال‌سازی.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-primary-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mb-3"><i data-lucide="settings-2" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">تنظیمات اعلان</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">کنترل کامل بر زمان و نوع هشدارها: نزدیک شدن خودرو، یادآوری روز جمع‌آوری، تایید درخواست.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-primary-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mb-3"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">گزارشات شخصی</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">تاریخچه کامل درخواست‌ها، مسیرهای خودرو و تراکنش‌های کیف پول با قابلیت فیلتر.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-primary-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 mb-3"><i data-lucide="wallet" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">کیف پول و تسویه</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">واریز آنی پس از تحویل، برداشت نقدی به شبا، تهاتر با کالا/خدمات، شارژ سیم‌کارت و پرداخت قبوض.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: Driver App -->
+                    <div data-content="driver" class="arch-content hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 mb-8">
+                            <div class="lg:col-span-4 bg-gradient-to-br from-accent-600 to-accent-800 rounded-2xl p-8 text-white relative overflow-hidden">
+                                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                                <i data-lucide="truck" class="w-10 h-10 mb-4 text-accent-100"></i>
+                                <h3 class="text-2xl font-black mb-3">اپلیکیشن راننده</h3>
+                                <p class="text-accent-100 text-sm leading-relaxed">ابزار میدانی برای ثبت دقیق حضور، مسیر و عملکرد رانندگان ناوگان پسماند شهری.</p>
+                                <div class="mt-6 pt-6 border-t border-white/20">
+                                    <div class="text-3xl font-black">۱۰s</div>
+                                    <div class="text-xs text-accent-100 mt-1">ثبت موقعیت GPS</div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 bg-surface rounded-2xl p-8 border border-slate-100">
+                                <h4 class="font-bold text-ink mb-4 flex items-center gap-2"><i data-lucide="list-checks" class="w-5 h-5 text-accent-600"></i> وظایف اصلی راننده</h4>
+                                <ul class="space-y-2.5 text-sm text-slate-600">
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-accent-500 mt-0.5 flex-shrink-0"></i><span>ثبت موقعیت لحظه‌ای GPS با فواصل قابل تنظیم (۱۰ تا ۳۰ ثانیه)</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-accent-500 mt-0.5 flex-shrink-0"></i><span>شروع و پایان شیفت کاری با ثبت زمان و مسافت طی شده</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-accent-500 mt-0.5 flex-shrink-0"></i><span>دریافت مسیر اختصاصی تعیین‌شده توسط مدیریت با مشاهده روی نقشه</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-accent-500 mt-0.5 flex-shrink-0"></i><span>ثبت تخلفات یا مشکلات مسیر (مسدودی، ترافیک، عدم دسترسی)</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-accent-500 mt-0.5 flex-shrink-0"></i><span>ارسال اعلان خودکار به شهروندان نزدیک (قابل غیرفعال‌سازی)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100">
+                                <div class="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center text-accent-600 mb-3"><i data-lucide="map" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">صفحه اصلی راننده</h5>
+                                <ul class="text-xs text-slate-500 space-y-1.5 mt-3">
+                                    <li>• نمایش مسیر تعیین‌شده (خط آبی)</li>
+                                    <li>• ایستگاه‌های بعدی (نقطه قرمز)</li>
+                                    <li>• موقعیت لحظه‌ای خودرو (آیکون متحرک)</li>
+                                    <li>• لیست ایستگاه‌های امروز: تعداد کلی و باقی‌مانده</li>
+                                    <li>• دکمه اعلام مشکل به مدیریت</li>
+                                    <li>• تعداد شهروندان با درخواست اعلان فعال</li>
+                                </ul>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100">
+                                <div class="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center text-accent-600 mb-3"><i data-lucide="log-in" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">ثبت تخلیه در ایستگاه</h5>
+                                <ul class="text-xs text-slate-500 space-y-1.5 mt-3">
+                                    <li>• تأیید رسیدن با دکمه «وصل شدم»</li>
+                                    <li>• ثبت خودکار مدت زمان توقف پس از حرکت</li>
+                                    <li>• ثبت وزن تقریبی زباله خشک (اختیاری)</li>
+                                    <li>• همگام‌سازی آنی با داشبورد مدیریت</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: Company PWA -->
+                    <div data-content="company" class="arch-content hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 mb-8">
+                            <div class="lg:col-span-4 bg-gradient-to-br from-amber-500 to-orange-700 rounded-2xl p-8 text-white relative overflow-hidden">
+                                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                                <i data-lucide="building-2" class="w-10 h-10 mb-4 text-amber-100"></i>
+                                <h3 class="text-2xl font-black mb-3">سامانه شرکت پسماند (PWA)</h3>
+                                <p class="text-amber-100 text-sm leading-relaxed">پنل عملیاتی شرکت‌های پیمانکار برای مدیریت درخواست‌ها، مسیریابی، تعرفه‌گذاری و تسویه با شهروندان.</p>
+                                <div class="mt-6 pt-6 border-t border-white/20">
+                                    <div class="text-3xl font-black">۴</div>
+                                    <div class="text-xs text-amber-100 mt-1">ماژول کسب‌وکار</div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 bg-surface rounded-2xl p-8 border border-slate-100">
+                                <h4 class="font-bold text-ink mb-4 flex items-center gap-2"><i data-lucide="radar" class="w-5 h-5 text-amber-600"></i> صفحه اصلی و مدیریت درخواست</h4>
+                                <ul class="space-y-2.5 text-sm text-slate-600">
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i><span>نقشه درخواست‌های ثبت‌شده در محدوده مجوز فعالیت شرکت</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i><span>نمایش درخواست‌های باز و فیلتر بر اساس مکان، نوع پسماند، وزن و تاریخ</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i><span>مسیریابی هوشمند از موقعیت راننده تا محل درخواست</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i><span>چرخه وضعیت: جدید → اختصاص → در مسیر → تحویل → پرداخت</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i><span>ثبت تراکنش پس از تحویل: وزن واقعی، محاسبه مبلغ و واریز خودکار به کیف پول شهروند</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 mb-3"><i data-lucide="tag" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">مدیریت تعرفه‌ها</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">تعریف قیمت هر کیلوگرم برای انواع پسماند (مقوا، پت، شیشه، فلز، کاغذ) با قابلیت تغییر آنی.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 mb-3"><i data-lucide="repeat-2" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">جدول تهاتر و تسویه</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">تعریف اقلام قابل خرید با موجودی کیف پول: کالای فروشگاه، بلیت اتوبوس، تخفیف عوارض شهرداری.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 mb-3"><i data-lucide="banknote" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">روش‌های تسویه</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">واریز هفتگی/ماهانه به شبا، تهاتر خودکار هنگام خرید از فروشگاه‌های طرف قرارداد.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all sm:col-span-2 lg:col-span-3">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0"><i data-lucide="bar-chart-4" class="w-5 h-5"></i></div>
+                                    <div>
+                                        <h5 class="font-bold text-ink mb-2">پنل مدیریت شرکت</h5>
+                                        <p class="text-xs text-slate-500 leading-relaxed">گزارش ماهانه شامل تعداد درخواست‌ها، کل پسماند جمع‌آوری‌شده به تفکیک نوع، کل مبلغ پرداختی به شهروندان، مدیریت رانندگان شرکت (ثبت‌نام، تخصیص گوشی، مشاهده مسیر تردد) و ارزیابی عملکرد پیمانکار.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4: Management Dashboard -->
+                    <div data-content="dashboard" class="arch-content hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 mb-8">
+                            <div class="lg:col-span-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 text-white relative overflow-hidden">
+                                <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-500/20 rounded-full blur-2xl"></div>
+                                <i data-lucide="layout-dashboard" class="w-10 h-10 mb-4 text-primary-400"></i>
+                                <h3 class="text-2xl font-black mb-3">داشبورد مدیریت</h3>
+                                <p class="text-slate-300 text-sm leading-relaxed">مرکز فرماندهی وب‌محور برای نظارت آنلاین بر کل اکوسیستم پسماند شهری.</p>
+                                <div class="mt-6 pt-6 border-t border-white/10">
+                                    <div class="text-3xl font-black">۶</div>
+                                    <div class="text-xs text-slate-400 mt-1">بخش مدیریتی</div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 bg-surface rounded-2xl p-8 border border-slate-100">
+                                <h4 class="font-bold text-ink mb-4 flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5 text-slate-700"></i> پنل نقشه زنده (مدیریت آنلاین)</h4>
+                                <ul class="space-y-2.5 text-sm text-slate-600">
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>نقشه کامل شهر با کنترل لایه‌ها: تفکیک خودروها بر اساس نوع پسماند</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>نمایش مسیر تردد لحظه‌ای، ایستگاه‌ها (نقطه سبز) و درخواست‌های خشک فعال (نقطه نارنجی)</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>جستجو و فیلتر: پلاک خودرو، نام راننده، مسیر، منطقه، وضعیت</span></li>
+                                    <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i><span>کلیک روی خودرو: آخرین موقعیت، مسیر امروز، زمان شروع شیفت</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-slate-300 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-3"><i data-lucide="truck" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">مدیریت خودروها</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">سه نوع خودرو (عادی/خشک/پسماند)، اتصال خودکار به شرکت‌ها، پلاک یکتا، ظرفیت، راننده اختصاصی.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-slate-300 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-3"><i data-lucide="user-check" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">مدیریت رانندگان</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">اطلاعات کامل، وضعیت فعال/غیرفعال، تاریخچه مسیرها و امتیازدهی خودکار بر اساس عملکرد.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-slate-300 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-3"><i data-lucide="building" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">شرکت‌های پسماند</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">اطلاعات شرکت، محدوده فعالیت روی نقشه، تعرفه‌ها، جدول تهاتر و گزارش عملکرد ماهانه.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-slate-300 hover:shadow-lg transition-all">
+                                <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 mb-3"><i data-lucide="route" class="w-5 h-5"></i></div>
+                                <h5 class="font-bold text-ink mb-2">مسیرها و تخصیص</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">تعریف مسیر ثابت با ایستگاه‌ها، روزها و ساعت، کنترل تداخل زمانی، مسیرهای فوق‌العاده دستی.</p>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100 hover:border-slate-300 hover:shadow-lg transition-all sm:col-span-2">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700 flex-shrink-0"><i data-lucide="history" class="w-5 h-5"></i></div>
+                                    <div>
+                                        <h5 class="font-bold text-ink mb-2">لاگ تردد و مسیریابی</h5>
+                                        <p class="text-xs text-slate-500 leading-relaxed">ذخیره خودکار موقعیت GPS هر ۱۰ تا ۳۰ ثانیه، نمایش مسیر روزانه با زمان ورود/خروج از ایستگاه‌ها و تشخیص خودکار تخلفات: خروج از مسیر، عدم توقف در ایستگاه اجباری، توقف بیش از حد مجاز.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 5: Advanced Reports -->
+                    <div data-content="reports" class="arch-content hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 mb-8">
+                            <div class="lg:col-span-4 bg-gradient-to-br from-accent-600 to-primary-700 rounded-2xl p-8 text-white relative overflow-hidden">
+                                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                                <i data-lucide="bar-chart-3" class="w-10 h-10 mb-4 text-white"></i>
+                                <h3 class="text-2xl font-black mb-3">گزارشات پیشرفته (BI)</h3>
+                                <p class="text-slate-100 text-sm leading-relaxed">تحلیل داده‌محور برای تصمیم‌گیری استراتژیک در سطح مدیریت شهری.</p>
+                                <div class="mt-6 pt-6 border-t border-white/20">
+                                    <div class="text-3xl font-black">۴</div>
+                                    <div class="text-xs text-slate-100 mt-1">دسته گزارشی</div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 bg-surface rounded-2xl p-8 border border-slate-100">
+                                <h4 class="font-bold text-ink mb-4 flex items-center gap-2"><i data-lucide="filter" class="w-5 h-5 text-accent-600"></i> قابلیت‌های فیلتر و خروجی</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">تمامی گزارشات با قابلیت فیلتر بر اساس بازه زمانی، منطقه، خودرو، راننده و شرکت پسماند ارائه می‌شوند.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="inline-flex items-center gap-1.5 text-xs bg-accent-50 text-accent-700 px-3 py-1.5 rounded-full font-medium"><i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i> Excel</span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs bg-accent-50 text-accent-700 px-3 py-1.5 rounded-full font-medium"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> PDF</span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs bg-accent-50 text-accent-700 px-3 py-1.5 rounded-full font-medium"><i data-lucide="map" class="w-3.5 h-3.5"></i> نقشه تعاملی</span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs bg-accent-50 text-accent-700 px-3 py-1.5 rounded-full font-medium"><i data-lucide="pie-chart" class="w-3.5 h-3.5"></i> نمودار</span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs bg-accent-50 text-accent-700 px-3 py-1.5 rounded-full font-medium"><i data-lucide="send" class="w-3.5 h-3.5"></i> ارسال خودکار</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-9 h-9 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600"><i data-lucide="gauge" class="w-5 h-5"></i></div>
+                                    <h5 class="font-bold text-ink">عملکرد خودروها</h5>
+                                </div>
+                                <ul class="text-xs text-slate-500 space-y-2 mt-3">
+                                    <li class="flex justify-between border-b border-slate-100 pb-2"><span>مسافت طی‌شده</span><span class="text-slate-400">نمودار میله‌ای</span></li>
+                                    <li class="flex justify-between border-b border-slate-100 pb-2"><span>تعداد توقف در ایستگاه‌ها</span><span class="text-slate-400">نمودار دایره‌ای</span></li>
+                                    <li class="flex justify-between"><span>تاخیرهای روزانه</span><span class="text-slate-400">نمودار خطی</span></li>
+                                </ul>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-9 h-9 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600"><i data-lucide="recycle" class="w-5 h-5"></i></div>
+                                    <h5 class="font-bold text-ink">پسماند خشک</h5>
+                                </div>
+                                <ul class="text-xs text-slate-500 space-y-2 mt-3">
+                                    <li class="flex justify-between border-b border-slate-100 pb-2"><span>مناطق برتر مشارکت</span><span class="text-slate-400">تشویق</span></li>
+                                    <li class="flex justify-between border-b border-slate-100 pb-2"><span>نوع پسماند غالب</span><span class="text-slate-400">برنامه‌ریزی</span></li>
+                                    <li class="flex justify-between border-b border-slate-100 pb-2"><span>رتبه‌بندی شرکت‌ها</span><span class="text-slate-400">انتخاب پیمانکار</span></li>
+                                    <li class="flex justify-between"><span>کیف پول شهروندان برتر</span><span class="text-slate-400">تقدیر</span></li>
+                                </ul>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-9 h-9 bg-accent-100 rounded-lg flex items-center justify-center text-accent-600"><i data-lucide="route" class="w-5 h-5"></i></div>
+                                    <h5 class="font-bold text-ink">مسیر و تردد</h5>
+                                </div>
+                                <ul class="text-xs text-slate-500 space-y-2 mt-3">
+                                    <li class="flex justify-between border-b border-slate-100 pb-2"><span>نقشه حرارتی (Heatmap)</span><span class="text-slate-400">بهینه‌سازی</span></li>
+                                    <li class="flex justify-between border-b border-slate-100 pb-2"><span>تطابق مسیر واقعی و تعیین‌شده</span><span class="text-slate-400">ارزیابی</span></li>
+                                    <li class="flex justify-between"><span>ایستگاه‌های پربازدید</span><span class="text-slate-400">تغییر دفعات</span></li>
+                                </ul>
+                            </div>
+                            <div class="bg-surface p-6 rounded-xl border border-slate-100">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-9 h-9 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600"><i data-lucide="download" class="w-5 h-5"></i></div>
+                                    <h5 class="font-bold text-ink">خروجی گزارشات</h5>
+                                </div>
+                                <p class="text-xs text-slate-500 leading-relaxed mt-3">تمامی گزارشات با خروجی‌های Excel، PDF، نقشه تعاملی، نمودار و ارسال خودکار به مخاطبین تعریف‌شده ارائه می‌شوند.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 6: Alerts -->
+                    <div data-content="alerts" class="arch-content hidden">
+                        <div class="grid lg:grid-cols-12 gap-8 mb-8">
+                            <div class="lg:col-span-4 bg-gradient-to-br from-rose-500 to-red-700 rounded-2xl p-8 text-white relative overflow-hidden">
+                                <div class="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                                <i data-lucide="bell-ring" class="w-10 h-10 mb-4 text-rose-100"></i>
+                                <h3 class="text-2xl font-black mb-3">اعلان‌رسانی و هشدار</h3>
+                                <p class="text-rose-100 text-sm leading-relaxed">سیستم هوشمند اطلاع‌رسانی چندکاناله برای شهروندان و مدیران شهری.</p>
+                                <div class="mt-6 pt-6 border-t border-white/20">
+                                    <div class="text-3xl font-black">۲</div>
+                                    <div class="text-xs text-rose-100 mt-1">سطح اعلان</div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 bg-surface rounded-2xl p-8 border border-slate-100">
+                                <h4 class="font-bold text-ink mb-4 flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5 text-rose-600"></i> اعلانات شهروندی</h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                                        <div class="flex items-center gap-2 text-sm text-slate-700"><i data-lucide="truck" class="w-4 h-4 text-primary-600"></i> نزدیک شدن خودرو زباله</div>
+                                        <span class="text-xs text-slate-500">پیامک + PWA | ۵۰۰م تا ۲کم</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                                        <div class="flex items-center gap-2 text-sm text-slate-700"><i data-lucide="calendar" class="w-4 h-4 text-primary-600"></i> یادآوری روز جمع‌آوری</div>
+                                        <span class="text-xs text-slate-500">نوتیفیکیشن | شب قبل یا صبح</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                                        <div class="flex items-center gap-2 text-sm text-slate-700"><i data-lucide="check-circle" class="w-4 h-4 text-primary-600"></i> تایید درخواست پسماند خشک</div>
+                                        <span class="text-xs text-slate-500">نوتیفیکیشن | بلافاصله</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-2 text-sm text-slate-700"><i data-lucide="wallet" class="w-4 h-4 text-primary-600"></i> واریز مبلغ به کیف پول</div>
+                                        <span class="text-xs text-slate-500">نوتیفیکیشن + پیامک | پس از تایید</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-2xl p-8 text-white">
+                            <h4 class="font-bold mb-5 flex items-center gap-2"><i data-lucide="shield-alert" class="w-5 h-5 text-rose-400"></i> هشدارهای مدیریتی</h4>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                                    <div class="flex items-center gap-2 text-rose-300 text-sm font-bold mb-1.5"><i data-lucide="alert-triangle" class="w-4 h-4"></i> خروج خودرو از مسیر</div>
+                                    <p class="text-xs text-slate-400">انحراف بیش از ۲۰۰ متر از مسیر تعیین‌شده</p>
+                                </div>
+                                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                                    <div class="flex items-center gap-2 text-amber-300 text-sm font-bold mb-1.5"><i data-lucide="clock" class="w-4 h-4"></i> توقف طولانی</div>
+                                    <p class="text-xs text-slate-400">بیش از ۲۰ دقیقه در یک نقطه</p>
+                                </div>
+                                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                                    <div class="flex items-center gap-2 text-rose-300 text-sm font-bold mb-1.5"><i data-lucide="x-circle" class="w-4 h-4"></i> عدم تکمیل مسیر</div>
+                                    <p class="text-xs text-slate-400">تا پایان شیفت، ایستگاه‌ها پیمایش نشده</p>
+                                </div>
+                                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                                    <div class="flex items-center gap-2 text-amber-300 text-sm font-bold mb-1.5"><i data-lucide="hourglass" class="w-4 h-4"></i> درخواست بدون پاسخ</div>
+                                    <p class="text-xs text-slate-400">بیش از ۲۴ ساعت از ثبت گذشته و شرکتی اختصاص نیافته</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-6 border-t border-slate-700">
+                                <h5 class="text-sm font-bold mb-3 text-slate-300">روش‌های ارسال</h5>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="inline-flex items-center gap-1.5 text-xs bg-slate-800 px-3 py-1.5 rounded-full"><i data-lucide="bell" class="w-3.5 h-3.5 text-primary-400"></i> نوتیفیکیشن درون برنامه</span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs bg-slate-800 px-3 py-1.5 rounded-full"><i data-lucide="message-square" class="w-3.5 h-3.5 text-primary-400"></i> پیامک (برای موارد مهم)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Security & Compliance (Enterprise Grade) -->
+        <section id="security" class="py-20 lg:py-28 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-4xl mx-auto bg-slate-900 rounded-3xl p-8 lg:p-16 text-center relative overflow-hidden reveal">
+                    <!-- Background Glow -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary-600/20 to-transparent blur-3xl rounded-full"></div>
+                    <!-- Decorative grid -->
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQwIDBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wMykiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')] opacity-30"></div>
+
+                    <div class="relative z-10">
+                        <!-- ANIMATED SVG 5: Security Shield -->
+                        <div class="flex justify-center mb-8">
+                            <svg viewBox="0 0 100 120" class="w-28 h-28" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#10b981"/>
+                                        <stop offset="100%" stop-color="#059669"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M50 10 L90 30 V60 C90 85 50 110 50 110 C50 110 10 85 10 60 V30 L50 10 Z" fill="none" stroke="url(#shieldGrad)" stroke-width="3" />
+                                <path d="M50 20 L80 35 V60 C80 80 50 100 50 100 C50 100 20 80 20 60 V35 L50 20 Z" fill="#064e3b" opacity="0.5" />
+                                <!-- Scanning Line (FIXED: pure SMIL, removed redundant CSS class) -->
+                                <line x1="20" y1="30" x2="80" y2="30" stroke="#34d399" stroke-width="2" stroke-linecap="round">
+                                    <animate attributeName="y1" values="30;90;30" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="y2" values="30;90;30" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1" keyTimes="0;0.5;1"/>
+                                    <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+                                </line>
+                                <path d="M40 60 L48 68 L62 52" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                        <span class="inline-block text-primary-400 font-bold text-sm mb-3 tracking-wider">امنیت در سطح سازمانی</span>
+                        <h2 class="text-3xl lg:text-4xl font-black text-white mb-6">استانداردهای امنیتی در سطح سازمانی و دولتی</h2>
+                        <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-10">
+                            ما حساسیت داده‌های شهری و حریم خصوصی شهروندان را درک می‌کنیم. زیرساخت محیا پرداز برای پاسخگویی به سخت‌گیرانه‌ترین الزامات امنیتی کشور طراحی شده است.
+                        </p>
+
+                        <div class="grid sm:grid-cols-3 gap-6 text-right">
+                            <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 backdrop-blur hover:border-primary-500/50 transition-colors group">
+                                <i data-lucide="award" class="w-8 h-8 text-primary-400 mb-3 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-white mb-1">گواهینامه افتا</h4>
+                                <p class="text-sm text-slate-400">تأییدیه رسمی امنیت اطلاعات و تبادل داده</p>
+                            </div>
+                            <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 backdrop-blur hover:border-accent-500/50 transition-colors group">
+                                <i data-lucide="database" class="w-8 h-8 text-accent-400 mb-3 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-white mb-1">رمزنگاری End-to-End</h4>
+                                <p class="text-sm text-slate-400">محافظت از داده‌های مالی و موقعیتی در تمام لایه‌ها</p>
+                            </div>
+                            <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 backdrop-blur hover:border-primary-500/50 transition-colors group">
+                                <i data-lucide="server" class="w-8 h-8 text-primary-400 mb-3 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-white mb-1">پشتیبان‌گیری بلادرنگ</h4>
+                                <p class="text-sm text-slate-400">تضمین تداوم کسب‌وکار (BCP) و عدم از دست رفتن داده</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA & Contact -->
+        <section id="contact" class="py-20 lg:py-28 bg-surface relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-accent-700 opacity-[0.07]"></div>
+            <!-- Decorative blobs -->
+            <div class="blob bg-primary-300/40 w-80 h-80 top-10 -left-20"></div>
+            <div class="blob bg-accent-300/40 w-80 h-80 bottom-10 -right-20" style="animation-delay: 4s;"></div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl border border-slate-100 p-8 lg:p-16 text-center reveal">
+                    <div class="inline-flex items-center gap-2 bg-primary-50 border border-primary-200 text-primary-700 px-3 py-1 rounded-full text-xs font-medium mb-5">
+                        <i data-lucide="rocket" class="w-3.5 h-3.5"></i>
+                        آماده راه‌اندازی
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-black text-ink mb-5 whitespace-nowrap">شهر هوشمند، از مدیریت هوشمند پسماند آغاز می‌شود</h2>
+                    <p class="text-base text-slate-600 mb-8 max-w-2xl mx-auto">
+                        برای دریافت مشاوره تخصصی، بررسی نیازمندی‌های اختصاصی شهر یا سازمان شما، و استعلام قیمت پکیج‌های سازمانی، با کارشناسان فروش محیا پرداز تماس بگیرید.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                        <a href="tel:03591008081" class="group w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-gradient-to-l from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-7 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-xl shadow-primary-600/30 hover:-translate-y-1 hover:shadow-2xl whitespace-nowrap">
+                            <i data-lucide="phone-call" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+                            <span dir="ltr">۰۳۵-۹۱۰۰۸۰۸۱</span>
+                        </a>
+                        <a href="mailto:info@mahyapardaz.com" class="group w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-slate-100 hover:bg-slate-200 text-ink px-7 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg whitespace-nowrap">
+                            <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                            ارسال ایمیل سازمانی
+                        </a>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-6 text-right border-t border-slate-100 pt-8">
+                        <div class="flex items-start gap-3 group">
+                            <i data-lucide="globe" class="w-5 h-5 text-primary-600 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <h5 class="font-bold text-ink text-sm">وب‌سایت رسمی</h5>
+                                <a href="https://mahyapardaz.com" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-primary-600 text-sm transition-colors">mahyapardaz.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 group">
+                            <i data-lucide="mail" class="w-5 h-5 text-primary-600 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <h5 class="font-bold text-ink text-sm">پست الکترونیک</h5>
+                                <a href="mailto:info@mahyapardaz.com" class="text-slate-600 hover:text-primary-600 text-sm transition-colors" dir="ltr">info@mahyapardaz.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 group">
+                            <i data-lucide="phone" class="w-5 h-5 text-primary-600 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <h5 class="font-bold text-ink text-sm">خط ویژه فروش</h5>
+                                <a href="tel:03591008081" class="text-slate-600 hover:text-primary-600 text-sm transition-colors" dir="ltr">035-91008081</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ink text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white rounded-lg p-1.5 flex items-center justify-center shadow-md">
+                        <img src="https://mahyapardaz.com/wp-content/uploads/2024/06/MahyaPardazYazd.png" alt="لوگو محیا پرداز" class="h-8 w-auto object-contain" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.display='none'">
+                    </div>
+                    <span class="text-white font-bold text-lg">محیا پرداز</span>
+                </div>
+                <div class="text-sm text-center md:text-right">
+                    <p>تمامی حقوق مادی و معنوی این کاتالوگ و نرم‌افزار متعلق به شرکت <strong class="text-white">محیا پرداز</strong> می‌باشد.</p>
+                    <p class="mt-1">© ۱۴۰۵ - طراحی و توسعه با استانداردهای Enterprise</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://catalog.mahyapardaz.com/" class="hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800" aria-label="بازگشت به لیست کاتالوگ‌ها">
+                        <i data-lucide="grid" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://mahyapardaz.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-800" aria-label="وبسایت محیا پرداز">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="fixed bottom-8 left-8 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg shadow-primary-600/40 translate-y-20 opacity-0 transition-all duration-300 z-50 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 hover:scale-110" aria-label="بازگشت به بالای صفحه">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <!-- JavaScript Logic -->
+    <script>
+        lucide.createIcons();
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + "%";
+
+            const header = document.getElementById('mainHeader');
+            if (winScroll > 50) {
+                header.classList.add('shadow-md', 'bg-white/95');
+                header.classList.remove('bg-white/90');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.add('bg-white/90');
+            }
+
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (winScroll > 500) scrollBtn.classList.remove('translate-y-20', 'opacity-0');
+            else scrollBtn.classList.add('translate-y-20', 'opacity-0');
+        });
+
+        document.getElementById('scrollTopBtn').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                const icon = menuBtn.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // Intersection Observer for Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Animated Number Counter
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    const startValue = 0;
+
+                    const animate = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // Ease-out cubic
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.floor(startValue + (target - startValue) * eased);
+                        entry.target.textContent = current.toLocaleString('fa-IR');
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            entry.target.textContent = target.toLocaleString('fa-IR');
+                        }
+                    };
+                    requestAnimationFrame(animate);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Notification popup cycle for mobile mockup
+        const notifPopup = document.getElementById('notifPopup');
+        if (notifPopup) {
+            const showNotif = () => {
+                notifPopup.style.opacity = '0.95';
+                notifPopup.style.transform = 'translateY(0)';
+                setTimeout(() => {
+                    notifPopup.style.opacity = '0';
+                    notifPopup.style.transform = 'translateY(60px)';
+                }, 2500);
+            };
+            setTimeout(showNotif, 1500);
+            setInterval(showNotif, 5000);
+        }
+
+        // Architecture Tabs
+        const archTabs = document.querySelectorAll('.arch-tab');
+        const archContents = document.querySelectorAll('.arch-content');
+        archTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+                // Update tab buttons
+                archTabs.forEach(t => {
+                    t.classList.remove('bg-primary-600', 'text-white', 'shadow-lg', 'shadow-primary-600/30');
+                    t.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+                });
+                tab.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+                tab.classList.add('bg-primary-600', 'text-white', 'shadow-lg', 'shadow-primary-600/30');
+                // Update content panels
+                archContents.forEach(c => {
+                    if (c.dataset.content === target) {
+                        c.classList.remove('hidden');
+                        // Re-trigger animation
+                        c.style.animation = 'none';
+                        void c.offsetWidth;
+                        c.style.animation = '';
+                    } else {
+                        c.classList.add('hidden');
+                    }
+                });
+                // Re-render Lucide icons inside newly-shown content
+                lucide.createIcons();
+            });
+        });
+
+        counters.forEach(c => counterObserver.observe(c));
+    </script>
+</body>
+</html>
