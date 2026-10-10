@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>کاتالوگ محصولات و سامانه‌های محیا پرداز | Mahya Pardaz</title>
-    <meta name="description" content="کاتالوگ سامانه‌ها و راهکارهای نرم‌افزاری محیا پرداز؛ راهکارهای مدیریت شهری، GIS، مدیریت سازمانی و سامانه‌های تخصصی با گواهی افتا.">
+    <title>کاتالوگ نرم‌افزارها و خدمات محیا پرداز | Mahya Pardaz</title>
+    <meta name="description" content="کاتالوگ سامانه‌ها و خدمات محیا پرداز؛ نرم‌افزارهای مدیریت شهری، GIS و سازمانی به همراه خدمات تخصصی نقشه، بایگانی، ممیزی املاک و درآمد شهری.">
     <link rel="canonical" href="https://mahyapardaz.com/catalogs/">
     <meta name="robots" content="index, follow, max-image-preview:large">
 
-    <meta property="og:title" content="کاتالوگ محصولات و سامانه‌های محیا پرداز | Mahya Pardaz">
-    <meta property="og:description" content="مجموعه‌ای از سامانه‌ها و راهکارهای نرم‌افزاری محیا پرداز برای مدیریت شهری، سازمان‌ها و کسب‌وکارها.">
+    <meta property="og:title" content="کاتالوگ نرم‌افزارها و خدمات محیا پرداز | Mahya Pardaz">
+    <meta property="og:description" content="نرم‌افزارها و خدمات محیا پرداز برای مدیریت شهری، سازمان‌ها و کسب‌وکارها.">
     <meta property="og:url" content="https://mahyapardaz.com/catalogs/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://mahyapardaz.com/catalogs/images/shahrnager.png">
@@ -48,8 +48,8 @@
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "کاتالوگ محصولات و سامانه‌های محیا پرداز",
-      "description": "کاتالوگ سامانه‌ها و راهکارهای نرم‌افزاری محیا پرداز؛ راهکارهای مدیریت شهری، GIS، مدیریت سازمانی و سامانه‌های تخصصی.",
+      "name": "کاتالوگ نرم‌افزارها و خدمات محیا پرداز",
+      "description": "کاتالوگ سامانه‌های نرم‌افزاری و خدمات تخصصی محیا پرداز؛ راهکارهای مدیریت شهری، GIS، مدیریت سازمانی و خدمات نقشه، بایگانی و ممیزی.",
       "url": "https://mahyapardaz.com/catalogs/",
       "publisher": {
         "@type": "Organization",
@@ -60,7 +60,7 @@
       "mainEntity": {
         "@type": "ItemList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "سامانه شهرنگار PRO", "url": "https://mahyapardaz.com/catalogs/shahrvandyar.html" },
+          { "@type": "ListItem", "position": 1, "name": "سامانه شهروندیار", "url": "https://mahyapardaz.com/catalogs/shahrvandyar.html" },
           { "@type": "ListItem", "position": 2, "name": "سامانه جامع مدیریت حفاری‌های شهری", "url": "https://mahyapardaz.com/catalogs/haffari.html" },
           { "@type": "ListItem", "position": 3, "name": "سامانه زیرساخت اطلاعات مکانی SDI", "url": "https://mahyapardaz.com/catalogs/sdi.html" },
           { "@type": "ListItem", "position": 4, "name": "سامانه جامع مدیریت املاک و مستغلات", "url": "https://mahyapardaz.com/catalogs/amlak.html" },
@@ -179,233 +179,169 @@
             font-weight: 500;
         }
 
-        .featured-catalog {
-            display: grid;
-            grid-template-columns: 1fr;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow-sm);
-            transition: box-shadow var(--transition-base);
+        .list-section {
+            padding-top: 3rem;
+            scroll-margin-top: 5.5rem;
         }
 
-        .featured-catalog:hover {
-            box-shadow: var(--shadow-hover);
+        .list-section + .list-section {
+            margin-top: 2rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--color-border);
         }
 
-        @media (min-width: 768px) {
-            .featured-catalog { grid-template-columns: 1fr 1fr; }
-        }
-
-        .featured-artwork {
-            position: relative;
-            width: 100%;
-            background: #F1F5F9;
-            min-height: 280px;
-        }
-
-        @media (min-width: 768px) {
-            .featured-artwork { min-height: 400px; }
-        }
-
-        .featured-artwork img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .featured-catalog:hover .featured-artwork img {
-            transform: scale(1.02);
-        }
-
-        .featured-content {
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .featured-badge {
-            display: inline-block;
-            background: rgba(13, 148, 136, 0.1);
-            color: var(--color-accent-hover);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            width: fit-content;
-        }
-
-        .featured-title {
-            font-size: 1.5rem;
+        .list-section h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 800;
-            margin-bottom: 1rem;
+            line-height: 1.3;
             color: var(--color-text-primary);
+            margin-bottom: 0.75rem;
         }
 
-        .featured-desc {
-            font-size: 1rem;
+        .section-desc {
             color: var(--color-text-secondary);
+            max-width: 640px;
+            margin-bottom: 2rem;
             line-height: 1.8;
-            margin-bottom: 2rem;
         }
 
-        .filter-bar {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            padding: 0.5rem 1.25rem;
-            border-radius: var(--radius-sm);
-            font-family: inherit;
-            font-size: 0.9375rem;
-            color: var(--color-text-secondary);
-            cursor: pointer;
-            transition: var(--transition-base);
-            font-weight: 500;
-        }
-
-        .filter-btn:hover {
-            background: rgba(15, 23, 42, 0.03);
-            color: var(--color-text-primary);
-        }
-
-        .filter-btn.active {
-            background: var(--color-text-primary);
-            color: white;
-        }
-
-        .filter-btn:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        .catalog-grid {
+        .catalog-list {
+            list-style: none;
+            counter-reset: item;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem; 
-            margin-bottom: 5rem;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
-        @media (min-width: 640px) {
-            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+        @media (min-width: 768px) {
+            .catalog-list { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (min-width: 1024px) {
-            .catalog-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-
-        .catalog-card {
+        .catalog-list li {
+            counter-increment: item;
             display: flex;
-            flex-direction: column;
+            align-items: stretch;
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-md);
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-            height: 100%;
+            transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
         }
 
-        .catalog-card:hover {
-            transform: translateY(-4px);
+        .catalog-list li:hover {
+            border-color: var(--color-accent);
             box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .catalog-list li:focus-within {
             border-color: var(--color-accent);
         }
 
-        .catalog-card:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        .card-artwork-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            background: #F8FAFC;
-            aspect-ratio: 16 / 10; 
-        }
-
-        .card-artwork {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .catalog-card:hover .card-artwork {
-            transform: scale(1.03);
-        }
-
-        .card-content {
-            padding: 1.5rem;
+        .catalog-list li::before {
+            content: counter(item);
             display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-category {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--color-accent-hover);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.02em;
-        }
-
-        .card-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--color-text-primary);
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
-
-        .card-desc {
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .card-cta {
-            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-top: auto;
-            transition: color var(--transition-base);
+            justify-content: center;
+            min-width: 3rem;
+            font-size: 0.8125rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            direction: ltr;
+            flex-shrink: 0;
         }
 
-        .catalog-card:hover .card-cta {
+        .catalog-list li > a,
+        .catalog-list li > .list-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.125rem 1.125rem;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            border-radius: var(--radius-md);
+        }
+
+        .catalog-list li > a:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: -2px;
+        }
+
+        .catalog-list .item-name {
+            flex: 1;
+        }
+
+        .catalog-list .item-arrow {
+            flex-shrink: 0;
+            color: var(--color-text-secondary);
+            transition: transform var(--transition-base), color var(--transition-base);
+        }
+
+        .catalog-list li:hover .item-arrow {
+            transform: translateX(-4px);
             color: var(--color-accent);
         }
 
-        .cta-arrow {
-            transition: transform var(--transition-base);
+        .catalog-list li.no-link {
+            background: transparent;
         }
 
-        .catalog-card:hover .cta-arrow {
-            transform: translateX(-4px); 
+        .catalog-list li.no-link:hover {
+            border-color: var(--color-border);
+            box-shadow: none;
+            transform: none;
+        }
+
+        .catalog-list li.no-link .item-name {
+            color: var(--color-text-secondary);
+        }
+
+        .checklist {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .checklist { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 1.125rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            color: var(--color-text-primary);
+            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .checklist li:hover {
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .checklist .check-icon {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--color-accent-hover);
+            border-radius: 50%;
         }
 
         .final-cta {
@@ -414,6 +350,7 @@
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
+            margin-top: 4rem;
             margin-bottom: 4rem;
         }
 
@@ -507,17 +444,12 @@
             }
         }
 
-        .catalog-card.hidden {
-            display: none;
-        }
-
         @media (max-width: 640px) {
             header .container { flex-wrap: wrap; gap: 0.75rem; }
             header nav { gap: 1rem; font-size: 0.875rem; }
             .hero { padding: 2rem 0 1rem; }
-            .featured-content { padding: 1.5rem; }
-            .featured-title { font-size: 1.25rem; }
-            .card-content { padding: 1rem; }
+            .list-section { padding-top: 2rem; }
+            .list-section li::before { min-width: 2.5rem; }
             .final-cta { padding: 2rem 1rem; }
             .final-cta h2 { font-size: 1.25rem; }
             .btn { padding: 0.625rem 1.25rem; font-size: 0.875rem; }
@@ -535,7 +467,8 @@
             </div>
             <nav style="display: flex; gap: 1.5rem;">
                 <a href="https://mahyapardaz.com/" style="text-decoration: none; color: var(--color-text-secondary);">صفحه اصلی</a>
-                <a href="https://catalog.mahyapardaz.com/" style="text-decoration: none; color: var(--color-text-primary); font-weight: 700;">محصولات</a>
+                <a href="#narmafzar" style="text-decoration: none; color: var(--color-text-primary); font-weight: 700;">نرم‌افزار</a>
+                <a href="#khadamat" style="text-decoration: none; color: var(--color-text-primary); font-weight: 700;">خدمات</a>
                 <a href="contact.html" style="text-decoration: none; color: var(--color-text-secondary);">تماس با ما</a>
             </nav>
         </div>
@@ -545,270 +478,123 @@
         <section class="hero">
             <div class="bg-grid-pattern"></div>
             <div class="container">
-                <span class="eyebrow">محیا پرداز · محصولات و راهکارها</span>
-                <h1>کاتالوگ محصولات محیا پرداز</h1>
+                <span class="eyebrow">محیا پرداز · نرم‌افزارها و خدمات</span>
+                <h1>کاتالوگ نرم‌افزارها و خدمات محیا پرداز</h1>
                 <p class="hero-subtitle">
-                    مجموعه‌ای از سامانه‌ها و راهکارهای نرم‌افزاری محیا پرداز برای مدیریت شهری، سازمان‌ها و کسب‌وکارها. طراحی شده با بالاترین استانداردهای امنیتی و فنی.
+                    سامانه‌های نرم‌افزاری تخصصی برای مدیریت شهری، سازمان‌ها و کسب‌وکارها، به همراه خدمات حرفه‌ای نقشه، بایگانی، ممیزی املاک و درآمد شهری. طراحی شده با بالاترین استانداردهای امنیتی و فنی.
                 </p>
+                <div class="btn-group" style="justify-content: flex-start;">
+                    <a href="#narmafzar" class="btn btn-primary">نرم‌افزار</a>
+                    <a href="#khadamat" class="btn btn-secondary">خدمات</a>
+                </div>
                 <div class="hero-badges">
                     <span class="badge">سامانه‌های مدیریت شهری</span>
                     <span class="badge">زیرساخت GIS</span>
                     <span class="badge">راهکارهای سازمانی</span>
+                    <span class="badge">خدمات تخصصی</span>
                 </div>
             </div>
         </section>
 
         <div class="container">
-            
-            <section aria-label="محصول ویژه">
-                <article class="featured-catalog">
-                    <a href="shahrvandyar.html" style="text-decoration: none; color: inherit; display: contents;">
-                        <div class="featured-artwork">
-                            <img 
-                                src="images/shahrnager.png" 
-                                alt="نمای گرافیکی داشبورد سامانه شهرنگار PRO با لایه‌های اطلاعات مکانی"
-                                width="800"
-                                height="600"
-                                fetchpriority="high"
-                                decoding="async"
-                            >
+
+            <section id="narmafzar" class="list-section" aria-label="لیست نرم‌افزارها و سامانه‌ها">
+                <span class="eyebrow">نرم‌افزار</span>
+                <h2>نرم‌افزارها و سامانه‌ها</h2>
+                <p class="section-desc">
+                    فهرست سامانه‌های نرم‌افزاری محیا پرداز؛ برای مشاهده جزئیات و کاتالوگ کامل هر سامانه، روی آن کلیک کنید.
+                </p>
+                <ol class="catalog-list">
+                    <li class="no-link">
+                        <div class="list-body">
+                            <span class="item-name">سامانه جامع شهرسازی، نوسازی، درآمد و GIS (شهرنگار)</span>
                         </div>
-                        <div class="featured-content">
-                            <span class="featured-badge">محصول پرچمدار</span>
-                            <h2 class="featured-title">سامانه شهرنگار PRO</h2>
-                            <p class="featured-desc">
-                                نسخه ارتقاءیافته سامانه شهرنگار؛ بستری هوشمند برای تعامل مؤثر، شفافیت کاری، تحلیل داده‌های مکانی و ارائه خدمات غیرحضوری با بالاترین سطح امنیت و دارای گواهی افتا.
-                            </p>
-                            <span class="card-cta" style="font-size: 1rem;">
-                                مشاهده کاتالوگ کامل 
-                                <svg class="cta-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </span>
-                        </div>
-                    </a>
-                </article>
+                    </li>
+                    <li>
+                        <a href="amlak.html">
+                            <span class="item-name">سامانه و فرآیندهای املاک و مستغلات</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="haffari.html">
+                            <span class="item-name">سامانه و فرآیندهای حفاری</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shahrvandyar.html">
+                            <span class="item-name">سامانه شهروندسپاری و ماژول‌های درگاه خدمات</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sdi.html">
+                            <span class="item-name">سامانه مدیریت اطلاعات مکانی SDI به همراه ماژول ممیزی و 3D</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sarmayeh.html">
+                            <span class="item-name">سامانه و درگاه سرمایه‌گذاری</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="asnaf.html">
+                            <span class="item-name">سامانه و درگاه اصناف</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="greenspace.html">
+                            <span class="item-name">سامانه مدیریت فضای سبز معابر و پارک‌ها</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pasmand.html">
+                            <span class="item-name">سامانه خدمات شهری</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="saaa.html">
+                            <span class="item-name">سامانه مدیریت منابع انسانی و کنترل پروژه</span>
+                            <svg class="item-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </li>
+                </ol>
             </section>
 
-            <nav aria-label="فیلتر دسته‌بندی محصولات">
-                <div class="filter-bar" role="group">
-                    <button class="filter-btn active" data-filter="all" aria-pressed="true">همه محصولات</button>
-                    <button class="filter-btn" data-filter="urban" aria-pressed="false">مدیریت شهری</button>
-                    <button class="filter-btn" data-filter="gis" aria-pressed="false">GIS و نقشه</button>
-                    <button class="filter-btn" data-filter="enterprise" aria-pressed="false">سازمانی</button>
-                    <button class="filter-btn" data-filter="infrastructure" aria-pressed="false">زیرساخت</button>
-                </div>
-            </nav>
-
-            <section class="catalog-grid" aria-label="لیست کاتالوگ محصولات">
-                
-                <article class="catalog-card" data-category="urban">
-                    <a href="haffari.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/haffari.png" 
-                                alt="نقشه شهری و مدیریت زیرساخت‌های حفاری"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت شهری</span>
-                            <h3 class="card-title">سامانه حفاری</h3>
-                            <p class="card-desc">مدیریت یکپارچه مجوزها، نظارت بر عملیات و کاهش تخریب‌های شهری با رهگیری مکانی دقیق و گزارش‌گیری لحظه‌ای.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="gis infrastructure">
-                    <a href="sdi.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/sdi.png" 
-                                alt="زیرساخت اطلاعات مکانی و لایه‌های داده GIS"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">زیرساخت و GIS</span>
-                            <h3 class="card-title">سامانه زیرساخت اطلاعات مکانی (SDI)</h3>
-                            <p class="card-desc">تجمیع، استانداردسازی و اشتراک‌گذاری امن داده‌های مکانی بین دستگاه‌های اجرایی و سازمان‌های مرتبط.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="enterprise">
-                    <a href="amlak.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/amlak.png" 
-                                alt="مدیریت املاک و مستغلات سازمانی"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت سازمانی</span>
-                            <h3 class="card-title">سامانه جامع مدیریت املاک و مستغلات</h3>
-                            <p class="card-desc">ثبت، پایش و مدیریت هوشمند املاک سازمانی، قراردادها، نقشه‌ها و درآمدهای حاصل از املاک.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="urban">
-                    <a href="shahrvandyar.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/shahrnager.png" 
-                                alt="درگاه خدمات شهروندی و شهری"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">خدمات شهری</span>
-                            <h3 class="card-title">سامانه شهرنگار PRO</h3>
-                            <p class="card-desc">درگاه یکپارچه شهروند سپاری خدمات برای ثبت درخواست‌ها، پیگیری آنلاین و افزایش رضایت شهروندان.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="enterprise">
-                    <a href="saaa.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/saaa.png" 
-                                alt="داشبورد مدیریت وظایف و پروژه"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت سازمانی</span>
-                            <h3 class="card-title">سامانه مدیریت وظایف و پروژه</h3>
-                            <p class="card-desc">رهگیری پیشرفت پروژه‌ها، تخصیص بهینه منابع و مدیریت چابک تیم‌های اجرایی در یک پلتفرم واحد.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="enterprise">
-                    <a href="asnaf.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/asnaf.png" 
-                                alt="سامانه مدیریت اصناف و بازرگانی"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">بازرگانی</span>
-                            <h3 class="card-title">سامانه اصناف و بازرگانی</h3>
-                            <p class="card-desc">مدیریت هوشمند واحدهای صنفی، صدور پروانه کسب و نظارت دقیق بر بازار در سازمان‌های مناطق آزاد.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="enterprise">
-                    <a href="sarmayeh.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/sarmayeh.png" 
-                                alt="سامانه سرمایه‌گذاری و مدیریت دارایی"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت سازمانی</span>
-                            <h3 class="card-title">سامانه سرمایه‌گذاری</h3>
-                            <p class="card-desc">مدیریت هوشمند فرآیندهای سرمایه‌گذاری، جذب منابع و پایش پروژه‌های توسعه سازمانی.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="urban">
-                    <a href="greenspace.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/greenspace-c.png" 
-                                alt="سامانه مدیریت هوشمند فضای سبز شهری"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت شهری</span>
-                            <h3 class="card-title">سامانه مدیریت هوشمند فضای سبز</h3>
-                            <p class="card-desc">مدیریت مکانی درختان، عملیات نگهداری، آبیاری، هرس و داشبورد مدیریتی برای سازمان‌های فضای سبز شهری.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="urban enterprise">
-                    <a href="asnaf-portal.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/asnaf-portal.jpeg" 
-                                alt="درگاه ویژه مدیریت اصناف"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت شهری</span>
-                            <h3 class="card-title">درگاه ویژه مدیریت اصناف</h3>
-                            <p class="card-desc">صدور، تمدید و مدیریت مجوزهای کسب و پیشه و بهره‌برداری با اتصال به درگاه ملی مجوزها، کارتابل هوشمند و گواهینامه افتا.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="enterprise">
-                    <a href="sarmayeh-portal.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/sarmayeh-portal.jpeg" 
-                                alt="درگاه یکپارچه امور سرمایه‌گذاری"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت سازمانی</span>
-                            <h3 class="card-title">درگاه یکپارچه امور سرمایه‌گذاری</h3>
-                            <p class="card-desc">مدیریت متمرکز درخواست‌ها، استعلامات هوشمند و ردیابی لحظه‌ای فرآیندهای سرمایه‌گذاری شهری در یک کارتابل واحد.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="catalog-card" data-category="urban">
-                    <a href="pasmand.html" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
-                        <div class="card-artwork-wrapper">
-                            <img 
-                                src="images/pasmand.png" 
-                                alt="سامانه هوشمند مدیریت پسماند شهری"
-                                width="600" height="375"
-                                loading="lazy" decoding="async" class="card-artwork"
-                            >
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">مدیریت شهری</span>
-                            <h3 class="card-title">سامانه هوشمند مدیریت پسماند شهری</h3>
-                            <p class="card-desc">ردیابی لحظه‌ای GIS، بهینه‌سازی مسیر، شفافیت مالی و افزایش مشارکت شهروندی در چرخه مدیریت پسماند شهری.</p>
-                            <span class="card-cta">مشاهده کاتالوگ <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        </div>
-                    </a>
-                </article>
-
+            <section id="khadamat" class="list-section" aria-label="لیست خدمات">
+                <span class="eyebrow">خدمات</span>
+                <h2>خدمات تخصصی</h2>
+                <p class="section-desc">
+                    خدمات مشاوره‌ای و اجرایی محیا پرداز در حوزه‌های نقشه، بایگانی، املاک و درآمد شهری.
+                </p>
+                <ul class="checklist">
+                    <li>
+                        <span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        تهیه لایه‌های نقشه
+                    </li>
+                    <li>
+                        <span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        ساماندهی بایگانی
+                    </li>
+                    <li>
+                        <span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        ممیزی املاک
+                    </li>
+                    <li>
+                        <span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        صدور فیش‌های عوارض
+                    </li>
+                    <li>
+                        <span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        مغایرت‌گیری و تشخیص تخلفات
+                    </li>
+                </ul>
             </section>
 
             <section class="final-cta">
@@ -834,7 +620,8 @@
                 <div>
                     <div class="footer-heading">دسترسی سریع</div>
                     <a href="https://mahyapardaz.com/" class="footer-link">صفحه اصلی</a>
-                    <a href="https://catalog.mahyapardaz.com/" class="footer-link">کاتالوگ محصولات</a>
+                    <a href="#narmafzar" class="footer-link">نرم‌افزارها</a>
+                    <a href="#khadamat" class="footer-link">خدمات</a>
                     <a href="https://mahyapardaz.com/about/" class="footer-link">درباره ما و گواهی افتا</a>
                     <a href="contact.html" class="footer-link">تماس با ما</a>
                 </div>
@@ -860,84 +647,5 @@
         </div>
     </footer>
 
-    <script>
-        /* Fallback تصویری اختصاصی برای هر کاتالوگ:
-           اگر تصویر کارت لود نشود، یک SVG هم‌تم با همان محصول ساخته می‌شود
-           تا جای خالی یا آیکون شکسته دیده نشود. */
-        const CATALOG_FALLBACKS = {
-            'haffari':         { title: 'سامانه جامع حفاری',            c1: '#92400E', c2: '#F59E0B' },
-            'sdi':             { title: 'زیرساخت اطلاعات مکانی SDI',    c1: '#0F172A', c2: '#0D9488' },
-            'amlak':           { title: 'مدیریت املاک و مستغلات',       c1: '#065F46', c2: '#D97706' },
-            'shahrnager':      { title: 'سامانه شهرنگار PRO',           c1: '#0C4A6E', c2: '#0EA5E9' },
-            'saaa':            { title: 'مدیریت وظایف و پروژه',         c1: '#1E3A8A', c2: '#6366F1' },
-            'asnaf':           { title: 'اصناف و بازرگانی',             c1: '#134E4A', c2: '#14B8A6' },
-            'sarmayeh':        { title: 'سامانه سرمایه‌گذاری',          c1: '#0A355C', c2: '#059669' },
-            'greenspace-c':    { title: 'فضای سبز هوشمند',              c1: '#14532D', c2: '#22C55E' },
-            'asnaf-portal':    { title: 'درگاه ویژه مدیریت اصناف',      c1: '#1E3A8A', c2: '#0D9488' },
-            'sarmayeh-portal': { title: 'درگاه امور سرمایه‌گذاری',      c1: '#0A355C', c2: '#059669' }
-        };
-
-        function buildFallbackSVG(key) {
-            const cfg = CATALOG_FALLBACKS[key] || { title: 'کاتالوگ محیا پرداز', c1: '#0F172A', c2: '#0D9488' };
-            const svg =
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375" font-family="Vazirmatn, Tahoma, sans-serif">' +
-                '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-                '<stop offset="0" stop-color="' + cfg.c1 + '"/><stop offset="1" stop-color="' + cfg.c2 + '"/>' +
-                '</linearGradient></defs>' +
-                '<rect width="600" height="375" fill="url(#g)"/>' +
-                '<circle cx="520" cy="60" r="95" fill="#ffffff" opacity=".08"/>' +
-                '<circle cx="70" cy="330" r="80" fill="#ffffff" opacity=".07"/>' +
-                '<rect x="230" y="92" width="140" height="100" rx="14" fill="#ffffff" opacity=".16"/>' +
-                '<rect x="248" y="76" width="104" height="26" rx="8" fill="#ffffff" opacity=".35"/>' +
-                '<path d="M258 168 L278 148 L296 158 L318 136 L344 128" stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>' +
-                '<text x="300" y="268" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff">' + cfg.title + '</text>' +
-                '<text x="300" y="300" text-anchor="middle" font-size="15" fill="#ffffff" opacity=".75">کاتالوگ دیجیتال محیا پرداز</text>' +
-                '</svg>';
-            return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-        }
-
-        function applyFallback(img) {
-            if (img.dataset.fbDone) return;
-            img.dataset.fbDone = '1';
-            const key = (img.getAttribute('src') || '').split('/').pop().split('.')[0];
-            img.src = buildFallbackSVG(key);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.card-artwork, .featured-artwork img').forEach(img => {
-                img.addEventListener('error', () => applyFallback(img));
-                if (img.complete && img.naturalWidth === 0) applyFallback(img);
-            });
-
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const catalogCards = document.querySelectorAll('.catalog-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => {
-                        b.classList.remove('active');
-                        b.setAttribute('aria-pressed', 'false');
-                    });
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-pressed', 'true');
-
-                    const filterValue = btn.getAttribute('data-filter');
-
-                    catalogCards.forEach(card => {
-                        if (filterValue === 'all') {
-                            card.classList.remove('hidden');
-                        } else {
-                            const categories = card.getAttribute('data-category');
-                            if (categories && categories.includes(filterValue)) {
-                                card.classList.remove('hidden');
-                            } else {
-                                card.classList.add('hidden');
-                            }
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
