@@ -170,13 +170,14 @@
         }
 
         .main-card {
+            --c: var(--color-accent);
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 0.875rem;
             padding: 2.5rem 2.25rem;
-            background: var(--color-surface);
+            background: linear-gradient(180deg, color-mix(in srgb, var(--c) 6%, #FFFFFF), #FFFFFF 60%);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
             text-decoration: none;
@@ -187,8 +188,8 @@
 
         .main-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--color-accent);
+            box-shadow: 0 14px 28px -10px color-mix(in srgb, var(--c) 30%, transparent);
+            border-color: color-mix(in srgb, var(--c) 45%, #FFFFFF);
         }
 
         .main-card:focus-visible {
@@ -197,10 +198,20 @@
         }
 
         .main-card-icon {
-            width: 2.75rem;
-            height: 2.75rem;
-            color: var(--color-accent);
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: color-mix(in srgb, var(--c) 13%, #FFFFFF);
+            color: var(--c);
             flex-shrink: 0;
+        }
+
+        .main-card-icon svg {
+            width: 1.625rem;
+            height: 1.625rem;
         }
 
         .main-card h2 {
@@ -222,7 +233,7 @@
             margin-top: 0.5rem;
             font-size: 0.875rem;
             font-weight: 700;
-            color: var(--color-accent-hover);
+            color: var(--c);
         }
 
         .main-card .go svg {
@@ -267,6 +278,7 @@
         }
 
         .tile {
+            --c: var(--color-accent);
             aspect-ratio: 1 / 1;
             display: flex;
             flex-direction: column;
@@ -274,7 +286,7 @@
             justify-content: center;
             gap: 0.875rem;
             padding: 1.25rem 1rem;
-            background: var(--color-surface);
+            background: linear-gradient(180deg, color-mix(in srgb, var(--c) 6%, #FFFFFF), #FFFFFF 60%);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
             text-align: center;
@@ -285,8 +297,8 @@
 
         .tile:hover {
             transform: translateY(-4px);
-            border-color: var(--color-accent);
-            box-shadow: var(--shadow-hover);
+            border-color: color-mix(in srgb, var(--c) 50%, #FFFFFF);
+            box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--c) 28%, transparent);
         }
 
         .tile:focus-visible {
@@ -295,10 +307,20 @@
         }
 
         .tile-icon {
-            width: 2.25rem;
-            height: 2.25rem;
-            color: var(--color-accent);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: color-mix(in srgb, var(--c) 13%, #FFFFFF);
+            color: var(--c);
             flex-shrink: 0;
+        }
+
+        .tile-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
         }
 
         .tile-name {
@@ -310,7 +332,6 @@
 
         .tile.no-link {
             cursor: default;
-            background: transparent;
             border-style: dashed;
         }
 
@@ -322,7 +343,7 @@
 
         .tile.no-link .tile-icon,
         .tile.no-link .tile-name {
-            opacity: 0.55;
+            opacity: 0.6;
         }
 
         .final-cta {
@@ -425,8 +446,11 @@
             .main-card { padding: 1.75rem 1.5rem; }
             .list-section { padding-top: 2rem; }
             .tile { padding: 1rem 0.75rem; gap: 0.625rem; }
-            .tile-icon { width: 1.875rem; height: 1.875rem; }
+            .tile-icon { width: 2.5rem; height: 2.5rem; border-radius: 12px; }
+            .tile-icon svg { width: 1.25rem; height: 1.25rem; }
             .tile-name { font-size: 0.75rem; }
+            .main-card-icon { width: 2.75rem; height: 2.75rem; border-radius: 12px; }
+            .main-card-icon svg { width: 1.375rem; height: 1.375rem; }
             .final-cta { padding: 2rem 1rem; }
             .final-cta h2 { font-size: 1.25rem; }
             .btn { padding: 0.625rem 1.25rem; font-size: 0.875rem; }
@@ -462,11 +486,13 @@
                 </p>
 
                 <div class="main-cards">
-                    <a href="#narmafzar" class="main-card">
-                        <svg class="main-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <path d="M8 21h8M12 17v4"/>
-                        </svg>
+                    <a href="#narmafzar" class="main-card" style="--c:#0D9488">
+                        <span class="main-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <path d="M8 21h8M12 17v4"/>
+                            </svg>
+                        </span>
                         <h2>نرم‌افزار</h2>
                         <p>۱۰ سامانه تخصصی مدیریت شهری، GIS و سازمانی؛ از شهرسازی و املاک تا فضای سبز و پسماند.</p>
                         <span class="go">
@@ -475,11 +501,13 @@
                         </span>
                     </a>
 
-                    <a href="#khadamat" class="main-card">
-                        <svg class="main-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="7" width="20" height="14" rx="2"/>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                        </svg>
+                    <a href="#khadamat" class="main-card" style="--c:#D97706">
+                        <span class="main-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </span>
                         <h2>خدمات</h2>
                         <p>۵ خدمت تخصصی نقشه، بایگانی، ممیزی املاک، عوارض و مغایرت‌گیری برای سازمان‌ها و شهرداری‌ها.</p>
                         <span class="go">
@@ -497,78 +525,98 @@
                 <span class="eyebrow">نرم‌افزار</span>
                 <h2>نرم‌افزارها و سامانه‌ها</h2>
                 <div class="tiles">
-                    <div class="tile no-link" aria-disabled="true">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="4" y="2" width="16" height="20" rx="1"/>
-                            <path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/>
-                        </svg>
+                    <div class="tile no-link" style="--c:#0284C7" aria-disabled="true">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="4" y="2" width="16" height="20" rx="1"/>
+                                <path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه جامع شهرسازی، نوسازی، درآمد و GIS (شهرنگار)</span>
                     </div>
-                    <a href="amlak.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <path d="M9 22V12h6v10"/>
-                        </svg>
+                    <a href="amlak.html" class="tile" style="--c:#D97706">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <path d="M9 22V12h6v10"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه و فرآیندهای املاک و مستغلات</span>
                     </a>
-                    <a href="haffari.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a8 8 0 0 0-16 0v2z"/>
-                            <path d="M10 10V5a2 2 0 0 1 4 0v5"/>
-                        </svg>
+                    <a href="haffari.html" class="tile" style="--c:#EA580C">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a8 8 0 0 0-16 0v2z"/>
+                                <path d="M10 10V5a2 2 0 0 1 4 0v5"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه و فرآیندهای حفاری</span>
                     </a>
-                    <a href="shahrvandyar.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
+                    <a href="shahrvandyar.html" class="tile" style="--c:#4F46E5">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه شهروندسپاری و ماژول‌های درگاه خدمات</span>
                     </a>
-                    <a href="sdi.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
+                    <a href="sdi.html" class="tile" style="--c:#0D9488">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه مدیریت اطلاعات مکانی SDI به همراه ماژول ممیزی و 3D</span>
                     </a>
-                    <a href="sarmayeh.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                            <polyline points="17 6 23 6 23 12"/>
-                        </svg>
+                    <a href="sarmayeh.html" class="tile" style="--c:#059669">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه و درگاه سرمایه‌گذاری</span>
                     </a>
-                    <a href="asnaf.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                            <path d="M3 6h18"/>
-                            <path d="M16 10a4 4 0 0 1-8 0"/>
-                        </svg>
+                    <a href="asnaf.html" class="tile" style="--c:#7C3AED">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                                <path d="M3 6h18"/>
+                                <path d="M16 10a4 4 0 0 1-8 0"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه و درگاه اصناف</span>
                     </a>
-                    <a href="greenspace.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 11-10 11z"/>
-                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-                        </svg>
+                    <a href="greenspace.html" class="tile" style="--c:#16A34A">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 11-10 11z"/>
+                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه مدیریت فضای سبز معابر و پارک‌ها</span>
                     </a>
-                    <a href="pasmand.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <polyline points="3 6 5 6 21 6"/>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                            <path d="M10 11v6M14 11v6"/>
-                        </svg>
+                    <a href="pasmand.html" class="tile" style="--c:#65A30D">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <path d="M10 11v6M14 11v6"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه خدمات شهری</span>
                     </a>
-                    <a href="saaa.html" class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="8.5" cy="7" r="4"/>
-                            <polyline points="17 11 19 13 23 9"/>
-                        </svg>
+                    <a href="saaa.html" class="tile" style="--c:#DB2777">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="8.5" cy="7" r="4"/>
+                                <polyline points="17 11 19 13 23 9"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">سامانه مدیریت منابع انسانی و کنترل پروژه</span>
                     </a>
                 </div>
@@ -578,40 +626,50 @@
                 <span class="eyebrow">خدمات</span>
                 <h2>خدمات تخصصی</h2>
                 <div class="tiles">
-                    <div class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/>
-                            <path d="M8 2v16M16 6v16"/>
-                        </svg>
+                    <div class="tile" style="--c:#2563EB">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/>
+                                <path d="M8 2v16M16 6v16"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">تهیه لایه‌های نقشه</span>
                     </div>
-                    <div class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <polyline points="21 8 21 21 3 21 3 8"/>
-                            <rect x="1" y="3" width="22" height="5"/>
-                            <path d="M10 12h4"/>
-                        </svg>
+                    <div class="tile" style="--c:#CA8A04">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="21 8 21 21 3 21 3 8"/>
+                                <rect x="1" y="3" width="22" height="5"/>
+                                <path d="M10 12h4"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">ساماندهی بایگانی</span>
                     </div>
-                    <div class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="M21 21l-4.35-4.35"/>
-                        </svg>
+                    <div class="tile" style="--c:#9333EA">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">ممیزی املاک</span>
                     </div>
-                    <div class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M5 3h14v18l-2.5-1.5L14 21l-2-1.5L10 21l-2.5-1.5L5 21z"/>
-                            <path d="M9 8h6M9 12h6"/>
-                        </svg>
+                    <div class="tile" style="--c:#059669">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 3h14v18l-2.5-1.5L14 21l-2-1.5L10 21l-2.5-1.5L5 21z"/>
+                                <path d="M9 8h6M9 12h6"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">صدور فیش‌های عوارض</span>
                     </div>
-                    <div class="tile">
-                        <svg class="tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                            <path d="M12 9v4M12 17h.01"/>
-                        </svg>
+                    <div class="tile" style="--c:#DC2626">
+                        <span class="tile-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <path d="M12 9v4M12 17h.01"/>
+                            </svg>
+                        </span>
                         <span class="tile-name">مغایرت‌گیری و تشخیص تخلفات</span>
                     </div>
                 </div>
